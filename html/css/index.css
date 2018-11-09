@@ -1,0 +1,219 @@
+.display{
+  display: none;
+}
+.form_login{
+  box-sizing: border-box;
+  width: 260px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  padding-bottom: 40px;
+  border-radius: 5px;
+}
+.form_login h1{
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  color: #1abc9c;
+}
+.form_login input{
+  margin: 40px 25px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #1abc9c;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+.form_login input:focus, .form_login input:valid{
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+.form_login input:focus::-webkit-input-placeholder,.form_login input:valid::.form_login input:valid{
+  color: #1abc9c;
+  font-size: 11px;
+  transform: translateY(-1px);
+  visibility: visible !important;
+}
+.form_login button{
+  border: none;
+  background: #1abc9c;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-left: 25px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.form_login button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.bottom-text{
+  box-sizing: border-box;
+  color: #0e6252;
+  font-size: 12px;
+  text-align: center;
+}
+.bottom-text p  {
+	font-size:14px;
+}
+ .bottom-text a {
+  color: #1abc9c;
+  text-decoration: none;
+  font-size:14px;
+	}
+
+.bottom-text p a{
+	color:#1abc9c;
+	margin-left: 5px;
+    transition: .5s ease-in;
+    -webkit-transition: .5s ease-in;
+    -ms-transition: .5s ease-in;
+    -o-transition: .5s ease-in;
+    -moz-transition: .5s ease-in;
+}
+.bottom-text p a:hover {
+	color:#ef4d4d;
+
+}
+.bottom-text h4 {
+	font-size:10px;
+	color:#1abc9c;
+	margin-top: 10px;
+    color:#ef4d4d;
+	transition: .5s ease-in;
+    -webkit-transition: .5s ease-in;
+    -ms-transition: .5s ease-in;
+    -o-transition: .5s ease-in;
+    -moz-transition: .5s ease-in;
+}
+.bottom-text h4 a:hover {
+	color:#ef4d4d;
+}
+.register{
+  width:600px;
+  margin: 20px auto 0px auto;
+  height:500px;
+  background-color:#fff;
+  padding:5px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.register h1{
+  font-weight:200;
+  color: #888888;
+  font-size:16pt;
+  background: transparent url(../img/h1.png) no-repeat center left;
+  padding-left:33px;
+  margin:7px 5px 8px 8px;
+}
+.register p{
+  font-size: 8pt;
+  clear:both;
+  margin: 0;
+  color:gray;
+  padding:4px;
+}
+.register .row1{
+  width:550px;
+  padding:5px;
+  float:left;
+  border-top:1px solid #F5F5F5;
+  margin-bottom:15px;
+}
+.register .row1 label{
+  width:140px;
+  float: left;
+  text-align: right;
+  margin-right: 6px;
+  margin-top:2px;
+}
+.register legend{
+  color: #1abc9c;
+  padding:2px;
+  margin-left: 14px;
+  font-weight:bold;
+  font-size: 14px;
+  font-weight:100;
+}
+.register input{
+  width: 140px;
+  color: #505050;
+  float: left;
+  margin-right: 5px;
+}
+.register input .long{
+  width: 247px;
+  color: #505050;
+}
+.register input[type=radio]{
+      width:15px;
+}
+.register .row1 .gender{
+  margin-top:1px;
+  margin-bottom:2px;
+  width:34px;
+  text-align:left;
+  line-height:19px;
+}
+.register input[type=text]{
+  border: 1px solid #E1E1E1;
+  height: 18px;
+}
+.register input[type=password]{
+  border: 1px solid #E1E1E1;
+  height: 18px;
+}
+.register .button{
+  background: #1abc9c; url(../img/overlay.png) repeat-x;
+  padding: 8px 10px 8px;
+  color: #fff;
+  text-decoration: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  cursor: pointer;
+  float:left;
+  font-size:18px;
+  margin:10px;
+}
+.register select{
+  border: 1px solid #E1E1E1;
+  width: 130px;
+  float:left;
+  margin-bottom:3px;
+  color: #505050;
+  margin-right:5px;
+}
+.register .date{
+    width: 40px;
+}
+.register .month{
+    width: 80px;
+}
+.register .year{
+  width: 60px;
+}
+.register input:focus .register select:focus{
+      background-color: #efffe0;
+}
+.xem_header{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99999;
+  color: rgba(255, 255, 255, 255);
+  font: normal normal bold 11px
+      Arial,Tahoma,Calibri,Verdana,Geneva,sans-serif;
+      position: relative;
+}
