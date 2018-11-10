@@ -1,13 +1,41 @@
 .display{
   display: none;
 }
+.signup {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.signin {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
 .form_login{
   box-sizing: border-box;
   width: 260px;
+  background-color:#fff;
   margin: 100px auto 0;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
   padding-bottom: 40px;
   border-radius: 5px;
+  animation-name: animatetop;
+  animation-duration: 0.4s
 }
 .form_login h1{
   box-sizing: border-box;
@@ -106,12 +134,19 @@
   box-sizing: border-box;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
 .register h1{
   font-weight:200;
   color: #888888;
   font-size:16pt;
-  background: transparent url(../img/h1.png) no-repeat center left;
+  /* background: transparent url(../img/h1.png) no-repeat center left; */
   padding-left:33px;
   margin:7px 5px 8px 8px;
 }
@@ -173,7 +208,7 @@
   height: 18px;
 }
 .register .button{
-  background: #1abc9c; url(../img/overlay.png) repeat-x;
+  background: #1abc9c;
   padding: 8px 10px 8px;
   color: #fff;
   text-decoration: none;
@@ -195,11 +230,11 @@
   color: #505050;
   margin-right:5px;
 }
-.register .date{
+.register .day{
     width: 40px;
 }
 .register .month{
-    width: 80px;
+    width: 40px;
 }
 .register .year{
   width: 60px;
@@ -217,3 +252,78 @@
       Arial,Tahoma,Calibri,Verdana,Geneva,sans-serif;
       position: relative;
 }
+
+.profile_wrap {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(252, 252, 252);
+  background-color: rgba(255, 255, 255, 0.342); /* Black w/ opacity */
+}
+
+.profile {
+  width: 280px;
+  height: 250px;
+  border: teal solid 1px;
+  border-top: teal solid 4px;
+  background-color: #fff;
+  opacity: 0.8;
+  box-shadow: 2px 2px #888888;
+}
+
+.profile .profile_header {
+  padding: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  border-bottom: teal solid 1px;
+}
+
+.profile .profile_header .image {
+  margin-right: 10px;
+}
+
+.profile .profile_header .image img {
+  width: 100px;
+  height: 100px;
+}
+
+.profile .profile_header .infor .username {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile .profile_header .infor .level {
+  color: #888888;
+}
+
+.profile .profile_content {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.profile .profile_content .element {
+  width: 50%;
+}
+
+.profile .profile_content .element ul {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.profile .profile_content .element li {
+  color: teal;
+}
+.profile .profile_content .element li a {
+  color: teal;
+  text-decoration: none;
+}
+
+.profile .profile_content .element li a:hover {
+  text-decoration: underline;
+}
+

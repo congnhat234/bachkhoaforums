@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.profileContainer {
+    width: 80%;
+    margin-left: 10%;
+    border: solid 1px slategray;
+    display: flex;
+    flex-flow: column;
+}
+
+.titleBar {
+    
+}
+
+.content {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.navigationSlideBar {
+    width: 15%;
+    height: 331px;
+    border: solid 1px rgb(0, 128, 255);
+    margin-left: 10px;
+}
+.navigationSlideBar h4 {
+    background-color: rgb(0, 128, 255);
+    color: white;
+    font-size: 13px;
+    height: 20px;
+    padding: 3px;
+    opacity: 0.6;
+    margin-top: 0px;
+}
+.navigationSlideBar .list-group {
+    list-style: none;
+    padding-left: 0px;   
+    margin-top: -10px;
+}
+
+.navigationSlideBar .list-group .list-group-item {
+    border-bottom: solid 1px rgb(0, 128, 255);
+}
+
+.navigationSlideBar .list-group .list-group-item h4 {
+    background-color: rgb(255, 193, 128);
+    color: rgb(77, 40, 0);
+    font-size: 13px;
+    height: 20px;
+    padding: 3px;
+    opacity: 0.8;
+    margin-top: 0px;
+}
+
+.navigationSlideBar .list-group .list-group-item ul {
+    list-style: none;
+    padding-left: 0px;   
+    margin-top: -16px;
+}
+
+.navigationSlideBar .list-group .list-group-item ul li {
+    height: 30px;
+    border-bottom: solid 1px rgb(0, 128, 255);
+}
+
+.navigationSlideBar .list-group .list-group-item ul li:hover {
+    background-color: rgb(153, 204, 255);
+    opacity: 0.8;
+}
+
+.navigationSlideBar .list-group .list-group-item ul li a {
+    text-decoration: none;
+    color: rgb(0, 128, 255);
+    font-size: 12px;
+}
+
+.mainContent {
+    width: 85%;
+    border: solid 1px rgb(0, 128, 255);
+    font-size: 15px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.mainContent form {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.mainContent fieldset {
+    display: block;
+    margin-left: 0px;
+    margin-right: 10px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: none;
+    border-bottom: solid 1px rgb(0, 128, 255); 
+}
+
+.mainContent fieldset .ctrlUnit {
+
+}
+
+.mainContent .button {
+    background-color: rgb(255, 193, 128);
+    border: none;
+    color: rgb(77, 40, 0);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mainContent .button:hover {
+    opacity: 0.8;
+}

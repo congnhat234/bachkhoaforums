@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
   </head>
   <body>
-    <div>
+      <button id="btnSignin">Login</button>
+      <button id="btnSignup">Register</button>
+      <button id="btnProfile">Profile</button>
+    <div id="signin" class="signin">
       <form action="#" class="form_login">
         <h1>Login</h1>
         <input placeholder="Username" type="text" required>
@@ -18,7 +22,7 @@
         </div>
       </form>
     </div>
-    <div id="singup">
+    <div id="signup" class="signup">
       <form action="" class="register">
                   <h1>Registration</h1>
                   <fieldset class="row1">
@@ -65,184 +69,11 @@
                       <p>
                           <label>Birthdate *
                           </label>
-                          <select class="date">
-                              <option value="1">01
-                              </option>
-                              <option value="2">02
-                              </option>
-                              <option value="3">03
-                              </option>
-                              <option value="4">04
-                              </option>
-                              <option value="5">05
-                              </option>
-                              <option value="6">06
-                              </option>
-                              <option value="7">07
-                              </option>
-                              <option value="8">08
-                              </option>
-                              <option value="9">09
-                              </option>
-                              <option value="10">10
-                              </option>
-                              <option value="11">11
-                              </option>
-                              <option value="12">12
-                              </option>
-                              <option value="13">13
-                              </option>
-                              <option value="14">14
-                              </option>
-                              <option value="15">15
-                              </option>
-                              <option value="16">16
-                              </option>
-                              <option value="17">17
-                              </option>
-                              <option value="18">18
-                              </option>
-                              <option value="19">19
-                              </option>
-                              <option value="20">20
-                              </option>
-                              <option value="21">21
-                              </option>
-                              <option value="22">22
-                              </option>
-                              <option value="23">23
-                              </option>
-                              <option value="24">24
-                              </option>
-                              <option value="25">25
-                              </option>
-                              <option value="26">26
-                              </option>
-                              <option value="27">27
-                              </option>
-                              <option value="28">28
-                              </option>
-                              <option value="29">29
-                              </option>
-                              <option value="30">30
-                              </option>
-                              <option value="31">31
-                              </option>
+                          <select class="day">
                           </select>
                           <select class="month">
-                              <option value="1">January
-                              </option>
-                              <option value="2">February
-                              </option>
-                              <option value="3">March
-                              </option>
-                              <option value="4">April
-                              </option>
-                              <option value="5">May
-                              </option>
-                              <option value="6">June
-                              </option>
-                              <option value="7">July
-                              </option>
-                              <option value="8">August
-                              </option>
-                              <option value="9">September
-                              </option>
-                              <option value="10">October
-                              </option>
-                              <option value="11">November
-                              </option>
-                              <option value="12">December
-                              </option>
                           </select>
                           <select class="year">
-                              <option value="1975">1975
-                              </option>
-                              <option value="1976">1976
-                              </option>
-                              <option value="1977">1977
-                              </option>
-                              <option value="1978">1978
-                              </option>
-                              <option value="1979">1979
-                              </option>
-                              <option value="1980">1980
-                              </option>
-                              <option value="1981">1981
-                              </option>
-                              <option value="1982">1982
-                              </option>
-                              <option value="1983">1983
-                              </option>
-                              <option value="1984">1984
-                              </option>
-                              <option value="1985">1985
-                              </option>
-                              <option value="1986">1986
-                              </option>
-                              <option value="1987">1987
-                              </option>
-                              <option value="1988">1988
-                              </option>
-                              <option value="1989">1989
-                              </option>
-                              <option value="1990">1990
-                              </option>
-                              <option value="1991">1991
-                              </option>
-                              <option value="1992">1992
-                              </option>
-                              <option value="1993">1993
-                              </option>
-                              <option value="1994">1994
-                              </option>
-                              <option value="1995">1995
-                              </option>
-                              <option value="1996">1996
-                              </option>
-                              <option value="1997">1997
-                              </option>
-                              <option value="1998">1998
-                              </option>
-                              <option value="1999">1999
-                              </option>
-                              <option value="2000">2000
-                              </option>
-                              <option value="2001">2001
-                              </option>
-                              <option value="2002">2002
-                              </option>
-                              <option value="2003">2003
-                              </option>
-                              <option value="2004">2004
-                              </option>
-                              <option value="2005">2005
-                              </option>
-                              <option value="2006">2006
-                              </option>
-                              <option value="2007">2007
-                              </option>
-                              <option value="2008">2008
-                              </option>
-                              <option value="2009">2009
-                              </option>
-                              <option value="2010">2010
-                              </option>
-                              <option value="2011">2011
-                              </option>
-                              <option value="2012">2012
-                              </option>
-                              <option value="2013">2013
-                              </option>
-                              <option value="2014">2014
-                              </option>
-                              <option value="2015">2015
-                              </option>
-                              <option value="2016">2016
-                              </option>
-                              <option value="2017">2017
-                              </option>
-                              <option value="2018">2018
                           </select>
                       </p>
                       <p>
@@ -265,6 +96,76 @@
                   <div><button class="button">Register</button></div>
               </form>
     </div>
+    <div id="profile" class="profile_wrap">
+        <div class="profile">
+            <div class="profile_header">
+                <div class="image">
+                    <img src="img/t3.jpg">
+                </div>
+                <div class="infor">
+                    <p class="username">congnhat</p>
+                    <p class="level">Thành viên mới</p>
+                </div>
+            </div>
+            <div class="profile_content">
+                <div class="element">
+                    <ul>
+                        <li><a href="#">Thông tin cá nhân</a></li>
+                        <li><a href="#">Tùy chọn</a></li>
+                        <li><a href="#">Mật khẩu</a></li>                   
+                    </ul>
+                </div>
+                <div class="element">
+                    <ul>
+                        <li><a href="#">Tin nhắn</a></li>
+                        <li><a href="#">Thông báo</a></li>
+                        <li><a href="#">Nội dung của bạn</a></li>
+                        <li><a href="#">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var day;
+        for(var i=1; i<=31; i++){
+            day += "<option value=" + i + ">" + i + "</option>";
+        }
+        $(".day").html(day);
+        var month;
+        for(var i=1; i<=12; i++){           
+            month += "<option value=" + i + ">" + i + "</option>";
+        }
+        $(".month").html(month);
+        var year;
+        for(var i=1975; i<=2018; i++){           
+            year += "<option value=" + i + ">" + i + "</option>";
+        }
+        $(".year").html(year);
+        
+        $("#btnSignin").on("click", function () {
+            $(".signin").css("display", "block");
+        });
+        $("#btnSignup").on("click", function () {
+            $(".signup").css("display", "block");
+        });
+        $("#btnProfile").on("click", function () {
+            $("#profile").css("display", "block");
+        });
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("signin")) {
+                $("#signin").css("display", "none");
+            }
+            if (event.target == document.getElementById("signup")) {
+                $("#signup").css("display", "none");
+            } 
+            if (event.target == document.getElementById("profile")) {
+                $("#profile").css("display", "none");
+            }                      
+        }
+    </script>
   </body>
 </html>
