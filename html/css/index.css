@@ -348,7 +348,6 @@ body {
 	height: 80px;
 	color: #ffffff;
   box-sizing: border-box;
-  position: fixed;
   top: 0;
 }
 
@@ -542,6 +541,84 @@ body {
 
 /* end header */
 
+/* begin content */
+
+.title{
+  position: sticky;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 100px;
+   margin-right: 100px;
+   margin-left: 200px;
+   max-width: 1000px;
+}
+.lable {
+  border-radius: 5px;
+  background-color: #FACE9C;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topic label {
+  font-family: Arial, Helvetica, sans-serif;
+  width:200px;
+  border-radius: 5px;
+  background-color: #b7d2ff;
+}
+.topic img{
+  height: 40px;
+  width: 40px;
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+/* end content */
 /* Footer */
 
 .footer-distributed{
@@ -621,4 +698,3 @@ body {
 
 
 /* End footer */
-
