@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .display{
   display: none;
 }
@@ -30,12 +34,14 @@
   box-sizing: border-box;
   width: 260px;
   background-color:#fff;
-  margin: 100px auto 0;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
   padding-bottom: 40px;
   border-radius: 5px;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  position: fixed;
+  top: 100px;
+  left: 40%;
 }
 .form_login h1{
   box-sizing: border-box;
@@ -127,7 +133,6 @@
 }
 .register{
   width:600px;
-  margin: 20px auto 0px auto;
   height:500px;
   background-color:#fff;
   padding:5px;
@@ -135,7 +140,10 @@
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  position: fixed;
+  top: 100px;
+  left: 30%;
 }
 /* Add Animation */
 @keyframes animatetop {
@@ -143,12 +151,12 @@
   to {top: 0; opacity: 1}
 }
 .register h1{
-  font-weight:200;
+  font-weight: 200;
   color: #888888;
   font-size:16pt;
   /* background: transparent url(../img/h1.png) no-repeat center left; */
-  padding-left:33px;
-  margin:7px 5px 8px 8px;
+  padding-left: 33px;
+  margin: 7px 5px 8px 8px;
 }
 .register p{
   font-size: 8pt;
@@ -263,7 +271,7 @@
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(252, 252, 252);
-  background-color: rgba(255, 255, 255, 0.342); /* Black w/ opacity */
+  background-color: rgba(255, 255, 255, 0); /* Black w/ opacity */
 }
 
 .profile {
@@ -274,6 +282,9 @@
   background-color: #fff;
   opacity: 0.8;
   box-shadow: 2px 2px #888888;
+  position: relative;
+  top: 70px;
+  left: 70%;
 }
 
 .profile .profile_header {
@@ -326,4 +337,288 @@
 .profile .profile_content .element li a:hover {
   text-decoration: underline;
 }
+
+/* header */
+
+.header-search{
+  width: 100%;
+	background-color:#292c2f;
+	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+}
+
+.header-search .header-limiter {
+	max-width: 1200px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+.header-search .header-limiter h1 {
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
+}
+
+.header-search .header-limiter h1 span {
+	color: #5383d3;
+}
+
+/* The header links */
+
+.header-search .header-limiter a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.header-search .header-limiter nav {
+	font:16px Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	float: left;
+	margin: 0 0 0 60px;
+	padding: 0;
+}
+
+.header-search .header-limiter nav a {
+	display: inline-block;
+	padding: 0 5px;
+	text-decoration:none;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: normal;
+	opacity: 0.9;
+}
+
+/* The search box */
+
+.header-search .header-limiter form {
+	float:right;
+	position: relative;
+	right: 80px;
+	margin-left: 40px;
+	border-radius: 3px;
+	background-color:  #3a3c3e;
+	width: 44px;
+	height: 39px;
+	cursor: pointer;
+
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* CSS search icon */
+
+.header-search .header-limiter form:before {
+	position: absolute;
+	content: '';
+	border-radius: 50%;
+	border: 2px solid #fff;
+	width: 9px;
+	height: 9px;
+	top: 12px;
+	left: 14px;
+}
+
+.header-search .header-limiter form:after {
+	position: absolute;
+	content: '';
+	background-color: #fff;
+	width: 2px;
+	height: 8px;
+	top: 22px;
+	left: 26px;
+	-webkit-transform: rotate(-44deg);
+	-moz-transform: rotate(-44deg);
+	transform: rotate(-44deg);
+}
+
+/* The search box */
+
+.header-search .header-limiter form input {
+	display: none;
+	position: absolute;
+	right: 42px;
+	padding: 11px 12px 9px;
+	border: none;
+	width: 210px;
+	border-radius: 2px 0 0 2px;
+	height: 39px;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+/* Login/Sign up buttons */
+
+.header-search  .header-limiter ul {
+	font: 14px Arial, Helvetica, sans-serif;
+	list-style: none;
+	line-height: 1;
+	float: right;
+}
+
+.header-search  .header-limiter ul li {
+	display: inline-block;
+	margin-left: 15px;
+	opacity:0.9;
+}
+
+.header-search  .header-limiter ul li:hover{
+	opacity: 1;
+}
+/* The sign up button */
+
+.header-search .header-limiter ul li:last-child a {
+	font-weight: bold;
+	background-color: #3a3c3e;
+	padding: 10px 15px;
+	border-radius: 3px;
+}
+
+/* Making the header responsive. */
+
+@media all and (max-width: 600px) {
+
+	.header-search {
+		padding: 15px;
+		position: relative;
+	}
+
+	.header-search .header-limiter h1 {
+		float:none;
+		font-size: 24px;
+		line-height: 1;
+	}
+
+	.header-search .header-limiter nav {
+		text-align: center;
+		float: none;
+		margin: 0;
+	}
+
+	.header-search .header-limiter nav a li {
+		font-size: 13px;
+	}
+
+	.header-search .header-limiter form {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+	.header-login-signup .header-limiter ul {
+		display: none;
+	}
+
+}
+
+.header-search  .header-limiter .userProfile {
+  margin-right: 20px;
+  position: relative;
+}
+
+.header-search  .header-limiter .userProfile .accountUsername {
+  position: absolute;
+  top: -10px;
+  right: -12px;
+}
+
+.header-search  .header-limiter .avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  top: -25px;
+  right: 80px;
+}
+
+/* end header */
+
+/* Footer */
+
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: normal 16px sans-serif;
+
+	padding: 45px 50px;
+	margin-top: 80px;
+}
+
+.footer-distributed .footer-left p{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* Footer links */
+
+.footer-distributed p.footer-links{
+	font-size:18px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+.footer-distributed p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-right{
+	float: right;
+	margin-top: 6px;
+	max-width: 180px;
+}
+
+.footer-distributed .footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-right{
+		text-align: center;
+	}
+
+	.footer-distributed .footer-right{
+		float: none;
+		margin: 0 auto 20px;
+	}
+
+	.footer-distributed .footer-left p.footer-links{
+		line-height: 1.8;
+	}
+}
+
+
+/* End footer */
 
