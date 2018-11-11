@@ -3,9 +3,103 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="fontawesome/css/all.css">
         <script src="js/jquery-3.3.1.min.js"></script>
     </head>
     <body>
+        <header>
+            <div id="header" class="header">                  
+                <div class="navigationWrapper">
+                    <div class="headerContent">
+                            <div class="navTabs">
+                                <div class="pageWidth">
+                                    <ul class="publicTabs navLeft">
+                                        <li id="logo_small">
+                                            <a href="index.html">
+                                                <i style="font-size: 3rem;" class="fas fa-code"></i>
+                                            </a>
+                                        </li>
+                                                            
+                                        <li class="navTab forums">
+                                            <a href="index.html" class="navLink">Diễn đàn</a>                                          
+                                        </li>
+                                                        
+                                    </ul>                
+                                    <ul class="navRight visitorTabs">  
+                                        <li class="navTab uix_searchTab">
+                                            <div id="searchBar" class="searchBar">
+                                                <fieldset id="QuickSearch">
+                                                    <form action="search/search" method="post" class="formPopup">
+                                            
+                                                        <div class="primaryControls">
+                                                            <!-- block: primaryControls -->
+                                                            <i style="color:white" class="fas-fa search"></i>
+                                                            <input type="search" name="keywords" value="" class="textCtrl" placeholder="Tìm kiếm..." results="0" title="Enter your search and hit enter" id="QuickSearchQuery">
+                                                            <!-- end block: primaryControls -->
+                                                        </div>
+                                            
+                                                    </form>
+                                                </fieldset>
+                                                <i style="color:white;margin-top:25px;font-size:20px;" id="QuickSearchPlaceholder" class="fas fa-search" title="Tìm kiếm"></i>
+                                            </div>
+                                        </li>   
+                                        <!-- account -->
+                                        <li class="navTab account">
+                                            <a href="account/" class="navLink" rel="Menu">
+                                                <span class="uix_icon avatar"><img src="https://photo2.tinhte.vn/data/avatars/s/2494/2494731.jpg?1541467551" alt=""></span>
+                                                <strong class="accountUsername">congnhat234</strong>
+                                            </a>
+                                        </li>
+                                        <!-- conversations popup -->
+                                        <li class="navTab inbox">
+                                            <a href="conversations/" rel="Menu" class="navLink NoPopupGadget">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>
+                                        </li>
+                                        <!-- alerts popup -->
+                                        <li class="navTab notification">
+                                            <a href="account/alerts" rel="Menu" class="navLink NoPopupGadget">
+                                                <i class="fas fa-bell"></i>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+
+                                </div>
+                            </div>
+            
+                            <span class="helper"></span>
+            
+                            <div class="featured">
+                                <div class="pageWidth">
+                                    <div class="main">
+                                        <a class="featuredLink" href="https://tinhte.vn/android">
+                                            <i class="fa fa-star"></i>
+                                            <span class="label">Android</span>
+                                        </a>
+                                        
+                                        <a class="featuredLink" href="https://tinhte.vn/ios">
+                                            <i class="fa fa-star"></i>
+                                            <span class="label">iOS</span>
+                                        </a>
+                                        
+                                        <a class="featuredLink" href="https://tinhte.vn/windows">
+                                            <i class="fa fa-star"></i>
+                                            <span class="label">Windows</span>
+                                        </a>
+                                        
+                                        <a class="featuredLink" href="https://tinhte.vn/macos">
+                                            <i class="fa fa-star"></i>
+                                            <span class="label">macOS</span>
+                                        </a>
+                        
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <div class="profileContainer">
             <div class="titleBar">
                 <h2>Thông tin cá nhân</h2>

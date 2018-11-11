@@ -1,12 +1,17 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(238, 238, 238, 0.938);
+    margin: 0;
 }
 .profileContainer {
     width: 80%;
     margin-left: 10%;
-    border: solid 1px slategray;
+    border: none;
     display: flex;
     flex-flow: column;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px #888888;
+    margin-top: 200px;
 }
 
 .titleBar {
@@ -30,7 +35,7 @@ body {
     font-size: 13px;
     height: 20px;
     padding: 3px;
-    opacity: 0.6;
+    /* opacity: 0.6; */
     margin-top: 0px;
 }
 .navigationSlideBar .list-group {
@@ -49,7 +54,7 @@ body {
     font-size: 13px;
     height: 20px;
     padding: 3px;
-    opacity: 0.8;
+    /* opacity: 0.8; */
     margin-top: 0px;
 }
 
@@ -62,11 +67,12 @@ body {
 .navigationSlideBar .list-group .list-group-item ul li {
     height: 30px;
     border-bottom: solid 1px rgb(0, 128, 255);
+    cursor: pointer;
 }
 
 .navigationSlideBar .list-group .list-group-item ul li:hover {
     background-color: rgb(153, 204, 255);
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 .navigationSlideBar .list-group .list-group-item ul li a {
@@ -104,7 +110,7 @@ body {
 
 }
 
-.mainContent .button {
+.button {
     background-color: rgb(255, 193, 128);
     border: none;
     color: rgb(77, 40, 0);
@@ -117,6 +123,139 @@ body {
     padding: 10px;
 }
 
-.mainContent .button:hover {
+.button:hover {
     opacity: 0.8;
+}
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.header .navigationWrapper {
+    width: 100%;
+}
+
+.header .navigationWrapper .headerContent {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.header .navigationWrapper .headerContent .navTabs {
+    width: 100%;
+    background-color: #192433;
+}
+
+.header .navigationWrapper .headerContent .featured {
+    width: 100%;
+    background-color: #151d28;
+    height: 50px;
+}
+
+.header .navigationWrapper .headerContent .pageWidth {
+    margin-left: 20px;
+}
+
+.header .navigationWrapper .headerContent .pageWidth ul {
+    list-style: none;
+}
+
+.header .navigationWrapper .headerContent .pageWidth ul li {
+    float: left;
+}
+
+.header .navigationWrapper .headerContent .pageWidth .navLeft {
+    float: left;
+}
+
+.header .navigationWrapper .headerContent .pageWidth .navRight {
+    float: right;
+}
+
+.pageWidth a {
+    color: white;
+    text-decoration: none;
+}
+
+.navRight fieldset {
+    display: block;
+    margin-left: 0px;
+    margin-right: 10px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: none;
+    float: left;
+}
+
+.navRight .primaryControls {
+    padding: 10px;
+}
+
+.navRight .primaryControls .textCtrl {
+    width: 300px;
+    height: 40px;
+}
+
+.navRight .navTab {
+    margin-right: 20px;
+}
+
+.navRight .navTab .searchBar {
+    display: flex;
+    flex-flow: row;
+    margin-right: 300px;
+}
+
+.navRight .account {
+    position: relative;
+    right: 100px;
+}
+
+.navRight .account img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 150px;
+    top: 20px;
+}
+
+.navRight .account span {
+    margin-right: 10px;
+}
+
+.navRight .account .accountUsername {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+}
+
+.navRight .inbox {
+    position: relative;
+    right: 100px;
+    top: 25px;
+}
+
+.navRight .notification {
+    position: relative;
+    right: 100px;
+    top: 25px;
+}
+
+.navLeft .forums {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.pageWidth .main {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.pageWidth .main a {
+    margin-left: 20px;
 }
