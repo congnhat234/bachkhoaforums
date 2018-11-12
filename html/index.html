@@ -9,34 +9,29 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/sidebar-basic.css">
-    <link rel="stylesheet" href="css/sidebar-left.css">
     <script src="js/jquery-3.3.1.min.js"></script>
   </head>
   <body>
     <header class="header-search">
 
-        <div class="header-limiter">
+    	<div class="header-limiter">
 
-        <h1><a href="#">BachKhoa<span>Forum</span></a></h1>
+    	<h1><a href="#">BachKhoa<span>Forum</span></a></h1>
 
-            <nav>
-                <a href="#">Home</a>
-            </nav>
-            <ul>
-                <li><a id="btnSignin" href="#">Login</a></li>
-                <li><a id="btnSignup" href="#">Sign up</a></li>
-            </ul>
-            <form method="get" action="#">
-                <input type="search" placeholder="Search!" name="search">
-            </form>
+    		<nav>
+    			<a href="#">Home</a>
+    		</nav>
+    		<ul>
+    			<li><a href="#">Login</a></li>
+    			<li><a href="#">Sign up</a></li>
+    		</ul>
 
-
-        </div>
-
+    		<form method="get" action="#">
+    			<input type="search" placeholder="Search!" name="search">
+    			<i class="fas fa-search fa"></i>
+    		</form>
+    	</div>
     </header>
-
-
     <aside class="sidebar-left">
       <div class="sidebar-links">
         <a class="link-blue" href="#">Bài Mới</a>
@@ -46,10 +41,10 @@
       </div>
 
     </aside>
-    
+
       <aside class="sidebar-right">
         <div class="latest-blog-posts">
-         <h3><i class="fa fa-rss"></i> Sôi động trong tuần</h3>
+         <h3><i class="fas fa-rss f-ms"></i>  Sôi động trong tuần</h3>
           <ul>
             <li><a href="#">AppStore mới được mở ở...</a><span>2 days ago</span></li>
             <li><a href="#">AppStore mới được mở ở... </a><span>one week ago</span></li>
@@ -62,70 +57,33 @@
       </aside>
 
       <div class="title">
-        <nav class="navbar">
-            <a class="active" href="#home">Home</a>
-          </nav>
+        <label class="navbar">
+            <a  href="#home"><i >Home</i></a>
+          </label>
 
         <h1 style=" font-family: Arial, Helvetica, sans-serif;">BachKhoa Forum</h1>
-        <div align="right" class="social">
-          <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-f"></i></a>
-          <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter"></i></a>
+        <div  class="social">
+          <a href="#" class=""><i  style="font-size: 40px;" class="fab fa-facebook-square fa-sm"></i></a>
+          <a href="#" class=""><i  style="font-size: 40px;" class="fab fa-twitter-square fa-sm"></i></a>
         </div>
-        <div class="lable">
+        <div class="labeltopic">
             <a style="font-size: 17px; color:#945305; " href="#topic">  Thông tin - Sự kiện</a><br>
-              <font  style="font-size: 10px; color:#BD6B09;">    Khu vực thảo luận về thông tin và các sự kiện về công nghệ</font>
-        </div>
-        <div class="topic" align="justify">
-          <img src="fontawesome\svgs\solid\comments.svg" >
-          <a href="#" style=" color:#103667;  font-weight: bold;">Thông tin công nghệ</a>
-          <label style="font-size: 12px; float: right;" >
-                  Mới nhất: </font><a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a  href="#topic"> akiii</a>
-                <font > ,14:20, hôm nay</font>
-          </label>
-          <br>
-          <span style="font-size:10px; margin-left:45px;"> Chủ đề: 999 Bài viết: 999</span>
-          <hr>
+              <p>    Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
         </div>
 
-        <div class="topic" align="justify">
-          <img src="fontawesome\svgs\solid\comments.svg" >
-          <a href="#" style=" color:#103667;  font-weight: bold;">Thông tin công nghệ</a>
-          <label style="font-size: 12px; float: right;" >
-                  Mới nhất: </font><a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a  href="#topic"> akiii</a>
-                <font > ,14:20, hôm nay</font>
-          </label>
-          <br>
-          <span style="font-size:10px; margin-left:45px;"> Chủ đề: 999 Bài viết: 999</span>
-          <hr>
+        <div class="topic" >
+          <span>
+             <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
+             <a href="#" style=" color:#103667;  font-weight: bold;">   Thông tin công nghệ</a>
+             <br>
+             Chủ đề: 999 Bài viết: 999
+         </span>
+             <p >Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
+                  <a  href="#topic"> akiii</a>,14:20, hôm nay
+            </p>
         </div>
+        <hr>
 
-        <div class="topic" align="justify">
-          <img src="fontawesome\svgs\solid\comments.svg" >
-          <a href="#" style=" color:#103667;  font-weight: bold;">Thông tin công nghệ</a>
-          <label style="font-size: 12px; float: right;" >
-                  Mới nhất: </font><a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a  href="#topic"> akiii</a>
-                <font > ,14:20, hôm nay</font>
-          </label>
-          <br>
-          <span style="font-size:10px; margin-left:45px;"> Chủ đề: 999 Bài viết: 999</span>
-          <hr>
-        </div>
-
-        <div class="topic" align="justify">
-          <img src="fontawesome\svgs\solid\comments.svg" >
-          <a href="#" style=" color:#103667;  font-weight: bold;">Thông tin công nghệ</a>
-          <label style="font-size: 12px; float: right;" >
-                  Mới nhất: </font><a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a  href="#topic"> akiii</a>
-                <font > ,14:20, hôm nay</font>
-          </label>
-          <br>
-          <span style="font-size:10px; margin-left:45px;"> Chủ đề: 999 Bài viết: 999</span>
-          <hr>
-        </div>
 
 
 
