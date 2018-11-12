@@ -38,14 +38,12 @@
                 </li>
                 <li><a id="btnSignin" href="#">Logout</a></li>
             </ul>
-            <form method="get" action="#">
+
+            <form id="search" method="get" action="#">
                 <input type="search" placeholder="Search!" name="search">
-
+                <i id="searchIcon" class="fas fa-search fa"></i>
             </form>
-
-
         </div>
-
     </header>
     <div>
         <form class="vietbai" action="#" method="#">
@@ -173,28 +171,32 @@
     </div>
 
     <script>
-        $(document).ready(function () {
+        $("#btnProfile").on("click", function () {
+            $("#profile").css("display", "block");
+        });
 
-            $("#btnProfile").on("click", function () {
-                $("#profile").css("display", "block");
-            });
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("profile")) {
+                $("#profile").css("display", "none");
+            }
+        }
 
-            window.onclick = function (event) {
-                if (event.target == document.getElementById("profile")) {
-                    $("#profile").css("display", "none");
-                }
+        $('.header-search form').on('click', function (e) {
+
+            // If the form (which is turned into the search button) was
+            // clicked directly, toggle the visibility of the search box.
+
+            if (e.target == this) {
+                $(this).find('input').toggle();
             }
 
-            $('.header-search form').on('click', function (e) {
+        });
 
-                // If the form (which is turned into the search button) was
-                // clicked directly, toggle the visibility of the search box.
+        $('#searchIcon').on('click', function (e) {
 
-                if (e.target == this) {
-                    $(this).find('input').toggle();
-                }
-
-            });
+            // If the form (which is turned into the search button) was
+            // clicked directly, toggle the visibility of the search box.
+            $('#search').find('input').toggle();
         });
     </script>
 

@@ -28,9 +28,9 @@
                 <li><a id="btnSignup" href="#">Sign up</a></li>
             </ul>
 
-            <form method="get" action="#">
+            <form id="search" method="get" action="#">
                 <input type="search" placeholder="Search!" name="search">
-                <i class="fas fa-search fa"></i>
+                <i id="searchIcon" class="fas fa-search fa"></i>
             </form>
         </div>
     </header>
@@ -84,7 +84,73 @@
                 <a href="#topic"> akiii</a>,14:20, hôm nay
             </p>
         </div>
+
+        <div class="topic">
+                <span>
+                    <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
+                    <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
+                    <br>
+                    Chủ đề: 999 Bài viết: 999
+                </span>
+                <p>Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
+                    <a href="#topic"> akiii</a>,14:20, hôm nay
+                </p>
+            </div>
+
+            <div class="topic">
+                    <span>
+                        <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
+                        <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
+                        <br>
+                        Chủ đề: 999 Bài viết: 999
+                    </span>
+                    <p>Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
+                        <a href="#topic"> akiii</a>,14:20, hôm nay
+                    </p>
+                </div>
         <hr>
+
+        <div class="labeltopic">
+                <a style="font-size: 17px; color:#945305; " href="#topic"> Thông tin - Sự kiện</a><br>
+                <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
+            </div>
+    
+            <div class="topic">
+                <span>
+                    <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
+                    <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
+                    <br>
+                    Chủ đề: 999 Bài viết: 999
+                </span>
+                <p>Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
+                    <a href="#topic"> akiii</a>,14:20, hôm nay
+                </p>
+            </div>
+    
+            <div class="topic">
+                    <span>
+                        <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
+                        <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
+                        <br>
+                        Chủ đề: 999 Bài viết: 999
+                    </span>
+                    <p>Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
+                        <a href="#topic"> akiii</a>,14:20, hôm nay
+                    </p>
+                </div>
+    
+                <div class="topic">
+                        <span>
+                            <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
+                            <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
+                            <br>
+                            Chủ đề: 999 Bài viết: 999
+                        </span>
+                        <p>Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
+                            <a href="#topic"> akiii</a>,14:20, hôm nay
+                        </p>
+                    </div>
+            <hr>
     </div>
 
     <footer class="footer-distributed">
@@ -271,18 +337,22 @@
             }
         }
 
-        $(document).ready(function () {
+        $('.header-search form').on('click', function (e) {
 
-            $('.header-search form').on('click', function (e) {
+            // If the form (which is turned into the search button) was
+            // clicked directly, toggle the visibility of the search box.
 
-                // If the form (which is turned into the search button) was
-                // clicked directly, toggle the visibility of the search box.
+            if (e.target == this) {
+                $(this).find('input').toggle();
+            }
 
-                if (e.target == this) {
-                    $(this).find('input').toggle();
-                }
+        });
 
-            });
+        $('#searchIcon').on('click', function (e) {
+
+            // If the form (which is turned into the search button) was
+            // clicked directly, toggle the visibility of the search box.
+            $('#search').find('input').toggle();
         });
 
         // <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">

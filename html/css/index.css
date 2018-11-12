@@ -479,53 +479,9 @@ body {
 	margin-top: 12px;
 }
 .header-search .header-limiter form {
-<<<<<<< HEAD
-  float: right;
-  position: relative;
-  right: 80px;
-  margin-left: 40px;
-  border-radius: 3px;
-  background-color: #3a3c3e;
-  width: 44px;
-  height: 39px;
-  cursor: pointer;
-
-  -ms-user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-/* CSS search icon */
-
-.header-search .header-limiter form:before {
-  position: absolute;
-  content: '';
-  border-radius: 50%;
-  border: 2px solid #fff;
-  width: 9px;
-  height: 9px;
-  top: 12px;
-  left: 14px;
-}
-
-.header-search .header-limiter form:after {
-  position: absolute;
-  content: '';
-  background-color: #fff;
-  width: 2px;
-  height: 8px;
-  top: 22px;
-  left: 26px;
-  -webkit-transform: rotate(-44deg);
-  -moz-transform: rotate(-44deg);
-  transform: rotate(-44deg);
-}
-
-=======
 	float:right;
 	position: relative;
-	right: 30px;
+	right: 100px;
 	margin-left: 40px;
 	border-radius: 3px;
 	background-color:  #3a3c3e;
@@ -538,7 +494,6 @@ body {
 	user-select: none;
 }
 
->>>>>>> UI
 /* The search box */
 
 .header-search .header-limiter form input {
@@ -565,18 +520,10 @@ body {
   float: right;
 }
 
-<<<<<<< HEAD
-.header-search .header-limiter ul li {
-  display: inline-block;
-  margin-left: 15px;
-  opacity: 0.9;
-=======
 .header-search  .header-limiter ul li {
 	display: inline-block;
 	margin-left: 15px;
-  margin-top: 16px;
 	opacity:0.9;
->>>>>>> UI
 }
 
 .header-search .header-limiter ul li:hover {
@@ -592,43 +539,7 @@ body {
   border-radius: 3px;
 }
 
-<<<<<<< HEAD
 /* Making the header responsive. */
-
-@media all and (max-width: 600px) {
-
-  .header-search {
-    padding: 15px;
-    position: relative;
-  }
-
-  .header-search .header-limiter h1 {
-    float: none;
-    font-size: 24px;
-    line-height: 1;
-  }
-
-  .header-search .header-limiter nav {
-    text-align: center;
-    float: none;
-    margin: 0;
-  }
-
-  .header-search .header-limiter nav a li {
-    font-size: 13px;
-  }
-
-  .header-search .header-limiter form {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-
-  .header-login-signup .header-limiter ul {
-    display: none;
-  }
-
-}
 
 .header-search .header-limiter .userProfile {
   margin-right: 20px;
@@ -653,31 +564,15 @@ body {
 /* end header */
 
 /* begin content */
-
-.title {
-  position: sticky;
-=======
-/* end header */
-
-/* begin content */
 .social{
   margin-left:880px;
 }
 .title{
->>>>>>> UI
   width: 100%;
   height: 1000px;
   padding-right: 15px;
   padding-left: 20px;
   margin-top: 100px;
-<<<<<<< HEAD
-  margin-right: 100px;
-  margin-left: 200px;
-  max-width: 1000px;
-}
-
-.lable {
-=======
    margin-right: 100px;
    margin-left: 200px;
    max-width: 1000px;
@@ -686,43 +581,16 @@ body {
 
 }
 .labeltopic {
-
+  margin-left: -13px;
   width: 100%;
   height: 50px;
   padding-left: 20px;
   padding-top: 3px;
   padding-bottom: 10px;
->>>>>>> UI
   border-radius: 5px;
   background-color: #FACE9C;
   font-family: Arial, Helvetica, sans-serif;
 }
-<<<<<<< HEAD
-
-.topic label {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 200px;
-  border-radius: 5px;
-  background-color: #b7d2ff;
-}
-
-.topic img {
-  height: 40px;
-  width: 40px;
-}
-
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-}
-
-.fa:hover {
-  opacity: 0.7;
-=======
 .labeltopic p{
     height: 20px;
     font-size: 12px; color:#BD6B09;
@@ -752,21 +620,12 @@ body {
 
 .topic span a{
   font-size:15px;
->>>>>>> UI
 }
 
 .fa-comments{
   color: blue;
 }
 
-<<<<<<< HEAD
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-=======
->>>>>>> UI
 .navbar {
   width: 100%;
   height: 40px;
@@ -853,21 +712,6 @@ body {
 
 
 
-<<<<<<< HEAD
-  .footer-distributed .footer-left,
-  .footer-distributed .footer-right {
-    text-align: center;
-  }
-
-  .footer-distributed .footer-right {
-    float: none;
-    margin: 0 auto 20px;
-  }
-
-  .footer-distributed .footer-left p.footer-links {
-    line-height: 1.8;
-  }
-=======
 /* End footer */
 
 /* sildebar right */
@@ -879,7 +723,6 @@ body {
 	float: right;
 	top: 250px;
 	width: 280px;
->>>>>>> UI
 }
 
 

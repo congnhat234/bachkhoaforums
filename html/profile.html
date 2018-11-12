@@ -29,14 +29,12 @@
                 </li>
                 <li><a id="btnSignin" href="#">Logout</a></li>
             </ul>
-            <form method="get" action="#">
+
+            <form id="search" method="get" action="#">
                 <input type="search" placeholder="Search!" name="search">
-
+                <i id="searchIcon" class="fas fa-search fa"></i>
             </form>
-
-
         </div>
-
     </header>
     <div class="container">
         <div class="titleBar">
@@ -213,6 +211,13 @@
                     $(this).find('input').toggle();
                 }
 
+            });
+
+            $('#searchIcon').on('click', function (e) {
+
+                // If the form (which is turned into the search button) was
+                // clicked directly, toggle the visibility of the search box.
+                $('#search').find('input').toggle();
             });
         });
     </script>
