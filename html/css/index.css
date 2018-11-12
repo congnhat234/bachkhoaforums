@@ -708,3 +708,198 @@ body {
 
 
 /* End footer */
+
+/* Viet Bai */
+.vietbai{
+  width:1000px;
+  margin: 20px auto 0px auto;
+  height:auto;
+  background-color:#fff;
+  padding:0px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.content{
+  margin-top: 100px;
+}
+
+.tieude{
+  height: 50px;
+  margin-top:20px;
+  margin-left: 20px;
+}
+.text1{
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 350px;
+  height: 35px;
+  margin-left: 50px;
+  font-size: 20px;
+  font-family: Arial;
+}
+.text2{
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 350px;
+  height: 35px;
+  margin-left: 54px;
+  font-size: 20px;
+  font-family: Arial;
+}
+.select1{
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 150px;
+  height: 35px;
+  margin-left: 104px;
+}
+.button{
+  border: none;
+  background: #151d28;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 100px;
+  color: white;
+  margin-left: 150px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.vietbai li{
+  list-style-type: none;
+}
+.vietbai a{
+  text-decoration: none;
+}
+.vietbai nav{
+  width: 100%;
+  height: auto;
+  background: #151d28;
+}
+.vietbai nav ul{
+  width: 100%;
+  height: 40px;
+  text-align: left;
+}
+.vietbai nav ul li{
+  display: inline-table;
+  padding: 0px 15px;
+  line-height: 40px;
+}
+.vietbai nav ul li a{
+  color: white;
+}
+.vietbai nav ul li:hover{
+  background: #1abc9c;
+  text-transform: 1.2s;
+}
+.vietbai nav ul li a:hover{
+  color: #666;
+}
+.checkbox1{
+  width: 225px;
+  margin-left: 50px;
+}
+.checkbox1 label{
+  margin-left: 10px;
+}
+.checkbox1 label:hover{
+  color: #1abc9c;
+}
+/* End Viet Bai */
+
+/* Xem Bai */
+.xembai{
+  width:1000px;
+  margin: 20px auto 0px auto;
+  height:auto;
+  background-color:#fff;
+  padding:0px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.image{
+  width: 100%;
+  height: 600px;
+}
+.xembai pre{
+  font-family: Arial;
+  font-size: 17px;
+  margin: 10px;
+}
+.xembai h2{
+  color: blue;
+  margin-left: 69px;
+}
+.xembai h3{
+  color: blue;
+  margin-left: 69px;
+}
+.button-bot{
+  margin-left: 49px;
+  padding: 10px
+}
+.button-bot .b1{
+  border: none;
+  background: #151f2a;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  color: white;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.button-bot .b1:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.comment{
+  width:80%;
+  margin: 20px auto 0px auto;
+  height:200px;
+  background-color:#eff1f3;
+  padding:10px;
+}
+.comment-content{
+  display: flex;
+}
+.comment-content img{
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+  margin-top: 30px;
+  margin-left: 30px;
+  border: 2px solid #eff1f3;
+}
+.xem-comment{
+  margin-top: 20px;
+  margin-left: 145px;
+}
+.xem-comment a{
+  color: #76a1bf;
+}
+.xem-comment a:hover{
+  color:blue;
+}
+.button-comment{
+  margin-right: 10px;
+  padding: 10px
+}
+.b2{
+  border: none;
+  background: #151f2a;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  color: white;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+/* End Xem Bai */
