@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="utf-8">
-        <script src="ckeditor/ckeditor.js"></script>
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="fontawesome/css/all.css">
-        <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <style>
+    <script src="ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
         .ck.ck-editor {
             max-width: 700px;
             margin: 0 auto;
@@ -16,14 +17,15 @@
         min-height: 250px;
         }
         </style>
-  </head>
-  <body>
-      <header class="header-search">
+</head>
+
+<body>
+    <header class="header-search">
 
         <div class="header-limiter">
-    
-        <h1><a href="#">BachKhoa<span>Forum</span></a></h1>
-    
+
+            <h1><a href="#">BachKhoa<span>Forum</span></a></h1>
+
             <nav>
                 <a href="index.html">Home</a>
             </nav>
@@ -34,82 +36,82 @@
                         <strong class="accountUsername">congnhat234</strong>
                     </a>
                 </li>
-                <li><a id="btnSignin" href="#">Logout</a></li>                   
+                <li><a id="btnSignin" href="#">Logout</a></li>
             </ul>
             <form method="get" action="#">
                 <input type="search" placeholder="Search!" name="search">
-    
+
             </form>
-    
-    
+
+
         </div>
-    
+
     </header>
     <div>
-      <form class="vietbai" action="#" method="#">
-        <nav>
-          <div>
-            <ul>
-              <li>
-                <a href="#">Trang chủ</a>
-              </li>
-              <li>
-                <a href="#">Thông tin- sự kiện</a>
-              </li>
-              <li>
-                <a href="#">Công nghệ</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div class="content">
-          <div class="tieude">
-            <label>Tiêu đề bài viết:</label>
-            <input class="text1" type="text" required>
-          </div>
-          <div class="tieude">
-            <label>Tên người viết:</label>
-            <input class="text2" type="text" required>
-          </div>
-          <div class="tieude">
-            <label>Chủ đề:</label>
-            <select class="month select1">
-            <option value="1">Công Nghệ
-            </option>
-            <option value="2">Đời Sống
-            </option>
-            </select>
-          </div>
-          <div class="tieude">
-            <label>Nội dung bài viết:</label>
-          </div>
-          <div class="text-area">
-            <textarea name="content" id="editor">
+        <form class="vietbai" action="#" method="#">
+            <nav>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="#">Thông tin- sự kiện</a>
+                        </li>
+                        <li>
+                            <a href="#">Công nghệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="tieude">
+                    <label>Tiêu đề bài viết:</label>
+                    <input class="text1" type="text" required>
+                </div>
+                <div class="tieude">
+                    <label>Tên người viết:</label>
+                    <input class="text2" type="text" required>
+                </div>
+                <div class="tieude">
+                    <label>Chủ đề:</label>
+                    <select class="month select1">
+                        <option value="1">Công Nghệ
+                        </option>
+                        <option value="2">Đời Sống
+                        </option>
+                    </select>
+                </div>
+                <div class="tieude">
+                    <label>Nội dung bài viết:</label>
+                </div>
+                <div class="text-area">
+                    <textarea name="content" id="editor">
             </textarea>
-            <script>
-                ClassicEditor
+                    <script>
+                        ClassicEditor
                     .create( document.querySelector( '#editor' ) )
                     .catch( error => {
                         console.error( error );
                     } );
             </script>
-          </div>
-          <dl>
-            <dt></dt>
-            <dd>
-              <input class="button" type="submit" value="Gửi bài">
-            </dd>
-          </dl>
-          <div class="checkbox1">
-            <input type="checkbox" name="check1" value="TheoDoi">
-            <label>Theo dõi chủ đề này.</label> <br><br>
-            <input type="checkbox" name="check2" value="NhanThongBao">
-            <label>Nhận thông báo qua email.</label><br><br>
+                </div>
+                <dl>
+                    <dt></dt>
+                    <dd>
+                        <input class="button" type="submit" value="Gửi bài">
+                    </dd>
+                </dl>
+                <div class="checkbox1">
+                    <input type="checkbox" name="check1" value="TheoDoi">
+                    <label>Theo dõi chủ đề này.</label> <br><br>
+                    <input type="checkbox" name="check2" value="NhanThongBao">
+                    <label>Nhận thông báo qua email.</label><br><br>
+                </div>
             </div>
-          </div>
 
 
-      </form>
+        </form>
 
     </div>
 
@@ -155,7 +157,7 @@
                     <ul>
                         <li><a href="#">Thông tin cá nhân</a></li>
                         <li><a href="#">Tùy chọn</a></li>
-                        <li><a href="#">Mật khẩu</a></li>                   
+                        <li><a href="#">Mật khẩu</a></li>
                     </ul>
                 </div>
                 <div class="element">
@@ -169,26 +171,26 @@
             </div>
         </div>
     </div>
-    
+
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             $("#btnProfile").on("click", function () {
                 $("#profile").css("display", "block");
             });
 
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == document.getElementById("profile")) {
                     $("#profile").css("display", "none");
-                }                      
+                }
             }
 
-            $('.header-search form').on('click', function(e) {
+            $('.header-search form').on('click', function (e) {
 
                 // If the form (which is turned into the search button) was
                 // clicked directly, toggle the visibility of the search box.
 
-                if(e.target == this) {
+                if (e.target == this) {
                     $(this).find('input').toggle();
                 }
 
@@ -196,5 +198,6 @@
         });
     </script>
 
-  </body>
+</body>
+
 </html>

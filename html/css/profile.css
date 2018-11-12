@@ -3,6 +3,7 @@ body {
     background-color: rgba(238, 238, 238, 0.938);
     margin: 0;
 }
+
 .container {
     width: 80%;
     margin-left: 10%;
@@ -29,6 +30,7 @@ body {
     border: solid 1px rgb(0, 128, 255);
     margin-left: 10px;
 }
+
 .navigationSlideBar h4 {
     background-color: rgb(0, 128, 255);
     color: white;
@@ -38,9 +40,10 @@ body {
     opacity: 0.6;
     margin-top: 0px;
 }
+
 .navigationSlideBar .list-group {
     list-style: none;
-    padding-left: 0px;   
+    padding-left: 0px;
     margin-top: -10px;
 }
 
@@ -60,7 +63,7 @@ body {
 
 .navigationSlideBar .list-group .list-group-item ul {
     list-style: none;
-    padding-left: 0px;   
+    padding-left: 0px;
     margin-top: -16px;
 }
 
@@ -103,7 +106,7 @@ body {
     padding-left: 0.75em;
     padding-right: 0.75em;
     border: none;
-    border-bottom: solid 1px rgb(0, 128, 255); 
+    border-bottom: solid 1px rgb(0, 128, 255);
 }
 
 .mainContent fieldset .ctrlUnit {
