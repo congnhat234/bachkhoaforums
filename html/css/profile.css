@@ -3,7 +3,7 @@ body {
     background-color: rgba(238, 238, 238, 0.938);
     margin: 0;
 }
-.profileContainer {
+.container {
     width: 80%;
     margin-left: 10%;
     border: none;
@@ -11,7 +11,11 @@ body {
     flex-flow: column;
     background-color: white;
     box-shadow: 2px 2px 2px 2px #888888;
-    margin-top: 150px;
+    margin-top: 100px;
+}
+
+.titleBar {
+    margin-left: 20px;
 }
 
 .content {
@@ -31,7 +35,7 @@ body {
     font-size: 13px;
     height: 20px;
     padding: 3px;
-    /* opacity: 0.6; */
+    opacity: 0.6;
     margin-top: 0px;
 }
 .navigationSlideBar .list-group {
@@ -50,7 +54,7 @@ body {
     font-size: 13px;
     height: 20px;
     padding: 3px;
-    /* opacity: 0.8; */
+    opacity: 0.8;
     margin-top: 0px;
 }
 
@@ -68,7 +72,7 @@ body {
 
 .navigationSlideBar .list-group .list-group-item ul li:hover {
     background-color: rgb(153, 204, 255);
-    /* opacity: 0.8; */
+    opacity: 0.8;
 }
 
 .navigationSlideBar .list-group .list-group-item ul li a {
@@ -100,6 +104,23 @@ body {
     padding-right: 0.75em;
     border: none;
     border-bottom: solid 1px rgb(0, 128, 255); 
+}
+
+.mainContent fieldset .ctrlUnit {
+    display: flex;
+    flex-flow: row;
+}
+
+.mainContent fieldset dt {
+    width: 100px;
+}
+
+.mainContent fieldset input[type=text] {
+    width: 500px;
+}
+
+.mainContent fieldset dd ul {
+    padding: 0;
 }
 
 .button {

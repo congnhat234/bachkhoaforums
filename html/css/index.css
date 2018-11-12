@@ -145,11 +145,7 @@ body {
   top: 100px;
   left: 30%;
 }
-/* Add Animation */
-@keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
-}
+
 .register h1{
   font-weight: 200;
   color: #888888;
@@ -281,7 +277,7 @@ body {
   border-top: teal solid 4px;
   background-color: #fff;
   opacity: 0.8;
-  box-shadow: 2px 2px #888888;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   position: relative;
   top: 70px;
   left: 70%;
@@ -338,6 +334,17 @@ body {
   text-decoration: underline;
 }
 
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
 /* header */
 
 .header-search{
@@ -348,8 +355,8 @@ body {
 	height: 80px;
 	color: #ffffff;
   box-sizing: border-box;
-  position: fixed;
-  top: 0;
+  /* position: fixed;
+  top: 0; */
 }
 
 .header-search .header-limiter {
