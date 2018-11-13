@@ -113,6 +113,8 @@
 
     </div>
 
+    <button onclick="topFunction()" id="btnBackToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
     <footer class="footer-distributed">
 
         <div class="footer-right">
@@ -170,36 +172,7 @@
         </div>
     </div>
 
-    <script>
-        $("#btnProfile").on("click", function () {
-            $("#profile").css("display", "block");
-        });
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById("profile")) {
-                $("#profile").css("display", "none");
-            }
-        }
-
-        $('.header-search form').on('click', function (e) {
-
-            // If the form (which is turned into the search button) was
-            // clicked directly, toggle the visibility of the search box.
-
-            if (e.target == this) {
-                $(this).find('input').toggle();
-            }
-
-        });
-
-        $('#searchIcon').on('click', function (e) {
-
-            // If the form (which is turned into the search button) was
-            // clicked directly, toggle the visibility of the search box.
-            $('#search').find('input').toggle();
-        });
-    </script>
-
+    <script src="js/basic.js"></script>
 </body>
 
 </html>

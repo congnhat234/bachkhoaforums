@@ -47,11 +47,11 @@
         </div>
     </header>
     <div>
-      <form class="xembai" action="#" method="#">
-        <div>
-          <img src="img/RAM.jpg" class="imgElement">
-        </div>
-        <div>
+        <form class="xembai" action="#" method="#">
+            <div>
+                <img src="img/RAM.jpg" class="imgElement">
+            </div>
+            <div>
 
                 <h2>RAM là gì?</h2>
                 <pre>
@@ -105,57 +105,57 @@
             của họ, ví dụ họ có thể bổ sung thêm một số tính năng đặc thù nào đó và muốn đảm bảo nó chạy tốt chẳng hạn. Thiết lập
             này gọi là minfree.
           </pre>
-          <div class="button-bot">
-          <button class="b1" type="button" name="button">Thích</button>
-          <button class="b1" type="button" name="button">Trả lời</button>
-          <button class="b1" type="button" name="button">Chia sẻ</button>
-          </div>
-          <hr>
-          <div class="comment-content">
-            <div>
-              <img src="img/apple.jpg" width="50px" height="50px">
-            </div>
-          <div class="comment">
-              <a href="#">Nguyễn Văn Tèo</a>
-              <p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
-              <div class="button-comment">
-                    <button class="btn" type="button" name="button">Thích</button>
-                    <button class="btn" type="button" name="button">Trả lời</button>
-              </div>
-          </div>
-          </div>
-          <div class="comment-content">
-                <div>
-                  <img src="img/apple.jpg" width="50px" height="50px">
+                <div class="button-bot">
+                    <button class="b1" type="button" name="button">Thích</button>
+                    <button class="b1" type="button" name="button">Trả lời</button>
+                    <button class="b1" type="button" name="button">Chia sẻ</button>
                 </div>
-              <div class="comment">
-                  <a href="#">Nguyễn Văn Tèo</a>
-                  <p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
-                  <div class="button-comment">
-                        <button class="btn" type="button" name="button">Thích</button>
-                        <button class="btn" type="button" name="button">Trả lời</button>
-                  </div>
-              </div>
-              </div>
-              <div class="comment-content">
+                <hr>
+                <div class="comment-content">
                     <div>
-                      <img src="img/apple.jpg" width="50px" height="50px">
+                        <img src="img/apple.jpg" width="50px" height="50px">
                     </div>
-                  <div class="comment">
-                      <a href="#">Nguyễn Văn Tèo</a>
-                      <p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
-                      <div class="button-comment">
+                    <div class="comment">
+                        <a href="#">Nguyễn Văn Tèo</a>
+                        <p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
+                        <div class="button-comment">
                             <button class="btn" type="button" name="button">Thích</button>
                             <button class="btn" type="button" name="button">Trả lời</button>
-                      </div>
-                  </div>
-                  </div>
-          <div class="xem-comment">
-            <a href="#">Xem tất cả các câu trả lời</a>
-            </div>
-            <br><br><br>
-          <div class="text-area">
-            <textarea name="content" id="editor">
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <div>
+                        <img src="img/apple.jpg" width="50px" height="50px">
+                    </div>
+                    <div class="comment">
+                        <a href="#">Nguyễn Văn Tèo</a>
+                        <p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
+                        <div class="button-comment">
+                            <button class="btn" type="button" name="button">Thích</button>
+                            <button class="btn" type="button" name="button">Trả lời</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <div>
+                        <img src="img/apple.jpg" width="50px" height="50px">
+                    </div>
+                    <div class="comment">
+                        <a href="#">Nguyễn Văn Tèo</a>
+                        <p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
+                        <div class="button-comment">
+                            <button class="btn" type="button" name="button">Thích</button>
+                            <button class="btn" type="button" name="button">Trả lời</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="xem-comment">
+                    <a href="#">Xem tất cả các câu trả lời</a>
+                </div>
+                <br><br><br>
+                <div class="text-area">
+                    <textarea name="content" id="editor">
             </textarea>
                     <script>
                         ClassicEditor
@@ -173,6 +173,8 @@
         </form>
 
     </div>
+
+    <button onclick="topFunction()" id="btnBackToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <footer class="footer-distributed">
 
@@ -231,38 +233,7 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function () {
-
-            $("#btnProfile").on("click", function () {
-                $("#profile").css("display", "block");
-            });
-
-            window.onclick = function (event) {
-                if (event.target == document.getElementById("profile")) {
-                    $("#profile").css("display", "none");
-                }
-            }
-
-            $('.header-search form').on('click', function (e) {
-
-                // If the form (which is turned into the search button) was
-                // clicked directly, toggle the visibility of the search box.
-
-                if (e.target == this) {
-                    $(this).find('input').toggle();
-                }
-
-            });
-
-            $('#searchIcon').on('click', function (e) {
-
-                // If the form (which is turned into the search button) was
-                // clicked directly, toggle the visibility of the search box.
-                $('#search').find('input').toggle();
-            });
-        });
-    </script>
+    <script src="js/basic.js"></script>
 
 </body>
 
