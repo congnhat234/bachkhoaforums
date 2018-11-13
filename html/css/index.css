@@ -1000,7 +1000,7 @@ body {
 }
 
 .content {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .tieude {
@@ -1175,29 +1175,19 @@ body {
   padding: 10px;
 }
 
-.comment-content .comment .button-comment .btn {
-  background-color: #eff1f3;
-  border: none;
-  color: black;
-  padding: 10px;
-}
-
-.comment-content .comment .button-comment .btn:hover {
-  color: #1c2c41;
-  background-color: #dde5ece7;
-}
-
 .comment-content .comment a {
   text-decoration: none;
   margin-left: 20px;
+  color: black;
 }
-
-.comment-content .comment a:visited {
-  color: #5383d3;
+.comment-content .comment a:visited{
+  color: rgb(0, 68, 255);
 }
-
-.comment-content .comment a:hover {
-  color: blue;
+.comment-content .comment a:hover{
+  color: rgb(0, 38, 255);
+}
+.comment-content .comment a:active{
+  color: red;
 }
 
 .comment-content img {

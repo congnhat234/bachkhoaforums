@@ -29,6 +29,7 @@ body {
     height: 331px;
     border: solid 1px rgb(0, 128, 255);
     margin-left: 10px;
+    margin-top: 20px;
 }
 
 .navigationSlideBar h4 {
@@ -142,3 +143,84 @@ body {
 .button:hover {
     opacity: 0.8;
 }
+/* xem bai moi */
+.mainContent .form-xembaimoi{
+    width: 100%;
+    height: auto;
+    background: white;
+    margin-left: 0;
+}
+
+.mainContent .form-xembaimoi table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Trebuchet MS" ,Arial, Helvetica, sans-serif;
+}
+.mainContent .form-xembaimoi table td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.mainContent .form-xembaimoi table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.mainContent .form-xembaimoi table tr:hover{
+    background-color: #ddd;
+}
+.mainContent .form-xembaimoi table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #FACE9C;
+    color:#945305;
+}
+.mainContent .form-xembaimoi table img{
+    border-radius: 50%;
+}
+.mainContent .form-xembaimoi table .td1{
+    text-align: left;
+}
+.mainContent .form-xembaimoi table a{
+    text-decoration: none;
+}
+.mainContent .form-xembaimoi table .th1{
+    width: 30px;
+}
+.container .parse{
+    width: 96%;
+    height: 50px;
+}
+.container .parse .parse-content{
+    width: 300px;
+    height: 100%;
+    float: right;
+}
+.container .parse .parse-content .page{
+    display: inline-block;
+    padding: 0px 9px;
+    margin-top: 18px;
+    margin-right: 4px;
+    border-radius: 3px;
+    border: solid 1px #c0c0c0;
+    background: #e9e9e9;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+    font-size: .875em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #717171;
+    text-shadow: 0px 1px 0px rgba(255,255,255, 1);
+}
+.container .parse .parse-content .page:hover{
+    background: #fefefe;
+    background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
+
+}
+.container .parse .parse-content .active{
+    border: none;
+    background: #616161;
+    box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+    color: #f0f0f0;
+    text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+}
+
+
+
