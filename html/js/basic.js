@@ -7,6 +7,9 @@ $("#btnSignup").on("click", function () {
 $("#btnProfile").on("click", function () {
     $("#profile").css("display", "block");
 });
+$("#info").on("click", function () {
+    $("#infomation").css("display", "block");
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -18,6 +21,9 @@ window.onclick = function (event) {
     }
     if (event.target == document.getElementById("profile")) {
         $("#profile").css("display", "none");
+    }
+    if (event.target == document.getElementById("infomation")) {
+        $("#infomation").css("display", "none");
     }
 }
 
