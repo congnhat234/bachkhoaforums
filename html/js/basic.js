@@ -1,3 +1,11 @@
+ClassicEditor
+.create( document.querySelector( '#editor' ) )
+.then(editor => {
+    theEditor = editor;
+  })
+.catch( error => {
+console.error( error );
+} );
 $("#btnSignin").on("click", function () {
     $(".signin").css("display", "block");
 });

@@ -1,0 +1,118 @@
+.header-search{
+  width: 100%;
+	background-color:#292c2f;
+	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+  box-sizing: border-box;
+}
+
+.header-search .header-limiter {
+	max-width: 1200px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+.header-search .header-limiter h1 {
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
+}
+
+.header-search .header-limiter h1 span {
+	color: #5383d3;
+}
+
+/* The header links */
+
+.header-search .header-limiter a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.header-search .header-limiter nav {
+	font:16px Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	float: left;
+	margin: 0 0 0 60px;
+	padding: 0;
+}
+
+.header-search .header-limiter nav a {
+	display: inline-block;
+	padding: 0 5px;
+	text-decoration:none;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: normal;
+	opacity: 0.9;
+}
+
+/* The search box */
+.fa-search{
+	margin-top: 12px;
+}
+.header-search .header-limiter form {
+	float:right;
+	position: relative;
+	right: 30px;
+	margin-left: 40px;
+	border-radius: 3px;
+	background-color:  #3a3c3e;
+	width: 44px;
+	height: 39px;
+	cursor: pointer;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* The search box */
+
+.header-search .header-limiter form input {
+	display: none;
+	position: absolute;
+	right: 42px;
+	padding: 11px 12px 9px;
+	border: none;
+	width: 210px;
+	border-radius: 2px 0 0 2px;
+	height: 39px;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+/* Login/Sign up buttons */
+
+.header-search  .header-limiter ul {
+	font: 14px Arial, Helvetica, sans-serif;
+	list-style: none;
+	line-height: 1;
+	float: right;
+}
+
+.header-search  .header-limiter ul li {
+	display: inline-block;
+	margin-left: 15px;
+  margin-top: 16px;
+	opacity:0.9;
+}
+
+.header-search  .header-limiter ul li:hover{
+	opacity: 1;
+}
+/* The sign up button */
+
+.header-search .header-limiter ul li:last-child a {
+	font-weight: bold;
+	background-color: #3a3c3e;
+	padding: 10px 15px;
+	border-radius: 3px;
+}
