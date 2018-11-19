@@ -30,7 +30,7 @@
     </footer>
 
     <div id="infomation" class="signup">
-        <div action="" class="register">
+        <div class="register">
             <fieldset class="">
                 <legend>Account Details
                 </legend>
@@ -72,10 +72,10 @@
     </div>
 
     <div id="signin" class="signin">
-        <form action="#" class="form_login">
+        <form action="<%=request.getContextPath() %>/login" class="form_login">
             <h1>Login</h1>
-            <input placeholder="Username" type="text" required>
-            <input placeholder="Password" type="password" required>
+            <input placeholder="Username" name="username" type="text" required>
+            <input placeholder="Password" name="password" type="password" required>
             <button>Submit</button>
             <br><br>
             <div class="bottom-text ">
@@ -86,25 +86,25 @@
     </div>
 
     <div id="signup" class="signup">
-        <form action="" class="register">
+        <form action="<%=request.getContextPath() %>/register" class="register">
             <h1>Registration</h1>
             <fieldset class="row1">
                 <legend>Account Details
                 </legend>
                 <p>
-                    <label>Email *
+                    <label>Username *
                     </label>
-                    <input type="text" required />
+                    <input type="text" name="username" required />
                 </p>
                 <p>
                     <label>Password*
                     </label>
-                    <input type="text" required />
+                    <input type="text" name="password" required />
                 </p>
                 <p>
                     <label>Repeat Password*
                     </label>
-                    <input type="text" required />
+                    <input type="text" name="repassword" required />
                 </p>
             </fieldset>
             <fieldset class="row1">
@@ -113,46 +113,46 @@
                 <p>
                     <label>Name *
                     </label>
-                    <input type="text" class="long" />
+                    <input type="text" name="fullname" class="long" />
                 </p>
                 <p>
                     <label>Phone *
                     </label>
-                    <input type="text" maxlength="10" />
+                    <input type="text" name="phone" maxlength="10" />
+                </p>
+                <p>
+                    <label>Email *
+                    </label>
+                    <input type="email" name="email" maxlength="10" />
                 </p>
                 <p>
 
                     <label>Gender *</label>
-                    <input type="radio" name="gender" value="radio" />
+                    <input type="radio" name="gender" value="1" />
                     <label class="gender">Male</label>
-                    <input type="radio" name="gender" value="radio" />
+                    <input type="radio" name="gender" value="0" />
                     <label class="gender">Female</label>
 
                 </p>
                 <p>
                     <label>Birthdate *
                     </label>
-                    <select class="day">
+                    <select name="day" class="day">
                     </select>
-                    <select class="month">
+                    <select name="month" class="month">
                     </select>
-                    <select class="year">
+                    <select name="year" class="year">
                     </select>
+                </p>
+                <p>
+                    <label>Address *
+                    </label>
+                    <input type="text" name="address" class="long" />
                 </p>
                 <p>
                     <label>City *
                     </label>
-                    <input type="text" class="long" />
-                </p>
-                <p>
-                    <label>Country *
-                    </label>
-                    <select>
-                        <option>
-                        </option>
-                        <option value="1">Việt Nam
-                        </option>
-                    </select>
+                    <input type="text" name="city" class="long" />
                 </p>
             </fieldset>
 
