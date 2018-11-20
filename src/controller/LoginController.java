@@ -19,7 +19,7 @@ import utils.CryptoUtils;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/login")
+
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/WEB-INF/view/login.jsp");
+				.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request, response);
 	}
 

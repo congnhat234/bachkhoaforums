@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class IndexController
  */
-@WebServlet("/home")
+
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

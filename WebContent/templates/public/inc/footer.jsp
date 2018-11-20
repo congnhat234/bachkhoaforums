@@ -72,7 +72,7 @@
     </div>
 
     <div id="signin" class="signin">
-        <form action="<%=request.getContextPath() %>/login" class="form_login">
+        <form action="<%=request.getContextPath() %>/login" class="form_login" method="post">
             <h1>Login</h1>
             <input placeholder="Username" name="username" type="text" required>
             <input placeholder="Password" name="password" type="password" required>
@@ -86,7 +86,7 @@
     </div>
 
     <div id="signup" class="signup">
-        <form action="<%=request.getContextPath() %>/register" class="register">
+        <form action="<%=request.getContextPath() %>/register" class="register" method="post">
             <h1>Registration</h1>
             <fieldset class="row1">
                 <legend>Account Details
@@ -99,12 +99,12 @@
                 <p>
                     <label>Password*
                     </label>
-                    <input type="text" name="password" required />
+                    <input type="password" name="password" required />
                 </p>
                 <p>
                     <label>Repeat Password*
                     </label>
-                    <input type="text" name="repassword" required />
+                    <input type="password" name="repassword" required />
                 </p>
             </fieldset>
             <fieldset class="row1">
@@ -123,7 +123,7 @@
                 <p>
                     <label>Email *
                     </label>
-                    <input type="email" name="email" maxlength="10" />
+                    <input type="email" name="email" />
                 </p>
                 <p>
 

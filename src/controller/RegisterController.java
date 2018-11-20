@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ import utils.CryptoUtils;
 /**
  * Servlet implementation class RegisterController
  */
-@WebServlet("/register")
+
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -61,7 +62,8 @@ public class RegisterController extends HttpServlet {
 		User user = new User(0,3,username,passwordCryp,token,fullname,address,city,gender,email,phone,birthday,date_join,"",0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {
-			
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+			rd.forward(request, response);
 		} else {
 			
 		}

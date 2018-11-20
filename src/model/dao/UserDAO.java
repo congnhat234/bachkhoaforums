@@ -80,8 +80,8 @@ public class UserDAO {
 	public boolean add(User user) {
 		connection = connectDBLibrary.getConnectMySQL();
 		PreparedStatement ps = null;
-		String query = "INSERT INTO user(id_role, username, password, token, fullname, address, city, gender, email, phone, birthday"
-				+ "date_join, avatar, rate, enabled) VALUES (?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO user(id_role, username, password, token, fullname, address, city, gender, email, phone, birthday,"
+				+ "date_join, avatar, rate, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {		
 			ps = connection.prepareStatement(query);
 			ps.setInt(1, user.getId_role());

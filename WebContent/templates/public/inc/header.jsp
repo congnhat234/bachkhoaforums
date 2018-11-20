@@ -1,3 +1,4 @@
+<%@page import="model.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,11 +26,23 @@
             <nav>
                 <a href="#">Home</a>
             </nav>
+            <%if(session.getAttribute("user") == null) { %>
             <ul>
-                <li><a id="btnSignin" href="#">Login</a></li>
-                <li><a id="btnSignup" href="#">Sign up</a></li>
+                <li><a id="btnSignin" href="javascript:void(0)">Login</a></li>
+                <li><a id="btnSignup" href="javascript:void(0)">Sign up</a></li>
             </ul>
-
+            <%} else {
+            	User user = (User) session.getAttribute("user");%>
+            <ul>
+                <li class="userProfile">
+                    <a id="btnProfile" href="#">
+                        <span class="avatar"><img src="img/t3.jpg" alt=""></span>
+                        <strong class="accountUsername"><%=user.getUsername() %></strong>
+                    </a>
+                </li>
+                <li><a href="<%=request.getContextPath() %>/logout">Logout</a></li>
+            </ul>
+			<%} %>
             <form id="search" method="get" action="#">
                 <input type="search" placeholder="Search!" name="search">
                 <i id="searchIcon" class="fas fa-search fa"></i>
