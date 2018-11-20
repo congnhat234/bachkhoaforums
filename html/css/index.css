@@ -587,7 +587,7 @@ body {
   margin-left: 20px;
 }
 
-.linetopic {
+.topic_line {
   border: 0;
   height: 1px;
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -599,7 +599,7 @@ body {
   margin-top: 25px;
 }
 
-.labeltopic {
+.label_topic {
   width: 95%;
   height: 30px;
   margin-left: 18px;
@@ -611,7 +611,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.labeltopic a {
+.label_topic a {
   font-style: bold;
   font-size: 17px;
   color: #945305;
@@ -634,7 +634,7 @@ body {
   text-decoration: underline;
 }
 
-.labeltopic p {
+.label_topic p {
   height: 20px;
   margin-top: 3px;
   font-size: 12px;
@@ -647,7 +647,7 @@ body {
   height: 50px;
 }
 
-.news {
+.topic_news {
   font-size: 12px;
   float: right;
   margin-top: auto;
@@ -667,21 +667,21 @@ body {
   margin-left: 30px;
 }
 
-.amount dl {
+.topic_amount dl {
   display: flex;
   flex-flow: row;
 }
 
-.amount dt {
+.topic_amount dt {
   color: gray;
 }
 
-.amount dd {
+.topic_amount dd {
   width: 30px;
   margin-left: 10px;
 }
 
-.amount {
+.topic_amount {
   font-size: 11px;
   display: flex;
   flex-flow: row;
@@ -773,7 +773,7 @@ body {
   color: #1da1f2;
 }
 
-.navbar {
+.nav_bar {
   padding-left: 20px;
   padding-top: 10px;
   width: 100%;
