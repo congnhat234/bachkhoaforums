@@ -138,5 +138,12 @@ public class User {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+	@Override
+	public String toString() {
+		return "User [id_user=" + id_user + ", id_role=" + id_role + ", username=" + username + ", password=" + password
+				+ ", token=" + token + ", fullname=" + fullname + ", address=" + address + ", city=" + city
+				+ ", gender=" + gender + ", email=" + email + ", phone=" + phone + ", birthhday=" + birthhday
+				+ ", date_join=" + date_join + ", avatar=" + avatar + ", rate=" + rate + ", enabled=" + enabled + "]";
+	}
 	
 }

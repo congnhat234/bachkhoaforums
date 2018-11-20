@@ -1,44 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Forum Project</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>IndexController</servlet-name>
-    <servlet-class>controller.IndexController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>IndexController</servlet-name>
-    <url-pattern>/home</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>LoginController</servlet-name>
-    <servlet-class>controller.LoginController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginController</servlet-name>
-    <url-pattern>/login</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>RegisterController</servlet-name>
-    <servlet-class>controller.RegisterController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegisterController</servlet-name>
-    <url-pattern>/register</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ProfileController</servlet-name>
-    <servlet-class>controller.ProfileController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProfileController</servlet-name>
-    <url-pattern>/profile</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Forum Project</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>tempfile.dir</param-name>
+		<param-value>tmpfiles</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>IndexController</servlet-name>
+		<servlet-class>controller.IndexController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IndexController</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoginController</servlet-name>
+		<servlet-class>controller.LoginController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginController</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RegisterController</servlet-name>
+		<servlet-class>controller.RegisterController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterController</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ProfileController</servlet-name>
+		<servlet-class>controller.ProfileController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfileController</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -11,4 +11,7 @@ public class UserBO {
 	public boolean add(User user) {
 		return userDAO.add(user);
 	}
+	public boolean edit(User user) {
+		return userDAO.edit(user);
+	}
 }

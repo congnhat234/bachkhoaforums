@@ -1,3 +1,4 @@
+<%@page import="model.bean.User"%>
 <%@page import="utils.Constants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -160,21 +161,26 @@
             <div><button class="button">Register</button></div>
         </form>
     </div>
+    <%
+     	User userProfile = new User();
+        if (session.getAttribute("user") != null) {
+        	userProfile = (User) session.getAttribute("user");
+        }%>
     <div id="profile" class="profile_wrap">
         <div class="profile">
             <div class="profile_header">
                 <div class="image">
-                    <img src="<%=request.getContextPath() %>/templates/public/img/t3.jpg">
+                    <img src="<%=request.getContextPath() %>/templates/public/files/<%=userProfile.getAvatar()%>">
                 </div>
                 <div class="infor">
-                    <p class="username">congnhat</p>
-                    <p class="level">Thành viên mới</p>
+                    <p class="username"><%=userProfile.getUsername()%></p>
+                    <p class="level">Điểm: <%=userProfile.getRate() %></p>
                 </div>
             </div>
             <div class="profile_content">
                 <div class="element">
                     <ul>
-                        <li><a href="<%=request.getContextPath() %>/<%=Constants.URL.PROFILE%>">Thông tin cá nhân</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.PROFILE%>">Thông tin cá nhân</a></li>
                         <li><a href="#">Tùy chọn</a></li>
                         <li><a href="#">Mật khẩu</a></li>
                     </ul>
@@ -184,7 +190,7 @@
                         <li><a href="#">Tin nhắn</a></li>
                         <li><a href="#">Thông báo</a></li>
                         <li><a href="#">Nội dung của bạn</a></li>
-                        <li><a href="#">Đăng xuất</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>

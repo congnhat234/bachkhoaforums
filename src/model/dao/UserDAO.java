@@ -114,4 +114,39 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
+	public boolean edit(User user) {
+		connection = connectDBLibrary.getConnectMySQL();
+		PreparedStatement ps = null;
+		String query = "UPDATE user SET id_role = ?, fullname = ?, address = ?, city = ?, gender = ?, email = ?, phone = ?, birthday = ?,"
+				+ "avatar = ?, enabled = ? WHERE username = ?;";
+		try {		
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, user.getId_role());
+			ps.setString(2, user.getFullname());
+			ps.setString(3, user.getAddress());
+			ps.setString(4, user.getCity());
+			ps.setInt(5, user.getGender());
+			ps.setString(6, user.getEmail());
+			ps.setString(7, user.getPhone());
+			ps.setString(8, user.getBirthhday());
+			ps.setString(9, user.getAvatar());
+			ps.setInt(10, user.getEnabled());
+			ps.setString(11, user.getUsername());
+			
+			int r = ps.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }

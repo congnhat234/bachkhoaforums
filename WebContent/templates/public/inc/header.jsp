@@ -1,3 +1,4 @@
+<%@page import="utils.Constants"%>
 <%@page import="model.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,7 +25,7 @@
             <h1><a href="#">BachKhoa<span>Forum</span></a></h1>
 
             <nav>
-                <a href="#">Home</a>
+                <a href="<%=request.getContextPath() %><%=Constants.URL.HOME%>">Home</a>
             </nav>
             <%if(session.getAttribute("user") == null) { %>
             <ul>
