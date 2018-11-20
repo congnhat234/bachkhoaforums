@@ -35,7 +35,7 @@
             	User user = (User) session.getAttribute("user");%>
             <ul>
                 <li class="userProfile">
-                    <a id="btnProfile" href="#">
+                    <a id="btnProfile" href="javascript:void(0)">
                         <span class="avatar"><img src="img/t3.jpg" alt=""></span>
                         <strong class="accountUsername"><%=user.getUsername() %></strong>
                     </a>

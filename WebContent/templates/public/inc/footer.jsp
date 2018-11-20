@@ -1,3 +1,4 @@
+<%@page import="utils.Constants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -173,7 +174,7 @@
             <div class="profile_content">
                 <div class="element">
                     <ul>
-                        <li><a href="#">Thông tin cá nhân</a></li>
+                        <li><a href="<%=request.getContextPath() %>/<%=Constants.URL.PROFILE%>">Thông tin cá nhân</a></li>
                         <li><a href="#">Tùy chọn</a></li>
                         <li><a href="#">Mật khẩu</a></li>
                     </ul>
