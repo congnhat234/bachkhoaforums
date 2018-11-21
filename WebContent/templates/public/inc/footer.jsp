@@ -1,3 +1,4 @@
+
 <%@page import="utils.Constants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -160,6 +161,7 @@
             <div><button class="button">Register</button></div>
         </form>
     </div>
+    
     <div id="profile" class="profile_wrap">
         <div class="profile">
             <div class="profile_header">
@@ -167,7 +169,7 @@
                     <img src="<%=request.getContextPath() %>/templates/public/img/t3.jpg">
                 </div>
                 <div class="infor">
-                    <p class="username">congnhat</p>
+                    <p class="username">Hung</p>
                     <p class="level">Thành viên mới</p>
                 </div>
             </div>
@@ -184,7 +186,7 @@
                         <li><a href="#">Tin nhắn</a></li>
                         <li><a href="#">Thông báo</a></li>
                         <li><a href="#">Nội dung của bạn</a></li>
-                        <li><a href="#">Đăng xuất</a></li>
+                        <li><a href="<%=request.getContextPath() %>/<%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>

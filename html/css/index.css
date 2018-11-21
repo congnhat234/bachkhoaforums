@@ -782,6 +782,20 @@ body {
   overflow: auto;
   box-sizing: border-box;
 }
+.nav_bar span{
+  margin-right: 40px;
+  height: : 20px;
+  background-color: blue;
+  float: right;
+  font-weight: bold;
+font-size: 12px;
+font-family: Calibri,'Trebuchet MS',Verdana,Geneva,Arial,Helvetica,sans-serif;
+color: #FFF;
+background-color: rgb(101, 165, 209);
+padding: 0 15px;
+border-radius: 0;
+display: block;
+}
 
 
 /* end content */
@@ -1068,9 +1082,7 @@ body {
   box-sizing: border-box;
 }
 
-.content {
-  margin-top: 50px;
-}
+
 
 .tieude {
   height: 50px;

@@ -42,6 +42,7 @@ public class User {
 		this.rate = rate;
 		this.enabled = enabled;
 	}
+
 	public int getId_user() {
 		return id_user;
 	}
