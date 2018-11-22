@@ -1,3 +1,8 @@
+<%@page import="model.bean.Post"%>
+<%@page import="model.bean.Subject"%>
+<%@page import="model.bo.PostBO" %>
+<%@page import="model.bo.SubjectBO" %>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -38,15 +43,24 @@
             <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-square "></i></a>
             <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
         </div>
+        <%
+        ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
+        ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
+        %>
+        <% if(listsub!=null)
+        for (Subject sub:listsub) {%>
         <div class="labeltopic">
-            <a href="#topic"> Thông tin - Sự kiện</a><br>
+            <a href="#topic"><%=sub.getName() %></a><br>
             <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
         </div>
+        
+		<% for(int i=0;i<listpost.size();i++){ %>
+			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  %>
 
         <div class="topic">
             <span>
                 <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
+                <a href="#" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
                 <br>
                 <!-- <p class="amount">Chủ đề: 999 Bài viết: 999</p> -->
                 <div class="amount">
@@ -65,78 +79,9 @@
             </p>
         </div>
         <hr class="linetopic">
-        <div class="topic">
-            <span>
-                <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
-                <br>
-                <!-- <p class="amount">Chủ đề: 999 Bài viết: 999</p> -->
-                <div class="amount">
-                  <dl>
-                      <dt>Chủ đề: </dt>
-                      <dd>9999</dd>
-                    </dl>
-                    <dl>
-                        <dt>Bài viết: </dt>
-                        <dd>9999</dd>
-                    </dl>
-                </div>
-            </span>
-            <p class="news">Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a href="#topic"> akiii</a>,14:20, hôm nay
-            </p>
-        </div>
-        <hr class="linetopic">
-        <div class="topic">
-            <span>
-                <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
-                <br>
-                <!-- <p class="amount">Chủ đề: 999 Bài viết: 999</p> -->
-                <div class="amount">
-                  <dl>
-                      <dt>Chủ đề: </dt>
-                      <dd>9999</dd>
-                    </dl>
-                    <dl>
-                        <dt>Bài viết: </dt>
-                        <dd>9999</dd>
-                    </dl>
-                </div>
-            </span>
-            <p class="news">Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a href="#topic"> akiii</a>,14:20, hôm nay
-            </p>
-        </div>
-        <hr class="linetopic">
-        <div class="topic">
-            <span>
-                <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="#" style=" color:#103667;  font-weight: bold;"> Thông tin công nghệ</a>
-                <br>
-                <!-- <p class="amount">Chủ đề: 999 Bài viết: 999</p> -->
-                <div class="amount">
-                  <dl>
-                      <dt>Chủ đề: </dt>
-                      <dd>9999</dd>
-                    </dl>
-                    <dl>
-                        <dt>Bài viết: </dt>
-                        <dd>9999</dd>
-                    </dl>
-                </div>
-            </span>
-            <p class="news">Mới nhất:<a href="#topic"> AppStore mới được mở ở...</a><br>
-                <a href="#information" id="info"> akiii</a>,14:20, hôm nay
-            </p>
-        </div>
-        <hr class="linetopic">
-        <div class="labeltopic">
-            <a href="#topic"> Thông tin - Sự kiện</a><br>
-            <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
-        </div>
-<hr class="linetopic">
-    </div>
+        <%}} %>
+		<%} %>
+           </div>
     
 <%@include file="/templates/public/inc/footer.jsp" %>
     
