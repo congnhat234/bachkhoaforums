@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  min-width: 1000px;
 }
 
 .display {
@@ -564,12 +565,9 @@ body {
 /* end header */
 
 /* begin content */
-body {
-  background-color: #EEEEEE;
-}
 
 .social {
-  margin-left: 880px;
+  margin-left: 10px;
 }
 
 .container {
@@ -603,7 +601,6 @@ body {
   width: 95%;
   height: 30px;
   margin-left: 18px;
-  padding-left: 20px;
   padding-top: 3px;
   padding-bottom: 15px;
   border-radius: 5px;
@@ -644,7 +641,7 @@ body {
 .topic {
   margin-right: 20px;
   margin-top: 10px;
-  height: 50px;
+  height: fit-content;
 }
 
 .news {
@@ -665,6 +662,7 @@ body {
   float: left;
   font-size: 10px;
   margin-left: 30px;
+  width: 60%;
 }
 
 .amount dl {
@@ -853,10 +851,8 @@ body {
 .sidebar-right {
   margin-top: 100px;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 150px;
   float: right;
-  top: 250px;
-  width: 280px;
+  width: 18%;
 }
 
 
@@ -988,7 +984,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   float: left;
   background-color: #292c2f;
-  width: 150px;
+  width: 10%;
   padding: 20px 0;
 }
 
