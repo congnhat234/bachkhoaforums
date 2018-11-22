@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bo.PostBO;
+import model.bo.SubjectBO;
+import model.dao.PostDAO;
+
 /**
  * Servlet implementation class IndexController
  */
@@ -28,10 +32,7 @@ public class IndexController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
-		rd.forward(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -39,7 +40,15 @@ public class IndexController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		SubjectBO subjectBO =new SubjectBO();
+		request.setAttribute("listsubject", subjectBO.getListSubject());
+		System.out.println(subjectBO.getListSubject().size());
+		PostBO postBO = new PostBO();
+		request.setAttribute("listpost",postBO.getListPost() );
+		//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+		rd.forward(request, response);
+		
 	}
 
 }
