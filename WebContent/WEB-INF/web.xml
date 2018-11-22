@@ -11,6 +11,7 @@
 		<welcome-file>default.html</welcome-file>
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>home</welcome-file>
 	</welcome-file-list>
 
 	<context-param>
@@ -35,6 +36,14 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>LogoutController</servlet-name>
+		<servlet-class>controller.LogoutController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutController</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>RegisterController</servlet-name>
 		<servlet-class>controller.RegisterController</servlet-class>
 	</servlet>
@@ -48,6 +57,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ProfileController</servlet-name>
-		<url-pattern>/profile</url-pattern>
+		<url-pattern>/user/profile</url-pattern>
 	</servlet-mapping>
 </web-app>

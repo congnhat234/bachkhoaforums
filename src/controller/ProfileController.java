@@ -125,6 +125,12 @@ public class ProfileController extends HttpServlet {
 		User userEdit = new User(0,3,user.getUsername(),user.getPassword(),user.getToken(),fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.edit(userEdit)) {
+			String picture = user.getAvatar();
+			if(!"".equals(picture)){
+				String urlDelFile = realPath + File.separator + picture;
+				File delFile = new File(urlDelFile);
+				delFile.delete();
+			}
 			User userEdited = userBO.findByToken(user.getToken());
 			session.setAttribute("user", userEdited);
 			response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE + "?msg=1");

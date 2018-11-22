@@ -41,7 +41,7 @@
                         <strong class="accountUsername"><%=user.getUsername() %></strong>
                     </a>
                 </li>
-                <li><a href="<%=request.getContextPath() %>/logout">Logout</a></li>
+                <li><a href="<%=request.getContextPath() %><%=Constants.URL.LOGOUT%>">Logout</a></li>
             </ul>
 			<%} %>
             <form id="search" method="get" action="#">

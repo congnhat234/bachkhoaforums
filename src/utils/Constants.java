@@ -17,7 +17,7 @@ public class Constants {
 		String LOGOUT = "/logout";
 		String USER_HOME = "/user";
 		String ADMIN_HOME = "/admin";
-		String PROFILE = "/profile";
+		String PROFILE = "/user/profile";
 		
 	}
 }

@@ -12,19 +12,20 @@ import javax.servlet.http.HttpSession;
 import utils.Constants;
 import utils.CookieUtils;
 
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public LogoutServlet() {
+    public LogoutController() {
         super();
     }
 
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	CookieUtils.delete(request, response, "token");
-    	HttpSession session = request.getSession();
+    	HttpSession session = request.getSession(false);
+    	session.removeAttribute("user");
     	session.invalidate();
+//    	session.removeAttribute("user");
     	response.sendRedirect(request.getContextPath() + Constants.URL.HOME);
 	}
 
