@@ -80,7 +80,7 @@ public class ProfileController extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		final String realPath = request.getServletContext().getRealPath("/templates/public/files");
 		System.out.println(realPath);
-		File dirUrl = new File("/templates/public/files");
+		File dirUrl = new File(realPath);
 		if (!dirUrl.exists()){
 			dirUrl.mkdir();
 		}
