@@ -57,7 +57,7 @@
             		user = (User) session.getAttribute("user");
             		}%>
             	
-                <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%>/profile">
+                <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">
                     <fieldset>
                         <dl class="ctrlUnit avatarEditor">
                             <dt><label>Hình đại diện:</label></dt>

@@ -165,7 +165,7 @@
      	User userProfile = new User();
         if (session.getAttribute("user") != null) {
         	userProfile = (User) session.getAttribute("user");
-        }%>
+        %>
     <div id="profile" class="profile_wrap">
         <div class="profile">
             <div class="profile_header">
@@ -196,5 +196,6 @@
             </div>
         </div>
     </div>
+    <% } %>
 
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
