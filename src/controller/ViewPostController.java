@@ -33,7 +33,6 @@ public class ViewPostController extends HttpServlet {
 		int idPost = Integer.parseInt(request.getParameter("idp"));
 		PostBO postBO = new PostBO();
 		request.setAttribute("post", postBO.getPost(idPost));
-		System.out.println(postBO.getPost(idPost).getUsername());
 		RequestDispatcher rd = request.getRequestDispatcher("/xembai.jsp");
 		rd.forward(request, response);
 	}

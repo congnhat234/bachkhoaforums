@@ -83,7 +83,7 @@ public class PostDAO {
 
 	public boolean add(Post post) {
 		connection = connectDBLibrary.getConnectMySQL();		
-		String query = "INSERT INTO post(id_subject, id_user, date_create, title, preview_image, preview_content, content, view, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO post(id_subject, username, date_create, title, preview_image, preview_content, content, view, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, post.getId_subject());

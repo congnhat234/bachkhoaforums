@@ -1,3 +1,5 @@
+<%@page import="model.bean.Subject"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,23 +15,38 @@
                 </ul>
         </nav>
         <div class="content">
-        <form class="vietbai" action="#" method="#">
+        <form class="vietbai" action="<%=request.getContextPath()%><%=Constants.URL.CREATE_POST%>" method="POST" enctype="multipart/form-data">
                        
                 <div class="tieude">
                     <label>Tiêu đề bài viết:</label>
-                    <input class="text1" type="text" required>
+                    <input class="text1" type="text" name="title" required>
                 </div>
                 <div class="tieude">
-                    <label>Tên người viết:</label>
-                    <input class="text2" type="text" required>
+                    <label>Xem trước</label>
+                    <input class="text2" type="text" name="preview_content" required>
+                </div>
+                <div>
+                    <dl class="pre_image">
+                        <dt>Preview Image</dt>
+                        <dd>
+                            <a href="#">
+                            <img style="width:200px;height:200px;" src="#">
+                            </a> <br><br>
+                            <input type="file" name="preview_image" value="" class="choose_file" >
+                        </dd>
+                    </dl>
                 </div>
                 <div class="tieude">
                     <label>Chủ đề:</label>
-                    <select class="select1">
-                        <option value="1">Công Nghệ
+                    <select class="select1" name="id_subject">
+                    <%
+                    	if(request.getAttribute("listSubject") != null) {
+                    		ArrayList<Subject> listSubject = (ArrayList<Subject>) request.getAttribute("listSubject");
+                    		for(Subject obj : listSubject) {
+                    %>
+                        <option value="<%=obj.getId_subject()%>"><%=obj.getName() %>
                         </option>
-                        <option value="2">Đời Sống
-                        </option>
+                    <%} } %>
                     </select>
                 </div>
                 <div class="tieude">
@@ -37,7 +54,7 @@
                 </div>
                 <div class="text-area">
                     <textarea name="content" id="editor">
-            </textarea>
+            		</textarea>
                     
                 </div>
                 <dl>

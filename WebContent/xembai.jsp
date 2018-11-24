@@ -30,7 +30,7 @@
 				<h3>Lượt xem <%=post.getView() %></h3>
 			</div>
 			<div>
-				<img src="<%=request.getContextPath() %>/templates/public/files/<%=post.getPreview_image() %>" class="imgElement">
+				<img src="<%=request.getContextPath() %>/templates/public/files/post/<%=post.getPreview_image() %>" class="imgElement">
 			</div>
 			<div class="content_post">
 
