@@ -3,7 +3,6 @@ package model.bo;
 import java.util.ArrayList;
 
 import model.bean.Post;
-import model.bean.User;
 import model.dao.PostDAO;
 
 public class PostBO {
