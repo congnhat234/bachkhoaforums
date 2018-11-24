@@ -49,9 +49,7 @@ public class UserDAO {
 	}
 	
 	public User get(String username) {
-		connection = connectDBLibrary.getConnectMySQL();
-		pst = null;
-		rs = null;
+		connection = connectDBLibrary.getConnectMySQL();		
 		String query = "SELECT * FROM user WHERE username = ?;";
 		try {
 			pst = connection.prepareStatement(query);
@@ -78,34 +76,33 @@ public class UserDAO {
 	}
 	
 	public boolean add(User user) {
-		connection = connectDBLibrary.getConnectMySQL();
-		PreparedStatement ps = null;
+		connection = connectDBLibrary.getConnectMySQL();		
 		String query = "INSERT INTO user(id_role, username, password, token, fullname, address, city, gender, email, phone, birthday,"
 				+ "date_join, avatar, rate, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {		
-			ps = connection.prepareStatement(query);
-			ps.setInt(1, user.getId_role());
-			ps.setString(2, user.getUsername());
-			ps.setString(3, user.getPassword());
-			ps.setString(4, user.getToken());
-			ps.setString(5, user.getFullname());
-			ps.setString(6, user.getAddress());
-			ps.setString(7, user.getCity());
-			ps.setInt(8, user.getGender());
-			ps.setString(9, user.getEmail());
-			ps.setString(10, user.getPhone());
-			ps.setString(11, user.getBirthhday());
-			ps.setString(12, user.getDate_join());
-			ps.setString(13, user.getAvatar());
-			ps.setInt(14, user.getRate());
-			ps.setInt(15, user.getEnabled());
-			int r = ps.executeUpdate();
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, user.getId_role());
+			pst.setString(2, user.getUsername());
+			pst.setString(3, user.getPassword());
+			pst.setString(4, user.getToken());
+			pst.setString(5, user.getFullname());
+			pst.setString(6, user.getAddress());
+			pst.setString(7, user.getCity());
+			pst.setInt(8, user.getGender());
+			pst.setString(9, user.getEmail());
+			pst.setString(10, user.getPhone());
+			pst.setString(11, user.getBirthhday());
+			pst.setString(12, user.getDate_join());
+			pst.setString(13, user.getAvatar());
+			pst.setInt(14, user.getRate());
+			pst.setInt(15, user.getEnabled());
+			int r = pst.executeUpdate();
 			return (r == 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				ps.close();
+				pst.close();
 				connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -117,30 +114,53 @@ public class UserDAO {
 	
 	public boolean edit(User user) {
 		connection = connectDBLibrary.getConnectMySQL();
-		PreparedStatement ps = null;
 		String query = "UPDATE user SET id_role = ?, fullname = ?, address = ?, city = ?, gender = ?, email = ?, phone = ?, birthday = ?,"
 				+ "avatar = ?, enabled = ? WHERE username = ?;";
 		try {		
-			ps = connection.prepareStatement(query);
-			ps.setInt(1, user.getId_role());
-			ps.setString(2, user.getFullname());
-			ps.setString(3, user.getAddress());
-			ps.setString(4, user.getCity());
-			ps.setInt(5, user.getGender());
-			ps.setString(6, user.getEmail());
-			ps.setString(7, user.getPhone());
-			ps.setString(8, user.getBirthhday());
-			ps.setString(9, user.getAvatar());
-			ps.setInt(10, user.getEnabled());
-			ps.setString(11, user.getUsername());
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, user.getId_role());
+			pst.setString(2, user.getFullname());
+			pst.setString(3, user.getAddress());
+			pst.setString(4, user.getCity());
+			pst.setInt(5, user.getGender());
+			pst.setString(6, user.getEmail());
+			pst.setString(7, user.getPhone());
+			pst.setString(8, user.getBirthhday());
+			pst.setString(9, user.getAvatar());
+			pst.setInt(10, user.getEnabled());
+			pst.setString(11, user.getUsername());
 			
-			int r = ps.executeUpdate();
+			int r = pst.executeUpdate();
 			if (r>0) return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				ps.close();
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
+	public boolean delete(int idUser) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM user WHERE id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
 				connection.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

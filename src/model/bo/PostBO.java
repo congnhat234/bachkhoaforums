@@ -3,12 +3,25 @@ package model.bo;
 import java.util.ArrayList;
 
 import model.bean.Post;
+import model.bean.User;
 import model.dao.PostDAO;
 
 public class PostBO {
-	PostDAO postBAO= new PostDAO();
+	PostDAO postDAO= new PostDAO();
 	public ArrayList<Post> getListPost(){
-		return postBAO.getListPost();
+		return postDAO.getListPost();
+	}
+	public Post getPost(int idPost){
+		return postDAO.get(idPost);
+	}
+	public boolean addPost(Post post) {
+		return postDAO.add(post);
+	}
+	public boolean editPost(Post post) {
+		return postDAO.edit(post);
+	}
+	public boolean deletePost(int idPost) {
+		return postDAO.delete(idPost);
 	}
 
 }

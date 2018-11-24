@@ -14,4 +14,7 @@ public class UserBO {
 	public boolean edit(User user) {
 		return userDAO.edit(user);
 	}
+	public boolean delete(int idUser) {
+		return userDAO.delete(idUser);
+	}
 }

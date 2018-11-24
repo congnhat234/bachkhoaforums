@@ -39,10 +39,10 @@ public class UserFilter implements Filter {
 				session.setAttribute("user", user);
 				chain.doFilter(request, response);
 			} else {
-				((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.HOME);
+				((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.LOGIN);
 			}
 		} else {
-			((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.HOME);
+			((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.LOGIN);
 		}
 	}
 

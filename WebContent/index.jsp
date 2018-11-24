@@ -5,7 +5,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <%@include file="/templates/public/inc/header.jsp" %>
     <aside class="sidebar-left">
         <div class="sidebar-links">
@@ -60,7 +61,7 @@
         <div class="topic">
             <span>
                 <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="#" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
+                <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
                 <br>
                 <!-- <p class="amount">Chủ đề: 999 Bài viết: 999</p> -->
                 <div class="amount">

@@ -3,7 +3,7 @@ package model.bean;
 public class Post {
 	private int id_post;
 	private int id_subject;
-	private int id_user;
+	private String username;
 	private String date_create;
 	private String title;
 	private String preview_image;
@@ -17,12 +17,12 @@ public class Post {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Post(int id_post, int id_subject, int id_user, String date_create, String title, String preview_image,
+	public Post(int id_post, int id_subject, String username, String date_create, String title, String preview_image,
 			String preview_content, String content, int view, int enable) {
 		super();
 		this.id_post = id_post;
 		this.id_subject = id_subject;
-		this.id_user = id_user;
+		this.username = username;
 		this.date_create = date_create;
 		this.title = title;
 		this.preview_image = preview_image;
@@ -48,12 +48,12 @@ public class Post {
 		this.id_subject = id_subject;
 	}
 
-	public int getId_user() {
-		return id_user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setId_user(String username) {
+		this.username = username;
 	}
 
 	public String getDate_create() {
