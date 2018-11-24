@@ -86,14 +86,15 @@ body {
 	color: #0e6252;
 }
 
-.form_login input:focus, .form_login input:valid {
+.form_login input:focus,
+.form_login input:valid {
 	box-shadow: none;
 	outline: none;
 	background-position: 0 0;
 }
 
-.form_login input:focus::-webkit-input-placeholder, .form_login input:valid
-	{
+.form_login input:focus::-webkit-input-placeholder,
+.form_login input:valid {
 	color: #1abc9c;
 	font-size: 11px;
 	transform: translateY(-1px);
@@ -336,8 +337,7 @@ body {
 	border-top: teal solid 4px;
 	background-color: #fff;
 	opacity: 0.8;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
-		rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	position: relative;
 	top: 70px;
 	left: 70%;
@@ -396,26 +396,29 @@ body {
 }
 
 /* Add Animation */
-@
--webkit-keyframes animatetop {from { top:-300px;
-	opacity: 0
+@-webkit-keyframes animatetop {
+	from {
+		top: -300px;
+		opacity: 0
+	}
+
+	to {
+		top: 0;
+		opacity: 1
+	}
+
 }
 
-to {
-	top: 0;
-	opacity: 1
-}
+@keyframes animatetop {
+	from {
+		top: -300px;
+		opacity: 0
+	}
 
-}
-@
-keyframes animatetop {from { top:-300px;
-	opacity: 0
-}
-
-to {
-	top: 0;
-	opacity: 1
-}
+	to {
+		top: 0;
+		opacity: 1
+	}
 
 }
 
@@ -1185,6 +1188,56 @@ to {
 	box-shadow: 2px 2px 2px 2px #888888;
 }
 
+/* edit */
+.xembai .head_title_post {
+	height: 27px;
+	width: auto;
+	border-bottom: solid 1px #0056a8;
+}
+
+.xembai .title_post {
+	width: auto;
+	background: #0056a8;
+	color: #fff;
+	padding: 3px 10px;
+	font-size: 18px;
+	position: relative;
+	margin: 0;
+	float: left;
+	margin-left: 0 !important;
+}
+
+.xembai .title_post:after {
+	border: 17px solid transparent;
+	border-left-color: #0056a8;
+	border-bottom-color: #0056a8;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	content: "";
+}
+
+.xembai .date_post {
+	display: flex;
+	flex-flow: row;
+	float: right;
+	margin-right: 0 !important;
+
+}
+
+.xembai .date_post h3:first-child {
+	margin-left: 0;
+}
+
+.xembai .date_post h3 {
+	color: #555;
+	font-size: 14px;
+	margin-left: 15px;
+	margin-top: 5px;
+	margin-bottom: 25px;
+}
+
+/* end edit */
 .xembai pre {
 	font-family: Arial;
 	font-size: 17px;
@@ -1196,7 +1249,7 @@ to {
 }
 
 .xembai h3 {
-	color: blue;
+	color: black;
 }
 
 .button-bot {
@@ -1385,14 +1438,15 @@ to {
 	font-size: 14px;
 }
 
-.form_login_page input:focus, .form_login_page input:valid {
+.form_login_page input:focus,
+.form_login_page input:valid {
 	box-shadow: none;
 	outline: none;
 	background-position: 0 0;
 }
 
 .form_login_page input:focus::-webkit-input-placeholder,
-	.form_login_page input:valid {
+.form_login_page input:valid {
 	color: #1abc9c;
 	font-size: 14px;
 	transform: translateY(-1px);
