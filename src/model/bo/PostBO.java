@@ -6,9 +6,9 @@ import model.bean.Post;
 import model.dao.PostDAO;
 
 public class PostBO {
-	PostDAO postBAO= new PostDAO();
+	PostDAO postDAO= new PostDAO();
 	public ArrayList<Post> getListPost(){
-		return postBAO.getListPost();
+		return postDAO.getListPost();
 	}
 
 }

@@ -1077,13 +1077,33 @@ body {
   margin-top: 20px;
   margin-left: 20px;
 }
+/* edit */
+.vietbai .pre_image{
+  display: flex;
+  flex-flow: row;
+}
+.pre_image dt{
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.pre_image dd img{
+  margin-left: 11%;
+  border: 1px solid black;
+}
+.vietbai .pre_image .choose_file{
+  margin: 10px;
+  margin-left: 10%;
+  
+}
+/* end edit */
 
 .text1 {
   border: 1px solid black;
   border-radius: 3px;
   width: 350px;
   height: 35px;
-  margin-left: 50px;
+  margin-left: 6%;
   font-size: 20px;
   font-family: Arial;
 }
@@ -1093,7 +1113,7 @@ body {
   border-radius: 3px;
   width: 350px;
   height: 35px;
-  margin-left: 54px;
+  margin-left: 10%;
   font-size: 20px;
   font-family: Arial;
 }
@@ -1103,7 +1123,7 @@ body {
   border-radius: 3px;
   width: 150px;
   height: 35px;
-  margin-left: 104px;
+  margin-left: 12%;
 }
 
 .button {
@@ -1174,6 +1194,7 @@ body {
 .checkbox1 label:hover {
   color: #1abc9c;
 }
+
 
 /* End Viet Bai */
 

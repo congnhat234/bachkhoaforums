@@ -60,9 +60,24 @@
                     <label>Tiêu đề bài viết:</label>
                     <input class="text1" type="text" required>
                 </div>
+<!-- edit -->
                 <div class="tieude">
-                    <label>Tên người viết:</label>
+                    <label>Xem trước</label>
                     <input class="text2" type="text" required>
+                </div>
+                <div>
+                    <dl class="pre_image">
+                        <dt>Preview Image</dt>
+                        <dd>
+                            <a href="#">
+                            <img style="width:200px;height:200px;" src="#">
+                            </a> <br><br>
+                            <input type="file" name="" value="" class="choose_file" >
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+<!-- end edit -->
                 </div>
                 <div class="tieude">
                     <label>Chủ đề:</label>
@@ -79,13 +94,6 @@
                 <div class="text-area">
                     <textarea name="content" id="editor">
             </textarea>
-                    <script>
-                        ClassicEditor
-                    .create( document.querySelector( '#editor' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
-            </script>
                 </div>
                 <dl>
                     <dt></dt>
