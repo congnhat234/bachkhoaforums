@@ -10,5 +10,8 @@ public class SubjectBO {
 	public ArrayList<Subject> getListSubject() {
 		return subjectDAO.getListSubject();
 	}
+	public String getNameSubject(int idSub) {
+		return subjectDAO.getNameSubject(idSub);
+	}
 
 }

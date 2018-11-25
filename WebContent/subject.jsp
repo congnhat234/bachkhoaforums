@@ -8,28 +8,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <%@include file="/templates/public/inc/header.jsp" %>
-    <aside class="sidebar-left">
     
-        <div class="sidebar-links">
-        <a class="link-blue" href="#">Bài Mới</a>
-        <%
-        ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
-        ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
+    <%
+      
+        ArrayList<Post> listsub =(ArrayList<Post>) request.getAttribute("listsub");
+ 
         %>
-        <%for(int i=0;i<listsub.size();i++) {%>
-            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=listpost.get(i).getId_subject()%>">
-            <%=listsub.get(i).getName()%></a>
-            <%}%>
-        </div>
-    </aside>
-    <aside class="sidebar-right">
+   <aside class="sidebar-right">
         <div class="latest-blog-posts">
-            <h3><i class="fa fa-rss"></i> Sôi động trong tuần</h3>
+            <h3><i class="fa fa-rss"></i> Bài viết quan tâm</h3>
             <ul>
-            <%for(int i=0;i<listpost.size();i++) 
-            	if(listpost.get(i).getView()>500) {%>
-                <li><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>"><%=listpost.get(i).getTitle() %></a>
-                <span><%=listpost.get(i).getDate_create() %></span></li>
+            <%for(int i=0;i<listsub.size();i++) {%>
+                <li><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listsub.get(i).getId_post()%>"><%=listsub.get(i).getTitle() %></a>
+                <span><%=listsub.get(i).getDate_create() %></span></li>
                 <%}%>
             </ul>
 
@@ -40,6 +31,7 @@
         <nav class="navbar">
                 <ul class="breadcrumbs">
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.HOME%>"><i class="fas fa-home fa-2x"></i></a></li>
+                     
                 </ul>
         </nav>
 
@@ -49,24 +41,22 @@
             <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
         </div>
     	
-        <% if(listsub!=null)
-        for (Subject sub:listsub) {%>
+        <% if(listsub!=null) {%>
         <div class="labeltopic">
-            <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=sub.getId_subject()%>"><%=sub.getName() %></a><br>
+            <a href="">AA</a><br>
             <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
         </div>
-		<% for(int i=0;i<listpost.size();i++){ %>
-			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  %>
+		<% for(int i=0;i<listsub.size();i++){ %>
 
         <div class="topic">
             <span>
                 <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
+                <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listsub.get(i).getId_post()%>" style=" color:#103667;  font-weight: bold;"> <%=listsub.get(i).getTitle()%></a>
                 <br>
                 <div class="amount">
                   <dl>
-                      <dt><a  id="author" href="javascript:void(0)" ><%=listpost.get(i).getUsername() %><a> </dt>
-                      <dd><%=listpost.get(i).getDate_create()%></dd>
+                      <dt><a  id="author" href="javascript:void(0)" ><%=listsub.get(i).getUsername() %><a> </dt>
+                      <dd><%=listsub.get(i).getDate_create()%></dd>
                     </dl>
                 </div>
             </span>
@@ -76,10 +66,7 @@
         </div>
         <hr class="linetopic">
         <%}} %>
-		<%} %>
-			
-		
-		 
+	 
 <%@include file="/templates/public/inc/footer.jsp" %>
 </body>
 

@@ -20,5 +20,6 @@ public class Constants {
 		String PROFILE = "/user/profile";
 		String CREATE_POST = "/user/create-post";
 		String VIEW_POST = "/post";
+		String VIEW_SUBJECT = "/subject";
 	}
 }

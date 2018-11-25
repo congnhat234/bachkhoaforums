@@ -81,7 +81,11 @@ public class CreatePostController extends HttpServlet {
 		System.out.println(realPath);
 		File dirUrl = new File(realPath);
 		if (!dirUrl.exists()){
-			dirUrl.mkdir();
+			try {
+				dirUrl.mkdir();
+			} catch(Exception e) {
+				System.err.println(e);
+			}
 		}
 		//==
 		final Part filePart = request.getPart("preview_image");

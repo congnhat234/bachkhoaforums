@@ -22,5 +22,9 @@ public class PostBO {
 	public boolean deletePost(int idPost) {
 		return postDAO.delete(idPost);
 	}
+	public ArrayList<Post> getPostSubject(int idSub) {	
+		return postDAO.getPostSubject(idSub);
+	
+	}
 
 }

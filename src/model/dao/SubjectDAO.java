@@ -48,4 +48,29 @@ public class SubjectDAO {
 		}
 		return listItems;
 	}
+	public String getNameSubject(int index){
+		String nameSub="";
+		conn = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from subject where id_subject='"+index+"';";
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				return nameSub=rs.getString("name");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+				conn.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return nameSub;
+	}
 }

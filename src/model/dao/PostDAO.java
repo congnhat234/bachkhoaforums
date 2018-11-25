@@ -25,7 +25,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPost() {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post;";
+		String sql = "select * from post ;";
 		try {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
@@ -163,4 +163,33 @@ public class PostDAO {
 		return false;
 	}
 
+	public ArrayList<Post> getPostSubject(int idSub) {		
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where id_subject=1;";
+		try {
+			st=connection.createStatement();
+			rs=st.executeQuery(sql);
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
 }

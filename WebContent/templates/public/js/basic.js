@@ -15,7 +15,7 @@ $("#btnSignup").on("click", function () {
 $("#btnProfile").on("click", function () {
     $("#profile").css("display", "block");
 });
-$("#info").on("click", function () {
+$("#author").on("click", function () {
     $("#infomation").css("display", "block");
 });
 

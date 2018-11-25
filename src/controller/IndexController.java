@@ -25,7 +25,7 @@ public class IndexController extends HttpServlet {
      */
     public IndexController() {
         super();
-        // TODO Auto-generated constructor stub
+ 
     }
 
 	/**
@@ -44,11 +44,10 @@ public class IndexController extends HttpServlet {
 		request.setAttribute("listsubject", subjectBO.getListSubject());
 		System.out.println(subjectBO.getListSubject().size());
 		PostBO postBO = new PostBO();
-		request.setAttribute("listpost",postBO.getListPost() );
+		request.setAttribute("listpost",postBO.getListPost());
 		//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
-		
 	}
 
 }
