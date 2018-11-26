@@ -575,6 +575,7 @@ body {
 	background-color: white;
 	box-shadow: 2px 2px 2px 2px #888888;
 	margin-top: 30px;
+	min-height: 500px;
 }
 
 .container h1 {
