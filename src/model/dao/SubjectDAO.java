@@ -13,7 +13,7 @@ import model.bean.Subject;
 public class SubjectDAO {
 
 	private ConnectDBLibrary connectDBLibrary;
-	private Connection conn;
+	private Connection connection;
 	private Statement st;
 	private PreparedStatement pst;
 	private ResultSet rs;
@@ -24,10 +24,10 @@ public class SubjectDAO {
 	
 	public ArrayList<Subject>getListSubject(){
 		ArrayList<Subject> listItems = new ArrayList<>();
-		conn = connectDBLibrary.getConnectMySQL();
+		connection = connectDBLibrary.getConnectMySQL();
 		String sql = "select * from subject;";
 		try {
-			st = conn.createStatement();
+			st = connection.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
 				Subject obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
@@ -39,7 +39,7 @@ public class SubjectDAO {
 		} finally {
 			try {
 				st.close();
-				conn.close();
+				connection.close();
 				rs.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -48,24 +48,25 @@ public class SubjectDAO {
 		}
 		return listItems;
 	}
-	public Subject getSubject(int index){
+	public Subject getSubject(int idSub){
 		Subject obj=null;
-		conn = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from subject where id_subject='"+index+"';";
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT * FROM subject WHERE id_subject = ? ;";
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			rs = pst.executeQuery();
 			while(rs.next()){
-				 obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
-					return obj;
+				obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
+				return obj;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
-				st.close();
-				conn.close();
+				pst.close();
+				connection.close();
 				rs.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

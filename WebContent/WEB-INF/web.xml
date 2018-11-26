@@ -70,11 +70,11 @@
     <url-pattern>/user/create-post</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>ViewSubjectController</servlet-name>
-    <servlet-class>controller.ViewSubjectController</servlet-class>
+    <servlet-name>ShowPostBySubjectController</servlet-name>
+    <servlet-class>controller.ShowPostBySubjectController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ViewSubjectController</servlet-name>
+    <servlet-name>ShowPostBySubjectController</servlet-name>
     <url-pattern>/subject</url-pattern>
   </servlet-mapping>
 </web-app>

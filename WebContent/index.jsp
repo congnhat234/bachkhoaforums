@@ -17,7 +17,7 @@
         ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
         %>
         <%for(int i=0;i<listsub.size();i++) {%>
-            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=listpost.get(i).getId_subject()%>">
+            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
@@ -52,7 +52,7 @@
         <% if(listsub!=null)
         for (Subject sub:listsub) {%>
         <div class="labeltopic">
-            <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=sub.getId_subject()%>"><%=sub.getName() %></a><br>
+            <a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=sub.getId_subject()%>"><%=sub.getName() %></a><br>
             <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
         </div>
 		<% for(int i=0;i<listpost.size();i++){ %>
