@@ -12,6 +12,7 @@
     <%
       
         ArrayList<Post> listsub =(ArrayList<Post>) request.getAttribute("listsub");
+    	Subject objSub= (Subject) request.getAttribute("objSub");
  
         %>
    <aside class="sidebar-right">
@@ -35,7 +36,7 @@
                 </ul>
         </nav>
 
-        <h1 style=" font-family: Arial, Helvetica, sans-serif;">  BachKhoa Forum</h1>
+        <h1 style=" font-family: Arial, Helvetica, sans-serif;"><%=objSub.getName() %></h1>
         <div class="social">
             <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-square "></i></a>
             <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
@@ -43,7 +44,7 @@
     	
         <% if(listsub!=null) {%>
         <div class="labeltopic">
-            <a href="">AA</a><br>
+            <a href=""><%=objSub.getName() %></a><br>
             <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
         </div>
 		<% for(int i=0;i<listsub.size();i++){ %>

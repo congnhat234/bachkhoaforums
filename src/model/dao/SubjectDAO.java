@@ -48,15 +48,16 @@ public class SubjectDAO {
 		}
 		return listItems;
 	}
-	public String getNameSubject(int index){
-		String nameSub="";
+	public Subject getSubject(int index){
+		Subject obj=null;
 		conn = connectDBLibrary.getConnectMySQL();
 		String sql = "select * from subject where id_subject='"+index+"';";
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				return nameSub=rs.getString("name");
+				 obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
+					return obj;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,6 +72,6 @@ public class SubjectDAO {
 				e.printStackTrace();
 			}
 		}
-		return nameSub;
+		return obj;
 	}
 }

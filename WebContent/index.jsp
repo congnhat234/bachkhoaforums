@@ -76,10 +76,7 @@
         </div>
         <hr class="linetopic">
         <%}} %>
-		<%} %>
-			
-		
-		 
+		<%} %>	 
 <%@include file="/templates/public/inc/footer.jsp" %>
 </body>
 

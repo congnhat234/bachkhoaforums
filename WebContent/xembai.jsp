@@ -1,4 +1,6 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.bean.Post"%>
+<%@page import="model.bean.Comment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,12 +28,16 @@
 			<div class="date_post">
 				<h3><%=post.getDate_create() %></h3>
 				<h3><%=post.getUsername() %></h3>
-				<h3>Lượt xem <%=post.getView() %></h3>	
+				<h3>Lượt xem <%=post.getView() %></h3>
+				<h3><a href="">Theo dõi</a></h3>	
 			</div>
+			
 		</div>
 			<div>
-				<img src="<%=request.getContextPath() %>/templates/public/files/post/<%=post.getPreview_image() %>" class="imgElement">
+				<img src="<%=request.getContextPath() %>/templates/public/files/post/<%=post.getPreview_image()%>" class="imgElement">
 			</div>
+					<br>
+					<br>
 			<div class="content_post">
 
 				<%=post.getContent() %>
@@ -44,60 +50,41 @@
 					<button class="b1" type="button" name="button">Chia sẻ</button>
 				</div>
 				<hr>
+				<%ArrayList<Comment> listComment= (ArrayList<Comment>) request.getAttribute("listComment"); 
+				 for(int i=0;i<listComment.size();i++){ %>
 				<div class="comment-content">
 					<div>
 						<img src="img/apple.jpg" width="50px" height="50px">
 					</div>
 					<div class="comment">
-						<a href="#">Nguyễn Văn Tèo</a>
-						<p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
+						<a href="#"><%=listComment.get(i).getUserName()%></a>
+						<p><%=listComment.get(i).getContent()%></p>
 						<div class="a-comment">
 							<a href="#">Thích</a> <a href="#">Trả lời</a>
-
 						</div>
 					</div>
 				</div>
-				<div class="comment-content">
-					<div>
-						<img src="img/apple.jpg" width="50px" height="50px">
-					</div>
-					<div class="comment">
-						<a href="#">Nguyễn Văn Tèo</a>
-						<p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
-						<div class="a-comment">
-							<a href="#">Thích</a> <a href="#">Trả lời</a>
-
-						</div>
-					</div>
-				</div>
-				<div class="comment-content">
-					<div>
-						<img src="img/apple.jpg" width="50px" height="50px">
-					</div>
-					<div class="comment">
-						<a href="#">Nguyễn Văn Tèo</a>
-						<p>Bài viết rất hay. Cảm ơn bạn rất nhiều.</p>
-						<div class="a-comment">
-							<a href="#">Thích</a> <a href="#">Trả lời</a>
-
-						</div>
-					</div>
-				</div>
+				
+				<%} %>
+				<%if(listComment.size()!=0) {%>
 				<div class="xem-comment">
 					<a href="#">Xem tất cả các câu trả lời</a>
 				</div>
+				<%} %>
 				<br>
 				<br>
 				<br>
-				<div class="text-area">
+				 <%
+			        if (session.getAttribute("user") != null) {%>
+					<form class="text-area" action="<%%>" method="post">
 					<textarea name="content" id="editor">
             		</textarea>
-
 					<div class="button-comment">
-						<button class="b2" type="button" name="button">Trả lời</button>
+						<input class="b2" type="button" name="butto" type="submit" value="Trả lời">
 					</div>
-				</div>
-			
+					</form>
+
+				<%}%>
 		</div>
 	</div>
 </div>

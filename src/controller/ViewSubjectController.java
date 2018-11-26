@@ -35,6 +35,8 @@ public class ViewSubjectController extends HttpServlet {
 		int idSub = Integer.parseInt(request.getParameter("sub"));
 		request.setAttribute("idSub", idSub);
 		PostBO postBO = new PostBO();
+		SubjectBO subBO= new SubjectBO();
+		request.setAttribute("objSub", subBO.getSubject(idSub));
 		request.setAttribute("listsub", postBO.getPostSubject(idSub));
 		RequestDispatcher rd = request.getRequestDispatcher("/subject.jsp");
 		rd.forward(request, response);

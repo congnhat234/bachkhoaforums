@@ -69,7 +69,7 @@
     <servlet-name>CreatePostController</servlet-name>
     <url-pattern>/user/create-post</url-pattern>
   </servlet-mapping>
-     <servlet>
+  <servlet>
     <servlet-name>ViewSubjectController</servlet-name>
     <servlet-class>controller.ViewSubjectController</servlet-class>
   </servlet>

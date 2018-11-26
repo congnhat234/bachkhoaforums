@@ -1,27 +1,26 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import model.bo.CommentBO;
-import model.bo.PostBO;
+import model.bean.User;
 
 /**
- * Servlet implementation class ViewPost
+ * Servlet implementation class CommentController
  */
-
-public class ViewPostController extends HttpServlet {
+@WebServlet("/CommentController")
+public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewPostController() {
+    public CommentController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +28,9 @@ public class ViewPostController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int idPost = Integer.parseInt(request.getParameter("idp"));
-		PostBO postBO = new PostBO();
-		CommentBO commentBO =new CommentBO();
-		request.setAttribute("listComment", commentBO.getListComment(idPost));
-		request.setAttribute("listpost",postBO.getListPost());
-		request.setAttribute("post", postBO.getPost(idPost));
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/xembai.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession();
+		String contentComment = (String) request.getParameter("content");
+		User user = (User) session.getAttribute("user");
 	}
 
 	/**
