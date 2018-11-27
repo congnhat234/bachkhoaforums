@@ -25,5 +25,6 @@ public class Constants {
 		String ADMIN_SUBJECT = "/admin/subject";
 		String ADMIN_USER = "/admin/user";
 		String ADMIN_POST = "/admin/post";
+		String SHOW_POST_FOLLOW_USER = "/user/followpost";
 	}
 }

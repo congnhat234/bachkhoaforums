@@ -1,46 +1,15 @@
+<%@page import="model.bean.Post"%>
+<%@page import="model.bean.Subject"%>
+<%@page import="model.bo.PostBO" %>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="css/profile.css">
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="fontawesome/css/all.css">
-        <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-        <script src="js/jquery-3.3.1.min.js"></script>
-    </head>
-    <body>
-        <header class="header-search">
-
-            <div class="header-limiter">
-        
-            <h1><a href="#">BachKhoa<span>Forum</span></a></h1>
-        
-                <nav>
-                    <a href="index.html">Home</a>
-                </nav>
-                <ul>
-                    <li class="userProfile">
-                        <a id="btnProfile" href="#">
-                            <span class="avatar"><img src="img/t3.jpg" alt=""></span>
-                            <strong class="accountUsername">congnhat234</strong>
-                        </a>
-                    </li>
-                    <li><a id="btnSignin" href="#">Logout</a></li>                   
-                </ul>
-                <form method="get" action="#">
-                    <input type="search" placeholder="Search!" name="search">
-        
-                </form>
-        
-        
-            </div>
-        
-        </header>
+<%@include file="/templates/public/inc/header.jsp" %>
         <div class="container">
                 <div class="titleBar">
-                    <h2>Xem Bài Viết Mới</h2>
+                    <h2>Bài viết bạn đã theo dõi</h2>
                 </div>
                 <div class="parse">
                     <div class="parse-content">
@@ -91,62 +60,17 @@
                                             <th>Xem</th>
                                             <th>Bài viết cuối</th>
                                         </tr>
+                                        <% ArrayList<Post> listpostfl =(ArrayList<Post>) request.getAttribute("listpostfl");
+                                        for(int i=0; i<listpostfl.size();i++){
+                                        %>
                                         <tr>
-                                            <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                            <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
+                                            <td><img src="<%=listpostfl.get(i).getPreview_image()%>" width="30px"height="30px"></td>
+                                            <td class="td1"> <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpostfl.get(i).getId_post()%>"><%=listpostfl.get(i).getTitle() %></a></td>
                                             <td>1000</td>
-                                            <td>2000</td>
-                                            <td><a href="#">Nguyễn Văn Tèo</a></td>
+                                            <td><%=listpostfl.get(i).getView()%></td>
+                                            <td><a href="#"><%=listpostfl.get(i).getUsername()%></a></td>
                                         </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
-                                        <tr>
-                                                <td><img src="img/apple.jpg" width="30px"height="30px"></td>
-                                                <td class="td1"> <a href="#">Apple công bố sản phẩm mới</a></td>
-                                                <td>1000</td>
-                                                <td>2000</td>
-                                                <td><a href="#">Nguyễn Văn Tèo</a></td>
-                                        </tr>
+                                        <%}%>
                                     </table>
                                 </form>
 
@@ -157,31 +81,7 @@
             
         </div>
 
-        <footer class="footer-distributed">
-
-            <div class="footer-right">
-    
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-    
-            </div>
-    
-            <div class="footer-left">
-    
-                <p class="footer-links">
-                    <a href="#">Home</a>
-                    ·
-                    <a href="#">About</a>
-                    ·
-                    <a href="#">Contact</a>
-                </p>
-    
-                <p>BackKhoa Forum &copy; 2018</p>
-            </div>
-    
-        </footer>
+        <%@include file="/templates/public/inc/footer.jsp" %>
 
         <div id="profile" class="profile_wrap">
             <div class="profile">

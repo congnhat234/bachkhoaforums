@@ -26,5 +26,8 @@ public class PostBO {
 		return postDAO.getPostSubject(idSub);
 	
 	}
+	public ArrayList<Post> getListPostFolowUser(int idUser) {
+		return postDAO.getListPostFolowUser(idUser);
+	}
 
 }
