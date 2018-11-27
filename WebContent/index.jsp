@@ -18,7 +18,11 @@
         %>
         <%for(int i=0;i<listsub.size();i++) {%>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
+=======
+            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
+>>>>>>> 61b812cdb06589f6b09497e7d9f3168521ce6699
 =======
             <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
 >>>>>>> 61b812cdb06589f6b09497e7d9f3168521ce6699
