@@ -591,7 +591,6 @@ body {
 	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
 	margin-left: 20px;
 	margin-right: 20px;
-	margin-top: 25px;
 }
 
 .labeltopic {
@@ -639,6 +638,8 @@ body {
 	margin-right: 20px;
 	margin-top: 10px;
 	height: fit-content;
+	display: flex;
+	flex-flow: row;
 }
 
 .news {
@@ -655,11 +656,11 @@ body {
 	height: 30px;
 }
 
-.topic span {
+.topic .writer {
 	float: left;
 	font-size: 10px;
 	margin-left: 30px;
-	width: 60%;
+	width: 70%;
 }
 
 .amount dl {
@@ -672,7 +673,7 @@ body {
 }
 
 .amount dd {
-	width: 30px;
+	width: auto;
 	margin-left: 10px;
 }
 
