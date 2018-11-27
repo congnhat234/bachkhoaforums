@@ -18,7 +18,6 @@
         %>
         <%for(int i=0;i<listsub.size();i++) {%>
             <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
-
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
