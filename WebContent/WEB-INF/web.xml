@@ -109,6 +109,7 @@
   <servlet-mapping>
     <servlet-name>PostAdminController</servlet-name>
     <url-pattern>/admin/post</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ShowPostFollowUserController</servlet-name>
     <servlet-class>controller.ShowPostFollowUserController</servlet-class>
@@ -116,6 +117,7 @@
   <servlet-mapping>
     <servlet-name>ShowPostFollowUserController</servlet-name>
     <url-pattern>/user/followpost</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>UserPostController</servlet-name>
     <servlet-class>controller.UserPostController</servlet-class>
