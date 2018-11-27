@@ -70,9 +70,10 @@
                     </dl>
                 </div>
             </div>
-            
-            <div class="news">Mới nhất:<a  href="">Máy Mac mình giờ cứ mỗi lần </a><br>
+            <div>
+            <p class="news">Mới nhất:<a  href="">Máy Mac mình giờ cứ mỗi lần </a><br>
                 <a href="#topic"> akiii</a>,14:20, hôm nay
+            </p>
             </div>
         </div>
         <hr class="linetopic">

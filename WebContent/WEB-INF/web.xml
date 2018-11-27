@@ -77,4 +77,12 @@
     <servlet-name>ShowPostBySubjectController</servlet-name>
     <url-pattern>/subject</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowPostFollowUserController</servlet-name>
+    <servlet-class>controller.ShowPostFollowUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPostFollowUserController</servlet-name>
+    <url-pattern>/user/followpost</url-pattern>
+  </servlet-mapping>
 </web-app>

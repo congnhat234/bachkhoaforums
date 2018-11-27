@@ -193,4 +193,34 @@ public class PostDAO {
 		}
 		return listItems;
 	}
+
+	public ArrayList<Post> getListPostFolowUser(int idUser) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT * FROM forumdb.post INNER JOIN forumdb.follow ON  follow.id_user= ? AND post.id_post=follow.id_post;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
 }

@@ -23,7 +23,7 @@
                         <ul>
                             <li><a href="#">Thông báo của bạn</a></li>
                             <li><a href="#">Chủ đề theo dõi</a></li>
-                            <li><a href="#">Bài viết theo dõi</a></li>
+                            <li><a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài viết theo dõi</a></li>
                         </ul>
                     </li>
                     <li class="list-group-item">
