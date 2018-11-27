@@ -24,14 +24,13 @@
 			
 		%>
 		<div class="head_title_post">
-				<h4 class="title_post"><%=post.getTitle() %></h4>
-			<div class="date_post">
+			<h4 class="title_post"><%=post.getTitle() %></h4>
+		</div>
+		<div class="date_post">
 				<h3><%=post.getDate_create() %></h3>
 				<h3><%=post.getUsername() %></h3>
 				<h3>Lượt xem <%=post.getView() %></h3>
 				<h3><a href="">Theo dõi</a></h3>	
-			</div>
-			
 		</div>
 			<div>
 				<img src="<%=request.getContextPath() %>/templates/public/files/post/<%=post.getPreview_image()%>" class="imgElement">
