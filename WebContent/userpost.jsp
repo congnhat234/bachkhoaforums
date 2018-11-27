@@ -46,26 +46,25 @@
 
 	<h1 style="font-family: Arial, Helvetica, sans-serif;">Bài viết của bạn</h1>
 	<div class="social">
-		<a href="#" class=""><i style="font-size: 40px;"
-			class="fab fa-facebook-square "></i></a> <a href="#" class=""><i
-			style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
+		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
+		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
 	</div>
 
 	<%
 		if (listpost != null) {
 	%>
-	<div class="labeltopic">
-	<!-- <a href=""><%=user.getUsername() %></a><br>
+<!--<div class="labeltopic">
+	 <a href=""><%=user.getUsername() %></a><br>
 		<p>Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
-	 -->
-
 	</div>
+-->
 	<%
 		for (int i = 0; i < listpost.size(); i++) {
 	%>
 
 	<div class="topic">
-		<span> <i class="fas fa-comments fa-sm"
+		<div class="writer"> 
+			<i class="fas fa-comments fa-sm"
 			style="font-size: 40px;"></i> <a
 			href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"
 			style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
@@ -78,7 +77,7 @@
 					<dd><%=listpost.get(i).getDate_create()%></dd>
 				</dl>
 			</div>
-		</span>
+		</div>
 		<p class="news">
 			Mới nhất:<a href="">Máy Mac mình giờ cứ mỗi lần </a><br> <a
 				href="#topic"> akiii</a>,14:20, hôm nay

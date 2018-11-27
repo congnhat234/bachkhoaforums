@@ -571,7 +571,8 @@ body {
 
 /* begin content */
 .social {
-	margin-left: 10px;
+	display: flex;
+	margin: 10px;
 }
 
 .container {
@@ -666,7 +667,7 @@ body {
 
 .topic .writer {
 	float: left;
-	font-size: 10px;
+	font-size: 13px;
 	margin-left: 30px;
 	width: 70%;
 }

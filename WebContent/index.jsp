@@ -45,8 +45,12 @@
 
         <h1 style=" font-family: Arial, Helvetica, sans-serif;">  BachKhoa Forum</h1>
         <div class="social">
-            <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-square "></i></a>
-            <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
+            <div>
+                    <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-square "></i></a>
+                    <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
+            </div>
+
+           <div><a href="<%=request.getContextPath() %><%=Constants.URL.CREATE_POST%>"><i class="fas fa-pencil-alt fa-2x"></i></a></div> 
         </div>
     	
         <% if(listsub!=null)
