@@ -10,6 +10,8 @@
 	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/templates/public/css/index.css">
 	<link rel="stylesheet"
+		href="<%=request.getContextPath()%>/templates/admin/css/admin.css">
+	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/templates/public/css/profile.css">
 	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/templates/public/fontawesome/css/all.css">

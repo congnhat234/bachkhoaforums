@@ -181,6 +181,9 @@
                 <div class="element">
                     <ul>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.PROFILE%>">Thông tin cá nhân</a></li>
+                        <%if(userProfile.getId_role() == 1) { %>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.ADMIN_HOME%>">Trang quản trị</a></li>
+                        <%} %>
                         <li><a href="#">Tùy chọn</a></li>
                         <li><a href="#">Mật khẩu</a></li>
                     </ul>

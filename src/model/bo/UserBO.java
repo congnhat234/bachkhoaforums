@@ -1,5 +1,7 @@
 package model.bo;
 
+import java.util.ArrayList;
+
 import model.bean.User;
 import model.dao.UserDAO;
 
@@ -16,5 +18,9 @@ public class UserBO {
 	}
 	public boolean delete(int idUser) {
 		return userDAO.delete(idUser);
+	}
+	public ArrayList<User> getListUsers() {
+		// TODO Auto-generated method stub
+		return userDAO.getListUsers();
 	}
 }

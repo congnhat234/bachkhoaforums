@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import libraries.ConnectDBLibrary;
+import model.bean.Subject;
 import model.bean.User;
 
 public class UserDAO {
@@ -168,5 +170,34 @@ public class UserDAO {
 			}
 		}
 		return false;
+	}
+
+	public ArrayList<User> getListUsers() {
+		ArrayList<User> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from user;";
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				User obj = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
+						rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
+						rs.getString("birthday"),rs.getString("date_join"),rs.getString("avatar"),rs.getInt("rate"),rs.getInt("enabled"));
+				listItems.add(obj);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
 	}
 }

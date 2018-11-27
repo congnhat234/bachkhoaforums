@@ -77,4 +77,37 @@
     <servlet-name>ShowPostBySubjectController</servlet-name>
     <url-pattern>/subject</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>IndexAdminController</servlet-name>
+    <servlet-class>controller.IndexAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexAdminController</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SubjectAdminController</servlet-name>
+    <servlet-class>controller.SubjectAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubjectAdminController</servlet-name>
+    <url-pattern>/admin/subject</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UsersAdminController</servlet-name>
+    <servlet-class>controller.UsersAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsersAdminController</servlet-name>
+    <url-pattern>/admin/user</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PostAdminController</servlet-name>
+    <servlet-class>controller.PostAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostAdminController</servlet-name>
+    <url-pattern>/admin/post</url-pattern>
+  </servlet-mapping>
 </web-app>
