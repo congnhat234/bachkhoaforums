@@ -16,14 +16,13 @@ import model.bo.SubjectBO;
 /**
  * Servlet implementation class ViewSubjectController
  */
-@WebServlet("/ViewSubjectController")
-public class ViewSubjectController extends HttpServlet {
+public class ShowPostBySubjectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewSubjectController() {
+    public ShowPostBySubjectController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,8 +36,8 @@ public class ViewSubjectController extends HttpServlet {
 		PostBO postBO = new PostBO();
 		SubjectBO subBO= new SubjectBO();
 		request.setAttribute("objSub", subBO.getSubject(idSub));
-		request.setAttribute("listsub", postBO.getPostSubject(idSub));
-		RequestDispatcher rd = request.getRequestDispatcher("/subject.jsp");
+		request.setAttribute("listpost", postBO.getPostSubject(idSub));
+		RequestDispatcher rd = request.getRequestDispatcher("/postbysubject.jsp");
 		rd.forward(request, response);
 	}
 

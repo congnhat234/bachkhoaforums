@@ -166,10 +166,11 @@ public class PostDAO {
 	public ArrayList<Post> getPostSubject(int idSub) {		
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where id_subject=1;";
+		String sql = "SELECT * FROM post WHERE id_subject = ?;";
 		try {
-			st=connection.createStatement();
-			rs=st.executeQuery(sql);
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			rs = pst.executeQuery();
 			while(rs.next()){
 			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
 					rs.getString("username"),rs.getString("date_create"),
@@ -183,7 +184,7 @@ public class PostDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				st.close();
+				pst.close();
 				connection.close();
 				rs.close();
 			} catch (SQLException e) {
