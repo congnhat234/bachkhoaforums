@@ -35,7 +35,6 @@ window.onclick = function (event) {
     }
 }
 
-
 $(function () {
 
     var links = $('.sidebar-links > a');

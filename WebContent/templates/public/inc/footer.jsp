@@ -197,5 +197,4 @@
         </div>
     </div>
     <% } %>
-
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>

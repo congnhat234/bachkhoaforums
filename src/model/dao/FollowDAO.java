@@ -22,7 +22,7 @@ public class FollowDAO {
 	
 	public boolean add(Follow follow) {
 		connection = connectDBLibrary.getConnectMySQL();		
-		String query = "INSERT INTO follow(id_post, id_post, notify) VALUES (?, ?, ?);";
+		String query = "INSERT INTO follow(id_post, id_user, notify) VALUES (?, ?, ?);";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, follow.getId_post());
