@@ -26,5 +26,8 @@ public class PostBO {
 		return postDAO.getPostSubject(idSub);
 	
 	}
+	public ArrayList<Post> getListPostByUser(String username){
+		return postDAO.getListPostByUser(username);
+	}
 
 }

@@ -193,4 +193,40 @@ public class PostDAO {
 		}
 		return listItems;
 	}
+
+	public ArrayList<Post> getListPostByUser(String username) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where username = ?;";
+		pst=null;
+		rs=null;
+
+		try {
+			pst=connection.prepareStatement(sql);
+			pst.setString(1, username);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	
+	
 }

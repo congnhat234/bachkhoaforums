@@ -333,6 +333,7 @@ body {
 .profile {
 	width: 280px;
 	height: 250px;
+	border-radius: 5px;
 	border: teal solid 1px;
 	border-top: teal solid 4px;
 	background-color: #fff;
@@ -357,6 +358,7 @@ body {
 .profile .profile_header .image img {
 	width: 100px;
 	height: 100px;
+	border-radius: 50%;
 }
 
 .profile .profile_header .infor .username {
@@ -387,12 +389,18 @@ body {
 }
 
 .profile .profile_content .element li a {
+	font-size: 13px;
 	color: teal;
 	text-decoration: none;
 }
 
 .profile .profile_content .element li a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+	color: greenyellow;
+	font-weight: bold;
+}
+.profile .profile_content .element li a:visited{
+	color: #0056a8;
 }
 
 /* Add Animation */

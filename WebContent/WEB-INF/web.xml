@@ -77,4 +77,12 @@
     <servlet-name>ShowPostBySubjectController</servlet-name>
     <url-pattern>/subject</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UserPostController</servlet-name>
+    <servlet-class>controller.UserPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserPostController</servlet-name>
+    <url-pattern>/user/post</url-pattern>
+  </servlet-mapping>
 </web-app>
