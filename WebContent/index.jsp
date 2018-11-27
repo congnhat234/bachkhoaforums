@@ -17,15 +17,8 @@
         ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
         %>
         <%for(int i=0;i<listsub.size();i++) {%>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
-=======
             <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
->>>>>>> 61b812cdb06589f6b09497e7d9f3168521ce6699
-=======
-            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
->>>>>>> 61b812cdb06589f6b09497e7d9f3168521ce6699
+
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
@@ -67,7 +60,7 @@
 			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  %>
 
         <div class="topic">
-            <div class="name_topic">
+            <div class="writer">
                 <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
                 <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
                 <br>
