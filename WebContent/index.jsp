@@ -17,7 +17,7 @@
         ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
         %>
         <%for(int i=0;i<listsub.size();i++) {%>
-            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=listpost.get(i).getId_subject()%>">
+            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.VIEW_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
@@ -59,24 +59,26 @@
 			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  %>
 
         <div class="topic">
-            <span>
+            <div class="name_topic">
                 <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
                 <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
                 <br>
                 <div class="amount">
                   <dl>
-                      <dt><a  id="author" href="javascript:void(0)" ><%=listpost.get(i).getUsername() %><a> </dt>
+                      <dt><a  id="author" href="javascript:void(0)" ><%=listpost.get(i).getUsername() %></a> </dt>
                       <dd><%=listpost.get(i).getDate_create()%></dd>
                     </dl>
                 </div>
-            </span>
-            <p class="news">Mới nhất:<a  href="">Máy Mac mình giờ cứ mỗi lần </a><br>
+            </div>
+            
+            <div class="news">Mới nhất:<a  href="">Máy Mac mình giờ cứ mỗi lần </a><br>
                 <a href="#topic"> akiii</a>,14:20, hôm nay
-            </p>
+            </div>
         </div>
         <hr class="linetopic">
         <%}} %>
-		<%} %>	 
+		<%} %>	
+		</div> 
 <%@include file="/templates/public/inc/footer.jsp" %>
 </body>
 
