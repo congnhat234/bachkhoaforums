@@ -28,6 +28,7 @@ public class PostBO {
 	}
 	public ArrayList<Post> getListPostFolowUser(int idUser) {
 		return postDAO.getListPostFolowUser(idUser);
+	}
 	public ArrayList<Post> getListPostByUser(String username){
 		return postDAO.getListPostByUser(username);
 	}
