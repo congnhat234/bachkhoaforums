@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import libraries.ConnectDBLibrary;
+import model.bean.Post;
 import model.bean.Subject;
 
 public class SubjectDAO {
@@ -34,7 +35,6 @@ public class SubjectDAO {
 				listItems.add(obj);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -42,12 +42,12 @@ public class SubjectDAO {
 				connection.close();
 				rs.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return listItems;
 	}
+	
 	public Subject getSubject(int idSub){
 		Subject obj=null;
 		connection = connectDBLibrary.getConnectMySQL();
@@ -61,7 +61,6 @@ public class SubjectDAO {
 				return obj;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -69,10 +68,75 @@ public class SubjectDAO {
 				connection.close();
 				rs.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return obj;
+	}
+
+
+	public boolean addSubject(Subject Sub) {
+		connection = connectDBLibrary.getConnectMySQL();		
+		String query = "INSERT INTO subject(name) VALUES (?);";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setString(1, Sub.getName());
+			int r = pst.executeUpdate();
+			return (r == 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean edit(Subject Sub) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE subject SET name = ? WHERE id_subject = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setString(1, Sub.getName());
+			pst.setInt(2, Sub.getId_subject());
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean delete(int idSub) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM subject WHERE id_subject = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 }

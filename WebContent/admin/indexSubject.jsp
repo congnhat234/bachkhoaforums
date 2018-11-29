@@ -26,7 +26,7 @@
 	<div class="bottom-spacing">
 		<!-- Button -->
 		<div class="float-left">
-			<a href="<%=request.getContextPath()%>/admin/show-addCat"
+			<a href="<%=request.getContextPath()%><%=Constants.URL.ADD_SUBJECT%>"
 				class="button"> <span>Thêm danh mục </span>
 			</a>
 		</div>
@@ -65,20 +65,20 @@
 						</thead>
 						<tbody>
 							<%
-								ArrayList<Subject> listCat = (ArrayList<Subject>) request.getAttribute("listCat");
-								if (listCat.size() > 0) {
-									for (Subject objCat : listCat) {
+								ArrayList<Subject> listSub = (ArrayList<Subject>) request.getAttribute("listCat");
+								if (listSub.size() > 0) {
+									for (Subject objSub : listSub) {
 							%>
 							<tr>
-								<td class="align-center"><%=objCat.getId_subject()%></td>
-								<td><a href=""><%=objCat.getName()%></a></td>
+								<td class="align-center"><%=objSub.getId_subject()%></td>
+								<td><a href=""><%=objSub.getName()%></a></td>
 								<td align="center"><a
-									href="<%=request.getContextPath()%>/admin/show-editCat?cid=<%=objCat.getId_subject()%>">Sửa
+									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_SUBJECT %>?cid=<%=objSub.getId_subject()%>">Sửa
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
 										alt="edit" />
 								</a> <a onclick="return confirm('Bạn có chắc muốn xóa không?')"
-									href="<%=request.getContextPath()%>/admin/delCat?cid=<%=objCat.getId_subject()%>">Xóa
+									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_SUBJECT %>?del=<%=objSub.getId_subject()%>">Xóa
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />

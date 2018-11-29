@@ -6,15 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,22 +20,22 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import libraries.FilenameLibrary;
+import model.bean.Post;
 import model.bean.User;
-import model.bo.UserBO;
+import model.bo.PostBO;
+import model.bo.SubjectBO;
 import utils.Constants;
-import utils.CryptoUtils;
 
 /**
- * Servlet implementation class ProfileController
+ * Servlet implementation class EditPostController
  */
-@MultipartConfig
-public class ProfileController extends HttpServlet {
+public class EditPostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProfileController() {
+    public EditPostController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,7 +44,12 @@ public class ProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+		int idPost=Integer.parseInt(request.getParameter("nid"));
+		PostBO postBO= new PostBO();
+		SubjectBO subBO= new SubjectBO();
+		request.setAttribute("post", postBO.getPost(idPost));
+		request.setAttribute("listSubject", subBO.getListSubject());
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/editPost.jsp");
 		rd.forward(request, response);
 	}
 
@@ -57,15 +59,16 @@ public class ProfileController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		if(user.getId_role()!=1) {
 		
-		String fullname = (String) request.getParameter("fullname");
-		String phone = (String) request.getParameter("phone");
-		String email = (String) request.getParameter("email");
-		int gender = Integer.parseInt((String) request.getParameter("gender"));
-		String birthday = (String) request.getParameter("birthday");
-		String address = (String) request.getParameter("address");
-		String city = (String) request.getParameter("city");
-		String avatar = "";
+		int idSubject = Integer.parseInt(request.getParameter("id_subject"));
+		String title = new String(request.getParameter("title").getBytes("ISO-8859-1"), "UTF-8");
+		String previewContent = new String(request.getParameter("preview_content").getBytes("ISO-8859-1"), "UTF-8");
+		String content = new String(request.getParameter("content").getBytes("ISO-8859-1"), "UTF-8");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+	    Date datef = new Date();  
+	    String date_create = formatter.format(datef);
+		String preview_image = "";
 		
 		String rootPath = System.getProperty("catalina.home");
 		String relativePath = request.getServletContext().getInitParameter("tempfile.dir");
@@ -78,14 +81,18 @@ public class ProfileController extends HttpServlet {
 		
 		//real path
 		response.setContentType("text/html;charset=UTF-8");
-		final String realPath = request.getServletContext().getRealPath("/templates/public/files");
+		final String realPath = request.getServletContext().getRealPath("/templates/public/files/post");
 		System.out.println(realPath);
 		File dirUrl = new File(realPath);
 		if (!dirUrl.exists()){
-			dirUrl.mkdir();
+			try {
+				dirUrl.mkdir();
+			} catch(Exception e) {
+				System.err.println(e);
+			}
 		}
 		//==
-		final Part filePart = request.getPart("avatar");
+		final Part filePart = request.getPart("preview_image");
 		String fileName = FilenameLibrary.getFileName(filePart);
 		if(!"".equals(fileName)){
 			Date date = new Date();
@@ -100,7 +107,7 @@ public class ProfileController extends HttpServlet {
 			fileName = time + "." + extension;
 			OutputStream out = null;
 			InputStream filecontent = null;
-			avatar = fileName;
+			preview_image = fileName;
 			try {
 				System.out.println("Absolute Path at server= " + file.getAbsolutePath());
 				out = new FileOutputStream(new File(realPath + File.separator + fileName));
@@ -121,20 +128,13 @@ public class ProfileController extends HttpServlet {
 				}
 			}
 		}
-		User userEdit = new User(0,3,user.getUsername(),user.getPassword(),user.getToken(),fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
-		UserBO userBO = new UserBO();
-		if(userBO.edit(userEdit)) {
-			String picture = user.getAvatar();
-			if(!"".equals(picture)){
-				String urlDelFile = realPath + File.separator + picture;
-				File delFile = new File(urlDelFile);
-				delFile.delete();
-			}
-			User userEdited = userBO.findByToken(user.getToken());
-			session.setAttribute("user", userEdited);
-			response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE + "?msg=1");
+		Post post = new Post(0, idSubject, user.getUsername(), date_create, title, preview_image, previewContent, content, 0, 0);
+		PostBO postBO = new PostBO();
+		if(postBO.addPost(post)) {
+			response.sendRedirect(request.getContextPath() + Constants.URL.HOME);
 		} else {
-			response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE + "?msg=0");
+			response.sendRedirect(request.getContextPath() + Constants.URL.CREATE_POST + "?msg=0");
+		}
 		}
 	}
 

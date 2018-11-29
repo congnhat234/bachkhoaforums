@@ -25,6 +25,14 @@ public class Constants {
 		String ADMIN_SUBJECT = "/admin/subject";
 		String ADMIN_USER = "/admin/user";
 		String ADMIN_POST = "/admin/post";
+		String ADD_SUBJECT = "/admin/subjectadd";
+		String DELETE_SUBJECT = "/admin/subjectdelete";
+		String EDIT_SUBJECT = "/admin/subjectedit";
+		String DELETE_USER = "/admin/userdelete";
+		String EDIT_USER = "/admin/useredit";
+		String ADD_USER = "/admin/useradd";
+		String EDIT_POST = "/user/postedit";
+		String DELETE_POST = "/user/postdelete";
 		String SHOW_POST_FOLLOW_USER = "/user/followpost";
 		String SHOW_POST_BY_USER = "/user/post";
 	}

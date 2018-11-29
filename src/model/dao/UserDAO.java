@@ -158,14 +158,12 @@ public class UserDAO {
 			result = pst.executeUpdate();
 			if(result > 0) return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
 				pst.close();
 				connection.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -199,5 +197,34 @@ public class UserDAO {
 			}
 		}
 		return listItems;
+	}
+
+	public User findByIDUser(int idUser) {
+			connection = connectDBLibrary.getConnectMySQL();
+			User objUser = null;
+			String query = "SELECT * FROM user WHERE id_user = ?;";
+			try {
+				pst = connection.prepareStatement(query);
+				pst.setInt(1, idUser);
+				rs = pst.executeQuery();
+				while(rs.next()) {				
+					objUser = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
+							rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
+							rs.getString("birthday"),rs.getString("date_join"),rs.getString("avatar"),rs.getInt("rate"),rs.getInt("enabled"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					connection.close();
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return objUser;
+		
 	}
 }

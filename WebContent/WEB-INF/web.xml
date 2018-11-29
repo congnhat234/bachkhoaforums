@@ -77,7 +77,6 @@
     <servlet-name>ShowPostBySubjectController</servlet-name>
     <url-pattern>/subject</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>IndexAdminController</servlet-name>
     <servlet-class>controller.IndexAdminController</servlet-class>
@@ -111,6 +110,22 @@
     <url-pattern>/admin/post</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>EditPostController</servlet-name>
+    <servlet-class>controller.EditPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditPostController</servlet-name>
+    <url-pattern>/user/postedit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeletePostController</servlet-name>
+    <servlet-class>controller.DeletePostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePostController</servlet-name>
+    <url-pattern>/user/postdelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ShowPostFollowUserController</servlet-name>
     <servlet-class>controller.ShowPostFollowUserController</servlet-class>
   </servlet>
@@ -125,5 +140,53 @@
   <servlet-mapping>
     <servlet-name>UserPostController</servlet-name>
     <url-pattern>/user/post</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CreateSubjectController</servlet-name>
+    <servlet-class>controller.CreateSubjectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateSubjectController</servlet-name>
+    <url-pattern>/admin/subjectadd</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EditSubjectController</servlet-name>
+    <servlet-class>controller.EditSubjectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditSubjectController</servlet-name>
+    <url-pattern>/admin/subjectedit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteSubjectController</servlet-name>
+    <servlet-class>controller.DeleteSubjectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteSubjectController</servlet-name>
+    <url-pattern>/admin/subjectdelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteUserController</servlet-name>
+    <servlet-class>controller.DeleteUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserController</servlet-name>
+    <url-pattern>/admin/userdelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AddUserController</servlet-name>
+    <servlet-class>controller.AddUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUserController</servlet-name>
+    <url-pattern>/admin/useradd</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>EditUserController</servlet-name>
+    <servlet-class>controller.EditUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditUserController</servlet-name>
+    <url-pattern>/admin/useredit</url-pattern>
   </servlet-mapping>
 </web-app>

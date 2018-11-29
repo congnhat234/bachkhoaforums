@@ -1,3 +1,4 @@
+<%@page import="model.bean.Subject"%>
 <%@page import="model.bean.Post"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -72,18 +73,18 @@ if(request.getParameter("msg")!=null){
 				<tbody>
 				<%
 					if(request.getAttribute("listPost")!=null){
-					ArrayList<Post> listPost = (ArrayList<Post>)request.getAttribute("listPost");
+					ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
 					if(listPost.size()>0){
 					for(Post objNews : listPost){
 				%>
 					<tr>
 						<td class="align-center"><%=objNews.getId_post() %></td>
-						<td><a href=""><%=objNews.getTitle() %></a></td>
+						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objNews.getId_post()%>"><%=objNews.getTitle() %></a></td>
 						<td><%=objNews.getId_subject() %></td>
 						<td align="center"><img src="<%=request.getContextPath() %>/templates/public/files/post/<%=objNews.getPreview_image() %>" class="hoa" /></td>
 						<td align="center">
-							<a href="<%=request.getContextPath()%>/admin/show-editNews?nid=<%=objNews.getId_post()%>">Sửa <img src="<%=request.getContextPath() %>/templates/admin/images/pencil.gif" alt="edit" /></a>
-							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%>/admin/delNews?nid=<%=objNews.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
+							<a href="<%=request.getContextPath()%><%=Constants.URL.EDIT_POST%>?nid=<%=objNews.getId_post()%>">Sửa <img src="<%=request.getContextPath() %>/templates/admin/images/pencil.gif" alt="edit" /></a>
+							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objNews.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
 						</td>
 					</tr>
 				  <%}}} %> 

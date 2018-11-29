@@ -10,6 +10,9 @@ public class UserBO {
 	public User findByToken(String token) {
 		return userDAO.findByToken(token);
 	}
+	public User findByIDUser(int idUser) {
+		return userDAO.findByIDUser(idUser);
+	}
 	public boolean add(User user) {
 		return userDAO.add(user);
 	}
@@ -20,7 +23,8 @@ public class UserBO {
 		return userDAO.delete(idUser);
 	}
 	public ArrayList<User> getListUsers() {
-		// TODO Auto-generated method stub
+
 		return userDAO.getListUsers();
 	}
+
 }
