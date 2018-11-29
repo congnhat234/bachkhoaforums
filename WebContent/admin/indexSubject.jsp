@@ -60,7 +60,8 @@
 							<tr>
 								<th style="width: 4%; text-align: center;">ID</th>
 								<th style="width: 20%">Danh mục</th>
-								<th style="width: 11%; text-align: center;">Chức năng</th>
+								<th style="width: 5%; text-align: center;">Sửa</th>
+								<th style="width: 5%; text-align: center;">Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -73,12 +74,14 @@
 								<td class="align-center"><%=objCat.getId_subject()%></td>
 								<td><a href=""><%=objCat.getName()%></a></td>
 								<td align="center"><a
-									href="<%=request.getContextPath()%>/admin/show-editCat?cid=<%=objCat.getId_subject()%>">Sửa
+									href="<%=request.getContextPath()%>/admin/show-editCat?cid=<%=objCat.getId_subject()%>">
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
 										alt="edit" />
-								</a> <a onclick="return confirm('Bạn có chắc muốn xóa không?')"
-									href="<%=request.getContextPath()%>/admin/delCat?cid=<%=objCat.getId_subject()%>">Xóa
+								</a> </td>
+								<td align="center">
+								<a onclick="return confirm('Bạn có chắc muốn xóa không?')"
+									href="<%=request.getContextPath()%>/admin/delCat?cid=<%=objCat.getId_subject()%>">
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />
