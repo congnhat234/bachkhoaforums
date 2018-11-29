@@ -49,7 +49,6 @@ public class CreatePostController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/vietbai.jsp");
 		rd.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

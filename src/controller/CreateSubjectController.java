@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,19 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bo.PostBO;
+import model.bean.Subject;
 import model.bo.SubjectBO;
+import utils.Constants;
 
 /**
- * Servlet implementation class IndexNewsAdminController
+ * Servlet implementation class CreateSubjectController
  */
-public class PostAdminController extends HttpServlet {
+public class CreateSubjectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostAdminController() {
+    public CreateSubjectController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,33 +29,21 @@ public class PostAdminController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("/admin/addSub.jsp");
+			rd.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-//		NewsDAO newsDAO = new NewsDAO();
-//		int countNews = newsDAO.countItems();
-//		int row_count = 5;
-//		int sumPage = (int)Math.ceil((float)countNews/row_count);
-//		request.setAttribute("sumPage", sumPage);
-//		int page = 1;
-//		if(request.getParameter("current_page")!=null){
-//			page = Integer.parseInt(request.getParameter("current_page"));
-//		}
-//		request.setAttribute("page", page);
-//		int offset = (page-1)*row_count;
-//		
-		PostBO postBO = new PostBO();
-		request.setAttribute("listPost", postBO.getListPost());
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexPost.jsp");
-		rd.forward(request, response);
+		String newSub= (String) request.getParameter("newSub") ;
+		SubjectBO subBO= new SubjectBO();
+		Subject sub = new Subject(0,newSub);
+		if( !"".equals(newSub)&& subBO.addSubject(sub)){
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);
+		}
 	}
 
 }

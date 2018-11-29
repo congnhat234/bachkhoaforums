@@ -13,5 +13,14 @@ public class SubjectBO {
 	public Subject getSubject(int idSub) {
 		return subjectDAO.getSubject(idSub);
 	}
+	public boolean addSubject(Subject sub) {
+		return subjectDAO.addSubject(sub);
+	}
+	public boolean editSubject(Subject sub) {
+		return subjectDAO.edit(sub);
+	}
+	public boolean deleteSubject(int idSub) {
+		return subjectDAO.delete(idSub);
+	}
 
 }

@@ -1,7 +1,6 @@
 body {
   margin: 0;
 }
-
 .display {
   display: none;
 }
@@ -569,7 +568,9 @@ body {
 }
 
 .social {
-  margin-left: 880px;
+
+  	display: flex;
+	margin: 10px;
 }
 
 .container {

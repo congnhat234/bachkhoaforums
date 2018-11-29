@@ -29,7 +29,7 @@
 	<div class="bottom-spacing">
 		<!-- Button -->
 		<div class="float-left">
-			<a href="<%=request.getContextPath()%>/admin/show-addUser"
+			<a href="<%=request.getContextPath()%><%=Constants.URL.ADD_USER%>"
 				class="button"> <span>Thêm người dùng </span>
 			</a>
 		</div>
@@ -89,7 +89,7 @@
 											User userInfo = (User) session.getAttribute("user");
 											if (userInfo.getId_role() == 1 || userInfo.getId_role() == 2) {
 									%> <a
-									href="<%=request.getContextPath()%>/admin/show-editUser?uid=<%=objUser.getId_user()%>">Sửa
+									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER %>?uid=<%=objUser.getId_user()%>">Sửa
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
 										alt="edit" />
@@ -99,7 +99,13 @@
 
  								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
  								<a onclick="return confirm('Bạn có chắc muốn xóa không?')"
-									href="<%=request.getContextPath()%>/admin/delUser?uid=<%=objUser.getId_user()%>">Xóa
+									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_USER%>?uid=<%=objUser.getId_user()%>">Xóa
+										<img
+										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
+										width="16" height="16" alt="delete" />
+								</a> 
+								<a onclick="return confirm('Bạn có chắc muốn vô hiệu không?')"
+									href="<%=request.getContextPath()%>?uid=<%=objUser.getId_user()%>">Khóa
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />

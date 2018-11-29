@@ -30,7 +30,7 @@
 				<h3><%=post.getDate_create() %></h3>
 				<h3><%=post.getUsername() %></h3>
 				<h3>Lượt xem <%=post.getView() %></h3>
-				<h3><button id="btnFollow" type="button" ">Theo dõi</button></h3>	
+				<h3><button id="btnFollow" type="button">Theo dõi</button></h3>	
 			</div>
 			<span id="result"></span>
 		</div>
@@ -84,11 +84,9 @@
 						<input class="b2" type="button" name="butto" type="submit" value="Trả lời">
 					</div>
 					</form>
-
 				<%}%>
 		</div>
 	</div>
-</div>
 
 <%@include file="/templates/public/inc/footer.jsp"%>
 
