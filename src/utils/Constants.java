@@ -35,5 +35,9 @@ public class Constants {
 		String DELETE_POST = "/user/postdelete";
 		String SHOW_POST_FOLLOW_USER = "/user/followpost";
 		String SHOW_POST_BY_USER = "/user/post";
+		
+		String COMMENT_POST = "/user/post/comment";
+		String LIKE_COMMENT_POST = "/user/post/comment/like";
+		String DELETE_COMMENT_POST = "/user/post/comment/delete";
 	}
 }

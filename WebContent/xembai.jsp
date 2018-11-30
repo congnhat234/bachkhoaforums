@@ -23,8 +23,9 @@
 				Post post = (Post) request.getAttribute("post");
 			
 		%>
+		<div style="display:none;" class="hint" id="hintId"><%=post.getId_post() %></div>
 		<div class="head_title_post">
-			<h4 class="title_post"><%=post.getTitle() %></h4>
+			<h4 idpost="<%=post.getId_post() %>" class="title_post"><%=post.getTitle() %></h4>
 		</div>
 		<div class="date_post">
 				<h3><%=post.getDate_create() %></h3>
@@ -51,22 +52,36 @@
 					<button class="b1" type="button" name="button">Chia sẻ</button>
 				</div>
 				<hr>
+				<div class="comment-container">
 				<%ArrayList<Comment> listComment= (ArrayList<Comment>) request.getAttribute("listComment"); 
+				 String auth = "";
 				 for(int i=0;i<listComment.size();i++){ %>
+				
 				<div class="comment-content">
 					<div>
-						<img src="img/apple.jpg" width="50px" height="50px">
+						<img src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>" width="50px" height="50px">
 					</div>
 					<div class="comment">
 						<a href="#"><%=listComment.get(i).getUserName()%></a>
-						<p><%=listComment.get(i).getContent()%></p>
+						<div><%=listComment.get(i).getContent()%></div>
+						<% if (session.getAttribute("user") != null) {
+							User user = (User) session.getAttribute("user");
+							if (user.getId_role() == 1 || user.getId_role() == 2 || user.getId_user() == listComment.get(i).getId_user()) {
+								auth = "true";
+							} else {
+								auth = "false";
+							}
+						%>
 						<div class="a-comment">
-							<a href="#">Thích</a> <a href="#">Trả lời</a>
+							<a idcomment=<%=listComment.get(i).getId_comment()%> class="likeComment" href="javascript:void(0)">Thích</a> 
+							<a auth=<%=auth %> idcomment=<%=listComment.get(i).getId_comment()%> class="deleteComment" href="javascript:void(0)">Xóa</a>						
 						</div>
+						<%} %>
 					</div>
 				</div>
 				
 				<%} %>
+				</div>
 				<%if(listComment.size()!=0) {%>
 				<div class="xem-comment">
 					<a href="#">Xem tất cả các câu trả lời</a>
@@ -77,11 +92,11 @@
 				<br>
 				 <%
 			        if (session.getAttribute("user") != null) {%>
-					<form class="text-area" action="<%%>" method="post">
+					<form class="text-area" action="javascript:void(0)" method="post">
 					<textarea name="content" id="editor">
             		</textarea>
 					<div class="button-comment">
-						<input class="b2" type="button" name="butto" type="submit" value="Trả lời">
+						<input id="sendComment" class="b2" type="button" name="button" type="submit" value="Trả lời">
 					</div>
 					</form>
 				<%}%>
@@ -89,6 +104,160 @@
 	</div>
 
 <%@include file="/templates/public/inc/footer.jsp"%>
+
+<script type="text/javascript">
+	$("#sendComment").on('click', function (){
+		
+		var cmt = theEditor.getData(); 
+		var idPost = $(".title_post").attr("idpost");
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.COMMENT_POST%>',
+			type: 'POST',
+			cache: false,
+			data: {
+					acmt: cmt,
+					aid: idPost,
+					},
+			success: function(responseJson){
+				if(responseJson!=null){
+					var commentDiv = $(".comment-container");
+					commentDiv.text("");
+					$.each(responseJson, function(key, value){
+						
+						var div = '<div class="comment-content">'
+									+'<div>'
+										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
+									+'</div>'
+									+'<div class="comment">'
+										+'<a href="#">'+ value["username"] +'</a>'
+										+'<div>'+ value["content"] +'</div>'
+										+'<div class="a-comment">'
+											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
+											+'<a auth=<%=auth %> idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
+										+'</div>'
+									+'</div>'
+								+'</div>';
+						commentDiv.append(div);
+						console.log(div);
+					})
+				}
+				theEditor.setData("");
+			},
+			error: function (){
+				alert("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+	});
+	
+	function Confirm(title, msg, $true, $false, $thisDom) {
+        var $content =  "<div class='dialog-ovelay'>" +
+                        "<div class='dialog'><header>" +
+                         " <h3> " + title + " </h3> " +
+                         "<i class='fa fa-close'></i>" +
+                     "</header>" +
+                     "<div class='dialog-msg'>" +
+                         " <p> " + msg + " </p> " +
+                     "</div>" +
+                     "<footer>" +
+                         "<div class='controls'>" +
+                             " <button class='button-danger doAction'>" + $true + "</button> " +
+                             " <button class='button-default cancelAction'>" + $false + "</button> " +
+                         "</div>" +
+                     "</footer>" +
+                  "</div>" +
+                "</div>";
+      $('body').prepend($content);
+      $('.doAction').click(function () {
+        deleteComment($thisDom); //function delete comment
+        $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+          $(this).remove();
+        });
+      });
+	$('.cancelAction, .fa-close').click(function () {
+	        $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+	          $(this).remove();
+	        });
+	      });
+	      
+	   }
+	function notAuth() {
+		var $content =  "<div class='dialog-ovelay'>" +
+					        "<div class='dialog'><header>" +
+					         " <h3> Xóa bình luận </h3> " +
+					         "<i class='fa fa-close'></i>" +
+					     "</header>" +
+					     "<div class='dialog-msg'>" +
+					         " <p> Bạn không có quyền xóa </p> " +
+					     "</div>" +
+					     "<footer>" +
+					         "<div class='controls'>" +					                             
+					             " <button class='button-default cancelAction'>OK</button> " +
+					         "</div>" +
+					     "</footer>" +
+					  "</div>" +
+					"</div>";
+		$('body').prepend($content);
+		$('.cancelAction, .fa-close').click(function () {
+		$(this).parents('.dialog-ovelay').fadeOut(500, function () {
+		$(this).remove();
+		});
+		});
+	}
+	jQuery('body').on('click', '.deleteComment', function (){
+		var auth = $('.deleteComment').attr('auth');
+		if(auth == "true") {
+			Confirm('Xóa bình luận', 'Bạn có chắc muốn xóa?', 'Xóa', 'Hủy', $(this));
+		} else {
+			notAuth();
+		}
+		
+		
+	});
+	function deleteComment($thisDom) {
+		var idPost = $(".title_post").attr("idpost");
+		var idComment = $thisDom.attr("idcomment");
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.DELETE_COMMENT_POST%>',
+			type: 'POST',
+			cache: false,
+			data: {
+					aidPost: idPost,
+					aidComment: idComment,
+					},
+			success: function(responseJson){
+				if(typeof responseJson !== 'string'){
+					var commentDiv = $(".comment-container");
+					commentDiv.text("");
+					$.each(responseJson, function(key, value){
+						
+						var div = '<div class="comment-content">'
+									+'<div>'
+										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
+									+'</div>'
+									+'<div class="comment">'
+										+'<a href="#">'+ value["username"] +'</a>'
+										+'<div>'+ value["content"] +'</div>'
+										+'<div class="a-comment">'
+											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
+											+'<a idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
+										+'</div>'
+									+'</div>'
+								+'</div>';						
+						commentDiv.append(div);
+						
+					})
+				} else {
+					notAuth();
+				}
+			},
+			error: function (){
+				alert("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+	}
+</script>
 
 </body>
 

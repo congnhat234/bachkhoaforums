@@ -181,12 +181,28 @@
     <servlet-name>AddUserController</servlet-name>
     <url-pattern>/admin/useradd</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>EditUserController</servlet-name>
     <servlet-class>controller.EditUserController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EditUserController</servlet-name>
     <url-pattern>/admin/useredit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CommentPostController</servlet-name>
+    <servlet-class>controller.CommentPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CommentPostController</servlet-name>
+    <url-pattern>/user/post/comment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteCommentPostController</servlet-name>
+    <servlet-class>controller.DeleteCommentPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCommentPostController</servlet-name>
+    <url-pattern>/user/post/comment/delete</url-pattern>
   </servlet-mapping>
 </web-app>

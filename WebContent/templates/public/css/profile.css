@@ -20,7 +20,7 @@ body {
     margin-left: 20px;
 }
 
-.content {
+.contentProfile {
     display: flex;
     flex-flow: row nowrap;
 }
