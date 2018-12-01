@@ -110,14 +110,6 @@
     <url-pattern>/admin/post</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>EditPostController</servlet-name>
-    <servlet-class>controller.EditPostController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EditPostController</servlet-name>
-    <url-pattern>/user/postedit</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>DeletePostController</servlet-name>
     <servlet-class>controller.DeletePostController</servlet-class>
   </servlet>

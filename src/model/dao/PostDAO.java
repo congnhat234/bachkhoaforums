@@ -25,7 +25,37 @@ public class PostDAO {
 	public ArrayList<Post> getListPost() {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post ;";
+		String sql = "select * from post;";
+		try {
+			st=connection.createStatement();
+			rs=st.executeQuery(sql);
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	public ArrayList<Post> getListPostOffset(int offset) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post limit 5 offset "+offset +" ;";
 		try {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
@@ -253,5 +283,51 @@ public class PostDAO {
 			}
 		}
 		return listItems;
+	}
+
+	public boolean deletePostBySubject(int idSub) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM post WHERE id_subject = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public int countItems() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM post";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
 	}
 }

@@ -22,8 +22,12 @@
 				<p>
 					<label>Tên người dùng</label>
 					<input id="username" type="text" name="username" value="" class="input-medium" />
-					<label>Quyền hạn</label>
-					<input id="username" type="text" name="role" value="" class="input-medium" />
+					<label>Quyền hạn</label>					
+				     <select  name="role" class="input-medium">
+				     	<option  value="1">1.Admin </option>
+				     	<option  value="2">2.Mod</option>
+				     	<option  value="3">3.User </option>
+				     </select>
 					<label>Mật khẩu</label>
 					<input type="password" name="password" value="" class="input-medium" />
 					<label>Họ và tên</label>

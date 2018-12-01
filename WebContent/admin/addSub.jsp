@@ -20,7 +20,6 @@
 				
 			</form>
 		 </div> <!-- End .module-body -->
-
 	</div>  <!-- End .module -->
 	<div style="clear:both;"></div>
 </div> <!-- End .grid_12 -->

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bean.Post;
 import model.bo.SubjectBO;
 
 /**
@@ -40,26 +41,21 @@ public class SubjectAdminController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-//		int page = 1;
-//		CatDAO catDAO = new CatDAO();
-//		
-//		int countCat = catDAO.countItems();
-//		int row_count = 5;
-//		int sumPage = (int)Math.ceil((float)countCat/row_count);
-//		request.setAttribute("sumPage", sumPage);
-//		//lấy trang hiện tại
-//		if(request.getParameter("current_page")!=null){
-//			page = Integer.parseInt(request.getParameter("current_page"));
-//		}
-//		request.setAttribute("page", page);
-//		//tính offset
-//		int offset = (page-1)*row_count;
-//		
-//		request.setAttribute("listCat", catDAO.getItemsPagition(offset,row_count));
-		
+		int page = 1;
 		SubjectBO subjectBO = new SubjectBO();
+		int countSub = subjectBO.countItems();
+		int row_count = 5;
+		int sumPage = (int)Math.ceil((float)countSub/row_count);
+		request.setAttribute("sumPage", sumPage);
+
+		if(request.getParameter("current_page")!=null){
+			page = Integer.parseInt(request.getParameter("current_page"));
+		}
+		request.setAttribute("page", page);
+
+		int offset = (page-1)*row_count;
 		
-		request.setAttribute("listCat", subjectBO.getListSubject());
+		request.setAttribute("listSub", subjectBO.getListSubjectOffset(offset));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexSubject.jsp");
 		rd.forward(request, response);

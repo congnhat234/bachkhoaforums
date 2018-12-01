@@ -2,6 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 
+import model.bean.Subject;
 import model.bean.User;
 import model.dao.UserDAO;
 
@@ -25,6 +26,12 @@ public class UserBO {
 	public ArrayList<User> getListUsers() {
 
 		return userDAO.getListUsers();
+	}
+	public int countItems() {
+		return userDAO.countItems();
+	}
+	public ArrayList<User> getListUserOffset(int offset) {
+		return userDAO.getListUserOffset(offset);
 	}
 
 }
