@@ -332,4 +332,102 @@ public class PostDAO {
 		}
 		return count;
 	}
+
+	public int countLike(int idPost) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM like_post WHERE id_post = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public int likedByUser(int idPost, int idUser) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM like_post WHERE id_post = ? && id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			pst.setInt(2, idUser);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+	public boolean likePost(int idPost, int idUser) {
+		connection = connectDBLibrary.getConnectMySQL();		
+		String query = "INSERT INTO like_post(id_post, id_user) VALUES (?, ?);";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, idPost);
+			pst.setInt(2, idUser);
+			int r = pst.executeUpdate();
+			return (r == 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean deleteLikedPostByUser(int idPost, int idUser) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM like_post WHERE id_post = ? && id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			pst.setInt(2, idUser);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
 }

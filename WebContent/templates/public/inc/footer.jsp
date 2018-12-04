@@ -2,7 +2,7 @@
 <%@page import="utils.Constants"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <div id="snackbar">Some text some message..</div>
     <button onclick="topFunction()" id="btnBackToTop" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <footer class="footer-distributed">

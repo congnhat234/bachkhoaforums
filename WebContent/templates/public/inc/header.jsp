@@ -14,6 +14,8 @@
 	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/templates/public/css/profile.css">
 	<link rel="stylesheet"
+		href="<%=request.getContextPath()%>/templates/public/css/notification.css">
+	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/templates/public/fontawesome/css/all.css">
 	<link href='http://fonts.googleapis.com/css?family=Cookie'
 		rel='stylesheet' type='text/css'>
@@ -42,8 +44,8 @@
 				if (session.getAttribute("user") == null) {
 			%>
 			<ul>
-				<li><a id="btnSignin" href="javascript:void(0)">Login</a></li>
-				<li><a id="btnSignup" href="javascript:void(0)">Sign up</a></li>
+				<li><a class="btnSignin" href="javascript:void(0)">Đăng nhập</a></li>
+				<li><a class="btnSignup" href="javascript:void(0)">Đăng kí</a></li>
 			</ul>
 			<%
 				} else {

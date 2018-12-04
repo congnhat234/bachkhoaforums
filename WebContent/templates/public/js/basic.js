@@ -6,10 +6,10 @@ ClassicEditor
 .catch( error => {
 console.error( error );
 } );
-$("#btnSignin").on("click", function () {
+$(".btnSignin").on("click", function () {
     $("#signin").css("display", "block");
 });
-$("#btnSignup").on("click", function () {
+$(".btnSignup").on("click", function () {
     $("#signup").css("display", "block");
 });
 $("#btnProfile").on("click", function () {

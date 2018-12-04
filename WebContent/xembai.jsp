@@ -47,8 +47,17 @@
 			</div>
 			<%} %>
 				<div class="button-bot">
-					<button class="b1" type="button" name="button">Thích</button>
-					<button class="b1" type="button" name="button">Trả lời</button>
+				<% if (session.getAttribute("user") != null) {
+					User user = (User) session.getAttribute("user");
+					if((int)request.getAttribute("likedByUser") > 0) {
+				%>
+					<button id="likePost" idU="<%=user.getId_user() %>" class="b1" type="button" name="button"><%=request.getAttribute("countLikePost") %> Bỏ thích</button>
+				<%} else { %>
+					<button id="likePost" idU="<%=user.getId_user() %>" class="b1" type="button" name="button"><%=request.getAttribute("countLikePost") %> Thích</button>
+				<%} %>
+				<%} else { %>
+					<button class="b1" type="button" name="button"><%=request.getAttribute("countLikePost") %> Thích</button>
+				<%} %>
 					<button class="b1" type="button" name="button">Chia sẻ</button>
 				</div>
 				<hr>
@@ -99,6 +108,9 @@
 						<input id="sendComment" class="b2" type="button" name="button" type="submit" value="Trả lời">
 					</div>
 					</form>
+				<%} else {
+					%>
+					<p><a class="btnSignin" href="javascript:void(0)">Đăng nhập</a> để bình luận hoặc <a class="btnSignup" href="javascript:void(0)">Đăng kí</a></p>
 				<%}%>
 		</div>
 	</div>
@@ -138,7 +150,6 @@
 									+'</div>'
 								+'</div>';
 						commentDiv.append(div);
-						console.log(div);
 					})
 				}
 				theEditor.setData("");
@@ -175,38 +186,21 @@
         });
       });
 	$('.cancelAction, .fa-close').click(function () {
-	        $(this).parents('.dialog-ovelay').fadeOut(500, function () {
-	          $(this).remove();
-	        });
-	      });
-	      
-	   }
+        $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+          $(this).remove();
+        });
+      });
+      
+   }
 	function notAuth() {
-		var $content =  "<div class='dialog-ovelay'>" +
-					        "<div class='dialog'><header>" +
-					         " <h3> Xóa bình luận </h3> " +
-					         "<i class='fa fa-close'></i>" +
-					     "</header>" +
-					     "<div class='dialog-msg'>" +
-					         " <p> Bạn không có quyền xóa </p> " +
-					     "</div>" +
-					     "<footer>" +
-					         "<div class='controls'>" +					                             
-					             " <button class='button-default cancelAction'>OK</button> " +
-					         "</div>" +
-					     "</footer>" +
-					  "</div>" +
-					"</div>";
-		$('body').prepend($content);
-		$('.cancelAction, .fa-close').click(function () {
-		$(this).parents('.dialog-ovelay').fadeOut(500, function () {
-		$(this).remove();
-		});
-		});
+		var x = document.getElementById("snackbar");
+	    x.className = "show";
+	    x.innerHTML = "Bạn không có quyền xóa!";
+	    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 	}
 	jQuery('body').on('click', '.deleteComment', function (){
-		var auth = $('.deleteComment').attr('auth');
-		if(auth == "true") {
+		var auth = $(this).attr("auth");
+		if(auth === "true") {
 			Confirm('Xóa bình luận', 'Bạn có chắc muốn xóa?', 'Xóa', 'Hủy', $(this));
 		} else {
 			notAuth();
@@ -240,7 +234,7 @@
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
 											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
-											+'<a idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
+											+'<a auth=<%=auth %> idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
 										+'</div>'
 									+'</div>'
 								+'</div>';						
@@ -257,6 +251,26 @@
 		});
 		return false;
 	}
+	
+	$("#likePost").on('click', function (){		
+		var idPost = $(".title_post").attr("idpost");
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.LIKE_POST%>',
+			type: 'POST',
+			cache: false,
+			data: {
+					aid: idPost,
+					},
+			success: function(data){
+				console.log(data);
+				$("#likePost").html(data);
+			},
+			error: function (){
+				alert("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+	});
 </script>
 
 </body>
