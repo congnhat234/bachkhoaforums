@@ -57,5 +57,11 @@ public class PostBO {
 		// TODO Auto-generated method stub
 		return postDAO.deleteLikedPostByUser(idPost, idUser);
 	}
+	public int getStatus(int idPost) {
+		return postDAO.getStatus(idPost);
+	}
+	public boolean setStatus(int idPost, int i) {
+		return postDAO.setStatus(idPost, i);
+	}
 
 }

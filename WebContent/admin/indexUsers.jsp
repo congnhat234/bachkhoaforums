@@ -35,24 +35,7 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	<%
-		if (request.getParameter("msg") != null) {
-			int msg = Integer.parseInt(request.getParameter("msg"));
-			if (msg == 1) {
-				out.print("<h5 style='color:red'>Thêm thành công</h5>");
-			} else if (msg == 2) {
-				out.print("<h5 style='color:red'>Sửa thành công</h5>");
-			} else if (msg == 3) {
-				out.print("<h5 style='color:red'>Xóa thành công</h5>");
-			} else if (msg == 4) {
-				out.print("<h5 style='color:red'>Bạn không được quyền xóa tài khoản này!</h5>");
-			} else if (msg == 5) {
-				out.print("<h5 style='color:red'>Bạn không được quyền sửa tài khoản này!</h5>");
-			} else {
-				out.print("<h5 style='color:red'>Thất bại</h5>");
-			}
-		}
-	%>
+	
 	<div class="grid_12">
 		<!-- Example table -->
 		<div class="module">
@@ -166,3 +149,27 @@
 	<!-- End .grid_12 -->
 </div>
 <%@include file="/templates/public/inc/footer.jsp"%>
+	<%
+		if (request.getParameter("msg") != null) {
+			int msg = Integer.parseInt(request.getParameter("msg"));
+			if (msg == 1) {
+				%>
+				<script type="text/javascript"> 
+					toast("Thêm thành công!");
+				</script>
+				<%
+			} else if (msg == 2) {
+				out.print("<h5 style='color:red'>Sửa thành công</h5>");
+			} else if (msg == 3) {
+				out.print("<h5 style='color:red'>Xóa thành công</h5>");
+			} else if (msg == 4) {
+				out.print("<h5 style='color:red'>Bạn không được quyền xóa tài khoản này!</h5>");
+			} else if (msg == 5) {
+				out.print("<h5 style='color:red'>Bạn không được quyền sửa tài khoản này!</h5>");
+			} else {
+				out.print("<h5 style='color:red'>Thất bại</h5>");
+			}
+		}
+	%>
+</body>
+</html>

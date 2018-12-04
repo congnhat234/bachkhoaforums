@@ -54,7 +54,7 @@ public class AddUserController extends HttpServlet {
 		User user = new User(0,role,username,passwordCryp,token,fullname,mess,mess,0,mess,mess,mess,date_join,"",0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER);
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER + "?msg=1");
 		} else {
 			//thong bao nhap trung ten
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADD_USER);

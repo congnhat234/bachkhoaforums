@@ -192,18 +192,13 @@
       });
       
    }
-	function notAuth() {
-		var x = document.getElementById("snackbar");
-	    x.className = "show";
-	    x.innerHTML = "Bạn không có quyền xóa!";
-	    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-	}
+	
 	jQuery('body').on('click', '.deleteComment', function (){
 		var auth = $(this).attr("auth");
 		if(auth === "true") {
 			Confirm('Xóa bình luận', 'Bạn có chắc muốn xóa?', 'Xóa', 'Hủy', $(this));
 		} else {
-			notAuth();
+			toast("Bạn không có quyền xóa!");
 		}
 		
 		

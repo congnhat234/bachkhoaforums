@@ -1,3 +1,4 @@
+<%@page import="com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bean.Post"%>
 <%@page import="java.util.ArrayList"%>
@@ -27,23 +28,7 @@
 		<div style="clear: both;"></div>
 	</div>
 	<!-- End #subnav -->
-<%
-if(request.getParameter("msg")!=null){
-	int msg = Integer.parseInt(request.getParameter("msg"));
-	if(msg == 1){
-		out.print("<h5 style='color:red'>Thêm thành công</h5>");
-	} else
-	if(msg == 2){
-		out.print("<h5 style='color:red'>Sửa thành công</h5>");
-		} else
-	if(msg == 3){
-		out.print("<h5 style='color:red'>Xóa thành công</h5>");
-		}
-		else {
-		out.print("<h5 style='color:red'>Thất bại</h5>");
-	}
-}
-%>
+
 <div class="grid_12">
 	<!-- Example table -->
 	<div class="module">
@@ -59,7 +44,7 @@ if(request.getParameter("msg")!=null){
 						<th style="width:10%">Danh Mục</th>
 						<th style="width:10%; text-align: center;">Hình ảnh</th>
 						<th style="width:5%; text-align: center;">Chức năng</th>
-						<th style="width:10%; text-align: center;">Chức năng</th>
+						<th style="width:10%; text-align: center;">Trạng thái</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,26 +53,29 @@ if(request.getParameter("msg")!=null){
 					ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
 					ArrayList<Subject> listSub = (ArrayList<Subject>) request.getAttribute("listSub");
 					if(listPost.size()>0){
-					for(Post objNews : listPost){
+					for(Post objPost : listPost){
 				%>
 					<tr>
-						<td class="align-center"><%=objNews.getId_post() %></td>
-						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objNews.getId_post()%>"><%=objNews.getTitle() %></a></td>
+						<td class="idPost" class="align-center"><%=objPost.getId_post() %></td>
+						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objPost.getId_post()%>"><%=objPost.getTitle() %></a></td>
 						<td>	<select>
 							<% 	for(Subject objSub : listSub){%>
 										
-										  <option <% if(objNews.getId_subject()==objSub.getId_subject()) {%> selected <%} %>><%=objSub.getName() %> </option>
+										  <option <% if(objPost.getId_subject()==objSub.getId_subject()) {%> selected <%} %>><%=objSub.getName() %> </option>
 										
 										<%} %>
 								</select>
 						</td>
-						<td align="center"><img src="<%=request.getContextPath() %>/templates/public/files/post/<%=objNews.getPreview_image() %>" class="hoa" /></td>
+						<td align="center"><img src="<%=request.getContextPath() %>/templates/public/files/post/<%=objPost.getPreview_image() %>" class="hoa" /></td>
 						<td align="center">
-							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objNews.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
+							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objPost.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
 						</td>
 						<td align="center">
 							<label class="switch">
-								  <input type="checkbox">
+							<%
+							String checked = "";
+							if(objPost.getEnable() == 1) checked = "checked"; %>
+								  <input idPost="<%=objPost.getId_post() %>" class="status" type="checkbox" <%=checked %>>
 								  <span class="slider round"></span>
 							</label>
 						</td>
@@ -134,3 +122,68 @@ if(request.getParameter("msg")!=null){
 </div> <!-- End .grid_12 -->
 </div>
 <%@include file="/templates/public/inc/footer.jsp" %> 
+<%
+if(request.getParameter("msg")!=null){
+	int msg = Integer.parseInt(request.getParameter("msg"));
+	if(msg == 1){
+		%>
+		<script>toast("Thêm thành công!");</script> 
+		<%
+	} else
+	if(msg == 2){
+		out.print("<h5 style='color:red'>Sửa thành công</h5>");
+		} else
+	if(msg == 3){
+		out.print("<h5 style='color:red'>Xóa thành công</h5>");
+		}
+		else {
+		out.print("<h5 style='color:red'>Thất bại</h5>");
+	}
+}
+%>
+<script type="text/javascript">
+	$('.status').on('change', function() {
+		var self = $(this);
+		if($(this).attr("checked")) {
+			var idPost = $(self).attr("idPost");
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.ENABLE_POST%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						aid: idPost,
+						},
+				success: function(){
+					$(self).removeAttr("checked");
+				},
+				error: function (){
+					alert("Có lỗi trong quá trình xử lí");
+				}
+			});
+			return false;
+			
+		} else {
+			var idPost = $(self).attr("idPost");
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.ENABLE_POST%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						aid: idPost,
+						},
+				success: function(){
+					$(self).attr("checked","");
+				},
+				error: function (){
+					alert("Có lỗi trong quá trình xử lí");
+				}
+			});
+			return false;
+			
+		}
+	});
+</script>
+
+</body>
+
+</html>

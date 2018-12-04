@@ -430,4 +430,53 @@ public class PostDAO {
 		return false;
 	}
 
+	public int getStatus(int idPost) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT enabled FROM post WHERE id_post = ?;";
+		int result = 0;
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			result = rs.getInt("enabled");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean setStatus(int idPost, int i) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE post SET enabled = ? WHERE id_post = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, i);
+			pst.setInt(2, idPost);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
 }
