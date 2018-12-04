@@ -76,25 +76,40 @@ public class SubjectDAO {
 
 
 	public boolean addSubject(Subject Sub) {
-		connection = connectDBLibrary.getConnectMySQL();		
-		String query = "INSERT INTO subject(name) VALUES (?);";
-		try {		
-			pst = connection.prepareStatement(query);
-			pst.setString(1, Sub.getName());
-			int r = pst.executeUpdate();
-			return (r == 1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
+		connection = connectDBLibrary.getConnectMySQL();	
+		if (Check(Sub)) {
+			String query = "INSERT INTO subject(name) VALUES (?);";
 			try {
-				pst.close();
-				connection.close();
-			} catch (SQLException e) {
+				pst = connection.prepareStatement(query);
+				pst.setString(1, Sub.getName());
+				int r = pst.executeUpdate();
+				return (r == 1);
+			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		return false;
 	}
+
+	private boolean Check(Subject sub) {
+		boolean check=true;
+		SubjectDAO subDAO= new SubjectDAO();
+		ArrayList<Subject>list=subDAO.getListSubject();
+		for(int i=0; i<list.size();i++) {
+			if(sub.getName().equals(list.get(i).getName())) {
+				check= false;
+			}
+		}
+		return check;
+	}
+
 
 	public boolean edit(Subject Sub) {
 		connection = connectDBLibrary.getConnectMySQL();
@@ -138,5 +153,56 @@ public class SubjectDAO {
 			}
 		}
 		return false;
+	}
+
+
+	public int countItems() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM subject";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+
+	public ArrayList<Subject> getListSubjectOffset(int offset) {
+		ArrayList<Subject> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from subject limit 5 offset "+offset+";";
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				Subject obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
+				listItems.add(obj);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
 	}
 }

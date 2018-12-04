@@ -31,7 +31,6 @@ public class Constants {
 		String DELETE_USER = "/admin/userdelete";
 		String EDIT_USER = "/admin/useredit";
 		String ADD_USER = "/admin/useradd";
-		String EDIT_POST = "/user/postedit";
 		String DELETE_POST = "/user/postdelete";
 		String SHOW_POST_FOLLOW_USER = "/user/followpost";
 		String SHOW_POST_BY_USER = "/user/post";

@@ -70,6 +70,7 @@
 								<th style="width: 20%">Tên người dùng</th>
 								<th style="width: 20%">Họ và tên</th>
 								<th style="width: 11%; text-align: center;">Chức năng</th>
+								<th style="width: 11%; text-align: center;">Chức năng</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -87,15 +88,7 @@
 									<%
 										if (session.getAttribute("user") != null) {
 											User userInfo = (User) session.getAttribute("user");
-											if (userInfo.getId_role() == 1 || userInfo.getId_role() == 2) {
-									%> <a
-									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER %>?uid=<%=objUser.getId_user()%>">Sửa
-										<img
-										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
-										alt="edit" />
-								</a> 
-								<%
- 									}
+											
 
  								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
  								<a onclick="return confirm('Bạn có chắc muốn xóa không?')"
@@ -103,19 +96,19 @@
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />
-								</a> 
-								<a onclick="return confirm('Bạn có chắc muốn vô hiệu không?')"
-									href="<%=request.getContextPath()%>?uid=<%=objUser.getId_user()%>">Khóa
-										<img
-										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
-										width="16" height="16" alt="delete" />
-								</a> 
+								</a> 							
+								</td>
+								<td align="center">
+									<label class="switch">
+										  <input type="checkbox">
+										  <span class="slider round"></span>
+									</label>
+								</td>
+							</tr>
 								<%
 								 		}
 								 	}
 								 %>
-								</td>
-							</tr>
 							<%
 								}
 								}

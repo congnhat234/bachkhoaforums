@@ -78,7 +78,8 @@ public class UserDAO {
 	}
 	
 	public boolean add(User user) {
-		connection = connectDBLibrary.getConnectMySQL();		
+		connection = connectDBLibrary.getConnectMySQL();
+		if(Check(user)) {
 		String query = "INSERT INTO user(id_role, username, password, token, fullname, address, city, gender, email, phone, birthday,"
 				+ "date_join, avatar, rate, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {		
@@ -111,9 +112,22 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
+		}
 		return false;
 	}
 	
+	private boolean Check(User user) {
+		boolean check=true;
+		UserDAO userDAO= new UserDAO();
+		ArrayList<User>list=userDAO.getListUsers();
+		for(int i=0; i<list.size();i++) {
+			if(user.getUsername().equals(list.get(i).getUsername())) {
+				check= false;
+			}
+		}
+		return check;
+	}
+
 	public boolean edit(User user) {
 		connection = connectDBLibrary.getConnectMySQL();
 		String query = "UPDATE user SET id_role = ?, fullname = ?, address = ?, city = ?, gender = ?, email = ?, phone = ?, birthday = ?,"
@@ -226,5 +240,58 @@ public class UserDAO {
 			}
 			return objUser;
 		
+	}
+
+	public ArrayList<User> getListUserOffset(int offset) {
+		ArrayList<User> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from user limit 5 offset "+offset+";";
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				User obj = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
+						rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
+						rs.getString("birthday"),rs.getString("date_join"),rs.getString("avatar"),rs.getInt("rate"),rs.getInt("enabled"));
+				listItems.add(obj);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+
+	public int countItems() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM user";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
 	}
 }

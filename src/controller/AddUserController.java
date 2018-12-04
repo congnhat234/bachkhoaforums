@@ -42,11 +42,11 @@ public class AddUserController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = (String) request.getParameter("username");
+		String fullname= new String( request.getParameter("fullname").getBytes("ISO-8859-1"), "UTF-8");
 		String password = (String) request.getParameter("password");
 		int role = Integer.parseInt(request.getParameter("role"));
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(username + password);
-		String fullname = (String) request.getParameter("fullname");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
 	    Date date = new Date();  
 	    String date_join = formatter.format(date);
@@ -56,7 +56,8 @@ public class AddUserController extends HttpServlet {
 		if(userBO.add(user)) {
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER);
 		} else {
-			
+			//thong bao nhap trung ten
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADD_USER);
 		}
 	}
 

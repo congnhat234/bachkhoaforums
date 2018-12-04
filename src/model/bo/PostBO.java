@@ -32,5 +32,14 @@ public class PostBO {
 	public ArrayList<Post> getListPostByUser(String username){
 		return postDAO.getListPostByUser(username);
 	}
+	public boolean deletePostBySubject(int idSub) {
+		return postDAO.deletePostBySubject(idSub);
+	}
+	public int countItems() {
+		return postDAO.countItems();
+	}
+	public ArrayList<Post> getListPostOffset(int offset) {
+		return postDAO.getListPostOffset(offset);
+	}
 
 }

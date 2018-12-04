@@ -2,6 +2,7 @@ package model.bo;
 
 import java.util.ArrayList;
 
+import model.bean.Post;
 import model.bean.Subject;
 import model.dao.SubjectDAO;
 
@@ -21,6 +22,12 @@ public class SubjectBO {
 	}
 	public boolean deleteSubject(int idSub) {
 		return subjectDAO.delete(idSub);
+	}
+	public int countItems() {
+		return subjectDAO.countItems();
+	}
+	public ArrayList<Subject> getListSubjectOffset(int offset) {
+		return subjectDAO.getListSubjectOffset(offset);
 	}
 
 }

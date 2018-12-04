@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,11 +39,15 @@ public class CreateSubjectController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String newSub= (String) request.getParameter("newSub") ;
+		String newSub= new String( request.getParameter("newSub").getBytes("ISO-8859-1"), "UTF-8");
 		SubjectBO subBO= new SubjectBO();
 		Subject sub = new Subject(0,newSub);
 		if( !"".equals(newSub)&& subBO.addSubject(sub)){
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);
+		}else
+		{	
+			//thong bao trung ten
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADD_SUBJECT);
 		}
 	}
 

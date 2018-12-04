@@ -85,7 +85,9 @@ body {
     color: rgb(0, 128, 255);
     font-size: 12px;
 }
-
+.content{
+	margin:20px;
+}
 .mainContent {
     width: 85%;
     border: solid 1px rgb(0, 128, 255);

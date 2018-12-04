@@ -66,19 +66,19 @@
 						</thead>
 						<tbody>
 							<%
-								ArrayList<Subject> listSub = (ArrayList<Subject>) request.getAttribute("listCat");
+								ArrayList<Subject> listSub = (ArrayList<Subject>) request.getAttribute("listSub");
 								if (listSub.size() > 0) {
 									for (Subject objSub : listSub) {
 							%>
 							<tr>
 								<td class="align-center"><%=objSub.getId_subject()%></td>
-								<td><a href=""><%=objSub.getName()%></a></td>
+								<td><a href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=objSub.getId_subject()%>"><%=objSub.getName()%></a></td>
 								<td align="center"><a
 									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_SUBJECT %>?cid=<%=objSub.getId_subject()%>">Sửa
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
 										alt="edit" />
-								</a> <a onclick="return confirm('Bạn có chắc muốn xóa không?')"
+								</a> <a onclick="return confirm('Bạn có chắc muốn xóa không? Xóa tất cả bài viết trong mục !!!')"
 									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_SUBJECT %>?del=<%=objSub.getId_subject()%>">Xóa
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
@@ -107,7 +107,7 @@
 						if (current_page > 1) {
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%>/admin/indexCat?current_page=<%=current_page - 1%>"><<</a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page - 1%>"><<</a>
 				<span>|</span>
 				<%
 					}
@@ -122,14 +122,14 @@
 							}
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%>/admin/indexCat?current_page=<%=i%>"><%=i%></a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=i%>"><%=i%></a>
 				<span>|</span>
 				<%
 					}
 						if (current_page < sumPage) {
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%>/admin/indexCat?current_page=<%=current_page + 1%>">>></a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page + 1%>">>></a>
 				<%
 					}
 					}

@@ -39,23 +39,21 @@ public class UsersAdminController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		int page = 1;
-//		UsersDAO usersDAO = new UsersDAO();
-//		
-//		int countUser = usersDAO.countItems();
-//		int row_count = 5;
-//		int sumPage = (int)Math.ceil((float)countUser/row_count);
-//		request.setAttribute("sumPage", sumPage);
-//		//lấy trang hiện tại
-//		if(request.getParameter("current_page")!=null){
-//			page = Integer.parseInt(request.getParameter("current_page"));
-//		}
-//		request.setAttribute("page", page);
-//		//tính offset
-//		int offset = (page-1)*row_count;
-//		
+		int page = 1;
 		UserBO userBO = new UserBO();
-		request.setAttribute("listUsers", userBO.getListUsers());
+		
+		int countUser = userBO.countItems();
+		int row_count = 5;
+		int sumPage = (int)Math.ceil((float)countUser/row_count);
+		request.setAttribute("sumPage", sumPage);
+		if(request.getParameter("current_page")!=null){
+			page = Integer.parseInt(request.getParameter("current_page"));
+		}
+		request.setAttribute("page", page);
+
+		int offset = (page-1)*row_count;
+		
+		request.setAttribute("listUsers", userBO.getListUserOffset(offset));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUsers.jsp");
 		rd.forward(request, response);

@@ -31,7 +31,10 @@ public class DeleteSubjectController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idSub=Integer.parseInt(request.getParameter("del"));
 		SubjectBO subBO= new SubjectBO();
-		if(subBO.deleteSubject(idSub)){
+		PostBO postBO= new PostBO();
+		postBO.deletePostBySubject(idSub);
+		if( subBO.deleteSubject(idSub)){
+			
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);	
 		}
 	}
