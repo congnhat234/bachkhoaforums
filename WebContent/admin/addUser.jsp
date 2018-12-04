@@ -19,19 +19,28 @@
 		 
 			<form id="addUser" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">
 				
-				<p>
-					<label>Tên người dùng</label>
-					<input id="username" type="text" name="username" value="" class="input-medium" />
-					<label>Quyền hạn</label>
-					<input id="username" type="text" name="role" value="" class="input-medium" />
-					<label>Mật khẩu</label>
-					<input type="password" name="password" value="" class="input-medium" />
-					<label>Họ và tên</label>
-					<input id="fullname" type="text" name="fullname" value="" class="input-medium" />
-				</p>
+				<div class="content_addUser">
+					<div class="row_addUser">
+							<label>Tên người dùng :</label>
+							<input class="row_input" id="username" type="text" name="username" value="" class="input-medium" />
+					</div>
+					<div class="row_addUser">
+							<label>Quyền hạn :</label>
+							<input class="row_input" id="username" type="text" name="role" value="" class="input-medium" />
+					</div>
+					<div class="row_addUser">
+							<label>Mật khẩu :</label>
+							<input class="row_input" type="password" name="password" value="" class="input-medium" />
+					</div>
+					<div class="row_addUser">
+							<label>Họ và tên :</label>
+							<input class="row_input" id="fullname" type="text" name="fullname" value="" class="input-medium" />
+					</div>
+
+				</div>
 				<fieldset>
 					<input class="submit-green" type="submit" value="Thêm" /> 
-					<input class="submit-gray" name="reset" type="reset" value="Nhập lại" />
+					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
 				</fieldset>
 				
 			</form>

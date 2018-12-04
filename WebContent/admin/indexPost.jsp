@@ -30,7 +30,7 @@
 	<div class="bottom-spacing">
 	  <!-- Button -->
 	  <div class="float-left">
-		  <a href="<%=request.getContextPath() %>/admin/show-addNews" class="button">
+		  <a href="<%=request.getContextPath() %>/admin/show-addNews" class="button_add">
 			<span>Thêm tin</span>
 		  </a>
 	  </div>
@@ -63,11 +63,12 @@ if(request.getParameter("msg")!=null){
 			<table id="myTable" class="tablesorter">
 				<thead>
 					<tr>
-						<th style="width:4%; text-align: center;">ID</th>
-						<th style="width:30%">Tên tin tức</th>
-						<th style="width:12%">Danh Mục</th>
-						<th style="width:20%; text-align: center;">Hình ảnh</th>
-						<th style="width:11%; text-align: center;">Chức năng</th>
+						<th style="width:5%; text-align: center;">ID</th>
+						<th style="width:40%">Tên tin tức</th>
+						<th style="width:15%">Danh Mục</th>
+						<th style="width:30%; text-align: center;">Hình ảnh</th>
+						<th style="width:5%; text-align: center;">Sửa</th>
+						<th style="width:5%; text-align: center;">Xóa</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -78,13 +79,15 @@ if(request.getParameter("msg")!=null){
 					for(Post objNews : listPost){
 				%>
 					<tr>
-						<td class="align-center"><%=objNews.getId_post() %></td>
-						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objNews.getId_post()%>"><%=objNews.getTitle() %></a></td>
-						<td><%=objNews.getId_subject() %></td>
+						<td align="center"><%=objNews.getId_post() %></td>
+						<td align="center"><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objNews.getId_post()%>"><%=objNews.getTitle() %></a></td>
+						<td align="center"><%=objNews.getId_subject() %></td>
 						<td align="center"><img src="<%=request.getContextPath() %>/templates/public/files/post/<%=objNews.getPreview_image() %>" class="hoa" /></td>
 						<td align="center">
-							<a href="<%=request.getContextPath()%><%=Constants.URL.EDIT_POST%>?nid=<%=objNews.getId_post()%>">Sửa <img src="<%=request.getContextPath() %>/templates/admin/images/pencil.gif" alt="edit" /></a>
-							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objNews.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
+							<a href="<%=request.getContextPath()%><%=Constants.URL.EDIT_POST%>?nid=<%=objNews.getId_post()%>"> <img src="<%=request.getContextPath() %>/templates/admin/images/pencil.gif" alt="edit" /></a>
+						</td>
+						<td align="center">
+							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objNews.getId_post()%>"> <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
 						</td>
 					</tr>
 				  <%}}} %> 

@@ -9,13 +9,15 @@
 		 <h2><span>Thêm danh mục</span></h2>
 		 <div class="module-body">
 			<form id="addCat" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_SUBJECT%>">
-				<p>
-					<label>Tên danh mục</label>
-					<input type="text" id="name" name="newSub" value="" class="input-medium" />
-				</p>
+				<div class="content_addPost">
+					<div class="row_addPost">
+						<label>Tên danh mục :</label>
+						<input class="row_input" type="text" id="name" name="newSub" value="" class="input-medium" />
+					</div>
+				</div>
 				<fieldset>
 					<input class="submit-green" type="submit" value="Thêm" /> 
-					<input class="submit-gray" name="reset" type="reset" value="Nhập lại" />
+					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
 				</fieldset>
 				
 			</form>

@@ -93,6 +93,90 @@ div.module div.module-body {
 
 .module-body p.p{margin-top:26px; margin-bottom:0px !important}
 
+/* edit */
+.content_addUser{
+	margin-top: 30px;
+	padding: 10px;
+	width: 50%;
+}
+.row_addUser{
+	padding: 10px;
+}
+.row_addUser .row_input{
+	height: 30px;
+	float: right;
+	margin-right: 40%;
+	border-radius: 3px;
+}
+.content_addPost{
+	margin-top: 30px;
+	padding: 10px;
+	width: 50%;
+}
+
+.row_addPost{
+	padding: 10px;
+}
+.row_addPost .row_input{
+	height: 30px;
+	float: right;
+	margin-right: 40%;
+	border-radius: 3px;
+}
+.module-body fieldset{
+	border: none;
+}
+.submit-green{
+	border: none;
+	background: #151f2a;
+	cursor: pointer;
+	border-radius: 3px;
+	padding: 10px;
+	margin: 10px;
+	width: 100px;
+	color: white;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.submit-green:hover{
+	transform: translateY(-3px);
+	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.float-left{
+	margin-left: 3%;
+}
+.button_add{
+	background-color: #151f2a;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+	padding: 10px;
+	border-radius: 5px;
+}
+a .button_add:focus{
+	text-decoration: none;
+}
+a .button_add:hover {
+	text-decoration: none;
+}
+.button_add:hover{
+	/*opacity: 0.8;*/
+	background: #e02c26;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+	color: rgb(255, 255, 255);
+	text-shadow: -1px -1px 0 #c2211c;
+	transition: all 250ms linear;
+	border-radius: 5px;
+}
+
+
+/* end edit */
+
 /* -------------------- Box module -------------------- */
 
 div.module div.module-body { 
@@ -118,7 +202,8 @@ div.module div.module-body {
 div.module div.module-table-body { 
 	padding: 0; 
 	float: left; 
-	width: 100%; 
+	width: 90%; 
+	margin: 28px;
 	}
 
 div.module h2 { 

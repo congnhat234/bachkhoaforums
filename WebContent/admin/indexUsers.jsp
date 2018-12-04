@@ -30,7 +30,7 @@
 		<!-- Button -->
 		<div class="float-left">
 			<a href="<%=request.getContextPath()%><%=Constants.URL.ADD_USER%>"
-				class="button"> <span>Thêm người dùng </span>
+				class="button_add"> <span>Thêm người dùng </span>
 			</a>
 		</div>
 		<div class="clear"></div>
@@ -66,10 +66,12 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 4%; text-align: center;">ID</th>
-								<th style="width: 20%">Tên người dùng</th>
-								<th style="width: 20%">Họ và tên</th>
-								<th style="width: 11%; text-align: center;">Chức năng</th>
+								<th style="width: 5%; text-align: center;">ID</th>
+								<th style="width: 20%">Tên đăng nhập</th>
+								<th style="width: 50%">Họ và tên</th>
+								<th style="width: 5%; text-align: center;">Sửa</th>
+								<th style="width: 5%; text-align: center;">Xóa</th>
+								<th style="width: 5%; text-align: center;">Khóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -80,32 +82,42 @@
 									for (User objUser : listUsers) {
 							%>
 							<tr>
-								<td class="align-center"><%=objUser.getId_user()%></td>
-								<td><a href=""><%=objUser.getUsername()%></a></td>
-								<td><%=objUser.getFullname()%></td>
+								<td align="center"><%=objUser.getId_user()%></td>
+								<td align="center"><a href=""><%=objUser.getUsername()%></a></td>
+								<td align="center"><%=objUser.getFullname()%></td>
 								<td align="center">
 									<%
 										if (session.getAttribute("user") != null) {
 											User userInfo = (User) session.getAttribute("user");
 											if (userInfo.getId_role() == 1 || userInfo.getId_role() == 2) {
 									%> <a
-									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER %>?uid=<%=objUser.getId_user()%>">Sửa
+									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER %>?uid=<%=objUser.getId_user()%>">
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
 										alt="edit" />
 								</a> 
+								</td>
+								
 								<%
  									}
-
+								%>
+ 								
+ 								<td align="center">
+ 								<%
  								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
  								<a onclick="return confirm('Bạn có chắc muốn xóa không?')"
-									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_USER%>?uid=<%=objUser.getId_user()%>">Xóa
+									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_USER%>?uid=<%=objUser.getId_user()%>">
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />
 								</a> 
+								<%} %>
+								</td>
+								<td align="center">
+								<%
+ 								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
 								<a onclick="return confirm('Bạn có chắc muốn vô hiệu không?')"
-									href="<%=request.getContextPath()%>?uid=<%=objUser.getId_user()%>">Khóa
+									href="<%=request.getContextPath()%>?uid=<%=objUser.getId_user()%>">
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />
