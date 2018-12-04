@@ -20,11 +20,6 @@ body {
     margin-left: 20px;
 }
 
-.content {
-    display: flex;
-    flex-flow: row nowrap;
-}
-
 .navigationSlideBar {
     width: 15%;
     height: 331px;
