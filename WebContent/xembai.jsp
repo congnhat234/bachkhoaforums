@@ -198,6 +198,7 @@
 		if(auth === "true") {
 			Confirm('Xóa bình luận', 'Bạn có chắc muốn xóa?', 'Xóa', 'Hủy', $(this));
 		} else {
+			$('#snackbar').attr("type", "error");
 			toast("Bạn không có quyền xóa!");
 		}
 		
@@ -241,7 +242,8 @@
 				}
 			},
 			error: function (){
-				alert("Có lỗi trong quá trình xử lí");
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
 			}
 		});
 		return false;
@@ -261,7 +263,8 @@
 				$("#likePost").html(data);
 			},
 			error: function (){
-				alert("Có lỗi trong quá trình xử lí");
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
 			}
 		});
 		return false;

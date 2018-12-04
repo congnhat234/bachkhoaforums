@@ -127,7 +127,10 @@ if(request.getParameter("msg")!=null){
 	int msg = Integer.parseInt(request.getParameter("msg"));
 	if(msg == 1){
 		%>
-		<script>toast("Thêm thành công!");</script> 
+		<script>
+		$('#snackbar').attr("type", "success");
+		toast("Thêm thành công!");
+		</script> 
 		<%
 	} else
 	if(msg == 2){
@@ -155,9 +158,12 @@ if(request.getParameter("msg")!=null){
 						},
 				success: function(){
 					$(self).removeAttr("checked");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi!");
 				},
 				error: function (){
-					alert("Có lỗi trong quá trình xử lí");
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí");
 				}
 			});
 			return false;
@@ -173,9 +179,12 @@ if(request.getParameter("msg")!=null){
 						},
 				success: function(){
 					$(self).attr("checked","");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi!");
 				},
 				error: function (){
-					alert("Có lỗi trong quá trình xử lí");
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí");
 				}
 			});
 			return false;
