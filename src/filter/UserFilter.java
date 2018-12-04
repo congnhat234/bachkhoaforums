@@ -30,8 +30,6 @@ public class UserFilter implements Filter {
 			throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest) request).getSession(false);
 		String token = CookieUtils.getValue(request, "token");
-		System.out.println(session.getAttribute("user"));
-		System.out.println(token);
 		if (session.getAttribute("user") != null) {
 			UserBO userBO = new UserBO();
 			User user = userBO.findByToken(token);

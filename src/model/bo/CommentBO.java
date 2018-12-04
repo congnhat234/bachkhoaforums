@@ -16,9 +16,9 @@ public class CommentBO {
 	public boolean addComment(Comment comment) {
 		return commentDAO.add(comment);
 	}
-	public boolean editComment(Comment comment) {
-		return commentDAO.edit(comment);
-	}
+//	public boolean editComment(Comment comment) {
+//		return commentDAO.edit(comment);
+//	}
 	public boolean deleteComment(int idComment) {
 		return commentDAO.delete(idComment);
 	}

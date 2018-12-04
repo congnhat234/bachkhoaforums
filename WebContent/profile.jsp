@@ -15,7 +15,7 @@
         <div class="titleBar">
             <h2>Thông tin cá nhân</h2>
         </div>
-        <div class="content">
+        <div class="content contentProfile">
             <div class="navigationSlideBar">
                 <h4>Tài khoản</h4>
                 <ul class="list-group">

@@ -22,7 +22,7 @@
                          <a href="#" class="page">Last</a>
                         </div>
                 </div>
-                <div class="content">
+                <div class="contentProfile">
                     <div class="navigationSlideBar">
                         <h4>Tài khoản</h4>
                         <ul class="list-group">
@@ -120,7 +120,6 @@
                 $("#btnProfile").on("click", function () {
                     $("#profile").css("display", "block");
                 });
-
                 window.onclick = function(event) {
                     if (event.target == document.getElementById("profile")) {
                         $("#profile").css("display", "none");

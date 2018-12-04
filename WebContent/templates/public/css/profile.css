@@ -20,6 +20,11 @@ body {
     margin-left: 20px;
 }
 
+.contentProfile {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
 .navigationSlideBar {
     width: 15%;
     height: 331px;
@@ -80,7 +85,9 @@ body {
     color: rgb(0, 128, 255);
     font-size: 12px;
 }
-
+.content{
+	margin:20px;
+}
 .mainContent {
     width: 85%;
     border: solid 1px rgb(0, 128, 255);
