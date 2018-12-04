@@ -28,7 +28,6 @@
 		<div style="clear: both;"></div>
 	</div>
 	<!-- End #subnav -->
-
 <div class="grid_12">
 	<!-- Example table -->
 	<div class="module">

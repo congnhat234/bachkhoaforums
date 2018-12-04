@@ -10,14 +10,14 @@
 		 <div class="module-body">
 		 <% Subject sub = (Subject) request.getAttribute("nameSub"); %>
 			<form id="addCat" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.EDIT_SUBJECT%>?cid=<%=sub.getId_subject()%>">
-				<p>
+				<div>
 						
 					<label>Tên danh mục</label>
 					<input type="text" id="name" name="newSub" value="<%=sub.getName() %>" class="input-medium" />
-				</p>
+				</div>
 				<fieldset>
 					<input class="submit-green" type="submit" value="Thêm" /> 
-					<input class="submit-gray" name="reset" type="reset" value="Nhập lại" />
+					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
 				</fieldset>
 			</form>
 		 </div> <!-- End .module-body -->
