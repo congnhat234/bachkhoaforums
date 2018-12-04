@@ -53,7 +53,7 @@ public class PostAdminController extends HttpServlet {
 		int offset = (page-1)*row_count;
 
 		SubjectBO subBO= new SubjectBO();
-		request.setAttribute("listPost", postBO.getListPostOffset(offset));
+		request.setAttribute("listPost", postBO.getListPostOffset(offset,row_count));
 		request.setAttribute("listSub", subBO.getListSubject());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexPost.jsp");

@@ -52,13 +52,15 @@ public class PostDAO {
 		}
 		return listItems;
 	}
-	public ArrayList<Post> getListPostOffset(int offset) {
+	public ArrayList<Post> getListPostOffset(int offset, int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post limit 5 offset "+offset +" ;";
+		String sql = "select * from post limit ?,?;";
 		try {
-			st=connection.createStatement();
-			rs=st.executeQuery(sql);
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
 			while(rs.next()){
 			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
 					rs.getString("username"),rs.getString("date_create"),
@@ -72,7 +74,7 @@ public class PostDAO {
 			e.printStackTrace();
 		}finally{
 			try {
-				st.close();
+				pst.close();
 				connection.close();
 				rs.close();
 			} catch (SQLException e) {

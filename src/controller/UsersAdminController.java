@@ -53,7 +53,7 @@ public class UsersAdminController extends HttpServlet {
 
 		int offset = (page-1)*row_count;
 		
-		request.setAttribute("listUsers", userBO.getListUserOffset(offset));
+		request.setAttribute("listUsers", userBO.getListUserOffset(offset, row_count));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUsers.jsp");
 		rd.forward(request, response);

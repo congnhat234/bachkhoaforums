@@ -55,7 +55,7 @@ public class SubjectAdminController extends HttpServlet {
 
 		int offset = (page-1)*row_count;
 		
-		request.setAttribute("listSub", subjectBO.getListSubjectOffset(offset));
+		request.setAttribute("listSub", subjectBO.getListSubjectOffset(offset, row_count));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexSubject.jsp");
 		rd.forward(request, response);

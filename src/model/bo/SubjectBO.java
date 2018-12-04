@@ -26,8 +26,8 @@ public class SubjectBO {
 	public int countItems() {
 		return subjectDAO.countItems();
 	}
-	public ArrayList<Subject> getListSubjectOffset(int offset) {
-		return subjectDAO.getListSubjectOffset(offset);
+	public ArrayList<Subject> getListSubjectOffset(int offset, int row_count) {
+		return subjectDAO.getListSubjectOffset(offset, row_count);
 	}
 
 }

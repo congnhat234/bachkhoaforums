@@ -242,13 +242,15 @@ public class UserDAO {
 		
 	}
 
-	public ArrayList<User> getListUserOffset(int offset) {
+	public ArrayList<User> getListUserOffset(int offset, int row_count) {
 		ArrayList<User> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from user limit 5 offset "+offset+";";
+		String sql = "select * from user limit ?,?;";
 		try {
-			st = connection.createStatement();
-			rs = st.executeQuery(sql);
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
 			while(rs.next()){
 				User obj = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
 						rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
@@ -260,7 +262,7 @@ public class UserDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				st.close();
+				pst.close();
 				connection.close();
 				rs.close();
 			} catch (SQLException e) {

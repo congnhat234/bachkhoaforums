@@ -109,7 +109,7 @@ if(request.getParameter("msg")!=null){
 						String active = "";
 						if(current_page>1){
 				%>
-				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page-1%>"></a> 	
+				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page-1%>">&lt;</a> 	
 				<span>|</span> 
 				<%	} %>
 				<%
@@ -125,7 +125,7 @@ if(request.getParameter("msg")!=null){
 				<%}
 				if(current_page<sumPage){
 				%>
-				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page+1%>">>></a> 
+				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page+1%>">&gt;</a> 
 				<%}}  %>
 			</div> 
 			<div style="clear: both;"></div> 

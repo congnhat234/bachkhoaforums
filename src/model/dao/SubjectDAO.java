@@ -181,13 +181,15 @@ public class SubjectDAO {
 	}
 
 
-	public ArrayList<Subject> getListSubjectOffset(int offset) {
+	public ArrayList<Subject> getListSubjectOffset(int offset, int row_count) {
 		ArrayList<Subject> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from subject limit 5 offset "+offset+";";
+		String sql = "select * from subject limit ?,?;";
 		try {
-			st = connection.createStatement();
-			rs = st.executeQuery(sql);
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
 			while(rs.next()){
 				Subject obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
 				listItems.add(obj);
@@ -196,7 +198,7 @@ public class SubjectDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				st.close();
+				pst.close();
 				connection.close();
 				rs.close();
 			} catch (SQLException e) {

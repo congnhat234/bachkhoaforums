@@ -107,7 +107,7 @@
 						if (current_page > 1) {
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page - 1%>"><<</a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page - 1%>">&lt;</a>
 				<span>|</span>
 				<%
 					}
@@ -129,7 +129,7 @@
 						if (current_page < sumPage) {
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page + 1%>">>></a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page + 1%>">&gt;</a>
 				<%
 					}
 					}

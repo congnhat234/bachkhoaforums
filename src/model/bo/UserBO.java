@@ -30,8 +30,8 @@ public class UserBO {
 	public int countItems() {
 		return userDAO.countItems();
 	}
-	public ArrayList<User> getListUserOffset(int offset) {
-		return userDAO.getListUserOffset(offset);
+	public ArrayList<User> getListUserOffset(int offset, int row_count) {
+		return userDAO.getListUserOffset(offset, row_count);
 	}
 
 }
