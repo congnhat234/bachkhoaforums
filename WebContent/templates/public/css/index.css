@@ -570,9 +570,38 @@ body {
 /* end header */
 
 /* begin content */
-.social {
+.top-container {
 	display: flex;
 	margin: 10px;
+}
+
+.social {
+	margin-left: 10px;
+}
+
+.create-post {
+	position: relative;
+	left: 80%;
+}
+
+.create-post a {
+	text-decoration: none;
+	color: #292c2f;
+}
+
+.create-post a:hover {
+	text-decoration: underline;
+	color: #292c2f;
+}
+
+.create-post a:visited {
+	text-decoration: none;
+	color: #103667;
+}
+
+.create-post i {
+	font-size: 15px;
+	margin-right: 5px;
 }
 
 .container {
@@ -1286,6 +1315,11 @@ body {
 	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
+.button-bot .active {
+	font-weight: bold;
+	color: #ffff66;
+}
+
 .comment-content {
 	display: flex;
 }
@@ -1298,18 +1332,36 @@ body {
 	padding: 10px;
 }
 
-.comment-content .comment a {
-	text-decoration: none;
+.comment-content .comment span {
+	margin-left:20px;
+	font-size:11px;
+	color:#888;
+}
+
+.comment-content .comment .a-comment a {
 	margin-left: 20px;
-	color: black;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+.comment-content .comment .a-comment a:hover {
+	color: rgb(0, 38, 255);
+	text-decoration: underline;
+}
+
+.comment-content .comment a {
+	text-decoration: none;	
+	color: #1a53ff;
+	font-weight: bold;
 }
 
 .comment-content .comment a:visited {
-	color: rgb(0, 68, 255);
+	color: #1a53ff;
 }
 
 .comment-content .comment a:hover {
-	color: rgb(0, 38, 255);
+	color: #1a53ff;
+	text-decoration: underline;
 }
 
 .comment-content .comment a:active {
@@ -1336,7 +1388,7 @@ body {
 }
 
 .xem-comment a:hover {
-	color: blue;
+	color: #1a53ff;
 }
 
 .button-comment {
@@ -1487,8 +1539,9 @@ body {
 }
 
 .ck-editor__editable {
-	min-height: 250px;
+	height: 300px;
 }
+
 
 /* Confirm box */
 .dialog-ovelay {

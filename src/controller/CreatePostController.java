@@ -60,7 +60,7 @@ public class CreatePostController extends HttpServlet {
 		String title = new String(request.getParameter("title").getBytes("ISO-8859-1"), "UTF-8");
 		String previewContent = new String(request.getParameter("preview_content").getBytes("ISO-8859-1"), "UTF-8");
 		String content = new String(request.getParameter("content").getBytes("ISO-8859-1"), "UTF-8");
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");  
 	    Date datef = new Date();  
 	    String date_create = formatter.format(datef);
 		String preview_image = "";

@@ -34,7 +34,7 @@
 		<div class="header-limiter">
 
 			<h1>
-				<a href="#">BachKhoa<span>Forum</span></a>
+				<a href="<%=request.getContextPath()%><%=Constants.URL.HOME%>">BachKhoa<span>Forum</span></a>
 			</h1>
 
 			<nav>

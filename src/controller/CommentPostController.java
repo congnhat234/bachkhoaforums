@@ -51,7 +51,7 @@ public class CommentPostController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");  
 	    Date datef = new Date();  
 	    String date_create = formatter.format(datef);
 		

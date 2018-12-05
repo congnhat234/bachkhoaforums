@@ -51,7 +51,7 @@ public class LikePostController extends HttpServlet {
 		if(postBO.likePost(idPost, user.getId_user())) {
 			response.setContentType("text/html");
 	        response.setCharacterEncoding("UTF-8");
-	        response.getWriter().print(postBO.countLike(idPost) + " Bỏ thích");
+	        response.getWriter().print(postBO.countLike(idPost) + " Thích");
 		}
 	}
 
