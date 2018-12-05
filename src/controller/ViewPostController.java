@@ -7,7 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.bean.User;
 import model.bo.CommentBO;
 import model.bo.PostBO;
 
@@ -29,6 +31,7 @@ public class ViewPostController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = ((HttpServletRequest) request).getSession(false);
 		
 		int idPost = Integer.parseInt(request.getParameter("idp"));
 		PostBO postBO = new PostBO();
@@ -36,7 +39,11 @@ public class ViewPostController extends HttpServlet {
 		request.setAttribute("listComment", commentBO.getListComment(idPost));
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("post", postBO.getPost(idPost));
-		
+		request.setAttribute("countLikePost", postBO.countLike(idPost));
+		if(session.getAttribute("user")!=null) {
+			User user = (User) session.getAttribute("user");
+			request.setAttribute("likedByUser", postBO.likedByUser(idPost, user.getId_user()));
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/xembai.jsp");
 		rd.forward(request, response);
 	}

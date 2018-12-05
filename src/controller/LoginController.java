@@ -35,9 +35,7 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = this.getServletContext()
-				.getRequestDispatcher("/login.jsp");
-		dispatcher.forward(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -59,10 +57,10 @@ public class LoginController extends HttpServlet {
 			if(user.getId_role() == 1) {
 				response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_HOME);
 			} else {
-				response.sendRedirect(request.getContextPath() + Constants.URL.HOME);
+				response.sendRedirect(request.getHeader("referer"));
 			}
 		} else {
-			response.sendRedirect(request.getRequestURI() + "?msg=0");
+			response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_LOGIN + "?msg=0");
 		}
 	}
 

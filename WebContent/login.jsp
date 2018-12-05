@@ -5,7 +5,7 @@
 <%@include file="/templates/public/inc/header.jsp"%>
 	
 		<div class="signin_page">
-			<form action="<%=request.getContextPath() %>/<%=Constants.URL.LOGIN %>" class="form_login_page" method="post">
+			<form action="<%=request.getContextPath() %><%=Constants.URL.LOGIN %>" class="form_login_page" method="post">
 				<h1>Login</h1>
 				<% if(request.getParameter("msg") != null) {
 					String msg = (String) request.getParameter("msg");

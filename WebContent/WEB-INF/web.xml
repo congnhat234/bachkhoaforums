@@ -30,6 +30,14 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ShowLoginController</servlet-name>
+    <servlet-class>controller.ShowLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowLoginController</servlet-name>
+    <url-pattern>/show-login</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>LogoutController</servlet-name>
     <servlet-class>controller.LogoutController</servlet-class>
   </servlet>
@@ -118,6 +126,14 @@
     <url-pattern>/user/postdelete</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>EnablePostAdminController</servlet-name>
+    <servlet-class>controller.EnablePostAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnablePostAdminController</servlet-name>
+    <url-pattern>/admin/post/enable</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>ShowPostFollowUserController</servlet-name>
     <servlet-class>controller.ShowPostFollowUserController</servlet-class>
   </servlet>
@@ -196,5 +212,13 @@
   <servlet-mapping>
     <servlet-name>DeleteCommentPostController</servlet-name>
     <url-pattern>/user/post/comment/delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LikePostController</servlet-name>
+    <servlet-class>controller.LikePostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LikePostController</servlet-name>
+    <url-pattern>/user/post/like</url-pattern>
   </servlet-mapping>
 </web-app>

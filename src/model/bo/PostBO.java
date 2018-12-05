@@ -41,5 +41,27 @@ public class PostBO {
 	public ArrayList<Post> getListPostOffset(int offset, int row_count) {
 		return postDAO.getListPostOffset(offset,row_count);
 	}
+	public int countLike(int idPost) {
+		// TODO Auto-generated method stub
+		return postDAO.countLike(idPost);
+	}
+	public int likedByUser(int idPost, int idUser) {
+		// TODO Auto-generated method stub
+		return postDAO.likedByUser(idPost, idUser);
+	}
+	public boolean likePost(int idPost, int idUser) {
+		// TODO Auto-generated method stub
+		return postDAO.likePost(idPost, idUser);
+	}
+	public boolean deleteLikedPostByUser(int idPost, int idUser) {
+		// TODO Auto-generated method stub
+		return postDAO.deleteLikedPostByUser(idPost, idUser);
+	}
+	public int getStatus(int idPost) {
+		return postDAO.getStatus(idPost);
+	}
+	public boolean setStatus(int idPost, int i) {
+		return postDAO.setStatus(idPost, i);
+	}
 
 }

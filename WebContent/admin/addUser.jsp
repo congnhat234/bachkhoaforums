@@ -35,7 +35,7 @@
 				</p>
 				<fieldset>
 					<input class="submit-green" type="submit" value="Thêm" /> 
-					<input class="submit-gray" name="reset" type="reset" value="Nhập lại" />
+					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
 				</fieldset>
 				
 			</form>

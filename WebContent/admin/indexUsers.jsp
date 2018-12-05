@@ -30,29 +30,12 @@
 		<!-- Button -->
 		<div class="float-left">
 			<a href="<%=request.getContextPath()%><%=Constants.URL.ADD_USER%>"
-				class="button"> <span>Thêm người dùng </span>
+				class="button_add"> <span>Thêm người dùng </span>
 			</a>
 		</div>
 		<div class="clear"></div>
 	</div>
-	<%
-		if (request.getParameter("msg") != null) {
-			int msg = Integer.parseInt(request.getParameter("msg"));
-			if (msg == 1) {
-				out.print("<h5 style='color:red'>Thêm thành công</h5>");
-			} else if (msg == 2) {
-				out.print("<h5 style='color:red'>Sửa thành công</h5>");
-			} else if (msg == 3) {
-				out.print("<h5 style='color:red'>Xóa thành công</h5>");
-			} else if (msg == 4) {
-				out.print("<h5 style='color:red'>Bạn không được quyền xóa tài khoản này!</h5>");
-			} else if (msg == 5) {
-				out.print("<h5 style='color:red'>Bạn không được quyền sửa tài khoản này!</h5>");
-			} else {
-				out.print("<h5 style='color:red'>Thất bại</h5>");
-			}
-		}
-	%>
+	
 	<div class="grid_12">
 		<!-- Example table -->
 		<div class="module">
@@ -66,11 +49,12 @@
 					<table id="myTable" class="tablesorter">
 						<thead>
 							<tr>
-								<th style="width: 4%; text-align: center;">ID</th>
-								<th style="width: 20%">Tên người dùng</th>
-								<th style="width: 20%">Họ và tên</th>
-								<th style="width: 11%; text-align: center;">Chức năng</th>
-								<th style="width: 11%; text-align: center;">Chức năng</th>
+								<th style="width: 5%; text-align: center;">ID</th>
+								<th style="width: 20%">Tên đăng nhập</th>
+								<th style="width: 50%">Họ và tên</th>
+								<th style="width: 5%; text-align: center;">Sửa</th>
+								<th style="width: 5%; text-align: center;">Xóa</th>
+								<th style="width: 5%; text-align: center;">Khóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -81,30 +65,46 @@
 									for (User objUser : listUsers) {
 							%>
 							<tr>
-								<td class="align-center"><%=objUser.getId_user()%></td>
-								<td><a href=""><%=objUser.getUsername()%></a></td>
-								<td><%=objUser.getFullname()%></td>
+								<td align="center"><%=objUser.getId_user()%></td>
+								<td align="center"><a href=""><%=objUser.getUsername()%></a></td>
+								<td align="center"><%=objUser.getFullname()%></td>
 								<td align="center">
 									<%
 										if (session.getAttribute("user") != null) {
 											User userInfo = (User) session.getAttribute("user");
-											
-
+											if (userInfo.getId_role() == 1 || userInfo.getId_role() == 2) {
+									%> <a
+									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER %>?uid=<%=objUser.getId_user()%>">
+										<img
+										src="<%=request.getContextPath()%>/templates/admin/images/pencil.gif"
+										alt="edit" />
+								</a> 
+								</td>
+								
+								<%
+ 									}
+								%>
+ 								
+ 								<td align="center">
+ 								<%
  								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
  								<a onclick="return confirm('Bạn có chắc muốn xóa không?')"
-									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_USER%>?uid=<%=objUser.getId_user()%>">Xóa
+									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_USER%>?uid=<%=objUser.getId_user()%>">
 										<img
 										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
 										width="16" height="16" alt="delete" />
-								</a> 							
+								</a> 
+								<%} %>
 								</td>
 								<td align="center">
-									<label class="switch">
-										  <input type="checkbox">
-										  <span class="slider round"></span>
-									</label>
-								</td>
-							</tr>
+								<%
+ 								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
+								<a onclick="return confirm('Bạn có chắc muốn vô hiệu không?')"
+									href="<%=request.getContextPath()%>?uid=<%=objUser.getId_user()%>">
+										<img
+										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
+										width="16" height="16" alt="delete" />
+								</a> 
 								<%
 								 		}
 								 	}
@@ -166,3 +166,27 @@
 	<!-- End .grid_12 -->
 </div>
 <%@include file="/templates/public/inc/footer.jsp"%>
+	<%
+		if (request.getParameter("msg") != null) {
+			int msg = Integer.parseInt(request.getParameter("msg"));
+			if (msg == 1) {
+				%>
+				<script type="text/javascript"> 
+					toast("Thêm thành công!");
+				</script>
+				<%
+			} else if (msg == 2) {
+				out.print("<h5 style='color:red'>Sửa thành công</h5>");
+			} else if (msg == 3) {
+				out.print("<h5 style='color:red'>Xóa thành công</h5>");
+			} else if (msg == 4) {
+				out.print("<h5 style='color:red'>Bạn không được quyền xóa tài khoản này!</h5>");
+			} else if (msg == 5) {
+				out.print("<h5 style='color:red'>Bạn không được quyền sửa tài khoản này!</h5>");
+			} else {
+				out.print("<h5 style='color:red'>Thất bại</h5>");
+			}
+		}
+	%>
+</body>
+</html>

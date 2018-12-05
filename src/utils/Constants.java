@@ -11,6 +11,7 @@ public class Constants {
 	public static interface URL {
 		String HOME = "/home";
 		String LOGIN = "/login";
+		String SHOW_LOGIN = "/show-login";
 		String REGISTER = "/register";
 		String FORGOT_PASSWORD = "/forgot-password";
 		String RESET_PASSWORD = "/reset-password";
@@ -34,9 +35,12 @@ public class Constants {
 		String DELETE_POST = "/user/postdelete";
 		String SHOW_POST_FOLLOW_USER = "/user/followpost";
 		String SHOW_POST_BY_USER = "/user/post";
+		String ENABLE_POST = "/admin/post/enable";
 		
 		String COMMENT_POST = "/user/post/comment";
 		String LIKE_COMMENT_POST = "/user/post/comment/like";
 		String DELETE_COMMENT_POST = "/user/post/comment/delete";
+		String LIKE_POST = "/user/post/like";
+		
 	}
 }

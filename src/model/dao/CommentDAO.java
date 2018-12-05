@@ -141,7 +141,7 @@ public class CommentDAO {
 			rs = pst.executeQuery();
 			while(rs.next()){
 				Comment comment= new Comment(rs.getInt("id_comment"),rs.getInt("id_post"),
-					rs.getInt("id_user"),rs.getString("date_create"),
+					rs.getInt("comment.id_user"),rs.getString("date_create"),
 					rs.getString("content"),rs.getString("user.username"),rs.getInt("notify"),rs.getString("user.avatar"));
 			listItems.add(comment);
 			}
