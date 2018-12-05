@@ -36,6 +36,9 @@ public class Constants {
 		String SHOW_POST_FOLLOW_USER = "/user/followpost";
 		String SHOW_POST_BY_USER = "/user/post";
 		String ENABLE_POST = "/admin/post/enable";
+		String ENABLE_USER = "/admin/user/enable";
+		String CHANGE_SUB = "/admin/post/change";
+		
 		
 		String COMMENT_POST = "/user/post/comment";
 		String LIKE_COMMENT_POST = "/user/post/comment/like";

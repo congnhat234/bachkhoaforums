@@ -63,5 +63,9 @@ public class PostBO {
 	public boolean setStatus(int idPost, int i) {
 		return postDAO.setStatus(idPost, i);
 	}
+	public boolean changeSubjectPost(int idSub,int idPost) {
+		return postDAO.changeSubjectPost(idSub,idPost);
+		
+	}
 
 }

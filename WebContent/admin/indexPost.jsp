@@ -57,13 +57,15 @@
 					<tr>
 						<td class="idPost" class="align-center"><%=objPost.getId_post() %></td>
 						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objPost.getId_post()%>"><%=objPost.getTitle() %></a></td>
-						<td>	<select>
+						<td>
+						
+						<select  idPost1="<%=objPost.getId_post()%>" class="changeSub"  >							
 							<% 	for(Subject objSub : listSub){%>
 										
-										  <option <% if(objPost.getId_subject()==objSub.getId_subject()) {%> selected <%} %>><%=objSub.getName() %> </option>
+										  <option value="<%=objSub.getId_subject() %>"<% if(objPost.getId_subject()==objSub.getId_subject()) {%> selected <%  } %>><%=objSub.getName() %>  </option>
 										
 										<%} %>
-								</select>
+						</select>
 						</td>
 						<td align="center"><img src="<%=request.getContextPath() %>/templates/public/files/post/<%=objPost.getPreview_image() %>" class="hoa" /></td>
 						<td align="center">
@@ -143,6 +145,7 @@ if(request.getParameter("msg")!=null){
 	}
 }
 %>
+
 <script type="text/javascript">
 	$('.status').on('change', function() {
 		var self = $(this);
@@ -189,6 +192,31 @@ if(request.getParameter("msg")!=null){
 			return false;
 			
 		}
+	});
+	
+	$('.changeSub').on('change', function() {
+			var self = $(this);
+			var idPost = $(self).attr("idPost1");
+			var idSub=this.value;
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.CHANGE_SUB%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						sid: idSub,
+						pid: idPost,
+						},
+				success: function(){
+					$(self).removeAttr("checked");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi! 1");
+				},
+				error: function (){
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí 1");
+				}
+			});
+			return false;
 	});
 </script>
 

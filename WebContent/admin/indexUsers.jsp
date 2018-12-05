@@ -51,10 +51,10 @@
 							<tr>
 								<th style="width: 5%; text-align: center;">ID</th>
 								<th style="width: 20%">Tên đăng nhập</th>
-								<th style="width: 50%">Họ và tên</th>
+								<th style="width: 35%">Họ và tên</th>
 								<th style="width: 5%; text-align: center;">Sửa</th>
 								<th style="width: 5%; text-align: center;">Xóa</th>
-								<th style="width: 5%; text-align: center;">Khóa</th>
+								<th style="width: 25%; text-align: center;">Khóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -99,12 +99,13 @@
 								<td align="center">
 								<%
  								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
-								<a onclick="return confirm('Bạn có chắc muốn vô hiệu không?')"
-									href="<%=request.getContextPath()%>?uid=<%=objUser.getId_user()%>">
-										<img
-										src="<%=request.getContextPath()%>/templates/admin/images/bin.gif"
-										width="16" height="16" alt="delete" />
-								</a> 
+								<label class="switch">
+									<%
+									String checked = "";
+									if(userInfo.getEnabled() == 1) checked = "checked"; %>
+										  <input idUser="<%=userInfo.getId_user() %>" class="status" type="checkbox" <%=checked %>>
+								  <span class="slider round"></span>
+								</label>
 								<%
 								 		}
 								 	}
@@ -188,5 +189,53 @@
 			}
 		}
 	%>
+<script type="text/javascript">
+	$('.status').on('change', function() {
+		var self = $(this);
+		if($(this).attr("checked")) {
+			var idUser = $(self).attr("idUser");
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.ENABLE_USER%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						aid: idUser,
+						},
+				success: function(){
+					$(self).removeAttr("checked");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi!");
+				},
+				error: function (){
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí");
+				}
+			});
+			return false;
+			
+		} else {
+			var idUser = $(self).attr("idUser");
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.ENABLE_USER%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						aid: idUser,
+						},
+				success: function(){
+					$(self).attr("checked","");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi!");
+				},
+				error: function (){
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí");
+				}
+			});
+			return false;
+			
+		}
+	});
+	</script>
 </body>
 </html>
