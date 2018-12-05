@@ -505,4 +505,27 @@ public class PostDAO {
 		return false;
 	}
 
+	public boolean changeSubjectPost(int idSub,int idPost) {
+			connection = connectDBLibrary.getConnectMySQL();
+			String query = "UPDATE post SET id_subject = ? WHERE id_post = ?;";
+			try {		
+				pst = connection.prepareStatement(query);
+				pst.setInt(1, idSub);
+				pst.setInt(2, idPost);
+				int r = pst.executeUpdate();
+				if (r>0) return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					pst.close();
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return false;
+	}
+
 }

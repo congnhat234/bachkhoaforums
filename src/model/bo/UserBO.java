@@ -33,5 +33,11 @@ public class UserBO {
 	public ArrayList<User> getListUserOffset(int offset, int row_count) {
 		return userDAO.getListUserOffset(offset, row_count);
 	}
+	public int getStatus(int idUser) {
+		return userDAO.getStatus(idUser);
+	}
+	public boolean setStatus(int idUser, int i) {
+		return userDAO.setStatus(idUser, i);
+	}
 
 }

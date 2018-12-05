@@ -2,23 +2,23 @@ package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bo.PostBO;
-import model.bo.SubjectBO;
 
 /**
- * Servlet implementation class EnablePostAdminController
+ * Servlet implementation class ChangeSubjectPost
  */
-public class EnablePostAdminController extends HttpServlet {
+public class ChangeSubjectPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnablePostAdminController() {
+    public ChangeSubjectPost() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,6 @@ public class EnablePostAdminController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -35,15 +34,19 @@ public class EnablePostAdminController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+			PostBO postBO = new PostBO();
+			int idSub = Integer.parseInt(request.getParameter("sid").trim());
+			int idPost1 = Integer.parseInt(request.getParameter("pid").trim());		
+			System.out.println("kkkk"+idSub+idPost1);
+			
+			if(postBO.changeSubjectPost(idSub,idPost1))
+				System.out.println("chuyển ok");
+			else 
+				System.out.println("chuyển ko ok");
 		
-		int idPost = Integer.parseInt(request.getParameter("aid"));
-		System.out.println(idPost);	
-		PostBO postBO = new PostBO();
-		if(postBO.getStatus(idPost) == 0) {
-			postBO.setStatus(idPost, 1);
-		} else {
-			postBO.setStatus(idPost, 0);
-		}
+		
+
 	}
-		
+
 }

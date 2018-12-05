@@ -296,4 +296,53 @@ public class UserDAO {
 		}
 		return count;
 	}
+
+	public int getStatus(int idUser) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT enabled FROM user WHERE id_user = ?;";
+		int result = 0;
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			result = rs.getInt("enabled");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean setStatus(int idUser, int i) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE user SET enabled = ? WHERE id_user = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, i);
+			pst.setInt(2, idUser);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }
