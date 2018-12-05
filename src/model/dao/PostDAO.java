@@ -254,6 +254,32 @@ public class PostDAO {
 		return listItems;
 	}
 			
+	private int getLastComment(int idPost) {
+		int username=0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT * FROM forumdb.comment where comment.id_post=? ORDER BY comment.id_comment DESC LIMIT 1;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				username=rs.getInt("id_user");
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if(username==0) return username;
+		return username;
+	}
+
 	public ArrayList<Post> getListPostByUser(String username) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();

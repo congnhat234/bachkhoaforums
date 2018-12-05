@@ -14,9 +14,7 @@ public class Post {
 
 	public Post() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 	public Post(int id_post, int id_subject, String username, String date_create, String title, String preview_image,
 			String preview_content, String content, int view, int enable) {
 		super();
@@ -30,7 +28,9 @@ public class Post {
 		this.content = content;
 		this.view = view;
 		this.enable = enable;
+
 	}
+
 
 	public int getId_post() {
 		return id_post;

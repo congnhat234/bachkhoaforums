@@ -16,6 +16,11 @@ body {
     margin-top: 100px;
 } */
 
+.alert{
+	display: flex;
+	flex-flow: row;
+}
+
 .titleBar {
     margin-left: 20px;
 }
