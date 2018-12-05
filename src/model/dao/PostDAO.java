@@ -52,6 +52,38 @@ public class PostDAO {
 		}
 		return listItems;
 	}
+	
+	public ArrayList<Post> getAllPostEnabled() {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where enabled = 1;";
+		try {
+			st=connection.createStatement();
+			rs=st.executeQuery(sql);
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	
 	public ArrayList<Post> getListPostOffset(int offset, int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
@@ -196,7 +228,7 @@ public class PostDAO {
 	public ArrayList<Post> getPostSubject(int idSub) {		
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT * FROM post WHERE id_subject = ?;";
+		String sql = "SELECT * FROM post WHERE id_subject = ? && enabled = 1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idSub);
@@ -227,7 +259,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostFolowUser(int idUser) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT * FROM forumdb.post INNER JOIN forumdb.follow ON post.id_post=follow.id_post AND  follow.id_user= ?;";
+		String sql = "SELECT * FROM post INNER JOIN follow ON post.id_post=follow.id_post WHERE follow.id_user= ? && ebabled = 1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idUser);
@@ -254,7 +286,7 @@ public class PostDAO {
 		return listItems;
 	}
 			
-	private int getLastComment(int idPost) {
+	public int getLastComment(int idPost) {
 		int username=0;
 		connection = connectDBLibrary.getConnectMySQL();
 		String sql = "SELECT * FROM forumdb.comment where comment.id_post=? ORDER BY comment.id_comment DESC LIMIT 1;";
@@ -283,7 +315,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostByUser(String username) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where username = ?;";
+		String sql = "select * from post where username = ? && enabled = 1;";
 		pst=null;
 		rs=null;
 

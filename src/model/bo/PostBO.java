@@ -8,7 +8,7 @@ import model.dao.PostDAO;
 public class PostBO {
 	PostDAO postDAO= new PostDAO();
 	public ArrayList<Post> getListPost(){
-		return postDAO.getListPost();
+		return postDAO.getAllPostEnabled();
 	}
 	public Post getPost(int idPost){
 		return postDAO.get(idPost);

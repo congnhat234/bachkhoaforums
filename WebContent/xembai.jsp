@@ -51,7 +51,7 @@
 					User user = (User) session.getAttribute("user");
 					if((int)request.getAttribute("likedByUser") > 0) {
 				%>
-					<button id="likePost" idU="<%=user.getId_user() %>" class="b1" type="button" name="button"><%=request.getAttribute("countLikePost") %> Bỏ thích</button>
+					<button id="likePost" idU="<%=user.getId_user() %>" class="b1 active" type="button" name="button"><%=request.getAttribute("countLikePost") %> Thích</button>
 				<%} else { %>
 					<button id="likePost" idU="<%=user.getId_user() %>" class="b1" type="button" name="button"><%=request.getAttribute("countLikePost") %> Thích</button>
 				<%} %>
@@ -71,7 +71,7 @@
 						<img src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>" width="50px" height="50px">
 					</div>
 					<div class="comment">
-						<a href="#"><%=listComment.get(i).getUserName()%></a>
+						<a href="#"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
 						<div><%=listComment.get(i).getContent()%></div>
 						<% if (session.getAttribute("user") != null) {
 							User user = (User) session.getAttribute("user");
@@ -141,7 +141,7 @@
 										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
 									+'</div>'
 									+'<div class="comment">'
-										+'<a href="#">'+ value["username"] +'</a>'
+										+'<a href="#">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
 											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
@@ -226,7 +226,7 @@
 										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
 									+'</div>'
 									+'<div class="comment">'
-										+'<a href="#">'+ value["username"] +'</a>'
+										+'<a href="#">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
 											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
@@ -261,6 +261,7 @@
 			success: function(data){
 				console.log(data);
 				$("#likePost").html(data);
+				$("#likePost").toggleClass("active");
 			},
 			error: function (){
 				$('#snackbar').attr("type", "error");

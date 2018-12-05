@@ -44,10 +44,14 @@
 	</nav>
 
 	<h1 style="font-family: Arial, Helvetica, sans-serif;"><%=objSub.getName()%></h1>
-	<div class="social">
-		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
-		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
-	</div>
+	<div class="top-container">
+       <div class="social">
+               <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-square "></i></a>
+               <a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
+       </div>
+
+      <div class="create-post"><a href="<%=request.getContextPath() %><%=Constants.URL.CREATE_POST%>"><i class="fas fa-pencil-alt fa-2x"></i>Tạo bài viết</a></div> 
+   </div>
 
 	<%
 		if (listpost != null) {
