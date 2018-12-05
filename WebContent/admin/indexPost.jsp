@@ -60,9 +60,9 @@
 						<td>
 						
 						<select  idPost1="<%=objPost.getId_post()%>" class="changeSub"  >							
-							<%for(int i=0;i<listSub.size();i++ ){%>
+							<% 	for(Subject objSub : listSub){%>
 										
-										  <option  index="<%=i%>" value="<%=listSub.get(i).getId_subject() %>"<% if(objPost.getId_subject()==listSub.get(i).getId_subject()) {%> selected <%  } %>><%=listSub.get(i).getName() %>  </option>
+										  <option value="<%=objSub.getId_subject() %>"<% if(objPost.getId_subject()==objSub.getId_subject()) {%> selected <%  } %>><%=objSub.getName() %>  </option>
 										
 										<%} %>
 						</select>
@@ -197,9 +197,7 @@ if(request.getParameter("msg")!=null){
 	$('.changeSub').on('change', function() {
 			var self = $(this);
 			var idPost = $(self).attr("idPost1");
-			var index =$(self).attr("index");
-			var idListSub = document.getElementsByClassName("changeSub");
-			var idSub=idListSub[1].value;
+			var idSub=this.value;
 			$.ajax({
 				url: '<%=request.getContextPath()%><%=Constants.URL.CHANGE_SUB%>',
 				type: 'POST',
