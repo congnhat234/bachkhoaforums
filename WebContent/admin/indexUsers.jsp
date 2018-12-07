@@ -72,7 +72,7 @@
 									<%
 										if (session.getAttribute("user") != null) {
 											User userInfo = (User) session.getAttribute("user");
-											if (userInfo.getId_role() == 1 || userInfo.getId_role() == 2) {
+											if (userInfo.getId_role() == 1  ) {
 									%> <a
 									href="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER %>?uid=<%=objUser.getId_user()%>">
 										<img
@@ -86,8 +86,7 @@
 								%>
  								
  								<td align="center">
- 								<%
- 								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
+ 								<%if(userInfo.getId_role()==1 && objUser.getId_user()!=userInfo.getId_user()){ %>
  								<a onclick="return confirm('Bạn có chắc muốn xóa không?')"
 									href="<%=request.getContextPath()%><%=Constants.URL.DELETE_USER%>?uid=<%=objUser.getId_user()%>">
 										<img
@@ -97,17 +96,16 @@
 								<%} %>
 								</td>
 								<td align="center">
-								<%
- 								if (userInfo.getId_role() == 1 && objUser.getId_role() != 1) {%> 
+								<%if(userInfo.getId_role()==1 && objUser.getId_user()!=userInfo.getId_user()){ %>
 								<label class="switch">
 									<%
 									String checked = "";
-									if(userInfo.getEnabled() == 1) checked = "checked"; %>
-										  <input idUser="<%=userInfo.getId_user() %>" class="status" type="checkbox" <%=checked %>>
+									if(objUser.getEnabled() == 1) checked = "checked"; %>
+										  <input idUser="<%=objUser.getId_user() %>" class="status" type="checkbox" <%=checked %>>
 								  <span class="slider round"></span>
 								</label>
 								<%
-								 		}
+								}	
 								 	}
 								 %>
 							<%

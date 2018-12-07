@@ -130,21 +130,23 @@ public class UserDAO {
 
 	public boolean edit(User user) {
 		connection = connectDBLibrary.getConnectMySQL();
-		String query = "UPDATE user SET id_role = ?, fullname = ?, address = ?, city = ?, gender = ?, email = ?, phone = ?, birthday = ?,"
+		String query = "UPDATE user SET id_role = ?, fullname = ?,password=?,token=?, address = ?, city = ?, gender = ?, email = ?, phone = ?, birthday = ?,"
 				+ "avatar = ?, enabled = ? WHERE username = ?;";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, user.getId_role());
 			pst.setString(2, user.getFullname());
-			pst.setString(3, user.getAddress());
-			pst.setString(4, user.getCity());
-			pst.setInt(5, user.getGender());
-			pst.setString(6, user.getEmail());
-			pst.setString(7, user.getPhone());
-			pst.setString(8, user.getBirthhday());
-			pst.setString(9, user.getAvatar());
-			pst.setInt(10, user.getEnabled());
-			pst.setString(11, user.getUsername());
+			pst.setString(3, user.getPassword());
+			pst.setString(4, user.getToken());
+			pst.setString(5, user.getAddress());
+			pst.setString(6, user.getCity());
+			pst.setInt(7, user.getGender());
+			pst.setString(8, user.getEmail());
+			pst.setString(9, user.getPhone());
+			pst.setString(10, user.getBirthhday());
+			pst.setString(11, user.getAvatar());
+			pst.setInt(12, user.getEnabled());
+			pst.setString(13, user.getUsername());
 			
 			int r = pst.executeUpdate();
 			if (r>0) return true;

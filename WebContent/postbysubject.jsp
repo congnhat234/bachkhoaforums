@@ -13,6 +13,21 @@
 	ArrayList<Post> listpost = (ArrayList<Post>) request.getAttribute("listpost");
 	Subject objSub = (Subject) request.getAttribute("objSub");
 %>
+    <aside class="sidebar-left">
+    
+        <div class="sidebar-links">
+        <a class="link-red" href="#">Bài Mới</a>
+        <%
+        ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
+        %>
+        <%for(int i=0;i<listsub.size();i++) {%>
+        	 
+        	
+            <a  <%if(listsub.get(i).getId_subject()==objSub.getId_subject()) {%> class=" link-blue " <%}else {%>class="link-red" <%} %> href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
+            <%=listsub.get(i).getName()%></a>
+            <%}%>
+        </div>
+    </aside>
 <aside class="sidebar-right">
 	<div class="latest-blog-posts">
 		<h3>
@@ -93,5 +108,6 @@
 	%>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>
+
 	</body>
 </html>

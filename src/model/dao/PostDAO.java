@@ -259,7 +259,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostFolowUser(int idUser) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT * FROM post INNER JOIN follow ON post.id_post=follow.id_post WHERE follow.id_user= ? && ebabled = 1;";
+		String sql = "SELECT * FROM post INNER JOIN follow ON post.id_post=follow.id_post WHERE follow.id_user= ? && enabled = 1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idUser);
