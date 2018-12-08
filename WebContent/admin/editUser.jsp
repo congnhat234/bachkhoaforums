@@ -30,13 +30,13 @@
             		user = (User) request.getAttribute("user");
             		}%>
             	
-                <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">
+                <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER%>?uid=<%=user.getId_user()%>">
                     <fieldset>
                         <dl class="ctrlUnit avatarEditor">
                             <dt><label>Hình đại diện:</label></dt>
                             <dd>                           
                                 <a href="#" class="avatar">
-                                    <img style="width:100px;height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
+                                    <img style="width:100px; height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
                                 </a> <br>
                                 <input type="file" name="avatar" value="" id="" class="textCtrl OptOut">
                             </dd>
@@ -47,6 +47,16 @@
                             <dt><label for="ctrl_location">Tên:</label></dt>
                             <dd><input type="text" name="fullname" value="<%=user.getFullname() %>" class="textCtrl OptOut"></dd>
                         </dl>
+                        <dl class="ctrlUnit">
+                            <dt><label for="ctrl_location">Password:</label></dt>
+                            <dd><input type="password" name="password" required class="textCtrl OptOut"></dd>
+                        </dl>
+                        	<label>Quyền hạn</label>					
+				     <select  name="role" class="input-medium" >
+				     	<option  value="1" <%if(user.getId_role()==1){%> selected <%}%>>1.Admin </option>
+				     	<option  value="2" <%if(user.getId_role()==2){ %> selected<%} %>>2.Mod</option>
+				     	<option  value="3" <%if(user.getId_role()==3){ %> selected<%} %>>3.User </option>
+				     </select>
                         <dl class="ctrlUnit">
                             <dt><label>Giới tính:</label></dt>
                             <dd>

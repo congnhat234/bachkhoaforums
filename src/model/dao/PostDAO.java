@@ -259,7 +259,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostFolowUser(int idUser) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT * FROM post INNER JOIN follow ON post.id_post=follow.id_post WHERE follow.id_user= ? && ebabled = 1;";
+		String sql = "SELECT * FROM post INNER JOIN follow ON post.id_post=follow.id_post WHERE follow.id_user= ? && enabled = 1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idUser);
@@ -345,27 +345,7 @@ public class PostDAO {
 		return listItems;
 	}
 
-	public boolean deletePostBySubject(int idSub) {
-		int result = 0;
-		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "DELETE FROM post WHERE id_subject = ?";
-		try {
-			pst = connection.prepareStatement(sql);
-			pst.setInt(1, idSub);
-			result = pst.executeUpdate();
-			if(result > 0) return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pst.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return false;
-	}
+
 
 	public int countItems() {
 		int count = 0;
@@ -558,6 +538,78 @@ public class PostDAO {
 				}
 			}
 			return false;
+	}
+
+	public boolean deleteLikePostByPost(int id_post) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM like_post WHERE id_post = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, id_post);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean deletePostByUser(String userName) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM post WHERE username = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, userName);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean deleteLikePostByUser(int idUser) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM like_post WHERE id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 }

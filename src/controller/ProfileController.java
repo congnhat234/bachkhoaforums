@@ -59,6 +59,7 @@ public class ProfileController extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		
 		String fullname = (String) request.getParameter("fullname");
+		System.out.println("fullname"+fullname);
 		String phone = (String) request.getParameter("phone");
 		String email = (String) request.getParameter("email");
 		int gender = Integer.parseInt((String) request.getParameter("gender"));
@@ -121,11 +122,15 @@ public class ProfileController extends HttpServlet {
 				}
 			}
 		}
-		User userEdit = new User(0,3,user.getUsername(),user.getPassword(),user.getToken(),fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
+		if("".equals(avatar)) {
+			avatar=user.getAvatar();
+		}
+		System.out.println("avatar"+avatar);
+		User userEdit = new User(0,user.getId_role(),user.getUsername(),user.getPassword(),user.getToken(),fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.edit(userEdit)) {
 			String picture = user.getAvatar();
-			if(!"".equals(picture)){
+			if(!avatar.equals(picture) ){		
 				String urlDelFile = realPath + File.separator + picture;
 				File delFile = new File(urlDelFile);
 				delFile.delete();

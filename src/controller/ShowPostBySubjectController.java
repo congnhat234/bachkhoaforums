@@ -37,6 +37,7 @@ public class ShowPostBySubjectController extends HttpServlet {
 		SubjectBO subBO= new SubjectBO();
 		request.setAttribute("objSub", subBO.getSubject(idSub));
 		request.setAttribute("listpost", postBO.getPostSubject(idSub));
+		request.setAttribute("listsubject", subBO.getListSubject());
 		RequestDispatcher rd = request.getRequestDispatcher("/postbysubject.jsp");
 		rd.forward(request, response);
 	}

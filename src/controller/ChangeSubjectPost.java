@@ -38,15 +38,7 @@ public class ChangeSubjectPost extends HttpServlet {
 			PostBO postBO = new PostBO();
 			int idSub = Integer.parseInt(request.getParameter("sid").trim());
 			int idPost1 = Integer.parseInt(request.getParameter("pid").trim());		
-			System.out.println("kkkk"+idSub+idPost1);
-			
-			if(postBO.changeSubjectPost(idSub,idPost1))
-				System.out.println("chuyển ok");
-			else 
-				System.out.println("chuyển ko ok");
-		
-		
-
+			postBO.changeSubjectPost(idSub,idPost1);
 	}
 
 }
