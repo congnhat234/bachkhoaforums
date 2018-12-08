@@ -61,7 +61,6 @@ public class EditUserController extends HttpServlet {
 		
 		String fullname = (String) request.getParameter("fullname");
 		String password = (String) request.getParameter("password");
-		System.out.println("passsssssss"+password);
 		String token="";
 		String passwordCryp="";
 		if(!"".equals(password)){

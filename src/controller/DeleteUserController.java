@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bean.User;
+import model.bo.CommentBO;
+import model.bo.FollowBO;
+import model.bo.PostBO;
 import model.bo.SubjectBO;
 import model.bo.UserBO;
 import utils.Constants;
@@ -32,6 +36,20 @@ public class DeleteUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idUser=Integer.parseInt(request.getParameter("uid"));
 		UserBO userBO= new UserBO();
+		User user=userBO.findByIDUser(idUser);
+		PostBO postBO= new PostBO();
+		CommentBO cmtBO= new CommentBO();
+		FollowBO followBO= new FollowBO();
+		//xoa post by id_user
+		postBO.deletePostByUser(user.getUsername());
+		//xoa comment by id_user
+		cmtBO.deleteCommentByUser(idUser);
+		//xoa follow by id_user
+		followBO.deleteFollowByUser(idUser);
+		//xoa like_post by id_user
+		postBO.deleteLikePostByUser(idUser);
+		//xoa like_comment by id_user
+		cmtBO.deleteLikeCommentByUser(idUser);
 		if(userBO.delete(idUser)){
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER);	
 		}

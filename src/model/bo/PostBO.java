@@ -32,9 +32,6 @@ public class PostBO {
 	public ArrayList<Post> getListPostByUser(String username){
 		return postDAO.getListPostByUser(username);
 	}
-	public boolean deletePostBySubject(int idSub) {
-		return postDAO.deletePostBySubject(idSub);
-	}
 	public int countItems() {
 		return postDAO.countItems();
 	}
@@ -65,6 +62,18 @@ public class PostBO {
 	}
 	public boolean changeSubjectPost(int idSub,int idPost) {
 		return postDAO.changeSubjectPost(idSub,idPost);
+		
+	}
+	public boolean deleteLikePostByPost(int id_post) {
+		return postDAO.deleteLikePostByPost(id_post);
+		
+	}
+	public boolean deletePostByUser(String userName) {
+		return postDAO.deletePostByUser(userName);
+		
+	}
+	public boolean deleteLikePostByUser(int idUser) {
+		return postDAO.deleteLikePostByUser(idUser);
 		
 	}
 

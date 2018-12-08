@@ -8,4 +8,12 @@ public class FollowBO {
 	public boolean add(Follow follow) {
 		return followDAO.add(follow);
 	}
+	public boolean deleteFollowByPost(int id_post) {
+		return followDAO.deleteFollowByPost(id_post);
+		
+	}
+	public boolean deleteFollowByUser(int idUser) {
+		return followDAO.deleteFollowByUser(idUser);
+		
+	}
 }

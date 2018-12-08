@@ -22,5 +22,20 @@ public class CommentBO {
 	public boolean deleteComment(int idComment) {
 		return commentDAO.delete(idComment);
 	}
+	public boolean deleteLikeCommentByComment(int id_comment) {
+		return commentDAO.deleteLikeCommentByComment(id_comment);
+		
+	}
+	public boolean deleteCommentByPost(int id_post) {
+		return commentDAO.deleteCommentByPost(id_post);
+		
+	}
+	public boolean deleteCommentByUser(int idUser) {
+		return commentDAO.deleteCommentByUser(idUser);
+		
+	}
+	public boolean deleteLikeCommentByUser(int idUser) {
+		return commentDAO.deleteLikeCommentByUser(idUser);	
+	}
 
 }

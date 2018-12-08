@@ -43,6 +43,54 @@ public class FollowDAO {
 		}
 		return false;
 	}
+
+	public boolean deleteFollowByPost(int id_post) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM follow WHERE id_post = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, id_post);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean deleteFollowByUser(int idUser) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM follow WHERE id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 	
 
 }
