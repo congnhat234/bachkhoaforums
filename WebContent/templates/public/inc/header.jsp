@@ -2,7 +2,7 @@
 <%@page import="model.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://cksource.com/ckfinder" prefix="ckfinder" %>
 <title>BachKhoa</title>
 
 <head>
@@ -25,6 +25,8 @@
 		src="<%=request.getContextPath()%>/templates/public/js/jquery-3.3.1.min.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/templates/public/ckeditor/ckeditor.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
 	
 </head>
 

@@ -1,11 +1,3 @@
-ClassicEditor
-.create( document.querySelector( '#editor' ) )
-.then(editor => {
-    theEditor = editor;
-  })
-.catch( error => {
-console.error( error );
-} );
 $(".btnSignin").on("click", function () {
     $("#signin").css("display", "block");
 });
@@ -85,5 +77,5 @@ function toast(message) {
 	var x = document.getElementById("snackbar");
     x.className = "show";
     x.innerHTML = message;
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
 }

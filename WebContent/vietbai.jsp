@@ -30,9 +30,9 @@
                         <dt>Preview Image</dt>
                         <dd>
                             <a href="#">
-                            <img style="width:200px;height:200px;" src="#">
+                            <img id="imgpreview" style="width:200px;height:200px;" src="#">
                             </a> <br><br>
-                            <input type="file" name="preview_image" value="" class="choose_file" >
+                            <input id="imginput" type="file" name="preview_image" value="" class="choose_file" >
                         </dd>
                     </dl>
                 </div>
@@ -76,7 +76,30 @@
     </div>
 
     <%@include file="/templates/public/inc/footer.jsp" %>
-    
+    <script type="text/javascript">
+	    var editor = CKEDITOR.replace('editor', {
+			filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+		});
+		CKFinder.setupCKEditor(editor,'/forumproject/ckfinder/');
+    	function previewFile() {
+    	  var preview = document.getElementById('imgpreview');
+    	  var file    = document.getElementById('imginput').files[0];
+    	  var reader  = new FileReader();
+
+    	  reader.onloadend = function () {
+    	    preview.src = reader.result;
+    	  }
+
+    	  if (file) {
+    	    reader.readAsDataURL(file);
+    	  } else {
+    	    preview.src = "";
+    	  }
+    	}
+    	$("#imginput").change(function(){
+    	    previewFile();
+    	});
+    </script>
 </body>
 
 </html>

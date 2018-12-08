@@ -118,6 +118,10 @@
 <%@include file="/templates/public/inc/footer.jsp"%>
 
 <script type="text/javascript">
+	var editor = CKEDITOR.replace('editor', {
+		filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+	});
+	CKFinder.setupCKEditor(editor,'/forumproject/ckfinder/');
 	$("#sendComment").on('click', function (){
 		
 		var cmt = theEditor.getData(); 
