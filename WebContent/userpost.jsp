@@ -45,11 +45,36 @@
 	</nav>
 
 	<h1 style="font-family: Arial, Helvetica, sans-serif;">Bài viết của bạn</h1>
-	<div class="social">
+	<!-- <div class="social">
 		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
 		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
-	</div>
-
+	</div> -->
+	<ul class="menu">
+			<li class="dropdown">
+				<a href="#" id="dropbutton1" class="dropbtn">Tài Khoản</a>
+				<div  class="dropdown_content"> 
+					<a href="#">Thông báo của bạn</a>
+					<a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_USER%>">Bài viết của bạn</a>
+					<a href="#">Chủ đề theo dõi</a>
+					<a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài viết theo dõi</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="#" id="dropbutton2" class="dropbtn">Tin nhắn</a>
+				<div  class="dropdown_content"> 
+					<a href="#">Xem tin nhắn</a>
+					<a href="#">Tạo tin nhắn mới</a>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a href="#" id="dropbutton3" class="dropbtn">Cài đặt</a>
+				<div  class="dropdown_content"> 
+				<a href="#">Thông tin cá nhân</a>
+				<a href="#">Mật khẩu</a>
+				<a href="#">Đăng xuất</a>
+				</div>
+			</li>
+		</ul>
 	<%
 		if (listpost != null) {
 	%>
