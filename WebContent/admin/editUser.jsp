@@ -4,7 +4,8 @@
 <html lang="en" dir="ltr">
 
 <%@include file="/templates/public/inc/header.jsp" %>
-
+	
+	
     <div class="container">
         <nav class="navbar">
                 <ul class="breadcrumbs">
@@ -12,23 +13,26 @@
                         <li><a href="#">Sửa Thành Viên</a></li>
                 </ul>
         </nav>
-        <div class="titleBar">
-            <h2>Thông tin thành viên</h2>
-        </div>
-        <div class="content">
-            <div class="mainContent">
-            	<%if(request.getParameter("msg") != null) { 
-            	String msg = request.getParameter("msg");
-            	if(msg.equals("1")) {%>
-            	<h4 style="color:red">Đã lưu thay đổi</h4>
-            	<%} else {%>
-            	<h4 style="color:red">Lỗi</h4>
-            	<%}} %>
-            	<%
+            	<% 
             	User user = null;
             	if (request.getAttribute("user") != null) {
             		user = (User) request.getAttribute("user");
             		}%>
+            		
+		        <!-- Tab links -->
+		<div class="tab">
+		  <button class="tablinks" onclick="openActive(event, 'InfomationUser')" id="defaultOpen" >Thông tin</button>
+		  <button class="tablinks" onclick="openActive(event, 'ChangePassword')" id="defaultOpen1">Đổi mật khẩu</button>
+		</div>
+		
+		<!-- Tab content -->
+		<div id="InfomationUser" class="tabcontent">
+		       <div class="titleBar">
+            <h2>Thông tin thành viên</h2>
+        </div>
+        <div class="content">
+            <div class="mainContent">
+            	
             	
                 <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER%>?uid=<%=user.getId_user()%>">
                     <fieldset>
@@ -46,10 +50,6 @@
                     	<dl class="ctrlUnit">
                             <dt><label for="ctrl_location">Tên:</label></dt>
                             <dd><input type="text" name="fullname" value="<%=user.getFullname() %>" class="textCtrl OptOut"></dd>
-                        </dl>
-                        <dl class="ctrlUnit">
-                            <dt><label for="ctrl_location">Password:</label></dt>
-                            <dd><input type="password" name="password" required class="textCtrl OptOut"></dd>
                         </dl>
                         	<label>Quyền hạn</label>					
 				     <select  name="role" class="input-medium" >
@@ -112,7 +112,56 @@
                 </form>
             </div>
         </div>
-   </div>
-    <%@include file="/templates/public/inc/footer.jsp" %>
+		  
+		</div>
+		
+		<div id="ChangePassword" class="tabcontent">
+		 	<div class="module">
+		 <h2><span>Đổi mật khẩu</span></h2>
+		 <div class="module-body">
+			<form id="addCat" method="POST" action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_ADMIN%>?uid=<%=user.getId_user()%>">
+				<div>		
+					<label for="ctrl_location">Mật khẩu mới:</label>
+					<input type="password"  name="password" value="" required />
+				</div>
+				<div>		
+					<label for="ctrl_location">Nhập lại mật khẩu mới:</label>
+					<input type="password"  name="repassword" value="" required />
+				</div>
+				<fieldset>
+					<input class="button" type="submit" value="Thêm" /> 
+					<input class="button" name="reset" type="reset" value="Nhập lại" />
+				</fieldset>
+			</form>
+		 </div> <!-- End .module-body -->
+
+	</div>  <!-- End .module -->
+	<div style="clear:both;"></div>
+</div> <!-- End .grid_12 -->
+		</div>
+<%@include file="/templates/public/inc/footer.jsp" %>		
+ <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("1")) {%>
+    	<script>
+		$('#snackbar').attr("type", "success");
+		toast("Đã lưu thay đổi!");
+		</script> 
+    	<%} else if(msg.equals("0")) {%>
+    	<script>
+		$('#snackbar').attr("type", "error");
+		toast("Lỗi!");
+		</script> 
+    	<%} else {%>
+    		<script>
+    		$('#snackbar').attr("type", "error");
+    		 toast("Nhập lại mật khẩu: không chính xác1!"); 		
+    		</script> 
+    	<%}} %>
+<script>
+window.onload = function(){
+	  document.getElementById('defaultOpen').click();
+	}
+</script>
+
 </body>
-<html>

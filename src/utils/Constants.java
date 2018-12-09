@@ -38,6 +38,8 @@ public class Constants {
 		String ENABLE_POST = "/admin/post/enable";
 		String ENABLE_USER = "/admin/user/enable";
 		String CHANGE_SUB = "/admin/post/change";
+		String CHANGE_PASS_ADMIN = "/admin/user/changepass";
+		String CHANGE_PASS_USER = "/user/changepass";
 		
 		
 		String COMMENT_POST = "/user/post/comment";
