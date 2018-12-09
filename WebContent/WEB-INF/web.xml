@@ -245,6 +245,22 @@
 		<url-pattern>/admin/useredit</url-pattern>
 	</servlet-mapping>
 	<servlet>
+    <servlet-name>ChangePasswordByAdminController</servlet-name>
+    <servlet-class>controller.ChangePasswordByAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordByAdminController</servlet-name>
+    <url-pattern>/admin/user/changepass</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ChangePasswordByUserController</servlet-name>
+    <servlet-class>controller.ChangePasswordByUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordByUserController</servlet-name>
+    <url-pattern>/user/changepass</url-pattern>
+  </servlet-mapping>
+	<servlet>
 		<servlet-name>CommentPostController</servlet-name>
 		<servlet-class>controller.CommentPostController</servlet-class>
 	</servlet>
