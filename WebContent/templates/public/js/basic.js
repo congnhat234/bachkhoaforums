@@ -1,7 +1,7 @@
 $('img').on('load', function(e){
     
 }).on('error', function(e) {
-    $(this).attr('src', 'templates/public/files/noimage.jpg');
+    $(this).attr('src', 'files/images/noimage.jpg');
 });
 
 $(".btnSignin").on("click", function () {
