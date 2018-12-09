@@ -116,22 +116,63 @@
                     </dl>
                 </form>
             </div>
+		</div>
+				<div id="ChangePassword" class="tabcontent">
+		 	<div class="module">
+		 <h2><span>Đổi mật khẩu</span></h2>
+		 <div class="module-body">
+			<form id="addCat" method="POST" action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_USER%>?uid=<%=user.getId_user()%>">
+				<div>		
+					<label for="ctrl_location">Mật khẩu cũ:</label>
+					<input type="password"  name="oldpassword" value=""  />
+				</div>
+				<div>		
+					<label for="ctrl_location">Mật khẩu mới:</label>
+					<input type="password"  name="password" value="" required />
+				</div>
+				<div>		
+					<label for="ctrl_location">Nhập lại mật khẩu mới:</label>
+					<input type="password"  name="repassword" value="" required />
+				</div>
+				<fieldset>
+					<input class="button" type="submit" value="Thêm" /> 
+					<input class="button" name="reset" type="reset" value="Nhập lại" />
+				</fieldset>
+			</form>
+		 </div> <!-- End .module-body -->
+
+	</div>  <!-- End .module -->
+	<div style="clear:both;"></div>
+</div> <!-- End .grid_12 -->
+            
+            
         </div>
-    </div>
+
     <%@include file="/templates/public/inc/footer.jsp" %>
-    <%if(request.getParameter("msg") != null) { 
-    	String msg = request.getParameter("msg");
-    	if(msg.equals("1")) {%>
-    	<script>
-		$('#snackbar').attr("type", "success");
-		toast("Đã lưu thay đổi!");
-		</script> 
-    	<%} else {%>
-    	<script>
-		$('#snackbar').attr("type", "error");
-		toast("Lỗi!");
-		</script> 
-    	<%}} %>
+	<%if(request.getParameter("msg") != null) { 
+	    	String msg = request.getParameter("msg");
+	    	if(msg.equals("1")) {%>
+	    	<script>
+			$('#snackbar').attr("type", "success");
+			toast("Đã lưu thay đổi!");
+			</script> 
+	    	<%} else if(msg.equals("0")) {%>
+	    	<script>
+			$('#snackbar').attr("type", "error");
+			toast("Lỗi!");
+			</script> 
+	    	<%} else if(msg.equals("2")){%>
+	    		<script>
+	    		$('#snackbar').attr("type", "error");
+	    		toast("Mật khẩu cũ chưa đúng!");
+	    		</script> 
+	    	<%} else {%>
+	    		<script>
+	    		$('#snackbar').attr("type", "error");
+	    		toast("Nhập lại mật khẩu: không chính xác!");
+	    		</script> 
+	    	<%}} %>
+    	
     <script type="text/javascript">
     	function previewFile() {
     	  var preview = document.getElementById('imgpreview');
@@ -152,6 +193,11 @@
     	    previewFile();
     	});
     </script>
+    <script>
+window.onload = function(){
+	  document.getElementById('defaultOpen').click();
+	}
+</script>
 </body>
 
 </html>

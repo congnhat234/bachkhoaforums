@@ -201,3 +201,4 @@
     </div>
     <% } %>
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
+    <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
