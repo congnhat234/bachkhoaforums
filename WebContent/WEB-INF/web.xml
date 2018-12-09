@@ -41,8 +41,12 @@
 	</session-config>
 
 	<context-param>
-		<param-name>tempfile.dir</param-name>
-		<param-value>tmpfiles</param-value>
+		<param-name>userfile.dir</param-name>
+		<param-value>files/user</param-value>
+	</context-param>
+	<context-param>
+		<param-name>postfile.dir</param-name>
+		<param-value>files/post</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>IndexController</servlet-name>

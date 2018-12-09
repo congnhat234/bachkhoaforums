@@ -16,7 +16,7 @@
     <aside class="sidebar-left">
     
         <div class="sidebar-links">
-        <a class="link-red" href="#">Bài Mới</a>
+        <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.HOME %>">Bài Mới</a>
         <%
         ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
         %>

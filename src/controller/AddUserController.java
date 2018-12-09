@@ -51,7 +51,7 @@ public class AddUserController extends HttpServlet {
 	    Date date = new Date();  
 	    String date_join = formatter.format(date);
 	    String mess="chưa bổ sung";
-		User user = new User(0,role,username,passwordCryp,token,fullname,mess,mess,0,mess,mess,mess,date_join,"",0,0);
+		User user = new User(0,role,username,passwordCryp,token,fullname,mess,mess,0,mess,mess,mess,date_join,"noimage.jpg",0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER + "?msg=1");

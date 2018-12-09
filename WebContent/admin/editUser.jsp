@@ -36,9 +36,9 @@
                             <dt><label>Hình đại diện:</label></dt>
                             <dd>                           
                                 <a href="#" class="avatar">
-                                    <img style="width:100px; height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
+                                    <img id="imgpreview" style="width:100px; height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
                                 </a> <br>
-                                <input type="file" name="avatar" value="" id="" class="textCtrl OptOut">
+                                <input id="imginput" type="file" name="avatar" value="" id="" class="textCtrl OptOut">
                             </dd>
                         </dl>
                     </fieldset>
@@ -114,5 +114,26 @@
         </div>
    </div>
     <%@include file="/templates/public/inc/footer.jsp" %>
+    
+    <script type="text/javascript">
+    	function previewFile() {
+    	  var preview = document.getElementById('imgpreview');
+    	  var file    = document.getElementById('imginput').files[0];
+    	  var reader  = new FileReader();
+
+    	  reader.onloadend = function () {
+    	    preview.src = reader.result;
+    	  }
+
+    	  if (file) {
+    	    reader.readAsDataURL(file);
+    	  } else {
+    	    preview.src = "";
+    	  }
+    	}
+    	$("#imginput").change(function(){
+    	    previewFile();
+    	});
+    </script>
 </body>
 <html>
