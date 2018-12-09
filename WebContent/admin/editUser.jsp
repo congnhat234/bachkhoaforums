@@ -9,7 +9,7 @@
     <div class="container">
         <nav class="navbar">
                 <ul class="breadcrumbs">
-                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.HOME%>"><i class="fas fa-home fa-2x"></i></a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.ADMIN_HOME%>"><i class="fas fa-home fa-2x"></i></a></li>
                         <li><a href="#">Sửa Thành Viên</a></li>
                 </ul>
         </nav>
