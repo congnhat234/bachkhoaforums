@@ -1346,6 +1346,10 @@ body {
 	font-size: 12px;
 }
 
+.comment-content .comment .a-comment .active {
+	font-weight: bold;
+}
+
 .comment-content .comment .a-comment a:hover {
 	color: rgb(0, 38, 255);
 	text-decoration: underline;

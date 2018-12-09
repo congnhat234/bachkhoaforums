@@ -2,6 +2,9 @@ package model.bo;
 
 import java.util.ArrayList;
 
+import com.google.gson.JsonArray;
+
+import model.bean.LikeComment;
 import model.bean.Post;
 import model.dao.PostDAO;
 
@@ -39,19 +42,15 @@ public class PostBO {
 		return postDAO.getListPostOffset(offset,row_count);
 	}
 	public int countLike(int idPost) {
-		// TODO Auto-generated method stub
 		return postDAO.countLike(idPost);
 	}
 	public int likedByUser(int idPost, int idUser) {
-		// TODO Auto-generated method stub
 		return postDAO.likedByUser(idPost, idUser);
 	}
 	public boolean likePost(int idPost, int idUser) {
-		// TODO Auto-generated method stub
 		return postDAO.likePost(idPost, idUser);
 	}
 	public boolean deleteLikedPostByUser(int idPost, int idUser) {
-		// TODO Auto-generated method stub
 		return postDAO.deleteLikedPostByUser(idPost, idUser);
 	}
 	public int getStatus(int idPost) {
@@ -75,6 +74,21 @@ public class PostBO {
 	public boolean deleteLikePostByUser(int idUser) {
 		return postDAO.deleteLikePostByUser(idUser);
 		
+	}
+	public int likedCommentByUser(int idComment, int id_user) {
+		return postDAO.likedCommentByUser(idComment, id_user);
+	}
+	public boolean deleteLikedCommentByUser(int idComment, int idUser) {
+		return postDAO.deleteLikedCommentByUser(idComment, idUser);
+	}
+	public boolean likeComment(int idComment, int idUser) {
+		return postDAO.likeComment(idComment, idUser);
+	}
+	public int countLikeComment(int idComment) {
+		return postDAO.countLikeComment(idComment);
+	}
+	public ArrayList<LikeComment> getListLikedComment(int idPost) {
+		return postDAO.getListLikedComment(idPost);
 	}
 
 }

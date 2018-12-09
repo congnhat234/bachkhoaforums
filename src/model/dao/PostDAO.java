@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 
 import libraries.ConnectDBLibrary;
+import model.bean.LikeComment;
 import model.bean.Post;
 
 public class PostDAO {
@@ -610,6 +611,132 @@ public class PostDAO {
 			}
 		}
 		return false;
+	}
+
+	public int likedCommentByUser(int idComment, int idUser) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM like_comment WHERE id_comment = ? && id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idComment);
+			pst.setInt(2, idUser);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+	public boolean deleteLikedCommentByUser(int idComment, int idUser) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM like_comment WHERE id_comment = ? && id_user = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idComment);
+			pst.setInt(2, idUser);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean likeComment(int idComment, int idUser) {
+		connection = connectDBLibrary.getConnectMySQL();		
+		String query = "INSERT INTO like_comment(id_comment, id_user) VALUES (?, ?);";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, idComment);
+			pst.setInt(2, idUser);
+			int r = pst.executeUpdate();
+			return (r == 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public int countLikeComment(int idComment) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM like_comment WHERE id_comment = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idComment);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+	public ArrayList<LikeComment> getListLikedComment(int idPost) {
+		ArrayList<LikeComment> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from like_comment inner join comment on like_comment.id_comment = comment.id_comment where id_post = ?;";
+		pst=null;
+		rs=null;
+
+		try {
+			pst=connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			LikeComment likeComment = new LikeComment(rs.getInt("id_like_comment"), rs.getInt("like_comment.id_comment"), rs.getInt("id_user"));
+			listItems.add(likeComment);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
 	}
 
 }

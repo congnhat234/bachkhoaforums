@@ -284,4 +284,12 @@
 		<servlet-name>LikePostController</servlet-name>
 		<url-pattern>/user/post/like</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>LikeCommentController</servlet-name>
+		<servlet-class>controller.LikeCommentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LikeCommentController</servlet-name>
+		<url-pattern>/user/post/comment/like</url-pattern>
+	</servlet-mapping>
 </web-app>
