@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.bean.User;
+import model.bo.PostBO;
+import model.bo.UserBO;
 
 /**
  * Servlet implementation class ProfileMemberController
@@ -28,6 +33,17 @@ public class ProfileMemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int idUserComment =Integer.parseInt(request.getParameter("idUC"));
+		System.out.println(idUserComment);
+		
+		UserBO userBO = new UserBO();
+		User user = userBO.findByIDUser(idUserComment);
+		request.setAttribute("user", user);
+		
+		PostBO postBO = new PostBO();
+		request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
+
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/profilemember.jsp");
 		rd.forward(request, response);
 	}
