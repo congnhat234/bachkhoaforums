@@ -71,7 +71,7 @@
 						<img src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>" width="50px" height="50px">
 					</div>
 					<div class="comment">
-						<a href="#"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
+						<a href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
 						<div><%=listComment.get(i).getContent()%></div>
 						<% if (session.getAttribute("user") != null) {
 							User user = (User) session.getAttribute("user");

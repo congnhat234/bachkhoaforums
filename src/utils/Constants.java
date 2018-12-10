@@ -44,6 +44,7 @@ public class Constants {
 		String LIKE_COMMENT_POST = "/user/post/comment/like";
 		String DELETE_COMMENT_POST = "/user/post/comment/delete";
 		String LIKE_POST = "/user/post/like";
+		String PROFILEMEMBER="/user/profilemember";
 		
 	}
 }
