@@ -66,14 +66,14 @@
 				<%ArrayList<Comment> listComment= (ArrayList<Comment>) request.getAttribute("listComment");
 					ArrayList<LikeComment> listLikedComment= (ArrayList<LikeComment>) request.getAttribute("listLikedComment");
 					String auth = "";
+					int idUser = 0;
+					if (session.getAttribute("user") != null) {
+						User user = (User) session.getAttribute("user");
+						idUser = user.getId_user();
+					}
 					for(int i=0;i<listComment.size();i++){
 						int count = 0;
 						boolean checkLike = false;
-						int idUser = 0;
-						if (session.getAttribute("user") != null) {
-							User user = (User) session.getAttribute("user");
-							idUser = user.getId_user();
-						}
 						for(int j = 0; j < listLikedComment.size(); j++) {
 							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
 								count++;
@@ -147,7 +147,7 @@
 	CKFinder.setupCKEditor(editor,'/forumproject/ckfinder/');
 	$("#sendComment").on('click', function (){
 		
-		var cmt = theEditor.getData(); 
+		var cmt = CKEDITOR.instances.editor.getData();; 
 		var idPost = $(".title_post").attr("idpost");
 		$.ajax({
 			url: '<%=request.getContextPath()%><%=Constants.URL.COMMENT_POST%>',
@@ -161,8 +161,26 @@
 				if(responseJson!=null){
 					var commentDiv = $(".comment-container");
 					commentDiv.text("");
+					<%int i = 0;%>
 					$.each(responseJson, function(key, value){
-						
+					<%
+						int count = 0;
+						boolean checkLike = false;
+						for(int j = 0; j < listLikedComment.size(); j++) {
+							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
+								count++;
+								if(idUser != 0) {
+									if(idUser == listLikedComment.get(j).getId_user()) checkLike = true;
+								}
+							}
+						}
+						i++;
+					%>	
+					<%if(checkLike == true) { %>
+					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
+					<%} else {%>
+					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
+					<%} %>
 						var div = '<div class="comment-content">'
 									+'<div>'
 										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
@@ -171,7 +189,7 @@
 										+'<a href="#">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
-											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
+											+ str 
 											+'<a auth=<%=auth %> idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
 										+'</div>'
 									+'</div>'
@@ -179,7 +197,12 @@
 						commentDiv.append(div);
 					})
 				}
-				theEditor.setData("");
+				CKEDITOR.instances.editor.setData("");
+				$('img').on('load', function(e){
+				    
+				}).on('error', function(e) {
+				    $(this).attr('src', '/forumproject/files/noimage.jpg');
+				});
 			},
 			error: function (){
 				alert("Có lỗi trong quá trình xử lí");
@@ -263,7 +286,12 @@
 								+'</div>';						
 						commentDiv.append(div);
 						
-					})
+					});
+					$('img').on('load', function(e){
+					    
+					}).on('error', function(e) {
+					    $(this).attr('src', '/forumproject/files/noimage.jpg');
+					});
 				} else {
 					notAuth();
 				}
