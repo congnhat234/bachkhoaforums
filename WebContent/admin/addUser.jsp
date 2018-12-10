@@ -3,6 +3,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp" %>
+
+<div class="container"> 
+
+<div id="subnav">
+	<div class="container_12">
+		<div class="grid_12">
+			<ul>
+				<li><a
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài
+						viết</a></li>
+				<li><a
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh
+						mục</a></li>
+				<li><a
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người
+						dùng</a></li>
+			</ul>
+
+		</div>
+		<!-- End. .grid_12-->
+	</div>
+	<!-- End. .container_12 -->
+	<div style="clear: both;"></div>
+</div>
+<!-- End #subnav -->
 <!-- Form elements -->    
 <div class="grid_12">
 <%
@@ -44,16 +69,7 @@
 	</div>  <!-- End .module -->
 	<div style="clear:both;"></div>
 </div> <!-- End .grid_12 -->
-
-	<script type="text/javascript">
-		var OriginalString = $('#fullname').val();
-		var StrippedString = OriginalString.replace(/<\/?[^>]+(>|$)/g, "");
-		$('#fullname').text(StrippedString);
-		var OriginalString1 = $('#username').val();
-		var StrippedString1 = OriginalString1.replace(/<\/?[^>]+(>|$)/g, "");
-		$('#username').text(StrippedString1);
-	</script>
-
+</div>
 <%@include file="/templates/public/inc/footer.jsp" %> 
 <script>
 $( document ).ready( function () {

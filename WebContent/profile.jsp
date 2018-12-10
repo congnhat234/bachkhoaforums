@@ -207,11 +207,6 @@
 		previewFile();
 	});
 </script>
-<script type="text/javascript">
-	window.onload = function() {
-		document.getElementById('defaultOpen').click();
-	}
-</script>
 
 <script>
 	$(document).ready(function() {

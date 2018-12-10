@@ -5,7 +5,28 @@
 <!-- Form elements -->
 <div class="container"> 
 
+<div id="subnav">
+	<div class="container_12">
+		<div class="grid_12">
+			<ul>
+				<li><a
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài
+						viết</a></li>
+				<li><a
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh
+						mục</a></li>
+				<li><a
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người
+						dùng</a></li>
+			</ul>
 
+		</div>
+		<!-- End. .grid_12-->
+	</div>
+	<!-- End. .container_12 -->
+	<div style="clear: both;"></div>
+</div>
+<!-- End #subnav -->
 <div class="grid_12">
 
 	<div class="module">
@@ -28,11 +49,6 @@
 	</div>  <!-- End .module -->
 	<div style="clear:both;"></div>
 </div> <!-- End .grid_12 -->
-<script type="text/javascript">
-		var OriginalString = $('#name').val();
-		var StrippedString = OriginalString.replace(/<\/?[^>]+(>|$)/g, "");
-		$('#name').text(StrippedString);
-</script>
 </div>    
 
 <%@include file="/templates/public/inc/footer.jsp" %> 

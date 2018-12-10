@@ -32,20 +32,7 @@
 		</div>
 		<div class="clear"></div>
 	</div>
-	<%
-		if (request.getParameter("msg") != null) {
-			int msg = Integer.parseInt(request.getParameter("msg"));
-			if (msg == 1) {
-				out.print("<h5 style='color:red'>Thêm thành công</h5>");
-			} else if (msg == 2) {
-				out.print("<h5 style='color:red'>Sửa thành công</h5>");
-			} else if (msg == 3) {
-				out.print("<h5 style='color:red'>Xóa thành công</h5>");
-			} else {
-				out.print("<h5 style='color:red'>Thất bại</h5>");
-			}
-		}
-	%>
+	
 	<div class="grid_12">
 		<!-- Example table -->
 		<div class="module">
@@ -144,4 +131,19 @@
 	</div>
 	<!-- End .grid_12 -->
 </div>
+
+<%
+	if (request.getParameter("msg") != null) {
+		int msg = Integer.parseInt(request.getParameter("msg"));
+		if (msg == 1) {
+			out.print("<h5 style='color:red'>Thêm thành công</h5>");
+		} else if (msg == 2) {
+			out.print("<h5 style='color:red'>Sửa thành công</h5>");
+		} else if (msg == 3) {
+			out.print("<h5 style='color:red'>Xóa thành công</h5>");
+		} else {
+			out.print("<h5 style='color:red'>Thất bại</h5>");
+		}
+	}
+%>
 <%@include file="/templates/public/inc/footer.jsp"%>
