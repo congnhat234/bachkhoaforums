@@ -28,7 +28,7 @@ public class UserFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpSession session = ((HttpServletRequest) request).getSession(false);
+		HttpSession session = ((HttpServletRequest) request).getSession();
 		String token = CookieUtils.getValue(request, "token");
 		if (session.getAttribute("user") != null) {
 			UserBO userBO = new UserBO();
@@ -37,10 +37,10 @@ public class UserFilter implements Filter {
 				session.setAttribute("user", user);
 				chain.doFilter(request, response);
 			} else {
-				((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.LOGIN);
+				((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.SHOW_LOGIN);
 			}
 		} else {
-			((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.LOGIN);
+			((HttpServletResponse) response).sendRedirect(request.getServletContext().getContextPath() + Constants.URL.SHOW_LOGIN);
 		}
 	}
 

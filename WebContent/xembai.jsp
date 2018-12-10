@@ -175,7 +175,7 @@
 								}
 							}
 						}
-						i++;
+						if(i<listComment.size()-1) i++;
 					%>	
 					<%if(checkLike == true) { %>
 					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
@@ -270,8 +270,26 @@
 				if(typeof responseJson !== 'string'){
 					var commentDiv = $(".comment-container");
 					commentDiv.text("");
+					<%i = 0;%>
 					$.each(responseJson, function(key, value){
-						
+						<%
+						count = 0;
+						checkLike = false;
+						for(int j = 0; j < listLikedComment.size(); j++) {
+							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
+								count++;
+								if(idUser != 0) {
+									if(idUser == listLikedComment.get(j).getId_user()) checkLike = true;
+								}
+							}
+						}
+						if(i<listComment.size()-1) i++;
+						%>	
+						<%if(checkLike == true) { %>
+						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
+						<%} else {%>
+						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
+						<%} %>
 						var div = '<div class="comment-content">'
 									+'<div>'
 										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
@@ -280,7 +298,7 @@
 										+'<a href="#">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
-											+'<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">Thích</a>' 
+											+ str
 											+'<a auth=<%=auth %> idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
 										+'</div>'
 									+'</div>'
