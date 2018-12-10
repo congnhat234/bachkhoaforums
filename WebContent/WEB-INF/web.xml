@@ -303,4 +303,12 @@
     <servlet-name>ProfileMemberController</servlet-name>
     <url-pattern>/user/profilemember</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AddFollowController</servlet-name>
+    <servlet-class>controller.AddFollowController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddFollowController</servlet-name>
+    <url-pattern>/user/follow</url-pattern>
+  </servlet-mapping>
 </web-app>

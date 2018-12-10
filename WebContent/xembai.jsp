@@ -322,6 +322,29 @@
 		return false;
 		<%}%>
 	});
+	</script>	
+	<script>
+	$('#btnFollow').on('click', function() {
+		var idPost = $(".title_post").attr("idpost");
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.FOLLOW_POST%>',
+			type: 'POST',
+			cache: false,
+			data: {
+					sid: idPost
+					},
+			success: function(){
+				$(self).removeAttr("checked");
+				$('#snackbar').attr("type", "success");
+				toast("Đã theo dõi!");
+			},
+			error: function (){
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+});
 </script>
 
 </body>

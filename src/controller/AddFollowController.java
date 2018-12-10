@@ -19,7 +19,6 @@ import model.bo.FollowBO;
 /**
  * Servlet implementation class AddFollowController
  */
-@WebServlet("/AddFollowController")
 public class AddFollowController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,13 +45,12 @@ public class AddFollowController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int idUser = user.getId_user();
-		int idPost = Integer.parseInt(request.getParameter("idp"));
+		int idPost = Integer.parseInt(request.getParameter("sid"));
 		  
 		 Follow follow = new Follow(0,idPost,idUser,1);
 		 FollowBO flBO = new FollowBO();
-		 if (flBO.add(follow)) {
-			 
-		 }
+		 flBO.add(follow);
+
 	}
 
 }
