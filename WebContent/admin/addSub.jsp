@@ -2,7 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp" %>
-<!-- Form elements -->    
+<!-- Form elements -->
+<div class="container"> 
+
+
 <div class="grid_12">
 
 	<div class="module">
@@ -29,6 +32,7 @@
 		var OriginalString = $('#name').val();
 		var StrippedString = OriginalString.replace(/<\/?[^>]+(>|$)/g, "");
 		$('#name').text(StrippedString);
-	</script>
+</script>
+</div>    
 
 <%@include file="/templates/public/inc/footer.jsp" %> 

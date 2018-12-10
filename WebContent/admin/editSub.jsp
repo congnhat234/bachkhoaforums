@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp" %>
 <!-- Form elements -->    
+<div class="container">
 <div class="grid_12">
 
 	<div class="module">
@@ -10,13 +11,14 @@
 		 <div class="module-body">
 		 <% Subject sub = (Subject) request.getAttribute("nameSub"); %>
 			<form id="addCat" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.EDIT_SUBJECT%>?cid=<%=sub.getId_subject()%>">
-				<div>
-						
-					<label>Tên danh mục</label>
-					<input type="text" id="name" name="newSub" value="<%=sub.getName() %>" class="input-medium" />
-				</div>
+				<div class="content_addPost">
+					<div class="row_addPost">					
+					<label>Tên danh mục:</label>
+					<input class="row_input" type="text" id="name" name="newSub" value="<%=sub.getName() %>" class="input-medium" />
+					</div>
+				</div>	
 				<fieldset>
-					<input class="submit-green" type="submit" value="Thêm" /> 
+					<input class="submit-green" type="submit" value="Sửa" /> 
 					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
 				</fieldset>
 			</form>
@@ -29,6 +31,7 @@
 		var OriginalString = $('#name').val();
 		var StrippedString = OriginalString.replace(/<\/?[^>]+(>|$)/g, "");
 		$('#name').text(StrippedString);
-	</script>
+</script>
+</div>
 
 <%@include file="/templates/public/inc/footer.jsp" %> 

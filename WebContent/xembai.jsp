@@ -88,8 +88,9 @@
 						<img src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>" width="50px" height="50px">
 					</div>
 					<div class="comment">
-						<a href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
+						<a href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>?idUC=<%=listComment.get(i).getId_user()%>"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
 						<div><%=listComment.get(i).getContent()%></div>
+						
 						
 						<div class="a-comment">
 							<%if(checkLike == true) { %>
