@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Forum Project</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>home</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>ConnectorServlet</servlet-name>
-    <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
-    <init-param>
-      <description>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Forum Project</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>home</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+		<init-param>
+			<description>
 				Path to configuration file can be relative path inside application,
 				absolute path on local file system or UNC path.
 			</description>
-      <param-name>XMLConfig</param-name>
-      <param-value>/WEB-INF/config.xml</param-value>
-    </init-param>
-    <init-param>
-      <param-name>debug</param-name>
-      <param-value>false</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ConnectorServlet</servlet-name>
-    <url-pattern>
+			<param-name>XMLConfig</param-name>
+			<param-value>/WEB-INF/config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<url-pattern>
 			/ckfinder/core/connector/java/connector.java
 		</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>10</session-timeout>
 	</session-config>
-
 	<context-param>
 		<param-name>userfile.dir</param-name>
 		<param-value>files/user</param-value>
@@ -43,6 +45,7 @@
 	<context-param>
 		<param-name>postfile.dir</param-name>
 		<param-value>files/post</param-value>
+
 	</context-param>
 	<servlet>
 		<servlet-name>IndexController</servlet-name>

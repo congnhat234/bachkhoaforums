@@ -45,8 +45,7 @@ public class ChangePasswordByAdminController extends HttpServlet {
 		int idUser= Integer.parseInt(request.getParameter("uid"));
 		System.out.println(idUser);
 		UserBO userBO = new UserBO();
-		User user=userBO.findByIDUser(idUser);
-		if(request.getParameter("password").equals(request.getParameter("repassword"))){				
+		User user=userBO.findByIDUser(idUser);		
 		String password = (String) request.getParameter("password");
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(user.getUsername() + password);	
@@ -58,8 +57,5 @@ public class ChangePasswordByAdminController extends HttpServlet {
 			} else {
 				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=0");
 			}
-		} else {
-			response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=2");		
-		}
 	}
 }

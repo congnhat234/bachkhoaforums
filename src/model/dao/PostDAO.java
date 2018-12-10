@@ -613,6 +613,28 @@ public class PostDAO {
 		return false;
 	}
 
+	public boolean deletePostByIdSub(int idSub) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM post WHERE id_subject = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
 	public int likedCommentByUser(int idComment, int idUser) {
 		int count = 0;
 		connection = connectDBLibrary.getConnectMySQL();
@@ -684,7 +706,6 @@ public class PostDAO {
 		}
 		return false;
 	}
-
 	public int countLikeComment(int idComment) {
 		int count = 0;
 		connection = connectDBLibrary.getConnectMySQL();
@@ -738,5 +759,4 @@ public class PostDAO {
 		}
 		return listItems;
 	}
-
 }

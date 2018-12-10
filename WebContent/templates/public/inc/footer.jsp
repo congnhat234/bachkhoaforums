@@ -74,10 +74,10 @@
     </div>
 
     <div id="signin" class="signin">
-        <form action="<%=request.getContextPath() %>/login" class="form_login" method="post">
+        <form action="<%=request.getContextPath() %>/login" class="form_login" id="form_login" method="post">
             <h1>Login</h1>
-            <input placeholder="Username" name="username" type="text" required>
-            <input placeholder="Password" name="password" type="password" required>
+            <input placeholder="Username" name="username" type="text" >
+            <input placeholder="Password" name="password" type="password" >
             <button>Submit</button>
             <br><br>
             <div class="bottom-text ">
@@ -88,7 +88,7 @@
     </div>
 
     <div id="signup" class="signup">
-        <form action="<%=request.getContextPath() %>/register" class="register" method="post">
+        <form action="<%=request.getContextPath() %>/register" class="register"  id="register" method="post">
             <h1>Registration</h1>
             <fieldset class="row1">
                 <legend>Account Details
@@ -96,17 +96,17 @@
                 <p>
                     <label>Username *
                     </label>
-                    <input type="text" name="username" required />
+                    <input type="text" name="username"  />
                 </p>
                 <p>
                     <label>Password*
                     </label>
-                    <input type="password" name="password" required />
+                    <input type="password" name="password"  />
                 </p>
                 <p>
                     <label>Repeat Password*
                     </label>
-                    <input type="password" name="repassword" required />
+                    <input type="password" name="repassword"  />
                 </p>
             </fieldset>
             <fieldset class="row1">
@@ -120,7 +120,7 @@
                 <p>
                     <label>Phone *
                     </label>
-                    <input type="text" name="phone" maxlength="10" />
+                    <input type="text" name="phone"  />
                 </p>
                 <p>
                     <label>Email *
@@ -200,5 +200,104 @@
         </div>
     </div>
     <% } %>
+    <script	src="<%=request.getContextPath()%>/templates/public/js/jquery-3.3.1.min.js"></script>
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
     <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
+		<script	src="<%=request.getContextPath() %>/templates/public/js/jquery.validate.js"></script>
+	
+	<script>
+	$( document ).ready( function () {
+			$( "#register" ).validate( {
+				rules: {
+					username: {
+						required: true,
+						minlength: 3
+					},
+					password: {
+						required: true,
+						minlength: 6
+					},
+					repassword: {
+						required: true,
+						minlength: 6,
+						equalTo: "#password"
+					},
+					fullname: {
+						required: true,
+						minlength: 6
+					},
+					phone: {
+						required: true,
+						maxlength: 10
+					},
+					address: {
+						minlength: 5
+					},
+					city: {
+						required: true,
+						minlength: 5
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					gender: "required",
+				},
+				messages: {
+					username: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 3 kí tự"
+					},
+					password: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 6 kí tự"
+					},
+					fullname: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 6 kí tự"
+					},
+					phone: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Nhiều nhất 10 kí tự"
+					},
+					address: {
+						minlength: "Ít nhất 5 kí tự"
+					},
+					city: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 5 kí tự"
+					},
+					repassword: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 6 kí tự",
+						equalTo: "Vui lòng nhập lại"
+					},
+					email: "Vui lòng điền đúng email",
+					gender: "Vui lòng chọn giới tính"
+				}
+			} );
+			
+			$( "#form_login" ).validate( {
+				rules: {
+					username: {
+						required: true,
+						minlength: 3
+					},
+					password: {
+						required: true,
+						minlength: 3
+					},
+				},
+				messages: {
+					username: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 3 kí tự"
+					},
+					password: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 6 kí tự"
+					}
+				}
+			} );
+			} );
+	</script>			

@@ -58,26 +58,15 @@ public class EditUserController extends HttpServlet {
 		System.out.println(idUser);
 		UserBO userBO = new UserBO();
 		User user=userBO.findByIDUser(idUser);
-		
-		String fullname = (String) request.getParameter("fullname");
-		String password = (String) request.getParameter("password");
-		String token="";
-		String passwordCryp="";
-		if(!"".equals(password)){
-			 passwordCryp = CryptoUtils.md5(password);
-			 token = CryptoUtils.md5(user.getUsername() + password);
-		} else  {
-			token=user.getToken();
-			passwordCryp=user.getPassword();
-		}
-		
+		String fullname = new String(request.getParameter("fullname").getBytes("ISO-8859-1"), "UTF-8");
+	
 		String phone = (String) request.getParameter("phone");
 		String email = (String) request.getParameter("email");
 		int role = Integer.parseInt((String) request.getParameter("role"));
 		int gender = Integer.parseInt((String) request.getParameter("gender"));
 		String birthday = (String) request.getParameter("birthday");
-		String address = (String) request.getParameter("address");
-		String city = (String) request.getParameter("city");
+		String address = new String(request.getParameter("address").getBytes("ISO-8859-1"), "UTF-8");
+		String city =  new String(request.getParameter("city").getBytes("ISO-8859-1"), "UTF-8");
 		String avatar = "";
 		
 		String rootPath = System.getProperty("catalina.home");
@@ -138,7 +127,7 @@ public class EditUserController extends HttpServlet {
 			if("".equals(avatar)) {
 				avatar=user.getAvatar();
 			}
-		 User userid = new User(0,role,user.getUsername(),passwordCryp,token,fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
+		 User userid = new User(0,role,user.getUsername(),user.getPassword(),user.getToken(),fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
 		if(userBO.edit(userid)){
 			String picture = user.getAvatar();
 			if(!avatar.equals(picture)){
