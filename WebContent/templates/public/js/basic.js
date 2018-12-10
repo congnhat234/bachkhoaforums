@@ -1,3 +1,9 @@
+$('img').on('load', function(e){
+    
+}).on('error', function(e) {
+    $(this).attr('src', '/forumproject/files/noimage.jpg');
+});
+
 $(".btnSignin").on("click", function () {
     $("#signin").css("display", "block");
 });

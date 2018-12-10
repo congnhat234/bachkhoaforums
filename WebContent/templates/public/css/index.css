@@ -396,13 +396,13 @@ body {
 
 .profile .profile_content .element li a {
 	font-size: 13px;
-	color: teal;
+	color: #0056a8;
 	text-decoration: none;
 }
 
 .profile .profile_content .element li a:hover {
 	text-decoration: none;
-	color: greenyellow;
+	color: #0056a8;
 	font-weight: bold;
 }
 .profile .profile_content .element li a:visited{
@@ -597,6 +597,7 @@ body {
 
 .create-post a:hover {
 	text-decoration: underline;
+	font-weight: bold;
 	color: #292c2f;
 }
 
@@ -1349,6 +1350,10 @@ body {
 	margin-left: 20px;
 	font-weight: normal;
 	font-size: 12px;
+}
+
+.comment-content .comment .a-comment .active {
+	font-weight: bold;
 }
 
 .comment-content .comment .a-comment a:hover {

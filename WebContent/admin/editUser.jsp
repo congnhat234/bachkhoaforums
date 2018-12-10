@@ -9,7 +9,7 @@
     <div class="container">
         <nav class="navbar">
                 <ul class="breadcrumbs">
-                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.HOME%>"><i class="fas fa-home fa-2x"></i></a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.ADMIN_HOME%>"><i class="fas fa-home fa-2x"></i></a></li>
                         <li><a href="#">Sửa Thành Viên</a></li>
                 </ul>
         </nav>
@@ -40,9 +40,9 @@
                             <dt><label>Hình đại diện:</label></dt>
                             <dd>                           
                                 <a href="#" class="avatar">
-                                    <img style="width:100px; height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
+                                    <img id="imgpreview" style="width:100px; height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
                                 </a> <br>
-                                <input type="file" name="avatar" value="" id="" class="textCtrl OptOut">
+                                <input id="imginput" type="file" name="avatar" value="" id="" class="textCtrl OptOut">
                             </dd>
                         </dl>
                     </fieldset>

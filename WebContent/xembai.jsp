@@ -1,3 +1,4 @@
+<%@page import="model.bean.LikeComment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Comment"%>
@@ -62,30 +63,52 @@
 				</div>
 				<hr>
 				<div class="comment-container">
-				<%ArrayList<Comment> listComment= (ArrayList<Comment>) request.getAttribute("listComment"); 
-				 String auth = "";
-				 for(int i=0;i<listComment.size();i++){ %>
+				<%ArrayList<Comment> listComment= (ArrayList<Comment>) request.getAttribute("listComment");
+					ArrayList<LikeComment> listLikedComment= (ArrayList<LikeComment>) request.getAttribute("listLikedComment");
+					String auth = "";
+					for(int i=0;i<listComment.size();i++){
+						int count = 0;
+						boolean checkLike = false;
+						int idUser = 0;
+						if (session.getAttribute("user") != null) {
+							User user = (User) session.getAttribute("user");
+							idUser = user.getId_user();
+						}
+						for(int j = 0; j < listLikedComment.size(); j++) {
+							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
+								count++;
+								if(idUser != 0) {
+									if(idUser == listLikedComment.get(j).getId_user()) checkLike = true;
+								}
+							}
+						}%>
 				
 				<div class="comment-content">
 					<div>
 						<img src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>" width="50px" height="50px">
 					</div>
 					<div class="comment">
-						<a href="#"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
+						<a href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
 						<div><%=listComment.get(i).getContent()%></div>
-						<% if (session.getAttribute("user") != null) {
-							User user = (User) session.getAttribute("user");
-							if (user.getId_role() == 1 || user.getId_role() == 2 || user.getId_user() == listComment.get(i).getId_user()) {
-								auth = "true";
-							} else {
-								auth = "false";
-							}
-						%>
+						
 						<div class="a-comment">
-							<a idcomment=<%=listComment.get(i).getId_comment()%> class="likeComment" href="javascript:void(0)">Thích</a> 
-							<a auth=<%=auth %> idcomment=<%=listComment.get(i).getId_comment()%> class="deleteComment" href="javascript:void(0)">Xóa</a>						
+							<%if(checkLike == true) { %>
+							<a idcomment=<%=listComment.get(i).getId_comment()%> class="likeComment active" href="javascript:void(0)"><%=count %> Thích</a> 
+							<%} else {%>
+							<a idcomment=<%=listComment.get(i).getId_comment()%> class="likeComment" href="javascript:void(0)"><%=count %> Thích</a>
+							<%} %>
+							<% if (session.getAttribute("user") != null) {
+								User user = (User) session.getAttribute("user");
+								if (user.getId_role() == 1 || user.getId_role() == 2 || user.getId_user() == listComment.get(i).getId_user()) {
+									auth = "true";
+								} else {
+									auth = "false";
+								}
+							%>
+							<a auth=<%=auth %> idcomment=<%=listComment.get(i).getId_comment()%> class="deleteComment" href="javascript:void(0)">Xóa</a>
+							<%} %>						
 						</div>
-						<%} %>
+						
 					</div>
 				</div>
 				
@@ -273,6 +296,31 @@
 			}
 		});
 		return false;
+	});
+	
+	$(".likeComment").on('click', function (){	
+		<%if(session.getAttribute("user") != null) {%>
+		var self = $(this);
+		var idComment = $(self).attr("idcomment");
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.LIKE_COMMENT_POST%>',
+			type: 'POST',
+			cache: false,
+			data: {
+					aidcomment: idComment,
+					},
+			success: function(data){
+				console.log(data);
+				$(self).html(data);
+				$(self).toggleClass("active");
+			},
+			error: function (){
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+		<%}%>
 	});
 </script>
 

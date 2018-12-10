@@ -4,7 +4,6 @@
 <html lang="en" dir="ltr">
 
 <%@include file="/templates/public/inc/header.jsp" %>
-
     <div class="container">
         <nav class="navbar">
                 <ul class="breadcrumbs">
@@ -39,45 +38,7 @@
                 </li>
             </ul>
 
-        <!-- <div class="titleBar"> 
-            <h2>Thông tin cá nhân</h2>
-        </div>
-        <div class="content contentProfile">
-            <div class="navigationSlideBar">
-                <h4>Tài khoản</h4>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <ul>
-                            <li><a href="#">Thông báo của bạn</a></li>
-                            <li><a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_USER%>">Bài viết của bạn</a></li>
-                            <li><a href="#">Chủ đề theo dõi</a></li>
-                            <li><a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài viết theo dõi</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <h4>Tin nhắn</h4>
-                        <ul>
-                            <li><a href="#">Xem tin nhắn</a></li>
-                            <li><a href="#">Tạo tin nhắn mới</a></li>
-                        </ul>
-                    </li>
-                    <li class="list-group-item">
-                        <h4>Cài đặt</h4>
-                        <ul>
-                            <li><a href="#">Thông tin cá nhân</a></li>
-                            <li><a href="#">Mật khẩu</a></li>
-                            <li><a href="#">Đăng xuất</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            -->
-            <div class="tab">
-		  <button class="tablinks" onclick="openActive(event, 'InfomationUser')" id="defaultOpen" >Thông tin</button>
-		  <button class="tablinks" onclick="openActive(event, 'ChangePassword')" id="defaultOpen1">Đổi mật khẩu</button>
-		</div>
-		<div id="InfomationUser" class="tabcontent">
-		<div class="mainContent">
+            <div class="mainContent">
             	<%
             	User user = null;
             	if (session.getAttribute("user") != null) {
@@ -90,7 +51,7 @@
                             <dt><label>Hình đại diện:</label></dt>
                             <dd>                           
                                 <a href="#" class="avatar">
-                                    <img id="imgpreview" style="width:100px;height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
+                                    <img id="imgpreview" style="width:100px;height:100px;" src="<%=request.getContextPath()%>/templates/public/files/<%=user.getAvatar() %>">
                                 </a> <br>
                                 <input id="imginput" type="file" name="avatar" value="" id="" class="textCtrl OptOut">
                             </dd>

@@ -39,8 +39,13 @@
 		<session-timeout>10</session-timeout>
 	</session-config>
 	<context-param>
-		<param-name>tempfile.dir</param-name>
-		<param-value>tmpfiles</param-value>
+		<param-name>userfile.dir</param-name>
+		<param-value>files/user</param-value>
+	</context-param>
+	<context-param>
+		<param-name>postfile.dir</param-name>
+		<param-value>files/post</param-value>
+
 	</context-param>
 	<servlet>
 		<servlet-name>IndexController</servlet-name>
@@ -243,21 +248,21 @@
 		<url-pattern>/admin/useredit</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>ChangePasswordByAdminController</servlet-name>
-		<servlet-class>controller.ChangePasswordByAdminController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ChangePasswordByAdminController</servlet-name>
-		<url-pattern>/admin/user/changepass</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>ChangePasswordByUserController</servlet-name>
-		<servlet-class>controller.ChangePasswordByUserController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ChangePasswordByUserController</servlet-name>
-		<url-pattern>/user/changepass</url-pattern>
-	</servlet-mapping>
+    <servlet-name>ChangePasswordByAdminController</servlet-name>
+    <servlet-class>controller.ChangePasswordByAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordByAdminController</servlet-name>
+    <url-pattern>/admin/user/changepass</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>ChangePasswordByUserController</servlet-name>
+    <servlet-class>controller.ChangePasswordByUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePasswordByUserController</servlet-name>
+    <url-pattern>/user/changepass</url-pattern>
+  </servlet-mapping>
 	<servlet>
 		<servlet-name>CommentPostController</servlet-name>
 		<servlet-class>controller.CommentPostController</servlet-class>
@@ -282,4 +287,20 @@
 		<servlet-name>LikePostController</servlet-name>
 		<url-pattern>/user/post/like</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>LikeCommentController</servlet-name>
+		<servlet-class>controller.LikeCommentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LikeCommentController</servlet-name>
+		<url-pattern>/user/post/comment/like</url-pattern>
+	</servlet-mapping>
+  <servlet>
+    <servlet-name>ProfileMemberController</servlet-name>
+    <servlet-class>controller.ProfileMemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileMemberController</servlet-name>
+    <url-pattern>/user/profilemember</url-pattern>
+  </servlet-mapping>
 </web-app>

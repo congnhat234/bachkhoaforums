@@ -40,6 +40,7 @@ public class ViewPostController extends HttpServlet {
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("post", postBO.getPost(idPost));
 		request.setAttribute("countLikePost", postBO.countLike(idPost));
+		request.setAttribute("listLikedComment", postBO.getListLikedComment(idPost));
 		if(session.getAttribute("user")!=null) {
 			User user = (User) session.getAttribute("user");
 			request.setAttribute("likedByUser", postBO.likedByUser(idPost, user.getId_user()));

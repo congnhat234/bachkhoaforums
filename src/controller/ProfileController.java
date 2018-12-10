@@ -66,16 +66,16 @@ public class ProfileController extends HttpServlet {
 		String birthday = (String) request.getParameter("birthday");
 		String address = (String) request.getParameter("address");
 		String city = (String) request.getParameter("city");
-		String avatar = "";
+		String avatar = user.getAvatar();
 		
 		String rootPath = System.getProperty("catalina.home");
-		String relativePath = request.getServletContext().getInitParameter("tempfile.dir");
+		String relativePath = request.getServletContext().getInitParameter("userfile.dir");
 		File file = new File(rootPath + File.separator + relativePath);
-		System.out.println(rootPath + File.separator + relativePath);
 		if(!file.exists()) file.mkdirs();
 		System.out.println("File Directory created to be used for storing files");
 		//request.getServletContext().setAttribute("FILES_DIR_FILE", file);
 		String path = rootPath + File.separator + relativePath;
+		System.out.println(path);
 		
 		//real path
 		response.setContentType("text/html;charset=UTF-8");
@@ -105,6 +105,7 @@ public class ProfileController extends HttpServlet {
 			try {
 				System.out.println("Absolute Path at server= " + file.getAbsolutePath());
 				out = new FileOutputStream(new File(realPath + File.separator + fileName));
+//				out = new FileOutputStream(new File(path + File.separator + fileName));
 				filecontent = filePart.getInputStream();
 				int read = 0;
 				final byte[] bytes = new byte[1024];
