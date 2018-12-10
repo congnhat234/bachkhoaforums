@@ -2,7 +2,13 @@ body {
 	margin: 0;
 	min-width: 1000px;
 }
+/* lable errors validate */
 
+.error{
+	color:red;
+	font-size: 10px;
+	font-style: italic;
+}
 .display {
 	display: none;
 }

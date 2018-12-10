@@ -136,7 +136,7 @@ public class SubjectDAO {
 	public boolean delete(int idSub) {
 		int result = 0;
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "DELETE forumdb.subject,forumdb.post FROM forumdb.subject,forumdb.post WHERE subject.id_subject = post.id_subject AND subject.id_subject=?;";
+		String sql = "DELETE  FROM forumdb.subject WHERE subject.id_subject=?;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idSub);

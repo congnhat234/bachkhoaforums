@@ -41,7 +41,7 @@ public class EditSubjectController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String newSub= (String) request.getParameter("newSub") ;
+		String newSub= new String(request.getParameter("newSub").getBytes("ISO-8859-1"), "UTF-8") ;
 		int idSub= Integer.parseInt(request.getParameter("cid")) ;	
 		SubjectBO subBO= new SubjectBO();
 		Subject sub = new Subject(idSub,newSub);

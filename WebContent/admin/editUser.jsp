@@ -34,7 +34,7 @@
             <div class="mainContent">
             	
             	
-                <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER%>?uid=<%=user.getId_user()%>">
+                <form method="post" enctype="multipart/form-data" id="form_profile"action="<%=request.getContextPath()%><%=Constants.URL.EDIT_USER%>?uid=<%=user.getId_user()%>">
                     <fieldset>
                         <dl class="ctrlUnit avatarEditor">
                             <dt><label>Hình đại diện:</label></dt>
@@ -93,7 +93,7 @@
                                 <label for="">Số điện thoại:</label>
                            </dt>
                             <dd>
-                                <input type="text" name="phone" value="<%=user.getPhone() %>"  class="textCtrl" maxlength="">                              
+                                <input type="text" name="phone" value="<%=user.getPhone() %>"  class="textCtrl" >                              
                             </dd>
                         </dl>
                         <dl class="ctrlUnit">
@@ -101,7 +101,7 @@
                                 <label for="">Email:</label>
                             </dt>
                             <dd>
-                               <input type="text" name="email" value="<%=user.getEmail() %>"  class="textCtrl" maxlength="">                              
+                               <input type="text" name="email" value="<%=user.getEmail() %>"  class="textCtrl" >                              
                             </dd>
                         </dl>
                     </fieldset>
@@ -122,11 +122,11 @@
 			<form id="addCat" method="POST" action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_ADMIN%>?uid=<%=user.getId_user()%>">
 				<div>		
 					<label for="ctrl_location">Mật khẩu mới:</label>
-					<input type="password"  name="password" value="" required />
+					<input type="password" id="password" name="password" value=""  />
 				</div>
 				<div>		
 					<label for="ctrl_location">Nhập lại mật khẩu mới:</label>
-					<input type="password"  name="repassword" value="" required />
+					<input type="password"  name="repassword" value=""  />
 				</div>
 				<fieldset>
 					<input class="button" type="submit" value="Thêm" /> 
@@ -152,16 +152,100 @@
 		$('#snackbar').attr("type", "error");
 		toast("Lỗi!");
 		</script> 
-    	<%} else {%>
-    		<script>
-    		$('#snackbar').attr("type", "error");
-    		 toast("Nhập lại mật khẩu: không chính xác1!"); 		
-    		</script> 
     	<%}} %>
 <script>
 window.onload = function(){
 	  document.getElementById('defaultOpen').click();
 	}
+</script>
+ <script>
+	$( document ).ready( function () {
+	$( "#form_profile" ).validate( {
+		rules: {
+			birthday: {
+				 required: true,
+			     date: true
+			},
+			fullname: {
+				required: true,
+				minlength: 6
+			},
+			role: {
+				required: true
+			},
+			phone: {
+				required: true,
+				maxlength: 10
+			},
+			address: {
+				minlength: 5
+			},
+			city: {
+				required: true,
+				minlength: 5
+			},
+		/* 	email: {
+				required: true,
+				email: true
+			}, */
+			gender: "required"
+		},
+		messages: {
+			birthday: {
+				required: "Vui lòng điền vào trường này",
+				date: "Vui lòng nhập đúng "
+			},
+			fullname: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 6 kí tự"
+			},
+			role: {
+				required: "Vui chọn quyền"
+			},
+			phone: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Nhiều nhất 10 kí tự"
+			},
+			address: {
+				minlength: "Ít nhất 5 kí tự"
+			},
+			city: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 5 kí tự"
+			},
+		/* 	email: {
+				required: "Vui lòng điền vào trường này",
+				email:"Vui lòng điền đúng email"
+			}, */
+			gender: "Vui lòng chọn giới tính"
+		}
+	} );
+	
+	$( "#addCat" ).validate( {
+		rules: {
+			password: {
+				required: true,
+				minlength: 3
+			},
+			repassword: {
+				required: true,
+				minlength: 3,
+				equalTo: "#password"
+			}
+		},
+		messages: {
+			password: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 3 kí tự"
+			},
+			repassword: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 3 kí tự",
+				equalTo: "Vui lòng nhập lại mật khẩu mới"
+			}
+		}
+	} );
+	} );
 </script>
 
 </body>

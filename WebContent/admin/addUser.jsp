@@ -17,7 +17,7 @@
 		 <h2><span>Thêm người dùng</span></h2>
 		 <div class="module-body">
 		 
-			<form id="addUser" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">
+			<form id="addUser" class="form_addUser" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">
 				
 				<p>
 					<label>Tên người dùng</label>
@@ -55,3 +55,43 @@
 	</script>
 
 <%@include file="/templates/public/inc/footer.jsp" %> 
+<script>
+$( document ).ready( function () {
+	$( "#addUser" ).validate( {
+		rules: {
+			username: {
+				required: true,
+				minlength: 2
+			},
+			role: {
+				required: true
+			},
+			password: {
+				required: true,
+				minlength: 3
+			},
+			fullname: {
+				required: true,
+				minlength: 5
+			}
+		},
+		messages: {
+			username: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 2 kí tự"
+			},
+			role: {
+				required: "Vui lòng chọn quyền",
+			},
+			password: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 3 kí tự"
+			},
+			fullname: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 5 kí tự"
+			}
+		}
+	} );
+} );
+</script>

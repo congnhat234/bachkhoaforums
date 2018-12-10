@@ -32,3 +32,21 @@
 	</script>
 
 <%@include file="/templates/public/inc/footer.jsp" %> 
+<script>
+$( document ).ready( function () {
+	$( "#addCat" ).validate( {
+		rules: {
+			newSub: {
+				required: true,
+				minlength: 2
+			}
+		},
+		messages: {
+			newSub: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 2 kí tự"
+			}
+		}
+	} );
+} );
+</script>

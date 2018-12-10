@@ -54,6 +54,8 @@ public class DeleteSubjectController extends HttpServlet {
 			postBO.deleteLikePostByPost(objPost.getId_post());
 			//xoa comment by id_post
 			cmtBO.deleteCommentByPost(objPost.getId_post());
+			//xoa post by idsub
+			postBO.deletePostByIdSub(idSub);
 		}
 		if( subBO.deleteSubject(idSub)){
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);	

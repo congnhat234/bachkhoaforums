@@ -44,10 +44,6 @@ public class CreateSubjectController extends HttpServlet {
 		Subject sub = new Subject(0,newSub);
 		if( !"".equals(newSub)&& subBO.addSubject(sub)){
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);
-		}else
-		{	
-			//thong bao trung ten
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADD_SUBJECT);
 		}
 	}
 

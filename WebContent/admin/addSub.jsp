@@ -12,7 +12,7 @@
 				<div class="content_addPost">
 					<div class="row_addPost">
 						<label>Tên danh mục :</label>
-						<input class="row_input" type="text" id="name" name="newSub" value="" class="input-medium" />
+						<input  type="text" id="name" name="newSub" value="" class="input-medium" />
 					</div>
 				</div>
 				<fieldset>
@@ -32,3 +32,21 @@
 	</script>
 
 <%@include file="/templates/public/inc/footer.jsp" %> 
+<script>
+$( document ).ready( function () {
+	$( "#addCat" ).validate( {
+		rules: {
+			newSub: {
+				required: true,
+				minlength: 2
+			}
+		},
+		messages: {
+			newSub: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 2 kí tự"
+			}
+		}
+	} );
+} );
+</script>

@@ -76,5 +76,9 @@ public class PostBO {
 		return postDAO.deleteLikePostByUser(idUser);
 		
 	}
+	public boolean deletePostByIdSub(int idSub) {
+		return postDAO.deletePostByIdSub(idSub);
+		
+	}
 
 }

@@ -84,7 +84,7 @@
             		user = (User) session.getAttribute("user");
             		}%>
             	
-                <form method="post" enctype="multipart/form-data" action="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">
+                <form method="post" enctype="multipart/form-data" id="form_profile" action="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">
                     <fieldset>
                         <dl class="ctrlUnit avatarEditor">
                             <dt><label>Hình đại diện:</label></dt>
@@ -167,11 +167,11 @@
 				</div>
 				<div>		
 					<label for="ctrl_location">Mật khẩu mới:</label>
-					<input type="password"  name="password" value="" required />
+					<input type="password"  id="password" name="password" value=""  />
 				</div>
 				<div>		
 					<label for="ctrl_location">Nhập lại mật khẩu mới:</label>
-					<input type="password"  name="repassword" value="" required />
+					<input type="password"  name="repassword" value=""  />
 				</div>
 				<fieldset>
 					<input class="button" type="submit" value="Thêm" /> 
@@ -187,7 +187,7 @@
             
         </div>
 
-    <%@include file="/templates/public/inc/footer.jsp" %>
+    <%@include file="/templates/public/inc/footer.jsp"%>
 	<%if(request.getParameter("msg") != null) { 
 	    	String msg = request.getParameter("msg");
 	    	if(msg.equals("1")) {%>
@@ -205,12 +205,7 @@
 	    		$('#snackbar').attr("type", "error");
 	    		toast("Mật khẩu cũ chưa đúng!");
 	    		</script> 
-	    	<%} else {%>
-	    		<script>
-	    		$('#snackbar').attr("type", "error");
-	    		toast("Nhập lại mật khẩu: không chính xác!");
-	    		</script> 
-	    	<%}} %>
+	    	<%}}%>
     	
     <script type="text/javascript">
     	function previewFile() {
@@ -232,11 +227,102 @@
     	    previewFile();
     	});
     </script>
+    <script type="text/javascript">
+    window.onload = function(){
+		  document.getElementById('defaultOpen').click();
+		}
+    </script>
+    
     <script>
-window.onload = function(){
-	  document.getElementById('defaultOpen').click();
-	}
+	$( document ).ready( function () {
+	$( "#form_profile" ).validate( {
+		rules: {
+			birthday: {
+				 required: true,
+			     date: true
+			},
+			fullname: {
+				required: true,
+				minlength: 6
+			},
+			phone: {
+				required: true,
+				maxlength: 10
+			},
+			address: {
+				minlength: 5
+			},
+			city: {
+				required: true,
+				minlength: 5
+			},
+		/* 	email: {
+				required: true,
+				email: true
+			}, */
+			gender: "required"
+		},
+		messages: {
+			birthday: {
+				required: "Vui lòng điền vào trường này",
+				date: "Vui lòng nhập đúng "
+			},
+			fullname: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 6 kí tự"
+			},
+			phone: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Nhiều nhất 10 kí tự"
+			},
+			address: {
+				minlength: "Ít nhất 5 kí tự"
+			},
+			city: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 5 kí tự"
+			},
+		/* 	email: {
+				required: "Vui lòng điền vào trường này",
+				email:"Vui lòng điền đúng email"
+			}, */
+			gender: "Vui lòng chọn giới tính"
+		}
+	} );
+	
+	$( "#addCat" ).validate( {
+		rules: {
+			oldpassword: {
+				required: true,
+				minlength: 3
+			},
+			password: {
+				required: true,
+				minlength: 3
+			},
+			repassword: {
+				required: true,
+				minlength: 3,
+				equalTo: "#password"
+			}
+		},
+		messages: {
+			oldpassword: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 3 kí tự"
+			},
+			password: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 3 kí tự"
+			},
+			repassword: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 3 kí tự",
+				equalTo: "Vui lòng nhập lại mật khẩu mới"
+			}
+		}
+	} );
+	} );
 </script>
 </body>
-
 </html>

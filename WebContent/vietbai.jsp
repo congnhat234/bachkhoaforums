@@ -15,7 +15,7 @@
                 </ul>
         </nav>
         <div class="content">
-        <form class="vietbai" action="<%=request.getContextPath()%><%=Constants.URL.CREATE_POST%>" method="POST" enctype="multipart/form-data">
+        <form class="vietbai" id="form_vietbai" action="<%=request.getContextPath()%><%=Constants.URL.CREATE_POST%>" method="POST" enctype="multipart/form-data">
                        
                 <div class="tieude">
                     <label>Tiêu đề bài viết:</label>
@@ -99,7 +99,38 @@
     	$("#imginput").change(function(){
     	    previewFile();
     	});
+    	$( document ).ready( function () {
+    	$( "#form_vietbai" ).validate( {
+			rules: {
+				title: {
+					required: true,
+					minlength: 5
+				},
+				preview_content: {
+					required: true,
+					minlength: 3
+				},
+				id_subject: {
+					required: true,
+				}
+			},
+			messages: {
+				title: {
+					required: "Vui lòng điền vào trường này",
+					minlength: "Ít nhất 3 kí tự"
+				},
+				preview_content: {
+					required: "Vui lòng điền vào trường này",
+					minlength: "Ít nhất 3 kí tự"
+				},
+				id_subject: {
+					required: "Vui lòng chọn trường này",
+				}
+			}
+		} );
+    	} );
     </script>
+    
 </body>
 
 </html>

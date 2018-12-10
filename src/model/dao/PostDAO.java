@@ -612,4 +612,28 @@ public class PostDAO {
 		return false;
 	}
 
+	public boolean deletePostByIdSub(int idSub) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM post WHERE id_subject = ?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
 }
