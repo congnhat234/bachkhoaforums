@@ -14,6 +14,7 @@ import model.bean.User;
 import model.bean.Follow;
 import model.bo.UserBO;
 import model.bo.FollowBO;
+import model.bo.PostBO;
 
 
 /**
@@ -45,11 +46,24 @@ public class AddFollowController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int idUser = user.getId_user();
-		int idPost = Integer.parseInt(request.getParameter("sid"));
-		  
+		int idPost = Integer.parseInt(request.getParameter("aid"));
+		PostBO postBO = new PostBO();
 		 Follow follow = new Follow(0,idPost,idUser,1);
 		 FollowBO flBO = new FollowBO();
-		 flBO.add(follow);
+		 
+			if(postBO.followedByUser(idPost, user.getId_user()) != 0) {
+				if(flBO.deleteFollowPostByUser(idPost, user.getId_user())) {
+					System.out.println("del ne");
+					response.setContentType("text/html");
+			        response.setCharacterEncoding("UTF-8");
+			        response.getWriter().print( " Theo dõi");
+				}
+			} else if(flBO.add(follow)) {
+				System.out.println("add ne");
+				response.setContentType("text/html");
+		        response.setCharacterEncoding("UTF-8");
+		        response.getWriter().print( "Đã theo dõi");
+			}
 
 	}
 

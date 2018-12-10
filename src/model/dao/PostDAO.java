@@ -759,4 +759,29 @@ public class PostDAO {
 		}
 		return listItems;
 	}
+
+	public int followedByUser(int idPost, int id_user) {
+		int check = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM follow WHERE id_post = ? AND id_user = ?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			pst.setInt(2, id_user);
+			rs=pst.executeQuery();
+			while(rs.next()){
+				check = rs.getInt("rowcount") ;
+			}		  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return check;
+	}
 }

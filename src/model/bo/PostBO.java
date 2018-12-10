@@ -95,5 +95,9 @@ public class PostBO {
 	public ArrayList<LikeComment> getListLikedComment(int idPost) {
 		return postDAO.getListLikedComment(idPost);
 	}
+	public int followedByUser(int idPost, int id_user) {
+		
+		return postDAO.followedByUser(idPost,id_user);
+	}
 
 }

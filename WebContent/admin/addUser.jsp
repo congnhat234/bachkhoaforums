@@ -17,7 +17,7 @@
 		 <h2><span>Thêm người dùng</span></h2>
 		 <div class="module-body">
 		 
-			<form id="addUser" class="form_addUser" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">
+			<form id="addUser"  method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">
 				
 				<p>
 					<label>Tên người dùng</label>

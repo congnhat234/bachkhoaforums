@@ -176,7 +176,7 @@
 	toast("Lỗi!");
 </script>
 <%
-	} else if (msg.equals("2")) {
+	} else if (msg.equals("3")) {
 %>
 <script>
 	$('#snackbar').attr("type", "error");

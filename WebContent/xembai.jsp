@@ -32,7 +32,12 @@
 				<h3><%=post.getDate_create() %></h3>
 				<h3><%=post.getUsername() %></h3>
 				<h3>Lượt xem <%=post.getView() %></h3>
-				<h3><button id="btnFollow" type="button">Theo dõi</button></h3>	
+				<% if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
+				if((int)request.getAttribute("followedByUser") == 0){%>
+				<h3><button id="btnFollow" type="button"> Theo dõi </button></h3>	
+				<%} else {%>
+					<h3><button id="btnFollow" type="button">Đã theo dõi </button></h3>	
+				<% }%>
 			</div>
 			<span id="result"></span>
 		</div>
@@ -316,8 +321,31 @@
 					},
 			success: function(data){
 				console.log(data);
-				$("#likePost").html(data);
-				$("#likePost").toggleClass("active");
+ 				$("#likePost").html(data);
+				$("#likePost").toggleClass("active"); 
+			},
+			error: function (){
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+	});
+	
+	$("#btnFollow").on('click', function (){	
+		alert("click");
+		var idPost = $(".title_post").attr("idpost");
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.FOLLOW_POST%>',
+			type: 'POST',
+			cache: false,
+			data: {
+					aid: idPost,
+					},
+			success: function(data){
+				console.log(data);
+				$("#btnFollow").html(data);
+				$("#btnFollow").toggleClass("active");
 			},
 			error: function (){
 				$('#snackbar').attr("type", "error");
@@ -341,7 +369,6 @@
 			success: function(data){
 				console.log(data);
 				$(self).html(data);
-				$(self).toggleClass("active");
 			},
 			error: function (){
 				$('#snackbar').attr("type", "error");
@@ -352,30 +379,6 @@
 		<%}%>
 	});
 	</script>	
-	<script>
-	$('#btnFollow').on('click', function() {
-		var idPost = $(".title_post").attr("idpost");
-		$.ajax({
-			url: '<%=request.getContextPath()%><%=Constants.URL.FOLLOW_POST%>',
-			type: 'POST',
-			cache: false,
-			data: {
-					sid: idPost
-					},
-			success: function(){
-				$(self).removeAttr("checked");
-				$('#snackbar').attr("type", "success");
-				toast("Đã theo dõi!");
-			},
-			error: function (){
-				$('#snackbar').attr("type", "error");
-				toast("Có lỗi trong quá trình xử lí");
-			}
-		});
-		return false;
-});
-</script>
-
 </body>
 
 </html>
