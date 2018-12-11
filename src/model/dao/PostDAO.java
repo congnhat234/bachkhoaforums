@@ -807,4 +807,63 @@ public class PostDAO {
 		}
 		return amount;
 	}
+
+	public int countItemsPost(int idSub) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE id_subject=?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idSub);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+	public ArrayList<Post> getListPostSubjectOffset(int idSub, int offset, int row_count) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT * FROM post WHERE id_subject=? LIMIT ?,? ;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(2, offset);
+			pst.setInt(3, row_count);
+			pst.setInt(1, idSub);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
 }

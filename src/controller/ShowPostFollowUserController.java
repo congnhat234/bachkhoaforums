@@ -30,7 +30,6 @@ public class ShowPostFollowUserController extends HttpServlet {
      */
     public ShowPostFollowUserController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -53,8 +52,7 @@ public class ShowPostFollowUserController extends HttpServlet {
 				if(idLastUser[i]==0)
 					lastUser[i]="";
 				else
-				lastUser[i]=userBO.findByIDUser(idLastUser[i]).getUsername();
-				
+				lastUser[i]=userBO.findByIDUser(idLastUser[i]).getUsername();	
 			}
 			request.setAttribute("listAmountAnswer",amoutAnwser);
 			request.setAttribute("listLastUser",lastUser);
