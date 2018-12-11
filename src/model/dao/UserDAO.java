@@ -243,6 +243,34 @@ public class UserDAO {
 			return objUser;
 		
 	}
+	public User findByUserName(String username) {
+		connection = connectDBLibrary.getConnectMySQL();
+		User objUser = null;
+		String query = "SELECT * FROM user WHERE username = ?;";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1, username);
+			rs = pst.executeQuery();
+			while(rs.next()) {				
+				objUser = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
+						rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
+						rs.getString("birthday"),rs.getString("date_join"),rs.getString("avatar"),rs.getInt("rate"),rs.getInt("enabled"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return objUser;
+	
+}
 
 	public ArrayList<User> getListUserOffset(int offset, int row_count) {
 		ArrayList<User> listItems = new ArrayList<>();

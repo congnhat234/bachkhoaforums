@@ -38,7 +38,7 @@
 				<label for="ctrl_location">Tên:</label>
 			</dt>
 			<dd>
-				<span><%=user.getFullname()%></span>
+				<span><%=user.getUsername()%></span>
 			</dd>
 		</dl>
 		<dl class="ctrlUnit OptOut">
