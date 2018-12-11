@@ -31,19 +31,22 @@
 
 	<div class="module">
 		 <h2><span>Thêm danh mục</span></h2>
-		 <div class="module-body">
+		 <div class="mainContent">
 			<form id="addCat" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_SUBJECT%>">
-				<div class="content_addPost">
-					<div class="row_addPost">
-						<label>Tên danh mục :</label>
-						<input  type="text" id="name" name="newSub" value="" class="input-medium" />
-					</div>
-				</div>
 				<fieldset>
-					<input class="submit-green" type="submit" value="Thêm" /> 
-					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
-				</fieldset>
-				
+					<dl class="ctrlUnit">
+						<dt>
+						<label>Tên danh mục :</label>
+						</dt>
+						<dd>
+						<input  type="text" id="name" name="newSub" value="" class="input-medium" />
+						</dd>
+					</dl>
+					<dl>
+							<input class="submit-green" type="submit" value="Thêm" /> 
+							<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
+					</dl>
+				</fieldset>				
 			</form>
 		 </div> <!-- End .module-body -->
 	</div>  <!-- End .module -->

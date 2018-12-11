@@ -132,23 +132,21 @@
 		
 		<div id="ChangePassword" class="tabcontent">
 		 	<div class="module">
-		 <div class="module-body">
+		 <div class="mainContent">
 			<form id="addCat" method="POST" action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_ADMIN%>?uid=<%=user.getId_user()%>">
-				<div class="content_addPost">	
-				<div class="row_addPost">
-					<label for="ctrl_location">Mật khẩu mới:</label>
-					<input class="row_input" type="password"  name="password" value="" required />
-				</div>
-				</div>
-				<div class="content_addPost">
-				<div class="row_addPost">	
-					<label for="ctrl_location">Nhập lại mật khẩu mới:</label>
-					<input class="row_input" type="password"  name="repassword" value="" required />
-				</div>
-				</div>	
 				<fieldset>
+					<dl class="ctrlUnit">
+						<dt><label for="ctrl_location">Mật khẩu mới:</label></dt>
+						<dd><input class="row_input" type="password"  name="password" value="" required /></dd>
+					</dl>
+					<dl class="ctrlUnit">
+						<dt><label for="ctrl_location">Nhập lại mật khẩu mới:</label></dt>
+						<dd><input class="row_input" type="password"  name="repassword" value="" required /></dd>
+					</dl>	
+					<dl>
 					<input class="submit-green" type="submit" value="Thêm" /> 
 					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
+					</dl>
 				</fieldset>
 			</form>
 		 </div> <!-- End .module-body -->

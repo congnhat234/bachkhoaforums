@@ -69,7 +69,7 @@
                 <br>
                 <div class="amount">
                   <dl>
-                      <dt><a  id="author" href="javascript:void(0)" ><%=listpost.get(i).getUsername() %></a> </dt>
+                      <dt><a  id="author" href="javascript:void(0)"><%=listpost.get(i).getUsername() %></a> </dt>
                       <dd><%=listpost.get(i).getDate_create()%></dd>
                     </dl>
                 </div>

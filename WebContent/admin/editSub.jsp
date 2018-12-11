@@ -28,18 +28,20 @@
 <div class="grid_12">
 	<div class="module">
 		 <h2><span>Sửa danh mục</span></h2>
-		 <div class="module-body">
+		 <div class="mainContent">
 		 <% Subject sub = (Subject) request.getAttribute("nameSub"); %>
 			<form id="addCat" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.EDIT_SUBJECT%>?cid=<%=sub.getId_subject()%>">
-				<div class="content_addPost">
-					<div class="row_addPost">					
-					<label>Tên danh mục:</label>
-					<input class="row_input" type="text" id="name" name="newSub" value="<%=sub.getName() %>" class="input-medium" />
-					</div>
-				</div>	
 				<fieldset>
+					<dl class="ctrlUnit">
+						<dt><label>Tên danh mục:</label></dt>
+						<dd>
+							<input class="row_input" type="text" id="name" name="newSub" value="<%=sub.getName() %>" class="input-medium" />
+						</dd>
+					</dl>
+					<dl>
 					<input class="submit-green" type="submit" value="Sửa" /> 
 					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
+					</dl>
 				</fieldset>
 			</form>
 		 </div> <!-- End .module-body -->
