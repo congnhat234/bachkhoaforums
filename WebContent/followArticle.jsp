@@ -61,14 +61,16 @@
                                             <th>Bài viết cuối</th>
                                         </tr>
                                         <% ArrayList<Post> listpostfl =(ArrayList<Post>) request.getAttribute("listpostfl");
+                                        	int [] anwserAmount= (int[]) request.getAttribute("listAmountAnswer");
+                                        	String [] lastUser= (String[]) request.getAttribute("listLastUser");
                                         for(int i=0; i<listpostfl.size();i++){
                                         %>
                                         <tr>
                                             <td><img src="<%=listpostfl.get(i).getPreview_image()%>" width="30px"height="30px"></td>
                                             <td class="td1"> <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpostfl.get(i).getId_post()%>"><%=listpostfl.get(i).getTitle() %></a></td>
-                                            <td>1000</td>
+                                            <td><%=anwserAmount[i] %></td>
                                             <td><%=listpostfl.get(i).getView()%></td>
-                                            <td><a href="#"><%=listpostfl.get(i).getUsername()%></a></td>
+                                            <% if("".equals(lastUser[i])) {%><td><a href="#"><%=listpostfl.get(i).getUsername()%></a></td><%}else{%> <td><a href="#"><%=lastUser[i]%></a></td><%} %>
                                         </tr>
                                         <%}%>
                                     </table>

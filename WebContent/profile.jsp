@@ -45,7 +45,7 @@
 			}
 		%>
 
-		<form method="post" enctype="multipart/form-data"
+		<form method="post" id="form_profile" enctype="multipart/form-data"
 			action="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">
 			<fieldset>
 				<dl class="ctrlUnit avatarEditor">

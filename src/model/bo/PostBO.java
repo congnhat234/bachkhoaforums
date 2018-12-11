@@ -99,5 +99,13 @@ public class PostBO {
 		
 		return postDAO.followedByUser(idPost,id_user);
 	}
+	public int getAmountAnwserPost(int id_post) {
+		
+		return postDAO.getAmountAnwserPost(id_post);
+	}
+	public int getIdUserLastComment(int id_post) {
+		
+		return postDAO.getIdUserLastComment(id_post);
+	}
 
 }
