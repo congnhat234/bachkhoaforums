@@ -40,11 +40,9 @@
 			<li><a
 				href="<%=request.getContextPath()%><%=Constants.URL.HOME%>"><i
 					class="fas fa-home fa-2x"></i></a></li>
-
+			<li><a href="#">Bài viết của bạn</a></li>
 		</ul>
 	</nav>
-
-	<h1 style="font-family: Arial, Helvetica, sans-serif;">Bài viết của bạn</h1>
 	<!-- <div class="social">
 		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
 		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>

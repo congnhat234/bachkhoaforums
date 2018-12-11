@@ -3,7 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp" %>
-<!-- Form elements -->    
+<!-- Form elements -->  
+<div class="container">
 <div class="grid_12">
 <%
 	if(request.getParameter("msg")!=null){
@@ -15,29 +16,46 @@
 %>
 	<div class="module">
 		 <h2><span>Thêm người dùng</span></h2>
-		 <div class="module-body">
-		 
-			<form id="addUser" class="form_addUser" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">
-				
-				<p>
-					<label>Tên người dùng</label>
-					<input id="username" type="text" name="username" value="" class="input-medium" />
-					<label>Quyền hạn</label>					
-				     <select  name="role" class="input-medium">
+		 <div class="mainContent">		 
+			<form id="addUser" class="form_addUser" method="POST" action="<%=request.getContextPath() %><%=Constants.URL.ADD_USER%>">				
+				<fieldset>
+					<dl class="ctrlUnit">
+						<dt>
+						<label>Tên người dùng</label>
+						</dt>
+						<dd>
+						<input id="username" type="text" name="username" value="" class="input-medium" />
+						</dd>
+					</dl>
+					<dl class="ctrlUnit">
+						<dt>
+						<label>Quyền hạn</label>
+						</dt>	
+						<dd>			
+				    	 <select  name="role" class="input-medium">
 				     	<option  value="1">1.Admin </option>
 				     	<option  value="2">2.Mod</option>
 				     	<option  value="3">3.User </option>
-				     </select>
-					<label>Mật khẩu</label>
-					<input type="password" name="password" value="" class="input-medium" />
-					<label>Họ và tên</label>
-					<input id="fullname" type="text" name="fullname" value="" class="input-medium" />
-				</p>
-				<fieldset>
-					<input class="submit-green" type="submit" value="Thêm" /> 
-					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
-				</fieldset>
-				
+					 	</select>
+						</dd>
+					</dl>
+					<dl class="ctrlUnit">
+						<dt>
+						<label>Mật khẩu</label>
+						</dt>
+						<dd>
+						<input type="password" name="password" value="" class="input-medium" />
+						</dd>
+					</dl>
+					<dl class="ctrlUnit">
+						<dt><label>Họ và tên</label></dt>
+						<dd><input id="fullname" type="text" name="fullname" value="" class="input-medium" /></dd>
+					</dl>
+					<dl>
+							<input class="submit-green" type="submit" value="Thêm" /> 
+							<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
+					</dl>
+				</fieldset>				
 			</form>
 		 </div> <!-- End .module-body -->
 
@@ -53,6 +71,7 @@
 		var StrippedString1 = OriginalString1.replace(/<\/?[^>]+(>|$)/g, "");
 		$('#username').text(StrippedString1);
 	</script>
+	</div>  
 
 <%@include file="/templates/public/inc/footer.jsp" %> 
 <script>

@@ -35,33 +35,42 @@
 				<a href="<%=request.getContextPath()%><%=Constants.URL.LOGOUT%>">Đăng xuất</a>
 			</div></li>
 	</ul>
-	<div class="mainContent">
-		<%
-			User user = null;
-			if (session.getAttribute("user") != null) {
-				user = (User) session.getAttribute("user");
-			}
-		%>
+			<div class="grid_12">
+			
+				<div class="module">
+					 <h2><span>Đổi mật khẩu</span></h2>
+					<div class="mainContent">
+						<%
+						User user = null;
+						if (session.getAttribute("user") != null) {
+						user = (User) session.getAttribute("user");
+						}
+						%>
 
 		<form id="changepassword" method="POST"
 			action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_USER%>?uid=<%=user.getId_user()%>">
-			<div>
-				<label for="ctrl_location">Mật khẩu cũ:</label> <input
-					type="password" name="oldpassword" value="" />
-			</div>
-			<div>
-				<label for="ctrl_location">Mật khẩu mới:</label> <input
-					type="password" id="password" name="password" value="" />
-			</div>
-			<div>
-				<label for="ctrl_location">Nhập lại mật khẩu mới:</label> <input
-					type="password" name="repassword" value="" />
-			</div>
 			<fieldset>
-				<input class="button" type="submit" value="Lưu" /> <input
-					class="button" name="reset" type="reset" value="Nhập lại" />
+				<dl class="ctrlUnit">
+					<dt><label for="ctrl_location">Mật khẩu cũ:</label></dt>
+					<dd><input type="password" name="oldpassword" value=""/></dd>
+				</dl>				
+				<dl class="ctrlUnit">
+					<dt><label for="ctrl_location">Mật khẩu mới:</label></dt>
+					<dd><input type="password" id="password" name="password" value="" /></dd>
+				</dl>
+				<dl class="ctrlUnit">
+					<dt><label for="ctrl_location">Nhập lại mật khẩu mới:</label></dt>
+					<dd><input type="password" name="repassword" value="" /></dd>
+				</dl>
+				<dl>
+					<input class="submit-green" type="submit" value="Lưu" />
+					<input class="submit-green" name="reset" type="reset" value="Nhập lại" />
+				</dl>
+				 
 			</fieldset>
 		</form>
+		</div>
+	</div>
 	</div>
 </div>
 
