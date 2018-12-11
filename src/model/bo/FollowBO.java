@@ -16,4 +16,8 @@ public class FollowBO {
 		return followDAO.deleteFollowByUser(idUser);
 		
 	}
+	public boolean deleteFollowPostByUser(int idPost, int id_user) {
+		
+		return followDAO.deleteFollowPostByUser(idPost,id_user);
+	}
 }

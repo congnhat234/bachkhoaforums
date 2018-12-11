@@ -41,7 +41,7 @@ public class LikePostController extends HttpServlet {
 		
 		int idPost = Integer.parseInt(request.getParameter("aid"));
 		PostBO postBO = new PostBO();
-		if(postBO.likedByUser(idPost, user.getId_user()) > 0) {
+		if(postBO.likedByUser(idPost, user.getId_user()) != 0) {
 			if(postBO.deleteLikedPostByUser(idPost, user.getId_user())) {
 				response.setContentType("text/html");
 		        response.setCharacterEncoding("UTF-8");
