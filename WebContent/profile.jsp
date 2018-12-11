@@ -45,7 +45,7 @@
 			}
 		%>
 
-		<form method="post" enctype="multipart/form-data"
+		<form method="post" id="form_profile" enctype="multipart/form-data"
 			action="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">
 			<fieldset>
 				<dl class="ctrlUnit avatarEditor">
@@ -176,7 +176,7 @@
 	toast("Lỗi!");
 </script>
 <%
-	} else if (msg.equals("2")) {
+	} else if (msg.equals("3")) {
 %>
 <script>
 	$('#snackbar').attr("type", "error");
@@ -206,11 +206,6 @@
 	$("#imginput").change(function() {
 		previewFile();
 	});
-</script>
-<script type="text/javascript">
-	window.onload = function() {
-		document.getElementById('defaultOpen').click();
-	}
 </script>
 
 <script>

@@ -287,8 +287,8 @@ public class PostDAO {
 		return listItems;
 	}
 			
-	public int getLastComment(int idPost) {
-		int username=0;
+	public int getIdUserLastComment(int idPost) {
+		int idUser=0;
 		connection = connectDBLibrary.getConnectMySQL();
 		String sql = "SELECT * FROM forumdb.comment where comment.id_post=? ORDER BY comment.id_comment DESC LIMIT 1;";
 		try {
@@ -296,7 +296,7 @@ public class PostDAO {
 			pst.setInt(1, idPost);
 			rs = pst.executeQuery();
 			while(rs.next()){
-				username=rs.getInt("id_user");
+				idUser=rs.getInt("id_user");
 				}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -309,8 +309,7 @@ public class PostDAO {
 				e.printStackTrace();
 			}
 		}
-		if(username==0) return username;
-		return username;
+		return idUser;
 	}
 
 	public ArrayList<Post> getListPostByUser(String username) {
@@ -758,5 +757,54 @@ public class PostDAO {
 			}
 		}
 		return listItems;
+	}
+
+	public int followedByUser(int idPost, int id_user) {
+		int check = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM follow WHERE id_post = ? AND id_user = ?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			pst.setInt(2, id_user);
+			rs=pst.executeQuery();
+			while(rs.next()){
+				check = rs.getInt("rowcount") ;
+			}		  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return check;
+	}
+
+	public int getAmountAnwserPost(int id_post) {
+		int amount = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM comment WHERE id_post = ?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, id_post);
+			rs=pst.executeQuery();
+			while(rs.next()){
+				amount = rs.getInt("rowcount") ;
+			}		  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return amount;
 	}
 }

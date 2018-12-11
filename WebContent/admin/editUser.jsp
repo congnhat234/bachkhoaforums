@@ -7,12 +7,27 @@
 	
 	
     <div class="container">
-        <nav class="navbar">
-                <ul class="breadcrumbs">
-                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.ADMIN_HOME%>"><i class="fas fa-home fa-2x"></i></a></li>
-                        <li><a href="#">Sửa Thành Viên</a></li>
-                </ul>
-        </nav>
+        <div id="subnav">
+			<div class="container_12">
+				<div class="grid_12">
+					<ul>
+						<li><a
+							href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài
+								viết</a></li>
+						<li><a
+							href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh
+								mục</a></li>
+						<li><a
+							href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người
+								dùng</a></li>
+					</ul>
+		
+				</div>
+				<!-- End. .grid_12-->
+			</div>
+			<!-- End. .container_12 -->
+			<div style="clear: both;"></div>
+		</div>
             	<% 
             	User user = null;
             	if (request.getAttribute("user") != null) {

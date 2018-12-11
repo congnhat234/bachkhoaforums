@@ -91,6 +91,31 @@ public class FollowDAO {
 		}
 		return false;
 	}
+
+	public boolean deleteFollowPostByUser(int idPost, int id_user) {
+		int result = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "DELETE FROM follow WHERE id_user = ? AND id_post=?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, id_user);
+			pst.setInt(2, idPost);
+			result = pst.executeUpdate();
+			if(result > 0) return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 	
 
 }

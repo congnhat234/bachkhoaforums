@@ -200,10 +200,8 @@
         </div>
     </div>
     <% } %>
-    <script	src="<%=request.getContextPath()%>/templates/public/js/jquery-3.3.1.min.js"></script>
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
     <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
-		<script	src="<%=request.getContextPath() %>/templates/public/js/jquery.validate.js"></script>
 	
 	<script>
 	$( document ).ready( function () {

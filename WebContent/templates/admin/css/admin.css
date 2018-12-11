@@ -375,9 +375,6 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-.form_addUser{
-
-}
 #myTable td{vertical-align: middle;}
 #myTable .hoa{width:100px; height: 60px;border-radius:4px;}
 #myTable tr:nth-child(even) td{background: #F6F6F6}

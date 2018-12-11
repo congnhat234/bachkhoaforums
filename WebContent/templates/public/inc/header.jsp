@@ -27,6 +27,7 @@
 		src="<%=request.getContextPath()%>/templates/public/ckeditor/ckeditor.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
+	<script	src="<%=request.getContextPath() %>/templates/public/js/jquery.validate.js"></script>
 
 	
 </head>

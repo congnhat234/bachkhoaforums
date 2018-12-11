@@ -95,5 +95,17 @@ public class PostBO {
 	public ArrayList<LikeComment> getListLikedComment(int idPost) {
 		return postDAO.getListLikedComment(idPost);
 	}
+	public int followedByUser(int idPost, int id_user) {
+		
+		return postDAO.followedByUser(idPost,id_user);
+	}
+	public int getAmountAnwserPost(int id_post) {
+		
+		return postDAO.getAmountAnwserPost(id_post);
+	}
+	public int getIdUserLastComment(int id_post) {
+		
+		return postDAO.getIdUserLastComment(id_post);
+	}
 
 }
