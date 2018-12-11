@@ -30,14 +30,6 @@
 <!-- End #subnav -->
 <!-- Form elements -->    
 <div class="grid_12">
-<%
-	if(request.getParameter("msg")!=null){
-		int msg = Integer.parseInt(request.getParameter("msg"));
-		if(msg == 0){
-			out.print("<h5 style='color:red'>Tên người dùng đã tồn tại, vui lòng chọn tên khác!</h5>");
-		}
-	}
-%>
 	<div class="module">
 		 <h2><span>Thêm người dùng</span></h2>
 		 <div class="mainContent">		 
@@ -88,6 +80,14 @@
 </div> <!-- End .grid_12 -->
 </div>
 <%@include file="/templates/public/inc/footer.jsp" %> 
+		 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("0")) {%>
+    	<script>
+		$('#snackbar').attr("type", "error");
+		toast("Trùng tên danh mục!");
+		</script> 
+    	<%}} %>
 <script>
 $( document ).ready( function () {
 	$( "#addUser" ).validate( {

@@ -7,11 +7,6 @@
 		<div class="signin_page">
 			<form action="<%=request.getContextPath() %><%=Constants.URL.LOGIN %>" class="form_login_page" id="form_login" method="post">
 				<h1>Login</h1>
-				<% if(request.getParameter("msg") != null) {
-					String msg = (String) request.getParameter("msg");
-					if(msg.equals("0")) { %>
-				<h4 style="color:red">Sai username hoặc mật khẩu</h4>
-				<%}} %>
 				<input placeholder="Username" type="text" name="username" > <input
 					placeholder="Password" type="password" name="password" >
 				<button>Submit</button>
@@ -27,6 +22,23 @@
 			</form>
 		</div>
 <%@include file="/templates/public/inc/footer.jsp"%>
+	<%
+		if (request.getParameter("msg") != null) {
+			String msg = request.getParameter("msg");
+			if (msg.equals("1")) {
+	%>
+	<script>
+		$('#snackbar').attr("type", "success");
+		toast("Đăng ký thành công!");
+	</script>
+	<%
+		} else if (msg.equals("0")) {
+	%>
+	<script>
+		$('#snackbar').attr("type", "error");
+		toast("Sai username hoặc mật khẩu!");
+	</script>
+	<%}}%>
 	<script>
 	$( document ).ready( function () {
 	$( "#form_login" ).validate( {

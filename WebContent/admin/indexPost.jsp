@@ -98,7 +98,7 @@
 						String active = "";
 						if(current_page>1){
 				%>
-				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page-1%>">&lt;</a> 	
+				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page-1%>"></a> 	
 				<span>|</span> 
 				<%	} %>
 				<%
@@ -114,7 +114,7 @@
 				<%}
 				if(current_page<sumPage){
 				%>
-				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page+1%>">&gt;</a> 
+				<a <%=active %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>?current_page=<%=current_page+1%>"></a> 
 				<%}}  %>
 			</div> 
 			<div style="clear: both;"></div> 
@@ -130,21 +130,9 @@ if(request.getParameter("msg")!=null){
 		%>
 		<script>
 		$('#snackbar').attr("type", "success");
-		toast("Thêm thành công!");
+		toast("Xóa thành công!");
 		</script> 
-		<%
-	} else
-	if(msg == 2){
-		out.print("<h5 style='color:red'>Sửa thành công</h5>");
-		} else
-	if(msg == 3){
-		out.print("<h5 style='color:red'>Xóa thành công</h5>");
-		}
-		else {
-		out.print("<h5 style='color:red'>Thất bại</h5>");
-	}
-}
-%>
+		<%}}%>
 
 <script type="text/javascript">
 	$('.status').on('change', function() {
@@ -209,11 +197,11 @@ if(request.getParameter("msg")!=null){
 				success: function(){
 					$(self).removeAttr("checked");
 					$('#snackbar').attr("type", "success");
-					toast("Đã lưu thay đổi! 1");
+					toast("Đã lưu thay đổi!");
 				},
 				error: function (){
 					$('#snackbar').attr("type", "error");
-					toast("Có lỗi trong quá trình xử lí 1");
+					toast("Có lỗi trong quá trình xử lí");
 				}
 			});
 			return false;

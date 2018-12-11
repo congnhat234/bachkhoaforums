@@ -97,7 +97,7 @@
 						if (current_page > 1) {
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page - 1%>">&lt;</a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page - 1%>"></a>
 				<span>|</span>
 				<%
 					}
@@ -119,7 +119,7 @@
 						if (current_page < sumPage) {
 				%>
 				<a <%=active%>
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page + 1%>">&gt;</a>
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT %>?current_page=<%=current_page + 1%>"></a>
 				<%
 					}
 					}
@@ -131,19 +131,18 @@
 	</div>
 	<!-- End .grid_12 -->
 </div>
-
-<%
-	if (request.getParameter("msg") != null) {
-		int msg = Integer.parseInt(request.getParameter("msg"));
-		if (msg == 1) {
-			out.print("<h5 style='color:red'>Thêm thành công</h5>");
-		} else if (msg == 2) {
-			out.print("<h5 style='color:red'>Sửa thành công</h5>");
-		} else if (msg == 3) {
-			out.print("<h5 style='color:red'>Xóa thành công</h5>");
-		} else {
-			out.print("<h5 style='color:red'>Thất bại</h5>");
-		}
-	}
-%>
 <%@include file="/templates/public/inc/footer.jsp"%>
+	 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("1")) {%>
+    	<script>
+		$('#snackbar').attr("type", "success");
+		toast("Thành công!");
+		</script> 
+    	<%}else if(msg.equals("2")){%>
+    		 <script>
+		$('#snackbar').attr("type", "success");
+		toast("Xóa thành công!");
+		</script> 
+    	<%}}%>
+

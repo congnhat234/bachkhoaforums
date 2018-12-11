@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import libraries.ConnectDBLibrary;
 import model.bean.Subject;
 import model.bean.User;
+import utils.SlugUtils;
 
 public class UserDAO {
 	private ConnectDBLibrary connectDBLibrary;
@@ -121,7 +122,7 @@ public class UserDAO {
 		UserDAO userDAO= new UserDAO();
 		ArrayList<User>list=userDAO.getListUsers();
 		for(int i=0; i<list.size();i++) {
-			if(user.getUsername().equals(list.get(i).getUsername())) {
+			if(SlugUtils.makeSlug(user.getUsername()).equals(SlugUtils.makeSlug(list.get(i).getUsername()))) {
 				check= false;
 			}
 		}
@@ -332,6 +333,30 @@ public class UserDAO {
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, i);
 			pst.setInt(2, idUser);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public boolean changePassWord(int userid, String token,String password) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE user SET token = ?,password=? WHERE id_user = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setString(1,token );
+			pst.setString(2, password);
+			pst.setInt(3, userid);
 			int r = pst.executeUpdate();
 			if (r>0) return true;
 		} catch (Exception e) {

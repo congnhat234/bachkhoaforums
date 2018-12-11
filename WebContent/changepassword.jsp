@@ -75,6 +75,26 @@
 </div>
 
 <%@include file="/templates/public/inc/footer.jsp"%>
+<%
+	if (request.getParameter("msg") != null) {
+		String msg = request.getParameter("msg");
+		 if (msg.equals("0")) {
+%>
+<script>
+	$('#snackbar').attr("type", "error");
+	toast("Lỗi!");
+</script>
+<%
+	} else if (msg.equals("3")) {
+%>
+<script>
+	$('#snackbar').attr("type", "error");
+	toast("Mật khẩu cũ chưa đúng!");
+</script>
+<%
+	}
+	}
+%>
 <script type="text/javascript">
 	function previewFile() {
 		var preview = document.getElementById('imgpreview');

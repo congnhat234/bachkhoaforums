@@ -58,7 +58,7 @@ public class DeleteSubjectController extends HttpServlet {
 			postBO.deletePostByIdSub(idSub);
 		}
 		if( subBO.deleteSubject(idSub)){
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);	
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT+"?msg=2");	
 		}
 	}
 

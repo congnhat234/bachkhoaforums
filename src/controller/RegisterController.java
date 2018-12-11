@@ -57,15 +57,17 @@ public class RegisterController extends HttpServlet {
 		String address = (String) request.getParameter("address");
 		String city = (String) request.getParameter("city");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-	    Date date = new Date();  
+	    Date date = new Date(); 
 	    String date_join = formatter.format(date);
 		User user = new User(0,3,username,passwordCryp,token,fullname,address,city,gender,email,phone,birthday,date_join,"noimage.jpg",0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"+"?msg=1");
 			rd.forward(request, response);
 		} else {
-			
+			request.setAttribute("member",user);
+			RequestDispatcher rd = request.getRequestDispatcher("/register.jsp"+"?msg=0");
+			rd.forward(request, response);
 		}
 	}
 

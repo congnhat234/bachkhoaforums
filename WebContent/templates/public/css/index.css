@@ -305,6 +305,138 @@ body {
 	background-color: #efffe0;
 }
 
+.register_page {
+	width: 550px;
+	height: auto;
+	background-color: #fff;
+	padding: 5px;
+	box-sizing: border-box;
+	box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+/* 	animation-name: animatetop;
+	animation-duration: 0.4s;
+	top: 100px;
+	left: 30%; */
+}
+
+.register_page h1 {
+	font-weight: 200;
+	color: #888888;
+	font-size: 16pt;
+	/* background: transparent url(../img/h1.png) no-repeat center left; */
+	padding-left: 33px;
+	margin: 7px 5px 8px 8px;
+}
+
+.register_page .row1 p {
+	font-size: 14pt;
+	clear: both;
+	margin: 0;
+	color: gray;
+	padding: 4px;
+}
+
+.register_page .row1 {
+	width: 500px;
+	height: auto;
+	padding: 5px;
+	float: left;
+	border-top: 1px solid #F5F5F5;
+	margin-bottom: 15px;
+}
+
+.register_page .row1 label {
+	width: 140px;
+	float: left;
+	text-align: right;
+	margin-right: 6px;
+	margin-top: 2px;
+}
+
+.register_page legend {
+	color: #1abc9c;
+	padding: 2px;
+	margin-left: 14px;
+	font-weight: bold;
+	font-size: 14px;
+	font-weight: 100;
+}
+
+.register_page input {
+	width: 200px;
+	height: auto;
+	color: #505050;
+	float: left;
+	margin-right: 5px;
+}
+
+.register_page input .long {
+	width: 247px;
+	color: #505050;
+}
+
+.register_page input[type=radio] {
+	width: 15px;
+}
+
+.register_page .row1 .gender {
+	margin-top: 1px;
+	margin-bottom: 2px;
+	width: 34px;
+	text-align: left;
+	line-height: 19px;
+}
+
+.register_page input[type=text] {
+	border: 1px solid #E1E1E1;
+	height: 18px;
+}
+
+.register_page input[type=password] {
+	border: 1px solid #E1E1E1;
+	height: 18px;
+}
+
+.register_page .button {
+	background: #1abc9c;
+	padding: 8px 10px 8px;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+	float: left;
+	font-size: 18px;
+	margin: 10px;
+}
+
+.register_page select {
+	border: 1px solid #E1E1E1;
+	width: 130px;
+	float: left;
+	margin-bottom: 3px;
+	color: #505050;
+	margin-right: 5px;
+}
+
+.register_page .day {
+	width: 40px;
+}
+
+.register_page .month {
+	width: 40px;
+}
+
+.register_page .year {
+	width: 60px;
+}
+
+.register_page input:focus .register select:focus {
+	background-color: #efffe0;
+}
 .xem_header {
 	width: 100%;
 	position: fixed;

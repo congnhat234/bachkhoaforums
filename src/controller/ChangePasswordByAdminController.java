@@ -7,9 +7,11 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.bean.User;
 import model.bo.UserBO;
@@ -42,6 +44,9 @@ public class ChangePasswordByAdminController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user1 = (User) session.getAttribute("user");
+		int idUserCurrent= user1.getId_user();
 		int idUser= Integer.parseInt(request.getParameter("uid"));
 		System.out.println(idUser);
 		UserBO userBO = new UserBO();
@@ -50,12 +55,17 @@ public class ChangePasswordByAdminController extends HttpServlet {
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(user.getUsername() + password);	
 		 User userid = new User(0,user.getId_role(),user.getUsername(),passwordCryp,token,user.getFullname(),user.getAddress(),user.getCity(),user.getGender(),user.getEmail(),user.getPhone(),user.getBirthhday(),user.getDate_join(),user.getAvatar(),0,0);
-		 if(userBO.edit(userid)){
+		 if(userBO.changePassWord(idUser,token,passwordCryp)){
+			 if(idUser==idUserCurrent) {
+				 Cookie cookie = new Cookie("token", token);
+					response.addCookie(cookie);
+					session.setAttribute("user", user);
+			 }
 				User userEdited = userBO.findByToken(user.getToken());
 				request.setAttribute("user", userEdited);
 				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=1");
 			} else {
-				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=0");
+				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=0"+"");
 			}
 	}
 }

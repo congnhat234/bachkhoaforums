@@ -137,7 +137,7 @@
 				<fieldset>
 					<dl class="ctrlUnit">
 						<dt><label for="ctrl_location">Mật khẩu mới:</label></dt>
-						<dd><input class="row_input" type="password"  name="password" value="" required /></dd>
+						<dd><input class="row_input" type="password"  name="password" id="password" value="" required /></dd>
 					</dl>
 					<dl class="ctrlUnit">
 						<dt><label for="ctrl_location">Nhập lại mật khẩu mới:</label></dt>
@@ -200,10 +200,10 @@ window.onload = function(){
 				required: true,
 				minlength: 5
 			},
-		/* 	email: {
+		 	email: {
 				required: true,
 				email: true
-			}, */
+			}, 
 			gender: "required"
 		},
 		messages: {
@@ -229,10 +229,10 @@ window.onload = function(){
 				required: "Vui lòng điền vào trường này",
 				minlength: "Ít nhất 5 kí tự"
 			},
-		/* 	email: {
+		 	email: {
 				required: "Vui lòng điền vào trường này",
 				email:"Vui lòng điền đúng email"
-			}, */
+			}, 
 			gender: "Vui lòng chọn giới tính"
 		}
 	} );

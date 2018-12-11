@@ -46,7 +46,11 @@ public class EditSubjectController extends HttpServlet {
 		SubjectBO subBO= new SubjectBO();
 		Subject sub = new Subject(idSub,newSub);
 		if( !"".equals(newSub) && subBO.editSubject(sub)){
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);	
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT+"?msg=1");	
+		}else if(newSub.equals(subBO.getSubject(idSub).getName())){
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT+"?msg=1");			
+		}else {
+			response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_SUBJECT+"?msg=0"+"&cid="+idSub);
 		}
 	}
 
