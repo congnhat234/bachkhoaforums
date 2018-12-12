@@ -98,7 +98,7 @@
 	%>
 	<div class="labeltopic">
 		<a href=""><%=objSub.getName()%></a><br>
-		<p>Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
+		<p><%=objSub.getDescribe() %></p>
 	</div>
 	<%
 		for (int i = 0; i < listpost.size(); i++) {

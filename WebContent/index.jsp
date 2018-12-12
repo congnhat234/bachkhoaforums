@@ -57,7 +57,7 @@
         for (Subject sub:listsub) {%>
         <div class="labeltopic">
             <a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=sub.getId_subject()%>"><%=sub.getName() %></a><br>
-            <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
+            <p> <%=sub.getDescribe()%></p>
         </div>
 		<% for(int i=0;i<listpost.size();i++){ %>
 			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  %>

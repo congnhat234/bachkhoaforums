@@ -40,8 +40,9 @@ public class CreateSubjectController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newSub= new String( request.getParameter("newSub").getBytes("ISO-8859-1"), "UTF-8");
+		String describeSub= new String( request.getParameter("describeSub").getBytes("ISO-8859-1"), "UTF-8");
 		SubjectBO subBO= new SubjectBO();
-		Subject sub = new Subject(0,newSub);
+		Subject sub = new Subject(0,newSub,describeSub);
 		if( !"".equals(newSub)&& subBO.addSubject(sub)){
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT+ "?msg=1");
 		} else {

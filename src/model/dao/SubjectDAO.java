@@ -32,7 +32,7 @@ public class SubjectDAO {
 			st = connection.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()){
-				Subject obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
+				Subject obj = new Subject(rs.getInt("id_subject"), rs.getString("name"), rs.getString("describe"));
 				listItems.add(obj);
 			}
 		} catch (SQLException e) {
@@ -58,7 +58,7 @@ public class SubjectDAO {
 			pst.setInt(1, idSub);
 			rs = pst.executeQuery();
 			while(rs.next()){
-				obj = new Subject(rs.getInt("id_subject"), rs.getString("name"));
+				obj = new Subject(rs.getInt("id_subject"), rs.getString("name"),rs.getString("describe"));
 				return obj;
 			}
 		} catch (SQLException e) {
@@ -79,10 +79,11 @@ public class SubjectDAO {
 	public boolean addSubject(Subject Sub) {
 		connection = connectDBLibrary.getConnectMySQL();	
 		if (Check(Sub)) {
-			String query = "INSERT INTO subject(name) VALUES (?);";
+			String query = "INSERT INTO forumdb.subject(name,subject.describe) VALUES (?,?);";
 			try {
 				pst = connection.prepareStatement(query);
 				pst.setString(1, Sub.getName());
+				pst.setString(2, Sub.getDescribe());
 				int r = pst.executeUpdate();
 				return (r == 1);
 			} catch (Exception e) {
@@ -104,7 +105,7 @@ public class SubjectDAO {
 		SubjectDAO subDAO= new SubjectDAO();
 		ArrayList<Subject>list=subDAO.getListSubject();
 		for(int i=0; i<list.size();i++) {
-			if(SlugUtils.makeSlug(sub.getName()).equals(SlugUtils.makeSlug(list.get(i).getName()))) {
+			if(SlugUtils.makeSlug(sub.getName()).equals(SlugUtils.makeSlug(list.get(i).getName())) && list.get(i).getId_subject() != sub.getId_subject() ) {
 				check= false;
 			}
 		}
@@ -115,11 +116,12 @@ public class SubjectDAO {
 	public boolean edit(Subject Sub) {
 		connection = connectDBLibrary.getConnectMySQL();
 		if (Check(Sub)) {
-		String query = "UPDATE subject SET name = ? WHERE id_subject = ?;";
+		String query = "UPDATE forumdb.subject SET name =?, subject.describe=?  WHERE id_subject = ?;";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setString(1, Sub.getName());
-			pst.setInt(2, Sub.getId_subject());
+			pst.setString(2, Sub.getDescribe());
+			pst.setInt(3, Sub.getId_subject());
 			int r = pst.executeUpdate();
 			if (r>0) return true;
 		} catch (Exception e) {
