@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bo.PostBO" %>
@@ -16,8 +17,9 @@
         ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
         ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
         %>
-        <%for(int i=0;i<listsub.size();i++) {%>
-            <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
+        <%for(int i=0;i<listsub.size();i++) {
+        String urlSubject = "/subject/" + ConvertString.createSlug(listsub.get(i).getName())+"-"+listsub.get(i).getId_subject();%>
+            <a class="link-red" href="<%=request.getContextPath() %><%=urlSubject %>">
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
@@ -27,8 +29,9 @@
             <h3><i class="fa fa-rss"></i> Sôi động trong tuần</h3>
             <ul>
             <%for(int i=0;i<listpost.size();i++) 
-            	if(listpost.get(i).getView()>500) {%>
-                <li><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>"><%=listpost.get(i).getTitle() %></a>
+            	if(listpost.get(i).getView()>500) {
+            	String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();%>
+                <li><a href="<%=request.getContextPath() %><%=urlPost %>"><%=listpost.get(i).getTitle() %></a>
                 <span><%=listpost.get(i).getDate_create() %></span></li>
                 <%}%>
             </ul>
@@ -54,18 +57,22 @@
         </div>
     	
         <% if(listsub!=null)
-        for (Subject sub:listsub) {%>
+        for (Subject sub:listsub) {
+        int tmpCount = 0;
+        String urlSubject = "/subject/" + ConvertString.createSlug(sub.getName())+"-"+sub.getId_subject();%>
         <div class="labeltopic">
-            <a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=sub.getId_subject()%>"><%=sub.getName() %></a><br>
+            <a href="<%=request.getContextPath() %><%=urlSubject %>"><%=sub.getName() %></a><br>
             <p> Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
         </div>
 		<% for(int i=0;i<listpost.size();i++){ %>
-			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  %>
+			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  
+				tmpCount++;
+				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();%>
 
         <div class="topic">
             <div class="writer">
                 <i class="fas fa-comments fa-sm" style="font-size: 40px;"></i>
-                <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
+                <a href="<%=request.getContextPath() %><%=urlPost %>" style=" color:#103667;  font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
                 <br>
                 <div class="amount">
                   <dl>
@@ -81,8 +88,10 @@
             </div>
         </div>
         <hr class="linetopic">
-        <%}} %>
-		<%} %>	
+        <%}}
+		if(tmpCount == 0) {%>
+		<h6 style="margin-left: 25px;">Chưa có bài viết.</h6>
+		<%}} %>	
 		</div> 
 <%@include file="/templates/public/inc/footer.jsp" %>
 </body>

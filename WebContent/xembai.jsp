@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.LikeComment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.bean.Post"%>
@@ -64,7 +65,7 @@
 				<%} else { %>
 					<button class="b1" type="button" name="button"><%=request.getAttribute("countLikePost") %> Thích</button>
 				<%} %>
-					<button class="b1" type="button" name="button">Chia sẻ</button>
+					<button id="sharePost" class="b1" type="button" name="button">Chia sẻ</button>
 				</div>
 				<hr>
 				<div class="comment-container">
@@ -77,6 +78,7 @@
 						idUser = user.getId_user();
 					}
 					for(int i=0;i<listComment.size();i++){
+						String urlMember = "/user/" + listComment.get(i).getUserName()+"."+listComment.get(i).getId_user();
 						int count = 0;
 						boolean checkLike = false;
 						for(int j = 0; j < listLikedComment.size(); j++) {
@@ -93,7 +95,7 @@
 						<img src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>" width="50px" height="50px">
 					</div>
 					<div class="comment">
-						<a href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>?idUC=<%=listComment.get(i).getId_user()%>"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
+						<a href="<%=request.getContextPath()%><%=urlMember%>"><%=listComment.get(i).getUserName()%></a><span><%=listComment.get(i).getDate_create() %></span>
 						<div><%=listComment.get(i).getContent()%></div>
 						
 						
@@ -144,15 +146,30 @@
 		</div>
 	</div>
 
+<!-- Modal copy  -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+  	<h5>Chia sẻ bài viết</h5>
+    <p id="shareinput"></p>
+	<button class="btn" data-clipboard-target="#shareinput">
+	    <i class="far fa-copy"></i>
+	</button>
+  </div>
+</div>
+<!-- End Modal copy  -->
+
 <%@include file="/templates/public/inc/footer.jsp"%>
 
+<%if(session.getAttribute("user") != null) { %>
 <script type="text/javascript">
 	var editor = CKEDITOR.replace('editor', {
 		filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
 	});
 	CKFinder.setupCKEditor(editor,'/forumproject/ckfinder/');
+</script>
+<%} %>
+<script type="text/javascript">
 	$("#sendComment").on('click', function (){
-		
 		var cmt = CKEDITOR.instances.editor.getData();; 
 		var idPost = $(".title_post").attr("idpost");
 		$.ajax({
@@ -169,6 +186,7 @@
 					commentDiv.text("");
 					<%int i = 0;%>
 					$.each(responseJson, function(key, value){
+						var urlMember = "/user/" + value["username"]+ "." + value["id_user"];
 					<%
 						int count = 0;
 						boolean checkLike = false;
@@ -192,7 +210,7 @@
 										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
 									+'</div>'
 									+'<div class="comment">'
-										+'<a href="#">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
+										+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
 											+ str 
@@ -277,6 +295,7 @@
 					commentDiv.text("");
 					<%i = 0;%>
 					$.each(responseJson, function(key, value){
+						var urlMember = "/user/" + value["username"]+ "." + value["id_user"];
 						<%
 						count = 0;
 						checkLike = false;
@@ -300,7 +319,7 @@
 										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
 									+'</div>'
 									+'<div class="comment">'
-										+'<a href="#">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
+										+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
 										+'<div>'+ value["content"] +'</div>'
 										+'<div class="a-comment">'
 											+ str
@@ -396,6 +415,34 @@
 		return false;
 		<%}%>
 	});
+	
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+	
+	$("#sharePost").on('click', function() {
+		modal.style.display = "block";
+		$("#shareinput").text(window.location.href);
+		var clipboard = new ClipboardJS('.btn');
+
+		clipboard.on('success', function(e) {
+			$('#snackbar').attr("type", "success");
+			toast("Đã lưu vào bộ nhớ tạm!");
+		    e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+			$('#snackbar').attr("type", "error");
+			toast("Lỗi!");
+		});
+	});
+	
 	</script>	
 </body>
 

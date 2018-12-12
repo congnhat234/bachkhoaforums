@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bo.PostBO"%>
@@ -22,9 +23,10 @@
 			<%
 				if(listpost != null)
 				for (int i = 0; i < listpost.size(); i++) {
+					String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
 			%>
 			<li><a
-				href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"><%=listpost.get(i).getTitle()%></a>
+				href="<%=request.getContextPath()%><%=urlPost%>"><%=listpost.get(i).getTitle()%></a>
 				<span><%=listpost.get(i).getDate_create()%></span></li>
 			<%
 				}
@@ -47,32 +49,9 @@
 		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
 		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
 	</div> -->
-	<ul class="menu">
-			<li class="dropdown">
-				<a href="#" id="dropbutton1" class="dropbtn">Tài Khoản</a>
-				<div  class="dropdown_content"> 
-					<a href="#">Thông báo của bạn</a>
-					<a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_USER%>">Bài viết của bạn</a>
-					<a href="#">Chủ đề theo dõi</a>
-					<a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài viết theo dõi</a>
-				</div>
-			</li>
-			<li class="dropdown">
-				<a href="#" id="dropbutton2" class="dropbtn">Tin nhắn</a>
-				<div  class="dropdown_content"> 
-					<a href="#">Xem tin nhắn</a>
-					<a href="#">Tạo tin nhắn mới</a>
-				</div>
-			</li>
-			<li class="dropdown">
-				<a href="#" id="dropbutton3" class="dropbtn">Cài đặt</a>
-				<div  class="dropdown_content"> 
-				<a href="#">Thông tin cá nhân</a>
-				<a href="#">Mật khẩu</a>
-				<a href="#">Đăng xuất</a>
-				</div>
-			</li>
-		</ul>
+	
+	<%@include file="/templates/public/inc/menu.jsp"%>
+	
 	<%
 		if (listpost != null) {
 	%>
@@ -83,19 +62,20 @@
 -->
 	<%
 		for (int i = 0; i < listpost.size(); i++) {
+			String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
 	%>
 
 	<div class="topic">
 		<div class="writer"> 
 			<i class="fas fa-comments fa-sm"
 			style="font-size: 40px;"></i> <a
-			href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"
+			href="<%=request.getContextPath()%><%=urlPost%>%>"
 			style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
 			<br>
 			<div class="amount">
 				<dl>
 					<dt>
-						<a id="author" href="javascript:void(0)"><%=listpost.get(i).getUsername()%><a>
+						<a id="author" href="javascript:void(0)"><%=listpost.get(i).getUsername()%></a>
 					</dt>
 					<dd><%=listpost.get(i).getDate_create()%></dd>
 				</dl>
@@ -109,8 +89,10 @@
 	<hr class="linetopic">
 	<%
 		}
-		}
+		} else {
 	%>
+	<h6 style="margin-left: 25px;">Chưa có bài viết.</h6>
+	<%} %>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>
 	</body>

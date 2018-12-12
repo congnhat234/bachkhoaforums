@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -63,11 +64,12 @@
 		%>
 		<%
 			for (int i = 0; i < listpost.size(); i++) {
+				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
 		%>
 		<div class="topic">
 			<div class="writer">
 				<i class="fas fa-comments fa-sm" style="font-size: 40px;"></i> <a
-					href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"
+					href="<%=request.getContextPath()%><%=urlPost%>"
 					style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
 				<br>
 				<div class="amount">

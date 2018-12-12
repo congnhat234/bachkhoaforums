@@ -412,12 +412,12 @@ body {
 /* Add Animation */
 @-webkit-keyframes animatetop {
 	from {
-		top: -300px;
+		top: 30px;
 		opacity: 0
 	}
 
 	to {
-		top: 0;
+		top: 50;
 		opacity: 1
 	}
 
@@ -425,12 +425,12 @@ body {
 
 @keyframes animatetop {
 	from {
-		top: -300px;
+		top: 30px;
 		opacity: 0
 	}
 
 	to {
-		top: 0;
+		top: 50;
 		opacity: 1
 	}
 
