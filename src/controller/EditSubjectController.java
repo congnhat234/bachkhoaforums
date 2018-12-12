@@ -42,11 +42,16 @@ public class EditSubjectController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newSub= new String(request.getParameter("newSub").getBytes("ISO-8859-1"), "UTF-8") ;
+		String describeSub= new String(request.getParameter("describeSub").getBytes("ISO-8859-1"), "UTF-8") ;
+		System.out.println(describeSub);
 		int idSub= Integer.parseInt(request.getParameter("cid")) ;	
 		SubjectBO subBO= new SubjectBO();
-		Subject sub = new Subject(idSub,newSub);
+		Subject sub = new Subject(idSub,newSub,describeSub);
+		System.out.println(sub.getDescribe());
 		if( !"".equals(newSub) && subBO.editSubject(sub)){
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT);	
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_SUBJECT+"?msg=1");			
+		}else {
+			response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_SUBJECT+"?msg=0"+"&cid="+idSub);
 		}
 	}
 

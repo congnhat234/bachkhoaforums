@@ -42,5 +42,9 @@ public class UserBO {
 	public boolean setStatus(int idUser, int i) {
 		return userDAO.setStatus(idUser, i);
 	}
+	public boolean changePassWord(int userid,String token,String password) {
+		
+		return userDAO.changePassWord(userid,token,password);
+	}
 
 }

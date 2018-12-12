@@ -31,12 +31,25 @@ public class ShowPostBySubjectController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idSub = Integer.parseInt(request.getParameter("sub"));
-		request.setAttribute("idSub", idSub);
-		PostBO postBO = new PostBO();
+		int page = 1;
 		SubjectBO subBO= new SubjectBO();
+		PostBO postBO = new PostBO();
+		int idSub = Integer.parseInt(request.getParameter("sub"));
+		int countPost = postBO.countItemsPost(idSub);
+		int row_count = 5;
+		int sumPage = (int)Math.ceil((float)countPost/row_count);
+		request.setAttribute("sumPage", sumPage);
+
+		if(request.getParameter("current_page")!=null){
+			page = Integer.parseInt(request.getParameter("current_page"));
+		}
+		request.setAttribute("page", page);
+
+		int offset = (page-1)*row_count;
+		
+		request.setAttribute("idSub", idSub);
+		request.setAttribute("listpost", postBO.getListPostSubjectOffset(idSub,offset, row_count));
 		request.setAttribute("objSub", subBO.getSubject(idSub));
-		request.setAttribute("listpost", postBO.getPostSubject(idSub));
 		request.setAttribute("listsubject", subBO.getListSubject());
 		RequestDispatcher rd = request.getRequestDispatcher("/postbysubject.jsp");
 		rd.forward(request, response);

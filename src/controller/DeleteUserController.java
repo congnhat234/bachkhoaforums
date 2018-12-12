@@ -51,7 +51,7 @@ public class DeleteUserController extends HttpServlet {
 		//xoa like_comment by id_user
 		cmtBO.deleteLikeCommentByUser(idUser);
 		if(userBO.delete(idUser)){
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER);	
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER+"?msg=2");	
 		}
 	}
 	/**

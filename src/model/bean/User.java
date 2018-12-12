@@ -19,7 +19,6 @@ public class User {
 	private int enabled;
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(int id_user, int id_role, String username, String password, String token, String fullname,
 			String address, String city, int gender, String email, String phone, String birthhday, String date_join,

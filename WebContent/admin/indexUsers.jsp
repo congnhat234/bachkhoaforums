@@ -119,40 +119,25 @@
 			<!-- End .module-table-body -->
 		</div>
 		<!-- End .module -->
-		<div class="pagination">
-			<div class="numbers">
-				<span>Trang:</span>
+		<div class="parse">
+			<div class="parse-content">
 				<%
 					if (request.getAttribute("sumPage") != null) {
 						int sumPage = (Integer) request.getAttribute("sumPage");
-						int current_page = (Integer) request.getAttribute("page");
-						String active = "";
-						if (current_page > 1) {
-				%>
-				<a <%=active%>
-					href="<%=request.getContextPath()%>/admin/indexUsers?current_page=<%=current_page - 1%>"><<</a>
-				<span>|</span>
-				<%
-					}
-				%>
-
-				<%
+						int current_page = (Integer) request.getAttribute("page");%>
+						<span>Trang <%=current_page %>/<%=sumPage %> </span> 
+						<%String active = "";%>
+						<%
 					for (int i = 1; i <= sumPage; i++) {
 							if (current_page == i) {
-								active = "style='color:red'";
+								active = "style='border: none; background: #616161; box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);color: #f0f0f0;text-shadow: 0px 0px 3px rgba(0,0,0, .5)'";
 							} else {
 								active = "";
 							}
 				%>
-				<a <%=active%>
-					href="<%=request.getContextPath()%>/admin/indexUsers?current_page=<%=i%>"><%=i%></a>
-				<span>|</span>
-				<%
-					}
-						if (current_page < sumPage) {
-				%>
-				<a <%=active%>
-					href="<%=request.getContextPath()%>/admin/indexUsers?current_page=<%=current_page + 1%>">>></a>
+				<a <%=active%> class="page"
+					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>?current_page=<%=i%>"><%=i%></a>
+				
 				<%
 					}
 					}
@@ -165,28 +150,19 @@
 	<!-- End .grid_12 -->
 </div>
 <%@include file="/templates/public/inc/footer.jsp"%>
-	<%
-		if (request.getParameter("msg") != null) {
-			int msg = Integer.parseInt(request.getParameter("msg"));
-			if (msg == 1) {
-				%>
-				<script type="text/javascript"> 
-					toast("Thêm thành công!");
-				</script>
-				<%
-			} else if (msg == 2) {
-				out.print("<h5 style='color:red'>Sửa thành công</h5>");
-			} else if (msg == 3) {
-				out.print("<h5 style='color:red'>Xóa thành công</h5>");
-			} else if (msg == 4) {
-				out.print("<h5 style='color:red'>Bạn không được quyền xóa tài khoản này!</h5>");
-			} else if (msg == 5) {
-				out.print("<h5 style='color:red'>Bạn không được quyền sửa tài khoản này!</h5>");
-			} else {
-				out.print("<h5 style='color:red'>Thất bại</h5>");
-			}
-		}
-	%>
+	 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("1")) {%>
+    	<script>
+		$('#snackbar').attr("type", "success");
+		toast("Thêm Thành công!");
+		</script> 
+    	<%}else if(msg.equals("2")){%>
+    		 <script>
+		$('#snackbar').attr("type", "success");
+		toast("Xóa thành công!");
+		</script> 
+    	<%}}%>
 <script type="text/javascript">
 	$('.status').on('change', function() {
 		var self = $(this);

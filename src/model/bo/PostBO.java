@@ -107,5 +107,13 @@ public class PostBO {
 		
 		return postDAO.getIdUserLastComment(id_post);
 	}
+	public ArrayList<Post> getListPostSubjectOffset(int idSub, int offset, int row_count) {
+		
+		return postDAO.getListPostSubjectOffset(idSub,offset,row_count);
+	}
+	public int countItemsPost(int idSub) {
+
+		return postDAO.countItemsPost(idSub);
+	}
 
 }

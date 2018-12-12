@@ -52,7 +52,7 @@ public class DeletePostController extends HttpServlet {
 			//xoa comment by id_post
 			cmtBO.deleteCommentByPost(idPost);
 		if(postBO.deletePost(idPost)){
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_POST);	
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_POST+"?msg=1");	
 		}
 	}
 

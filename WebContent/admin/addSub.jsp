@@ -36,10 +36,18 @@
 				<fieldset>
 					<dl class="ctrlUnit">
 						<dt>
-						<label>Tên danh mục :</label>
+						<label>Tên danh mục:</label>
 						</dt>
 						<dd>
 						<input  type="text" id="name" name="newSub" value="" class="input-medium" />
+						</dd>
+					</dl>
+						<dl class="ctrlUnit">
+						<dt>
+						<label>Mô tả danh mục :</label>
+						</dt>
+						<dd>
+						<input  type="text" id="name" name="describeSub" value="" class="input-medium" />
 						</dd>
 					</dl>
 					<dl>
@@ -55,6 +63,14 @@
 </div>    
 
 <%@include file="/templates/public/inc/footer.jsp" %> 
+		 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("0")) {%>
+    	<script>
+		$('#snackbar').attr("type", "error");
+		toast("Trùng tên danh mục!");
+		</script> 
+    	<%}} %>
 <script>
 $( document ).ready( function () {
 	$( "#addCat" ).validate( {
@@ -62,12 +78,20 @@ $( document ).ready( function () {
 			newSub: {
 				required: true,
 				minlength: 2
+			},
+			describeSub:{
+				required: true,
+				minlength: 5
 			}
 		},
 		messages: {
 			newSub: {
 				required: "Vui lòng điền vào trường này",
 				minlength: "Ít nhất 2 kí tự"
+			},
+			describeSub: {
+				required: "Vui lòng điền vào trường này",
+				minlength: "Ít nhất 5 kí tự"
 			}
 		}
 	} );

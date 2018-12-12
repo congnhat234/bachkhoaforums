@@ -101,7 +101,7 @@
                 <p>
                     <label>Password*
                     </label>
-                    <input type="password" name="password"  />
+                    <input type="password" name="password" id="password"  />
                 </p>
                 <p>
                     <label>Repeat Password*
@@ -269,7 +269,7 @@
 					repassword: {
 						required: "Vui lòng điền vào trường này",
 						minlength: "Ít nhất 6 kí tự",
-						equalTo: "Vui lòng nhập lại"
+						equalTo: "Vui lòng nhập lại 1"
 					},
 					email: "Vui lòng điền đúng email",
 					gender: "Vui lòng chọn giới tính"

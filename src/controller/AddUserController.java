@@ -56,8 +56,8 @@ public class AddUserController extends HttpServlet {
 		if(userBO.add(user)) {
 			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_USER + "?msg=1");
 		} else {
-			//thong bao nhap trung ten
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADD_USER);
+			
+			response.sendRedirect(request.getContextPath() + Constants.URL.ADD_USER + "?msg=0");
 		}
 	}
 

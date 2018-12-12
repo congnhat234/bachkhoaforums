@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,16 +55,18 @@ public class ChangePasswordByUserController extends HttpServlet {
 		String password = (String) request.getParameter("password");
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(user.getUsername() + password);	
-		 User userid = new User(0,user.getId_role(),user.getUsername(),passwordCryp,token,user.getFullname(),user.getAddress(),user.getCity(),user.getGender(),user.getEmail(),user.getPhone(),user.getBirthhday(),user.getDate_join(),user.getAvatar(),0,0);
-		 if(userBO.edit(userid)){
-				User userEdited = userBO.findByToken(userid.getToken());
+		 if(userBO.changePassWord(idUser,token,passwordCryp)){
+				User userEdited = userBO.findByToken(token);
 				request.setAttribute("user", userEdited);
+				Cookie cookie = new Cookie("token", token);
+				response.addCookie(cookie);
+				session.setAttribute("user", user);
 				response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=1");
 			} else {
 				response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=0");
 			}
 		} else {
-			response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=3");	
+			response.sendRedirect(request.getContextPath() + Constants.URL.CHANGE_PASS_USER  + "?msg=3");	
 		}
 	} else {
 		 response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=0");
