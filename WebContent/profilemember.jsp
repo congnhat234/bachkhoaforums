@@ -19,7 +19,7 @@
 	</nav>
 	<div class="mainContent">
 		<%
-			User user = (User) request.getAttribute("user");
+			User member = (User) request.getAttribute("member");
 		%>
 		<fieldset>
 			<dl class="ctrlUnit avatarEditor">
@@ -28,7 +28,7 @@
 				</dt>
 				<dd>
 					<img style="width: 100px; height: 100px;"
-						src="<%=request.getContextPath()%>/templates/public/files/<%=user.getAvatar()%>">
+						src="<%=request.getContextPath()%>/templates/public/files/<%=member.getAvatar()%>">
 					<br>
 				</dd>
 			</dl>
@@ -39,19 +39,19 @@
 				<label for="ctrl_location">Tên:</label>
 			</dt>
 			<dd>
-				<span><%=user.getUsername()%></span>
+				<span><%=member.getUsername()%></span>
 			</dd>
 		</dl>
 		<dl class="ctrlUnit OptOut">
 			<dt>Ngày tham gia:</dt>
 			<dd>
-				<span><%=user.getDate_join()%></span>
+				<span><%=member.getDate_join()%></span>
 			</dd>
 		</dl>
 		<dl class="ctrlUnit ">
 			<dt>Rate:</dt>
 			<dd>
-				<span><%=user.getRate()%></span>
+				<span><%=member.getRate()%></span>
 			</dd>
 		</dl>
 		</fieldset>

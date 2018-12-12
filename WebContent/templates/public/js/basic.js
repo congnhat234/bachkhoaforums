@@ -31,6 +31,9 @@ window.onclick = function (event) {
     if (event.target == document.getElementById("infomation")) {
         $("#infomation").css("display", "none");
     }
+    if (event.target == document.getElementById("modal")) {
+    	 $("#myModal").css("display", "none");
+	  }
 }
 
 $(function () {

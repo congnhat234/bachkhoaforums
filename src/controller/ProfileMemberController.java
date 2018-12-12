@@ -39,7 +39,7 @@ public class ProfileMemberController extends HttpServlet {
 			int idUserComment = Integer.parseInt(request.getParameter("idUC"));
 			UserBO userBO = new UserBO();
 			User user = userBO.findByIDUser(idUserComment);
-			request.setAttribute("user", user);
+			request.setAttribute("member", user);
 			PostBO postBO = new PostBO();
 			request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
 			RequestDispatcher rd = request.getRequestDispatcher("/profilemember.jsp");
@@ -50,7 +50,7 @@ public class ProfileMemberController extends HttpServlet {
 			System.out.println(username);
 			UserBO userBO = new UserBO();
 			User user = userBO.findByUserName(username);		
-			request.setAttribute("user", user);
+			request.setAttribute("member", user);
 			PostBO postBO = new PostBO();
 			request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
 			RequestDispatcher rd = request.getRequestDispatcher("/profilemember.jsp");

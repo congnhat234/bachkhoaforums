@@ -47,4 +47,10 @@ public class UserBO {
 		return userDAO.changePassWord(userid,token,password);
 	}
 
+	public int getRate(int idUser) {
+		return userDAO.getRate(idUser);
+	}
+	public boolean setRate(int idUser, int rate) {
+		return userDAO.setRate(idUser, rate);
+	}
 }

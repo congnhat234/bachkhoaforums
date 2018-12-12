@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import model.bean.User;
 import model.bo.PostBO;
+import model.bo.UserBO;
 
 /**
  * Servlet implementation class LikePostController
@@ -38,20 +39,19 @@ public class LikePostController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = ((HttpServletRequest) request).getSession(false);
 		User user = (User) session.getAttribute("user");
-		
 		int idPost = Integer.parseInt(request.getParameter("aid"));
 		PostBO postBO = new PostBO();
 		if(postBO.likedByUser(idPost, user.getId_user()) != 0) {
 			if(postBO.deleteLikedPostByUser(idPost, user.getId_user())) {
 				response.setContentType("text/html");
 		        response.setCharacterEncoding("UTF-8");
-		        response.getWriter().print(postBO.countLike(idPost) + " ThÃ­ch");
+		        response.getWriter().print(postBO.countLike(idPost) + " Thích");
 			}
 		} else
 		if(postBO.likePost(idPost, user.getId_user())) {
 			response.setContentType("text/html");
 	        response.setCharacterEncoding("UTF-8");
-	        response.getWriter().print(postBO.countLike(idPost) + " ThÃ­ch");
+	        response.getWriter().print(postBO.countLike(idPost) + " Thích");
 		}
 	}
 

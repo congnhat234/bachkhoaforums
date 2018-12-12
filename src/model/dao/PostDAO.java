@@ -866,4 +866,84 @@ public class PostDAO {
 		}
 		return listItems;
 	}
+
+	public ArrayList<Post> getListOutStanding() {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where enabled = 1 order by view DESC limit 0,3;";
+		try {
+			st=connection.createStatement();
+			rs=st.executeQuery(sql);
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	public int getViewPost(int idPost) {
+		int count=0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql="select view from post WHERE id_post=?;";
+		
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			count = rs.getInt("view");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	public boolean setViewPost(int idPost, int view) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE post SET view = ? WHERE id_post = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, view);
+			pst.setInt(2, idPost);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
 }
