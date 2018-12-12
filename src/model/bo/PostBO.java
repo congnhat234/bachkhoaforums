@@ -35,6 +35,9 @@ public class PostBO {
 	public ArrayList<Post> getListPostByUser(String username){
 		return postDAO.getListPostByUser(username);
 	}
+	public ArrayList<Post> getListOutStanding(){
+		return postDAO.getListOutStanding();
+	}
 	public int countItems() {
 		return postDAO.countItems();
 	}
@@ -106,6 +109,12 @@ public class PostBO {
 	public int getIdUserLastComment(int id_post) {
 		
 		return postDAO.getIdUserLastComment(id_post);
+	}
+	public int getViewPost(int id_post) {
+		return postDAO.getViewPost(id_post);
+	}
+	public boolean setViewPost(int id_post, int view) {
+		return postDAO.setViewPost(id_post,view);
 	}
 
 }

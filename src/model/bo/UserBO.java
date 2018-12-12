@@ -42,5 +42,10 @@ public class UserBO {
 	public boolean setStatus(int idUser, int i) {
 		return userDAO.setStatus(idUser, i);
 	}
-
+	public int getRate(int idUser) {
+		return userDAO.getRate(idUser);
+	}
+	public boolean setRate(int idUser, int rate) {
+		return userDAO.setRate(idUser, rate);
+	}
 }

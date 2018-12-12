@@ -36,6 +36,9 @@ public class ViewPostController extends HttpServlet {
 		int idPost = Integer.parseInt(request.getParameter("idp"));
 		PostBO postBO = new PostBO();
 		CommentBO commentBO =new CommentBO();
+		int view = postBO.getViewPost(idPost)+1;
+		System.out.println("view"+view);
+		postBO.setViewPost(idPost, view);
 		request.setAttribute("listComment", commentBO.getListComment(idPost));
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("post", postBO.getPost(idPost));

@@ -375,4 +375,52 @@ public class UserDAO {
 		}
 		return false;
 	}
+	public int getRate(int idUser) {
+		int count=0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql="select rate from user WHERE id_user=?;";
+		
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			count = rs.getInt("rate");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	public boolean setRate(int idUser, int rate) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE user SET rate = ? WHERE id_user = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, rate);
+			pst.setInt(2, idUser);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }

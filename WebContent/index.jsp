@@ -15,6 +15,7 @@
         <%
         ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
         ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
+        ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
         %>
         <%for(int i=0;i<listsub.size();i++) {%>
             <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=listsub.get(i).getId_subject()%>">
@@ -26,10 +27,11 @@
         <div class="latest-blog-posts">
             <h3><i class="fa fa-rss"></i> Sôi động trong tuần</h3>
             <ul>
-            <%for(int i=0;i<listpost.size();i++) 
-            	if(listpost.get(i).getView()>500) {%>
-                <li><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpost.get(i).getId_post()%>"><%=listpost.get(i).getTitle() %></a>
-                <span><%=listpost.get(i).getDate_create() %></span></li>
+            <%if(listoutstanding!=null) %>
+            <%for(Post post : listoutstanding)
+            	{%>
+                <li><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=post.getId_post()%>"><%=post.getTitle() %></a>
+                <span><%=post.getDate_create() %></span></li>
                 <%}%>
             </ul>
 

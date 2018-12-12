@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 import model.bean.Comment;
 import model.bean.User;
 import model.bo.CommentBO;
+import model.bo.UserBO;
 
 /**
  * Servlet implementation class CommentPostController
@@ -50,6 +51,12 @@ public class CommentPostController extends HttpServlet {
 		String commentContent = request.getParameter("acmt");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		
+		UserBO userBO = new UserBO();
+		int rate = userBO.getRate(user.getId_user()) + 1;
+		System.out.println("rate" + rate);
+		userBO.setRate(user.getId_user(), rate);
+		request.setAttribute("user", user);
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");  
 	    Date datef = new Date();  
