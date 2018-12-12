@@ -31,7 +31,7 @@ public class PostDAO {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -62,7 +62,7 @@ public class PostDAO {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -95,7 +95,7 @@ public class PostDAO {
 			pst.setInt(2, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -128,7 +128,7 @@ public class PostDAO {
 			pst.setInt(1, idPost);
 			rs = pst.executeQuery();
 			while(rs.next()) {				
-				return new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getString("username"),rs.getString("date_create"),rs.getString("title"),
+				return new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),rs.getString("username"),rs.getString("date_create"),rs.getString("title"),
 						rs.getString("preview_image"),rs.getString("preview_content"),rs.getString("content"),rs.getInt("view"),rs.getInt("enabled"));
 			}
 		} catch (Exception e) {
@@ -235,7 +235,7 @@ public class PostDAO {
 			pst.setInt(1, idSub);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -266,7 +266,7 @@ public class PostDAO {
 			pst.setInt(1, idUser);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -324,7 +324,7 @@ public class PostDAO {
 			pst.setString(1, username);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -844,7 +844,7 @@ public class PostDAO {
 			pst.setInt(1, idSub);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -875,7 +875,7 @@ public class PostDAO {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),

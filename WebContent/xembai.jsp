@@ -23,7 +23,7 @@
 		<%
 			if(request.getAttribute("post") != null) {
 				Post post = (Post) request.getAttribute("post");
-			
+				String urlAuth = "/user/" + post.getUsername()+"."+post.getId_user();
 		%>
 		<div style="display:none;" class="hint" id="hintId"><%=post.getId_post() %></div>
 		<div class="head_title_post">
@@ -31,7 +31,7 @@
 		</div>
 		<div class="date_post">
 				<h3><%=post.getDate_create() %></h3>
-				<h3><%=post.getUsername() %></h3>
+				<h3><a href="<%=request.getContextPath()%><%=urlAuth%>"><%=post.getUsername() %></a></h3>
 				<h3>Lượt xem <%=post.getView() %></h3>
 				<% if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
 				if((int)request.getAttribute("followedByUser") == 0){%>

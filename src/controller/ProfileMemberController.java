@@ -45,17 +45,6 @@ public class ProfileMemberController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/profilemember.jsp");
 			rd.forward(request, response);
 		} 
-		if (request.getParameter("un") != null) {
-			String username = (String) request.getParameter("un").trim();
-			System.out.println(username);
-			UserBO userBO = new UserBO();
-			User user = userBO.findByUserName(username);		
-			request.setAttribute("member", user);
-			PostBO postBO = new PostBO();
-			request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
-			RequestDispatcher rd = request.getRequestDispatcher("/profilemember.jsp");
-			rd.forward(request, response);
-		}
 	}
 
 	/**

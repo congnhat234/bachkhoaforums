@@ -68,7 +68,8 @@
 		<% for(int i=0;i<listpost.size();i++){ %>
 			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  
 				tmpCount++;
-				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();%>
+				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
+				String urlAuth = "/user/" + listpost.get(i).getUsername()+"."+listpost.get(i).getId_user();%>
 
         <div class="topic">
             <div class="writer">
@@ -77,7 +78,7 @@
                 <br>
                 <div class="amount">
                   <dl>
-                      <dt><a href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>?un=<%=listpost.get(i).getUsername()%>"><%=listpost.get(i).getUsername() %></a> </dt>
+                      <dt><a href="<%=request.getContextPath()%><%=urlAuth%>"><%=listpost.get(i).getUsername() %></a> </dt>
                       <dd><%=listpost.get(i).getDate_create()%></dd>
                     </dl>
                 </div>

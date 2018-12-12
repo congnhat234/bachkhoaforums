@@ -136,7 +136,7 @@ public class CreatePostController extends HttpServlet {
 				}
 			}
 		}
-		Post post = new Post(0, idSubject, user.getUsername(), date_create, title, preview_image, previewContent,
+		Post post = new Post(0, idSubject, user.getId_user(), user.getUsername(), date_create, title, preview_image, previewContent,
 				content, 0, 0);
 		PostBO postBO = new PostBO();
 		if (postBO.addPost(post)) {
