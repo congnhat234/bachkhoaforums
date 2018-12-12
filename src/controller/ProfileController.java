@@ -58,7 +58,7 @@ public class ProfileController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		
-		String fullname = (String) request.getParameter("fullname");
+		String fullname = new String( request.getParameter("fullname").getBytes("ISO-8859-1"), "UTF-8");
 		System.out.println("fullname"+fullname);
 		String phone = (String) request.getParameter("phone");
 		String email = (String) request.getParameter("email");

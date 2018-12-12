@@ -62,7 +62,7 @@
         int tmpCount = 0;
         String urlSubject = "/subject/" + ConvertString.createSlug(sub.getName())+"-"+sub.getId_subject();%>
         <div class="labeltopic">
-            <a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_SUBJECT %>?sub=<%=sub.getId_subject()%>"><%=sub.getName() %></a><br>
+            <a href="<%=request.getContextPath() %><%=urlSubject %>"><%=sub.getName() %></a><br>
             <p> <%=sub.getDescribe()%></p>
         </div>
 		<% for(int i=0;i<listpost.size();i++){ %>

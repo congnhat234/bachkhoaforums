@@ -148,18 +148,19 @@ public class PostDAO {
 
 	public boolean add(Post post) {
 		connection = connectDBLibrary.getConnectMySQL();		
-		String query = "INSERT INTO post(id_subject, username, date_create, title, preview_image, preview_content, content, view, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO post(id_subject, id_user, username, date_create, title, preview_image, preview_content, content, view, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, post.getId_subject());
-			pst.setString(2, post.getUsername());
-			pst.setString(3, post.getDate_create());
-			pst.setString(4, post.getTitle());
-			pst.setString(5, post.getPreview_image());
-			pst.setString(6, post.getPreview_content());
-			pst.setString(7, post.getContent());
-			pst.setInt(8, post.getView());
-			pst.setInt(9, post.getEnable());
+			pst.setInt(2, post.getId_user());
+			pst.setString(3, post.getUsername());
+			pst.setString(4, post.getDate_create());
+			pst.setString(5, post.getTitle());
+			pst.setString(6, post.getPreview_image());
+			pst.setString(7, post.getPreview_content());
+			pst.setString(8, post.getContent());
+			pst.setInt(9, post.getView());
+			pst.setInt(10, post.getEnable());
 			int r = pst.executeUpdate();
 			return (r == 1);
 		} catch (Exception e) {
