@@ -52,7 +52,6 @@ public class ViewPostController extends HttpServlet {
 			User user = (User) session.getAttribute("user");
 			request.setAttribute("likedByUser", postBO.likedByUser(idPost, user.getId_user()));
 			request.setAttribute("followedByUser", postBO.followedByUser(idPost, user.getId_user()));
-			System.out.println("theo doiiiiiiiiiii"+ postBO.followedByUser(idPost, user.getId_user()));
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/xembai.jsp");
 		rd.forward(request, response);

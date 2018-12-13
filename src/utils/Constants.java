@@ -42,6 +42,8 @@ public class Constants {
 		String CHANGE_PASS_ADMIN = "/admin/user/changepass";
 		String CHANGE_PASS_USER = "/user/changepass";
 		String FOLLOW_POST = "/user/follow";
+		String NOTIFICATION = "/user/notification";
+		String NOTIFICATION_PAGE = "/user/notificationpage";
 		
 		
 		String COMMENT_POST = "/user/post/comment";

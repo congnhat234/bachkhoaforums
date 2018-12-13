@@ -21,6 +21,7 @@ import model.bean.Comment;
 import model.bean.User;
 import model.bo.CommentBO;
 import model.bo.UserBO;
+import model.bo.FollowBO;
 
 /**
  * Servlet implementation class CommentPostController
@@ -65,7 +66,9 @@ public class CommentPostController extends HttpServlet {
 		Comment comment = new Comment(0,idPost,user.getId_user(),date_create,commentContent,user.getUsername(),1);
 		
 		CommentBO commentBO =new CommentBO();
+		FollowBO followBO =new FollowBO();
 		if(commentBO.addComment(comment)) {
+		followBO.editNotityFollow(idPost);
 		ArrayList<Comment> listComment = commentBO.getListComment(idPost);
 		request.setAttribute("listComment", listComment);
 		Gson gson = new Gson();

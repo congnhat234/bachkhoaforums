@@ -1,6 +1,9 @@
 package model.bo;
 
+import java.util.ArrayList;
+
 import model.bean.Follow;
+import model.bean.Notification;
 import model.dao.FollowDAO;
 
 public class FollowBO {
@@ -19,5 +22,22 @@ public class FollowBO {
 	public boolean deleteFollowPostByUser(int idPost, int id_user) {
 		
 		return followDAO.deleteFollowPostByUser(idPost,id_user);
+	}
+	public ArrayList<Notification> getListNotify(int idUser) {
+		
+		return followDAO.getListNotify(idUser);
+	}
+	public boolean seenNotitication(int idUser) {
+		return followDAO.seenNotitication(idUser);
+		
+	}
+	public int getCountUnSeenNoti(int idUser) {
+		
+		return followDAO.getCountUnSeenNoti(idUser);
+	}
+	public boolean editNotityFollow(int idPost) {
+		
+		return followDAO.editNotityFollow(idPost);
+		
 	}
 }

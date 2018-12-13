@@ -431,7 +431,6 @@
 	});
 	
 	$("#btnFollow").on('click', function (){	
-		alert("click");
 		var idPost = $(".title_post").attr("idpost");
 		$.ajax({
 			url: '<%=request.getContextPath()%><%=Constants.URL.FOLLOW_POST%>',

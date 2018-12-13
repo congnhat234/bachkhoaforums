@@ -192,7 +192,7 @@
                 <div class="element">
                     <ul>
                         <li><a href="#">Tin nhắn</a></li>
-                        <li><a href="#">Thông báo</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo</a></li>
                         <li><a href="#">Nội dung của bạn</a></li>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
                     </ul>
@@ -312,4 +312,4 @@
 				}
 			} );
 			} );
-	</script>			
+	</script>

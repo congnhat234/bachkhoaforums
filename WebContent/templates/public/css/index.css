@@ -944,7 +944,9 @@ body {
 .fa-twitter-square {
 	color: #1da1f2;
 }
-
+.fa-bell{
+	color: #3a3c3e;
+}
 .navbar {
 	padding-left: 20px;
 	padding-top: 10px;
