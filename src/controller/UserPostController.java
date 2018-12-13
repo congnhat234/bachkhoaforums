@@ -36,6 +36,7 @@ public class UserPostController extends HttpServlet {
 		System.out.println("acbcbc"+user.getUsername());
 		PostBO postBO = new PostBO();
 		request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
+		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		RequestDispatcher rd = request.getRequestDispatcher("/userpost.jsp");
 		rd.forward(request, response);
 		

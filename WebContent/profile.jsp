@@ -81,7 +81,7 @@
 				<dl class="ctrlUnit OptOut">
 					<dt>Ngày sinh:</dt>
 					<dd>
-						<input type="text" name="birthday"
+						<input type="date" name="birthday"
 							value="<%=user.getBirthhday()%>" class="textCtrl OptOut">
 					</dd>
 				</dl>
