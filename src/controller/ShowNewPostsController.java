@@ -46,6 +46,7 @@ public class ShowNewPostsController extends HttpServlet {
 		
 		request.setAttribute("listpost", postBO.getListNewPosts(offset, row_count));
 		request.setAttribute("listsubject", subBO.getListSubject());
+		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		RequestDispatcher rd = request.getRequestDispatcher("/newposts.jsp");
 		rd.forward(request, response);
 	}

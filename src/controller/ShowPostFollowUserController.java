@@ -56,6 +56,7 @@ public class ShowPostFollowUserController extends HttpServlet {
 			}
 			request.setAttribute("listAmountAnswer",amoutAnwser);
 			request.setAttribute("listLastUser",lastUser);
+			request.setAttribute("listoutstanding", postBO.getListOutStanding());
 			RequestDispatcher rd = request.getRequestDispatcher("/followArticle.jsp");
 			rd.forward(request, response);
 	}

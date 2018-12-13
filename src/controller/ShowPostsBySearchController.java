@@ -50,6 +50,7 @@ public class ShowPostsBySearchController extends HttpServlet {
 		
 		request.setAttribute("listpost", postBO.getListPostsBySearch(offset, row_count, searchText));
 		request.setAttribute("listsubject", subBO.getListSubject());
+		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		RequestDispatcher rd = request.getRequestDispatcher("/posts_search.jsp");
 		rd.forward(request, response);
 	}
@@ -76,6 +77,7 @@ public class ShowPostsBySearchController extends HttpServlet {
 
 		int offset = (page-1)*row_count;
 		session.setAttribute("searchText", searchText);
+		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		request.setAttribute("listpost", postBO.getListPostsBySearch(offset, row_count, searchText));
 		request.setAttribute("listsubject", subBO.getListSubject());
 		RequestDispatcher rd = request.getRequestDispatcher("/posts_search.jsp");

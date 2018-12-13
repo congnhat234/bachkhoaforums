@@ -13,6 +13,7 @@
 <%
 	ArrayList<Post> listpost = (ArrayList<Post>) request.getAttribute("listpost");
 	Subject objSub = (Subject) request.getAttribute("objSub");
+	ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
 %>
     <aside class="sidebar-left">
     
@@ -33,19 +34,15 @@
 <aside class="sidebar-right">
 	<div class="latest-blog-posts">
 		<h3>
-			<i class="fa fa-rss"></i> Bài viết quan tâm
+			<i class="fa fa-rss"></i> Sôi động trong tuần
 		</h3>
 		<ul>
-			<%
-				for (int i = 0; i < listpost.size(); i++) {
-					String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
-			%>
-			<li><a
-				href="<%=request.getContextPath()%><%=urlPost%>"><%=listpost.get(i).getTitle()%></a>
-				<span><%=listpost.get(i).getDate_create()%></span></li>
-			<%
-				}
-			%>
+            <%if(listoutstanding!=null) %>
+            <%for(Post post : listoutstanding) {
+                String urlPost = "/threads/" + ConvertString.createSlug(post.getTitle()) + "-" + post.getId_post();%>
+                <li><a href="<%=request.getContextPath() %><%=urlPost %>"><%=post.getTitle() %></a>
+                <span><%=post.getDate_create() %></span></li>
+                <%}%>
 		</ul>
 
 	</div>
