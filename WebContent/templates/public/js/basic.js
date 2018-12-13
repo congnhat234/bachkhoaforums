@@ -88,3 +88,7 @@ function toast(message) {
     x.innerHTML = message;
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
 }
+
+$("#searchIcon").on('click', function() {
+	$("#search").submit();
+})

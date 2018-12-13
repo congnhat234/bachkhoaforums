@@ -337,4 +337,12 @@
     <servlet-name>AddFollowController</servlet-name>
     <url-pattern>/user/follow</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowPostsBySearchController</servlet-name>
+    <servlet-class>controller.ShowPostsBySearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPostsBySearchController</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
 </web-app>

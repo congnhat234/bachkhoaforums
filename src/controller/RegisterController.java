@@ -46,7 +46,7 @@ public class RegisterController extends HttpServlet {
 		String password = (String) request.getParameter("password");
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(username + password);
-		String fullname = (String) request.getParameter("fullname");
+		String fullname = new String(((String) request.getParameter("fullname")).getBytes("ISO-8859-1"), "UTF-8");
 		String phone = (String) request.getParameter("phone");
 		String email = (String) request.getParameter("email");
 		int gender = Integer.parseInt((String) request.getParameter("gender"));
@@ -54,8 +54,8 @@ public class RegisterController extends HttpServlet {
 		String month = (String) request.getParameter("month");
 		String year = (String) request.getParameter("year");
 		String birthday = day + "/" + month + "/" + year;
-		String address = (String) request.getParameter("address");
-		String city = (String) request.getParameter("city");
+		String address = new String(((String) request.getParameter("address")).getBytes("ISO-8859-1"), "UTF-8");
+		String city = new String(((String) request.getParameter("city")).getBytes("ISO-8859-1"), "UTF-8");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
 	    Date date = new Date(); 
 	    String date_join = formatter.format(date);

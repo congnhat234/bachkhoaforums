@@ -50,5 +50,7 @@ public class Constants {
 		String LIKE_POST = "/user/post/like";
 		String PROFILEMEMBER="/user/profilemember";
 		
+		String SEARCH_POST = "/search";
+		
 	}
 }

@@ -130,5 +130,11 @@ public class PostBO {
 	public Object getListNewPosts(int offset, int row_count) {
 		return postDAO.getListNewPosts(offset, row_count);
 	}
+	public int countPostsBySearch(String searchText) {
+		return postDAO.countPostsBySearch(searchText);
+	}
+	public Object getListPostsBySearch(int offset, int row_count, String searchText) {
+		return postDAO.getListPostsBySearch(offset, row_count, searchText);
+	}
 
 }

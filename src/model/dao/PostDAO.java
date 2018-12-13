@@ -1005,4 +1005,64 @@ public class PostDAO {
 		}
 		return listItems;
 	} 
+	
+	public int countPostsBySearch(String searchText) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount, MATCH (title,preview_content,username) AGAINST ('" + searchText + "') as score "
+						+ "FROM post WHERE enabled = 1 && MATCH (title,preview_content,username) AGAINST ('" + searchText + "') > 0;";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public ArrayList<Post> getListPostsBySearch(int offset, int row_count, String searchText) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT *, MATCH (title,preview_content,username) AGAINST ('" + searchText + "') as score "
+						+ "FROM post WHERE enabled = 1 && MATCH (title,preview_content,username) AGAINST ('" + searchText + "') > 0 "
+							+ "ORDER BY score DESC limit ?,?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	} 
 }

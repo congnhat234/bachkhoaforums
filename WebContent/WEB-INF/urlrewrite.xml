@@ -17,6 +17,11 @@
 	</rule>
 	
 	<rule>
+		<from>^/search/p([0-9]+)$</from>
+		<to>/search?current_page=$1</to>
+	</rule>
+	
+	<rule>
 		<from>^/threads/(.*)-([0-9]+)$</from>
 		<to>/post?idp=$2</to>
 	</rule>
