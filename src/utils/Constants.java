@@ -22,6 +22,7 @@ public class Constants {
 		String CREATE_POST = "/user/create-post";
 		String VIEW_POST = "/post";
 		String SHOW_POST_BY_SUBJECT = "/subject";
+		String SHOW_POST_NEW = "/new";
 		
 		String ADMIN_SUBJECT = "/admin/subject";
 		String ADMIN_USER = "/admin/user";

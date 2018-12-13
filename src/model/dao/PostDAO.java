@@ -812,7 +812,7 @@ public class PostDAO {
 	public int countItemsPost(int idSub) {
 		int count = 0;
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE id_subject=?";
+		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE id_subject=? && enabled = 1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idSub);
@@ -837,7 +837,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostSubjectOffset(int idSub, int offset, int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT * FROM post WHERE id_subject=? LIMIT ?,? ;";
+		String sql = "SELECT * FROM post WHERE id_subject=? && enabled = 1 LIMIT ?,? ;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(2, offset);
@@ -947,4 +947,62 @@ public class PostDAO {
 		
 		return false;
 	}
+	
+	public int countNewPosts() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE enabled = 1";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+	
+	public ArrayList<Post> getListNewPosts(int offset, int row_count) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where enabled = 1 order by id_post desc limit ?,?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	} 
 }

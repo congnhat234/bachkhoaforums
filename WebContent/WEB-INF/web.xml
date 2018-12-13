@@ -138,6 +138,14 @@
     <url-pattern>/subject</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ShowNewPostsController</servlet-name>
+    <servlet-class>controller.ShowNewPostsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowNewPostsController</servlet-name>
+    <url-pattern>/new</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>IndexAdminController</servlet-name>
     <servlet-class>controller.IndexAdminController</servlet-class>
   </servlet>

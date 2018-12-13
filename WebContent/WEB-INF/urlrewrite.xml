@@ -2,13 +2,18 @@
 <urlrewrite>
 	
 	<rule>
-		<from>^/subject/(.*)-([0-9]+)/page-([0-9]+)$</from>
+		<from>^/subject/(.*)-([0-9]+)/p([0-9]+)$</from>
 		<to>/subject?sub=$2&amp;current_page=$3</to>
 	</rule>
 	
 	<rule>
 		<from>^/subject/(.*)-([0-9]+)$</from>
 		<to>/subject?sub=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/new/p([0-9]+)$</from>
+		<to>/new?current_page=$1</to>
 	</rule>
 	
 	<rule>

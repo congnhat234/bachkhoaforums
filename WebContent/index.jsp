@@ -12,7 +12,7 @@
     <aside class="sidebar-left">
     
         <div class="sidebar-links">
-        <a class="link-blue" href="<%=request.getContextPath() %><%=Constants.URL.HOME %>">Bài Mới</a>
+        <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_NEW %>">Bài Mới</a>
         <%
         ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
         ArrayList<Post> listpost =(ArrayList<Post>) request.getAttribute("listpost");
@@ -66,8 +66,9 @@
             <p> <%=sub.getDescribe()%></p>
         </div>
 		<% for(int i=0;i<listpost.size();i++){ %>
-			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  
+			<%if(listpost.get(i).getId_subject() == sub.getId_subject()){  			
 				tmpCount++;
+				if(tmpCount > 5) break;
 				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
 				String urlAuth = "/user/" + listpost.get(i).getUsername()+"."+listpost.get(i).getId_user();%>
 
@@ -84,9 +85,11 @@
                 </div>
             </div>
             <div>
-            <p class="news">Mới nhất:<a  href="">Máy Mac mình giờ cứ mỗi lần </a><br>
-                <a href="#topic"> akiii</a>,14:20, hôm nay
-            </p>
+            <p class="news">
+			"<%=listpost.get(i).getPreview_content() %>"
+			<br>
+			<span style="font-size: 10px; color: #6d6c6c; font-style: italic;">Lượt xem: <%=listpost.get(i).getView() %></span>
+			</p>
             </div>
         </div>
         <hr class="linetopic">

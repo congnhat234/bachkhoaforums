@@ -63,6 +63,7 @@
 	<%
 		for (int i = 0; i < listpost.size(); i++) {
 			String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
+			String urlAuth = "/user/" + listpost.get(i).getUsername()+"."+listpost.get(i).getId_user();
 	%>
 
 	<div class="topic">
@@ -75,15 +76,16 @@
 			<div class="amount">
 				<dl>
 					<dt>
-						<a id="author" href="javascript:void(0)"><%=listpost.get(i).getUsername()%></a>
+						<a id="author" href="<%=request.getContextPath()%><%=urlAuth%>"><%=listpost.get(i).getUsername()%></a>
 					</dt>
 					<dd><%=listpost.get(i).getDate_create()%></dd>
 				</dl>
 			</div>
 		</div>
 		<p class="news">
-			Mới nhất:<a href="">Máy Mac mình giờ cứ mỗi lần </a><br> <a
-				href="#topic"> akiii</a>,14:20, hôm nay
+		"<%=listpost.get(i).getPreview_content() %>"
+		<br>
+		<span style="font-size: 10px; color: #6d6c6c; font-style: italic;">Lượt xem: <%=listpost.get(i).getView() %></span>
 		</p>
 	</div>
 	<hr class="linetopic">

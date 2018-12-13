@@ -124,5 +124,11 @@ public class PostBO {
 	public boolean setViewPost(int id_post, int view) {
 		return postDAO.setViewPost(id_post,view);
 	}
+	public int countItemsNewPosts() {
+		return postDAO.countNewPosts();
+	}
+	public Object getListNewPosts(int offset, int row_count) {
+		return postDAO.getListNewPosts(offset, row_count);
+	}
 
 }
