@@ -20,7 +20,7 @@
 			<li class="dropdown"><a href="#" id="dropbutton1" class="dropbtn">Tài
 					Khoản</a>
 				<div class="dropdown_content">
-					<a href="#">Thông báo của bạn</a> <a
+					<a href="<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo của bạn</a> <a
 						href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_BY_USER%>">Bài
 						viết của bạn</a> <a href="#">Chủ đề theo dõi</a> <a
 						href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài

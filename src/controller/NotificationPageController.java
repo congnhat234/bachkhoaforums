@@ -1,26 +1,29 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class IndexAdminController
- */
+import model.bean.Notification;
+import model.bean.User;
+import model.bo.FollowBO;
 
-public class IndexAdminController extends HttpServlet {
+/**
+ * Servlet implementation class NotificationPageController
+ */
+public class NotificationPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexAdminController() {
+    public NotificationPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,17 +32,24 @@ public class IndexAdminController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		FollowBO flBO= new FollowBO();
+		int idUser = user.getId_user();
+		flBO.seenNotitication(idUser);	
+		ArrayList<Notification> listNotify = flBO.getListNotify(idUser);
+		request.setAttribute("listnotify",listNotify );
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/notify.jsp");
+		rd.forward(request, response);		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/index.jsp");
-		rd.forward(request, response);
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
