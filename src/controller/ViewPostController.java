@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.User;
 import model.bo.CommentBO;
 import model.bo.PostBO;
+import model.bo.SubjectBO;
 
 /**
  * Servlet implementation class ViewPost
@@ -35,15 +36,18 @@ public class ViewPostController extends HttpServlet {
 		
 		int idPost = Integer.parseInt(request.getParameter("idp"));
 		PostBO postBO = new PostBO();
-		CommentBO commentBO =new CommentBO();
+		CommentBO commentBO =new CommentBO();		
 		int view = postBO.getViewPost(idPost)+1;
 		System.out.println("view"+view);
 		postBO.setViewPost(idPost, view);
+		SubjectBO subjectBO =new SubjectBO();
+		request.setAttribute("listsubject", subjectBO.getListSubject());
 		request.setAttribute("listComment", commentBO.getListComment(idPost));
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("post", postBO.getPost(idPost));
 		request.setAttribute("countLikePost", postBO.countLike(idPost));
 		request.setAttribute("listLikedComment", postBO.getListLikedComment(idPost));
+		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		if(session.getAttribute("user")!=null) {
 			User user = (User) session.getAttribute("user");
 			request.setAttribute("likedByUser", postBO.likedByUser(idPost, user.getId_user()));
