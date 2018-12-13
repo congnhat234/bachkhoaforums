@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewrite>
+	
+	<rule>
+		<from>^/subject/(.*)-([0-9]+)/p([0-9]+)$</from>
+		<to>/subject?sub=$2&amp;current_page=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/subject/(.*)-([0-9]+)$</from>
+		<to>/subject?sub=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/new/p([0-9]+)$</from>
+		<to>/new?current_page=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/search/p([0-9]+)$</from>
+		<to>/search?current_page=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/threads/(.*)-([0-9]+)$</from>
+		<to>/post?idp=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/user/(.*).([0-9]+)$</from>
+		<to>/user/profilemember?idUC=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/admin/them-bai-viet$</from>
+		<to>/admin/show-add-bai-viet</to>
+	</rule>
+	
+	<rule>
+		<from>^/admin/sua-bai-viet-([0-9]+)$</from>
+		<to>/admin/show-edit-bai-viet?idBV=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/admin/xoa-bai-viet-([0-9]+)$</from>
+		<to>/admin/del-bai-viet?idBV=$1</to>
+	</rule>
+	
+	
+	
+</urlrewrite>

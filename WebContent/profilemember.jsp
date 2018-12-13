@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,7 +19,7 @@
 	</nav>
 	<div class="mainContent">
 		<%
-			User user = (User) request.getAttribute("user");
+			User member = (User) request.getAttribute("member");
 		%>
 		<fieldset>
 			<dl class="ctrlUnit avatarEditor">
@@ -27,7 +28,7 @@
 				</dt>
 				<dd>
 					<img style="width: 100px; height: 100px;"
-						src="<%=request.getContextPath()%>/templates/public/files/<%=user.getAvatar()%>">
+						src="<%=request.getContextPath()%>/templates/public/files/<%=member.getAvatar()%>">
 					<br>
 				</dd>
 			</dl>
@@ -38,19 +39,19 @@
 				<label for="ctrl_location">Tên:</label>
 			</dt>
 			<dd>
-				<span><%=user.getFullname()%></span>
+				<span><%=member.getUsername()%></span>
 			</dd>
 		</dl>
 		<dl class="ctrlUnit OptOut">
 			<dt>Ngày tham gia:</dt>
 			<dd>
-				<span><%=user.getDate_join()%></span>
+				<span><%=member.getDate_join()%></span>
 			</dd>
 		</dl>
 		<dl class="ctrlUnit ">
 			<dt>Rate:</dt>
 			<dd>
-				<span><%=user.getRate()%></span>
+				<span><%=member.getRate()%></span>
 			</dd>
 		</dl>
 		</fieldset>
@@ -63,11 +64,12 @@
 		%>
 		<%
 			for (int i = 0; i < listpost.size(); i++) {
+				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
 		%>
 		<div class="topic">
 			<div class="writer">
 				<i class="fas fa-comments fa-sm" style="font-size: 40px;"></i> <a
-					href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"
+					href="<%=request.getContextPath()%><%=urlPost%>"
 					style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
 				<br>
 				<div class="amount">

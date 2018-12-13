@@ -244,6 +244,34 @@ public class UserDAO {
 			return objUser;
 		
 	}
+	public User findByUserName(String username) {
+		connection = connectDBLibrary.getConnectMySQL();
+		User objUser = null;
+		String query = "SELECT * FROM user WHERE username = ?;";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1, username);
+			rs = pst.executeQuery();
+			while(rs.next()) {				
+				objUser = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
+						rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
+						rs.getString("birthday"),rs.getString("date_join"),rs.getString("avatar"),rs.getInt("rate"),rs.getInt("enabled"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return objUser;
+	
+}
 
 	public ArrayList<User> getListUserOffset(int offset, int row_count) {
 		ArrayList<User> listItems = new ArrayList<>();
@@ -357,6 +385,54 @@ public class UserDAO {
 			pst.setString(1,token );
 			pst.setString(2, password);
 			pst.setInt(3, userid);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	public int getRate(int idUser) {
+		int count=0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql="select rate from user WHERE id_user=?;";
+		
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			count = rs.getInt("rate");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	public boolean setRate(int idUser, int rate) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE user SET rate = ? WHERE id_user = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, rate);
+			pst.setInt(2, idUser);
 			int r = pst.executeUpdate();
 			if (r>0) return true;
 		} catch (Exception e) {

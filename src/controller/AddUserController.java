@@ -50,7 +50,7 @@ public class AddUserController extends HttpServlet {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
 	    Date date = new Date();  
 	    String date_join = formatter.format(date);
-	    String mess="chưa bổ sung";
+	    String mess="";
 		User user = new User(0,role,username,passwordCryp,token,fullname,mess,mess,0,mess,mess,mess,date_join,"noimage.jpg",0,0);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {

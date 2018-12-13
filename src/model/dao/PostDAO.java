@@ -31,7 +31,7 @@ public class PostDAO {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -62,7 +62,7 @@ public class PostDAO {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -95,7 +95,7 @@ public class PostDAO {
 			pst.setInt(2, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -128,7 +128,7 @@ public class PostDAO {
 			pst.setInt(1, idPost);
 			rs = pst.executeQuery();
 			while(rs.next()) {				
-				return new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getString("username"),rs.getString("date_create"),rs.getString("title"),
+				return new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),rs.getString("username"),rs.getString("date_create"),rs.getString("title"),
 						rs.getString("preview_image"),rs.getString("preview_content"),rs.getString("content"),rs.getInt("view"),rs.getInt("enabled"));
 			}
 		} catch (Exception e) {
@@ -148,18 +148,19 @@ public class PostDAO {
 
 	public boolean add(Post post) {
 		connection = connectDBLibrary.getConnectMySQL();		
-		String query = "INSERT INTO post(id_subject, username, date_create, title, preview_image, preview_content, content, view, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String query = "INSERT INTO post(id_subject, id_user, username, date_create, title, preview_image, preview_content, content, view, enabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, post.getId_subject());
-			pst.setString(2, post.getUsername());
-			pst.setString(3, post.getDate_create());
-			pst.setString(4, post.getTitle());
-			pst.setString(5, post.getPreview_image());
-			pst.setString(6, post.getPreview_content());
-			pst.setString(7, post.getContent());
-			pst.setInt(8, post.getView());
-			pst.setInt(9, post.getEnable());
+			pst.setInt(2, post.getId_user());
+			pst.setString(3, post.getUsername());
+			pst.setString(4, post.getDate_create());
+			pst.setString(5, post.getTitle());
+			pst.setString(6, post.getPreview_image());
+			pst.setString(7, post.getPreview_content());
+			pst.setString(8, post.getContent());
+			pst.setInt(9, post.getView());
+			pst.setInt(10, post.getEnable());
 			int r = pst.executeUpdate();
 			return (r == 1);
 		} catch (Exception e) {
@@ -235,7 +236,7 @@ public class PostDAO {
 			pst.setInt(1, idSub);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -266,7 +267,7 @@ public class PostDAO {
 			pst.setInt(1, idUser);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -324,7 +325,7 @@ public class PostDAO {
 			pst.setString(1, username);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -811,7 +812,7 @@ public class PostDAO {
 	public int countItemsPost(int idSub) {
 		int count = 0;
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE id_subject=?";
+		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE id_subject=? && enabled = 1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idSub);
@@ -836,7 +837,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostSubjectOffset(int idSub, int offset, int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT * FROM post WHERE id_subject=? LIMIT ?,? ;";
+		String sql = "SELECT * FROM post WHERE id_subject=? && enabled = 1 LIMIT ?,? ;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(2, offset);
@@ -844,7 +845,7 @@ public class PostDAO {
 			pst.setInt(1, idSub);
 			rs = pst.executeQuery();
 			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
 					rs.getString("username"),rs.getString("date_create"),
 					rs.getString("title"),rs.getString("preview_image"),
 					rs.getString("preview_content"),rs.getString("content"),
@@ -866,4 +867,202 @@ public class PostDAO {
 		}
 		return listItems;
 	}
+
+	public ArrayList<Post> getListOutStanding() {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where enabled = 1 order by view DESC limit 0,3;";
+		try {
+			st=connection.createStatement();
+			rs=st.executeQuery(sql);
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	public int getViewPost(int idPost) {
+		int count=0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql="select view from post WHERE id_post=?;";
+		
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idPost);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			count = rs.getInt("view");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	public boolean setViewPost(int idPost, int view) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE post SET view = ? WHERE id_post = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, view);
+			pst.setInt(2, idPost);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
+	
+	public int countNewPosts() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE enabled = 1";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
+	
+	public ArrayList<Post> getListNewPosts(int offset, int row_count) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from post where enabled = 1 order by id_post desc limit ?,?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	} 
+	
+	public int countPostsBySearch(String searchText) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount, MATCH (title,preview_content,username) AGAINST ('" + searchText + "') as score "
+						+ "FROM post WHERE enabled = 1 && MATCH (title,preview_content,username) AGAINST ('" + searchText + "') > 0;";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public ArrayList<Post> getListPostsBySearch(int offset, int row_count, String searchText) {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT *, MATCH (title,preview_content,username) AGAINST ('" + searchText + "') as score "
+						+ "FROM post WHERE enabled = 1 && MATCH (title,preview_content,username) AGAINST ('" + searchText + "') > 0 "
+							+ "ORDER BY score DESC limit ?,?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, offset);
+			pst.setInt(2, row_count);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	} 
 }

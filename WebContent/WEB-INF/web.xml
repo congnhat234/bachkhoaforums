@@ -9,6 +9,11 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>home</welcome-file>
   </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404page</location>
+  </error-page>
   <servlet>
     <servlet-name>ConnectorServlet</servlet-name>
     <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
@@ -43,6 +48,25 @@
     <param-name>postfile.dir</param-name>
     <param-value>files/post</param-value>
   </context-param>
+
+  <filter>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>ErrorPageController</servlet-name>
+    <servlet-class>controller.ErrorPageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ErrorPageController</servlet-name>
+    <url-pattern>/404page</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>IndexController</servlet-name>
     <servlet-class>controller.IndexController</servlet-class>
@@ -114,6 +138,14 @@
   <servlet-mapping>
     <servlet-name>ShowPostBySubjectController</servlet-name>
     <url-pattern>/subject</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ShowNewPostsController</servlet-name>
+    <servlet-class>controller.ShowNewPostsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowNewPostsController</servlet-name>
+    <url-pattern>/new</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>IndexAdminController</servlet-name>
@@ -322,5 +354,13 @@
   <servlet-mapping>
     <servlet-name>NotificationPageController</servlet-name>
     <url-pattern>/user/notificationpage</url-pattern>
+   </servlet-mapping>
+	<servlet>
+    <servlet-name>ShowPostsBySearchController</servlet-name>
+    <servlet-class>controller.ShowPostsBySearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowPostsBySearchController</servlet-name>
+    <url-pattern>/search</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bo.PostBO"%>
@@ -10,25 +11,22 @@
 <%@include file="/templates/public/inc/header.jsp"%>
 
 <%
+	ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding"); 
 	ArrayList<Post> listpost = (ArrayList<Post>) request.getAttribute("listpost");
 	User user = (User) session.getAttribute("user");
 %>
 <aside class="sidebar-right">
 	<div class="latest-blog-posts">
 		<h3>
-			<i class="fa fa-rss"></i> Bài viết quan tâm
+			<i class="fa fa-rss"></i> Sôi động trong tuần
 		</h3>
 		<ul>
-			<%
-				if(listpost != null)
-				for (int i = 0; i < listpost.size(); i++) {
-			%>
-			<li><a
-				href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"><%=listpost.get(i).getTitle()%></a>
-				<span><%=listpost.get(i).getDate_create()%></span></li>
-			<%
-				}
-			%>
+			<%if(listoutstanding!=null) %>
+			<%for(Post post : listoutstanding) {
+                String urlPost = "/threads/" + ConvertString.createSlug(post.getTitle()) + "-" + post.getId_post();%>
+			<li><a href="<%=request.getContextPath() %><%=urlPost %>"><%=post.getTitle() %></a>
+				<span><%=post.getDate_create() %></span></li>
+			<%}%>
 		</ul>
 
 	</div>
@@ -47,32 +45,11 @@
 		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
 		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
 	</div> -->
-	<ul class="menu">
-			<li class="dropdown">
-				<a href="#" id="dropbutton1" class="dropbtn">Tài Khoản</a>
-				<div  class="dropdown_content"> 
-					<a href="<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo của bạn</a>
-					<a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_USER%>">Bài viết của bạn</a>
-					<a href="#">Chủ đề theo dõi</a>
-					<a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài viết theo dõi</a>
-				</div>
-			</li>
-			<li class="dropdown">
-				<a href="#" id="dropbutton2" class="dropbtn">Tin nhắn</a>
-				<div  class="dropdown_content"> 
-					<a href="#">Xem tin nhắn</a>
-					<a href="#">Tạo tin nhắn mới</a>
-				</div>
-			</li>
-			<li class="dropdown">
-				<a href="#" id="dropbutton3" class="dropbtn">Cài đặt</a>
-				<div  class="dropdown_content"> 
-				<a href="#">Thông tin cá nhân</a>
-				<a href="#">Mật khẩu</a>
-				<a href="#">Đăng xuất</a>
-				</div>
-			</li>
-		</ul>
+
+	
+	<%@include file="/templates/public/inc/menu.jsp"%>
+	
+
 	<%
 		if (listpost != null) {
 	%>
@@ -83,34 +60,39 @@
 -->
 	<%
 		for (int i = 0; i < listpost.size(); i++) {
+			String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
+			String urlAuth = "/user/" + listpost.get(i).getUsername()+"."+listpost.get(i).getId_user();
 	%>
 
 	<div class="topic">
 		<div class="writer"> 
 			<i class="fas fa-comments fa-sm"
 			style="font-size: 40px;"></i> <a
-			href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=listpost.get(i).getId_post()%>"
+			href="<%=request.getContextPath()%><%=urlPost%>%>"
 			style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
 			<br>
 			<div class="amount">
 				<dl>
 					<dt>
-						<a id="author" href="javascript:void(0)"><%=listpost.get(i).getUsername()%><a>
+						<a id="author" href="<%=request.getContextPath()%><%=urlAuth%>"><%=listpost.get(i).getUsername()%></a>
 					</dt>
 					<dd><%=listpost.get(i).getDate_create()%></dd>
 				</dl>
 			</div>
 		</div>
 		<p class="news">
-			Mới nhất:<a href="">Máy Mac mình giờ cứ mỗi lần </a><br> <a
-				href="#topic"> akiii</a>,14:20, hôm nay
+		"<%=listpost.get(i).getPreview_content() %>"
+		<br>
+		<span style="font-size: 10px; color: #6d6c6c; font-style: italic;">Lượt xem: <%=listpost.get(i).getView() %></span>
 		</p>
 	</div>
 	<hr class="linetopic">
 	<%
 		}
-		}
+		} else {
 	%>
+	<h6 style="margin-left: 25px;">Chưa có bài viết.</h6>
+	<%} %>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>
 	</body>

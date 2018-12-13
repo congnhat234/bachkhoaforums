@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bo.PostBO"%>
@@ -16,32 +17,11 @@
 				<li><a href="#">Bài viết theo dõi</a></li>
 			</ul>
 		</nav>
-		<ul class="menu">
-			<li class="dropdown"><a href="#" id="dropbutton1" class="dropbtn">Tài
-					Khoản</a>
-				<div class="dropdown_content">
-					<a href="<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo của bạn</a> <a
-						href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_BY_USER%>">Bài
-						viết của bạn</a> <a href="#">Chủ đề theo dõi</a> <a
-						href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_FOLLOW_USER%>">Bài
-						viết theo dõi</a>
-				</div></li>
-			<li class="dropdown"><a href="#" id="dropbutton2" class="dropbtn">Tin
-					nhắn</a>
-				<div class="dropdown_content">
-					<a href="#">Xem tin nhắn</a> <a href="#">Tạo tin nhắn mới</a>
-				</div></li>
-			<li class="dropdown"><a href="#" id="dropbutton3" class="dropbtn">Cài
-					đặt</a>
-				<div class="dropdown_content">
-					<a href="<%=request.getContextPath()%><%=Constants.URL.PROFILE%>">Thông
-						tin cá nhân</a> <a
-						href="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_USER%>">Mật
-						khẩu</a> <a
-						href="<%=request.getContextPath()%><%=Constants.URL.LOGOUT%>">Đăng
-						xuất</a>
-				</div></li>
-		</ul>
+
+		
+<%@include file="/templates/public/inc/menu.jsp"%>
+
+
 		<div class="parse">
 			<div class="parse-content">
 					<a href="#" class="page active">First</a>
@@ -81,6 +61,8 @@
 		</div>
 		<div class="contentProfile">                  
 			<div class="mainContent">
+			<% ArrayList<Post> listpostfl = (ArrayList<Post>) request.getAttribute("listpostfl");
+				if(listpostfl.size() > 0) {%>
 				<form action="#" class="form-xembaimoi">
 					<table>
 						<tr>
@@ -90,21 +72,26 @@
 							<th>Xem</th>
 							<th>Bài viết cuối</th>
 						</tr>
-						<% ArrayList<Post> listpostfl =(ArrayList<Post>) request.getAttribute("listpostfl");
+						<%
 							int [] anwserAmount= (int[]) request.getAttribute("listAmountAnswer");
 							String [] lastUser= (String[]) request.getAttribute("listLastUser");
-						for(int i=0; i<listpostfl.size();i++){
+							for(int i=0; i<listpostfl.size();i++){
+							String urlPost = "/threads/" + ConvertString.createSlug(listpostfl.get(i).getTitle())+"-"+listpostfl.get(i).getId_post();
 						%>
 						<tr>
 							<td><img src="<%=listpostfl.get(i).getPreview_image()%>" width="30px"height="30px"></td>
-							<td class="td1"> <a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=listpostfl.get(i).getId_post()%>"><%=listpostfl.get(i).getTitle() %></a></td>
+							<td class="td1"> <a href="<%=request.getContextPath() %><%=urlPost %>"><%=listpostfl.get(i).getTitle() %></a></td>
 							<td><%=anwserAmount[i] %></td>
 							<td><%=listpostfl.get(i).getView()%></td>
 							<% if("".equals(lastUser[i])) {%><td><a href="#"><%=listpostfl.get(i).getUsername()%></a></td><%}else{%> <td><a href="#"><%=lastUser[i]%></a></td><%} %>
 						</tr>
 						<%}%>
+						
 					</table>
 				</form>
+				<% } else {%>
+				<h6 style="margin-left: 25px;">Chưa có bài viết.</h6>
+				<%} %>
 			</div>
 		</div>
 	</div>

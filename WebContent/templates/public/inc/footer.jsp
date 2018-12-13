@@ -30,7 +30,7 @@
         </div>
 
     </footer>
-
+	
     <div id="infomation" class="signup">
         <div class="register">
             <fieldset class="">
@@ -72,7 +72,7 @@
             </fieldset>
         </div>
     </div>
-
+	<%if(session.getAttribute("user") == null) { %>
     <div id="signin" class="signin">
         <form action="<%=request.getContextPath() %>/login" class="form_login" id="form_login" method="post">
             <h1>Login</h1>
@@ -161,6 +161,7 @@
             <div><button class="button">Register</button></div>
         </form>
     </div>
+    <%} %>
     <%
      	User userProfile = new User();
         if (session.getAttribute("user") != null) {

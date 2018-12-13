@@ -13,12 +13,11 @@
 <%
 	ArrayList<Post> listpost = (ArrayList<Post>) request.getAttribute("listpost");
 	Subject objSub = (Subject) request.getAttribute("objSub");
-	ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
 %>
     <aside class="sidebar-left">
     
         <div class="sidebar-links">
-        <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_NEW %>">Bài Mới</a>
+        <a class="link-blue" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_NEW %>">Bài Mới</a>
         <%
         ArrayList<Subject> listsub = (ArrayList<Subject>) request.getAttribute("listsubject");
         %>
@@ -26,7 +25,7 @@
         String urlSubject = "/subject/" + ConvertString.createSlug(listsub.get(i).getName())+"-"+listsub.get(i).getId_subject();%>
         	 
         	
-            <a  <%if(listsub.get(i).getId_subject()==objSub.getId_subject()) {%> class=" link-blue " <%}else {%>class="link-red" <%} %> href="<%=request.getContextPath() %><%=urlSubject %>">
+            <a class="link-red" href="<%=request.getContextPath() %><%=urlSubject %>">
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
@@ -34,15 +33,19 @@
 <aside class="sidebar-right">
 	<div class="latest-blog-posts">
 		<h3>
-			<i class="fa fa-rss"></i> Sôi động trong tuần
+			<i class="fa fa-rss"></i> Bài viết quan tâm
 		</h3>
 		<ul>
-            <%if(listoutstanding!=null) %>
-            <%for(Post post : listoutstanding) {
-                String urlPost = "/threads/" + ConvertString.createSlug(post.getTitle()) + "-" + post.getId_post();%>
-                <li><a href="<%=request.getContextPath() %><%=urlPost %>"><%=post.getTitle() %></a>
-                <span><%=post.getDate_create() %></span></li>
-                <%}%>
+			<%
+				for (int i = 0; i < listpost.size(); i++) {
+					String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
+			%>
+			<li><a
+				href="<%=request.getContextPath()%><%=urlPost%>"><%=listpost.get(i).getTitle()%></a>
+				<span><%=listpost.get(i).getDate_create()%></span></li>
+			<%
+				}
+			%>
 		</ul>
 
 	</div>
@@ -58,7 +61,7 @@
 		</ul>
 	</nav>
 
-	<h1 style="font-family: Arial, Helvetica, sans-serif;"><%=objSub.getName()%></h1>
+	<h1 style="font-family: Arial, Helvetica, sans-serif;">Bài viết mới</h1>
 	<div class="top-container">
        <div class="social">
                <a href="#" class=""><i style="font-size: 40px;" class="fab fa-facebook-square "></i></a>
@@ -71,7 +74,6 @@
 			<div class="parse-content">
 				<%
 					if (request.getAttribute("sumPage") != null) {
-						
 						int sumPage = (Integer) request.getAttribute("sumPage");
 						int current_page = (Integer) request.getAttribute("page");%>
 						<span>Trang <%=current_page %>/<%=sumPage %> </span> 
@@ -83,10 +85,10 @@
 							} else {
 								active = "";
 							}
-							String urlSubjectPage = "/subject/" + ConvertString.createSlug(objSub.getName()) + "-" + objSub.getId_subject() + "/p" +  i;
+							String urlNewPage = "/new" + "/p" +  i;
 				%>
 				<a <%=active%> class="page"
-					href="<%=request.getContextPath()%><%=urlSubjectPage%>"><%=i%></a>
+					href="<%=request.getContextPath()%><%=urlNewPage%>"><%=i%></a>
 				
 				<%
 					}
@@ -99,8 +101,8 @@
 		if (listpost != null) {
 	%>
 	<div class="labeltopic">
-		<a href=""><%=objSub.getName()%></a><br>
-		<p><%=objSub.getDescribe() %></p>
+		<a href="">Bài viết mới</a><br>
+		<p>Tổng hợp những bài viết gần đây</p>
 	</div>
 	<%
 	if (listpost.size() > 0) {

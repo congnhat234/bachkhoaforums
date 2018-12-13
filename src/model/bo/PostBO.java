@@ -35,6 +35,9 @@ public class PostBO {
 	public ArrayList<Post> getListPostByUser(String username){
 		return postDAO.getListPostByUser(username);
 	}
+	public ArrayList<Post> getListOutStanding(){
+		return postDAO.getListOutStanding();
+	}
 	public int countItems() {
 		return postDAO.countItems();
 	}
@@ -114,6 +117,24 @@ public class PostBO {
 	public int countItemsPost(int idSub) {
 
 		return postDAO.countItemsPost(idSub);
+	}
+	public int getViewPost(int id_post) {
+		return postDAO.getViewPost(id_post);
+	}
+	public boolean setViewPost(int id_post, int view) {
+		return postDAO.setViewPost(id_post,view);
+	}
+	public int countItemsNewPosts() {
+		return postDAO.countNewPosts();
+	}
+	public Object getListNewPosts(int offset, int row_count) {
+		return postDAO.getListNewPosts(offset, row_count);
+	}
+	public int countPostsBySearch(String searchText) {
+		return postDAO.countPostsBySearch(searchText);
+	}
+	public Object getListPostsBySearch(int offset, int row_count, String searchText) {
+		return postDAO.getListPostsBySearch(offset, row_count, searchText);
 	}
 
 }
