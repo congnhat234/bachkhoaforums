@@ -8,6 +8,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <%@include file="/templates/public/inc/header.jsp" %>
+
+<%ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding"); %>
+<aside class="sidebar-right">
+	<div class="latest-blog-posts">
+		<h3>
+			<i class="fa fa-rss"></i> Sôi động trong tuần
+		</h3>
+		<ul>
+            <%if(listoutstanding!=null) %>
+            <%for(Post post : listoutstanding) {
+                String urlPost = "/threads/" + ConvertString.createSlug(post.getTitle()) + "-" + post.getId_post();%>
+                <li><a href="<%=request.getContextPath() %><%=urlPost %>"><%=post.getTitle() %></a>
+                <span><%=post.getDate_create() %></span></li>
+                <%}%>
+		</ul>
+
+	</div>
+
+</aside>
 	<div class="container">
 		<nav class="navbar">
 			<ul class="breadcrumbs">
