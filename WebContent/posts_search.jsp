@@ -123,7 +123,7 @@
 		}
 		} else {
 	%>
-	<h6 style="margin-left: 25px;">Chưa có bài viết.</h6>
+	<h6 style="margin-left: 25px;">Không tìm thấy kết quả phù hợp.</h6>
 	<%}} %>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>

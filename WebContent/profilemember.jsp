@@ -82,8 +82,9 @@
 				</div>
 			</div>
 			<p class="news">
-				Mới nhất:<a href="">Máy Mac mình giờ cứ mỗi lần </a><br> <a
-					href="#topic"> akiii</a>,14:20, hôm nay
+			"<%=listpost.get(i).getPreview_content() %>"
+			<br>
+			<span style="font-size: 10px; color: #6d6c6c; font-style: italic;">Lượt xem: <%=listpost.get(i).getView() %></span>
 			</p>
 		</div>
 		<hr class="linetopic">
