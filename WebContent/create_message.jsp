@@ -63,7 +63,7 @@
 		<fieldset>
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">Email :</label>	</dt>
-			<dd> <input type="text" name="email" value="" class="textCtrl OptOut"></dd>
+			<dd> <input type="text" name="email" value="<%=user.getEmail() %>" class="textCtrl OptOut"></dd>
 		</dl>	
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">Nội dung tin nhắn</label></dt>

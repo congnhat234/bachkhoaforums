@@ -185,7 +185,7 @@
                         <%if(userProfile.getId_role() == 1) { %>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.ADMIN_HOME%>">Trang quản trị</a></li>
                         <%} %>
-                        <li><a href="#">Tùy chọn</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.SENDMESSAGE%>">Viết tin nhắn</a></li>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.CHANGE_PASS_USER%>">Mật khẩu</a></li>
                     </ul>
                 </div>

@@ -32,6 +32,16 @@
 	</rule>
 	
 	<rule>
+		<from>^/user/(.*)-([0-9]+)/p([0-9]+)$</from>
+		<to>/user/profilemember?idUC=$2&amp;current_page=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/user/notificationpage/p([0-9]+)$</from>
+		<to>/user/notificationpage?current_page=$1</to>
+	</rule>
+	
+	<rule>
 		<from>^/admin/them-bai-viet$</from>
 		<to>/admin/show-add-bai-viet</to>
 	</rule>

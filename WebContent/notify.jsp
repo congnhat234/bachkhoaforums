@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bean.Notification"%>
@@ -36,8 +37,9 @@
 							} else {
 								active = "";
 							}
+							String urlPage = Constants.URL.NOTIFICATION_PAGE + "/p" + i;
 				%>
-				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION_PAGE%>?current_page=<%=i%>"><%=i %></a> 
+				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=urlPage%>"><%=i %></a> 
 				
 				<%}}  %>
 			</div> 
@@ -48,6 +50,8 @@
 		<%if(request.getAttribute("listnotify")!=null) {%>
 			<%ArrayList<Notification> listNotify = (ArrayList<Notification>) request.getAttribute("listnotify");
 			for(Notification obj :listNotify) {
+				String urlPost = "/threads/" + ConvertString.createSlug(obj.getTitlePost()) + "-" + obj.getIdPost();
+				String urlAuth = "/user/" + obj.getUsername()+"-"+obj.getIdUser();
 			%>
 		<div class="alert" id="<%=obj.getId_comment()%>"<%if(obj.getStatus()==1){%>style ="background-color:grey"<%} else%>  style ="background-color:white" >
 			<a href="" class=""><img
@@ -55,8 +59,8 @@
 				width="40" height="40"></a>
 			<div class="alertText">
 				<h4>
-					<a href="" class="username subject"><%=obj.getUsername() %></a> đã trả lời vào chủ đề <a
-						href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>?idp=<%=obj.getIdPost() %>" class="PopupItemLink"><%=obj.getTitlePost() %></a>. Có thể còn có nhiều bài
+					<a href="<%=request.getContextPath()%><%=urlAuth%>" class="username subject"><%=obj.getUsername() %></a> đã trả lời vào chủ đề <a
+						href="<%=request.getContextPath()%><%=urlPost%>" class="PopupItemLink"><%=obj.getTitlePost() %></a>. Có thể còn có nhiều bài
 					nữa.
 				</h4>
 			</div>

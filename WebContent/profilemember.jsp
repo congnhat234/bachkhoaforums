@@ -113,8 +113,9 @@
 							} else {
 								active = "";
 							}
+							String urlMember = "/user/" + member.getUsername()+"-"+member.getId_user() + "/p" + i;
 				%>
-				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=Constants.URL.PROFILEMEMBER%>?current_page=<%=i%>"><%=i %></a> 
+				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=urlMember%>"><%=i %></a> 
 				
 				<%}}  %>
 			</div> 

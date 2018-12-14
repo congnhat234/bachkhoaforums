@@ -25,11 +25,11 @@
 		</a>
 		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>" class="dashboard-module">
 			<img src="<%=request.getContextPath() %>/templates/admin/images/User-Account.png" width="64" height="64" alt="edit" />
-			<span>Người dùng</span>
+			<span>Người dùng</span><span style="color:red;">(<%=request.getAttribute("countUserDisabled") %>)</span>
 		</a>
 		<a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>" class="dashboard-module">
 			<img src="<%=request.getContextPath() %>/templates/admin/images/Letter.png" width="64" height="64" alt="edit" />
-			<span>Tin Nhắn</span>
+			<span>Tin Nhắn</span><span style="color:red;">(<%=request.getAttribute("countUnseenMessage") %>)</span>
 		</a>				
 		<div style="clear: both"></div>
 	</div> <!-- End .grid_7 -->

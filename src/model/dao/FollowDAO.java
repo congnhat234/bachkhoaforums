@@ -133,7 +133,7 @@ public class FollowDAO {
 			pst.setInt(4, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
-				Notification obj = new Notification(rs.getString("user.avatar"),rs.getInt("comment.id_comment"),rs.getInt("comment.id_post"),rs.getString("user.username"),rs.getString("post.title"),count,rs.getInt("comment.notify"));
+				Notification obj = new Notification(rs.getString("user.avatar"),rs.getInt("comment.id_comment"),rs.getInt("comment.id_post"),rs.getInt("comment.id_user"),rs.getString("user.username"),rs.getString("post.title"),count,rs.getInt("comment.notify"));
 				listItems.add(obj);
 			}
 		} catch (SQLException e) {

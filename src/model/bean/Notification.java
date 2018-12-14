@@ -4,15 +4,19 @@ public class Notification {
 	String avatar;
 	int id_comment;
 	 int idPost;
+	 int idUser;
 	 String username;
 	 String titlePost;
 	 int countUnSeen;
 	 int status;
-	public Notification(String avatar,int id_comment,int idPost, String username, String titlePost,int countUnSeen,int status) {
+	
+	public Notification(String avatar, int id_comment, int idPost, int idUser, String username, String titlePost,
+			int countUnSeen, int status) {
 		super();
 		this.avatar = avatar;
 		this.id_comment = id_comment;
 		this.idPost = idPost;
+		this.idUser = idUser;
 		this.username = username;
 		this.titlePost = titlePost;
 		this.countUnSeen = countUnSeen;
@@ -64,6 +68,12 @@ public class Notification {
 	}
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+	public int getIdUser() {
+		return idUser;
+	}
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
 	}
 	
 	
