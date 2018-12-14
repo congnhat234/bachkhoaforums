@@ -39,17 +39,6 @@
 		
 <%@include file="/templates/public/inc/menu.jsp"%>
 
-		<div class="parse">
-			<div class="parse-content">
-					<a href="#" class="page active">First</a>
-					<a href="#" class="page">2</a>
-					<a href="#" class="page">3</a>
-					<a href="#" class="page">4</a>
-					<a href="#" class="page">5</a>
-					<a href="#" class="page">6</a>
-					<a href="#" class="page">Last</a>
-				</div>
-		</div>
 				<div class="parse">
 			<div class="parse-content">
 				<%
@@ -81,7 +70,8 @@
 			<% ArrayList<Post> listpostfl = (ArrayList<Post>) request.getAttribute("listpostfl");
 				if(listpostfl.size() > 0) {%>
 				<form action="#" class="form-xembaimoi">
-					<table>
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+					<thead>
 						<tr>
 							<th class="th1"></th>
 							<th>Tiêu đề</th>
@@ -89,6 +79,7 @@
 							<th>Xem</th>
 							<th>Bài viết cuối</th>
 						</tr>
+						</thead>
 						<%
 							int [] anwserAmount= (int[]) request.getAttribute("listAmountAnswer");
 							String [] lastUser= (String[]) request.getAttribute("listLastUser");
@@ -113,5 +104,115 @@
 		</div>
 	</div>
 <%@include file="/templates/public/inc/footer.jsp"%>
+<script type="text/javascript">
+	$('.status').on('change', function() {
+		var self = $(this);
+		if($(this).attr("checked")) {
+			var idUser = $(self).attr("idUser");
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.ENABLE_USER%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						aid: idUser,
+						},
+				success: function(){
+					$(self).removeAttr("checked");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi!");
+				},
+				error: function (){
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí");
+				}
+			});
+			return false;
+			
+		} else {
+			var idUser = $(self).attr("idUser");
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.ENABLE_USER%>',
+				type: 'POST',
+				cache: false,
+				data: {
+						aid: idUser,
+						},
+				success: function(){
+					$(self).attr("checked","");
+					$('#snackbar').attr("type", "success");
+					toast("Đã lưu thay đổi!");
+				},
+				error: function (){
+					$('#snackbar').attr("type", "error");
+					toast("Có lỗi trong quá trình xử lí");
+				}
+			});
+			return false;
+			
+		}
+	});
+	</script>
+		<script type="text/javascript">
+			jQuery(function($) {
+				//initiate dataTables plugin
+				var myTable = 
+				$('#dynamic-table')
+				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+				.DataTable( {
+					bAutoWidth: false,
+					"aoColumns": [
+						{ "bSortable": false },
+					  null, null,null, null
+					],
+					"aaSorting": [],
+			
+					"iDisplayLength": 10,
+			
+			
+					select: {
+						style: 'multi'
+					}
+			    } );
+
+				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+				
+				myTable.buttons().container().appendTo( $('.tableTools-container') );
+				
+				//style the message box
+				var defaultCopyAction = myTable.button(1).action();
+				myTable.button(1).action(function (e, dt, button, config) {
+					defaultCopyAction(e, dt, button, config);
+					$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+				});
+				
+				var defaultColvisAction = myTable.button(0).action();
+				myTable.button(0).action(function (e, dt, button, config) {
+					
+					defaultColvisAction(e, dt, button, config);
+					
+					
+					if($('.dt-button-collection > .dropdown-menu').length == 0) {
+						$('.dt-button-collection')
+						.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+						.find('a').attr('href', '#').wrap("<li />")
+					}
+					$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+				});
+
+				$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+					e.stopImmediatePropagation();
+					e.stopPropagation();
+					e.preventDefault();
+				});
+
+				$('.show-details-btn').on('click', function(e) {
+					e.preventDefault();
+					$(this).closest('tr').next().toggleClass('open');
+					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+				});
+
+			
+			})
+		</script>
 </body>
 </html>

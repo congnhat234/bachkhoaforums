@@ -203,6 +203,11 @@
     <% } %>    
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
     <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
+    <script src=" <%=request.getContextPath() %>/templates/admin/js/js/jquery.dataTables.min.js"></script>
+	<script src="<%=request.getContextPath() %>/templates/admin/js/js/jquery.dataTables.bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath() %>/templates/admin/js/js/dataTables.buttons.min.js"></script>
+	<script src="<%=request.getContextPath() %>/templates/admin/js/js/dataTables.select.min.js"></script>
+		
 	
 	<script>
 	$( document ).ready( function () {

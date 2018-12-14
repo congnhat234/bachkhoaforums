@@ -51,7 +51,7 @@
 			%>
 		<div class="alert" id="<%=obj.getId_comment()%>"<%if(obj.getStatus()==1){%>style ="background-color:grey"<%} else%>  style ="background-color:white" >
 			<a href="" class=""><img
-				src="https://photo2.tinhte.vn/data/avatars/s/1777/1777251.jpg?1534771146"
+				src="<%=request.getContextPath()%>/templates/public/files/<%=obj.getAvatar()%>"
 				width="40" height="40"></a>
 			<div class="alertText">
 				<h4>

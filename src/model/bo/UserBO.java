@@ -35,9 +35,6 @@ public class UserBO {
 	public int countItemsEnabled() {
 		return userDAO.countItemsEnabled();
 	}
-	public ArrayList<User> getListUserOffset(int offset, int row_count) {
-		return userDAO.getListUserOffset(offset, row_count);
-	}
 	public int getStatus(int idUser) {
 		return userDAO.getStatus(idUser);
 	}

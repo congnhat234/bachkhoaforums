@@ -84,39 +84,6 @@ public class PostDAO {
 		}
 		return listItems;
 	}
-	
-	public ArrayList<Post> getListPostOffset(int offset, int row_count) {
-		ArrayList<Post> listItems = new ArrayList<>();
-		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post limit ?,?;";
-		try {
-			pst = connection.prepareStatement(sql);
-			pst.setInt(1, offset);
-			pst.setInt(2, row_count);
-			rs = pst.executeQuery();
-			while(rs.next()){
-			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
-					rs.getString("username"),rs.getString("date_create"),
-					rs.getString("title"),rs.getString("preview_image"),
-					rs.getString("preview_content"),rs.getString("content"),
-					rs.getInt("view"),rs.getInt("enabled"));
-			listItems.add(post);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			try {
-				pst.close();
-				connection.close();
-				rs.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return listItems;
-	}
 
 	public Post get(int idPost) {
 		connection = connectDBLibrary.getConnectMySQL();
@@ -349,30 +316,6 @@ public class PostDAO {
 	}
 
 
-
-	public int countItems() {
-		int count = 0;
-		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT COUNT(*) AS rowcount FROM post";
-		try {
-			pst = connection.prepareStatement(sql);
-			rs=pst.executeQuery();
-			while(rs.next()){
-			   count = rs.getInt("rowcount") ;
-			}
-			  
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pst.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return count;
-	}
 
 	public int countLike(int idPost) {
 		int count = 0;
@@ -1091,5 +1034,6 @@ public class PostDAO {
 			}
 		}
 		return count;
-	} 
+	}
+
 }

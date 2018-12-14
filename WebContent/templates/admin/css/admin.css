@@ -375,12 +375,53 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-#myTable td{vertical-align: middle;}
-#myTable .hoa{width:100px; height: 60px;border-radius:4px;}
-#myTable tr:nth-child(even) td{background: #F6F6F6}
-#myTable tr:hover td{background: #EEEEEE}
+#dynamic-table td{vertical-align: middle;}
+#dynamic-table .hoa{width:100px; height: 60px;border-radius:4px;}
+#dynamic-table tr:nth-child(even) td{background: #F6F6F6}
+#dynamic-table tr:hover td{background: #EEEEEE}
+
 <!--edit css admin index-->
 .content_index_admin{
 	margin: 20px;
 }
 <!--end edit-->
+
+.pagination {
+	float:right;
+  display: inline-block;
+  list-style-type: none;
+}
+
+.paginate_button{
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.dataTables_info{
+	float:right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+.dataTables_filter{
+	margin:5px;
+}
+.dataTables_length{
+	margin:5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.form-control{
+  width: 200px;
+  padding: 5px;
+  height: 25px;
+  outline: none;
+  color: #9DBFAF;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.row{
+	float:right;
+	display: flex;
+    flex-flow: row;
+}
