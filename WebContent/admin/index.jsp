@@ -1,3 +1,4 @@
+<%@page import="model.bean.Post"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/templates/public/inc/header.jsp" %>
@@ -10,6 +11,9 @@
 		} 
 	}
 %>  
+<%
+ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
+%>
 <div class="container">         
 
 	<!-- Dashboard icons -->
@@ -33,6 +37,8 @@
 		</a>				
 		<div style="clear: both"></div>
 	</div> <!-- End .grid_7 -->
+	<%if(listPost.size()>0) %>
+	<span><%=listPost.size()%></span>
 	
 	
 </div>

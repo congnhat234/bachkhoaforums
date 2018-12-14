@@ -380,17 +380,11 @@ input:checked + .slider:before {
 #dynamic-table tr:nth-child(even) td{background: #F6F6F6}
 #dynamic-table tr:hover td{background: #EEEEEE}
 
-<!--edit css admin index-->
+/*edit css admin index*/
 .content_index_admin{
 	margin: 20px;
 }
-<!--end edit-->
-
-.pagination {
-	float:right;
-  display: inline-block;
-  list-style-type: none;
-}
+/*end edit*/
 
 .paginate_button{
   color: black;

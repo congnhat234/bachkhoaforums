@@ -60,5 +60,6 @@ public class Constants {
 		String MESSAGEADMIN="/admin/messageadmin";
 		String MESSAGEADMINREPLY="/admin/messagereply";
 		
+		
 	}
 }
