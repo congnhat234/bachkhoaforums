@@ -9,19 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bo.PostBO;
-import model.bo.SubjectBO;
-
 /**
- * Servlet implementation class CreateMessageController
+ * Servlet implementation class MessageAdminController
  */
-public class CreateMessageController extends HttpServlet {
+public class MessageAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateMessageController() {
+    public MessageAdminController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,20 +27,15 @@ public class CreateMessageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PostBO postBO = new PostBO();
-		SubjectBO subjectBO =new SubjectBO();
-		request.setAttribute("listsubject", subjectBO.getListSubject());
-		request.setAttribute("listoutstanding", postBO.getListOutStanding());
-		RequestDispatcher rd = request.getRequestDispatcher("/create_message.jsp");
-		rd.forward(request, response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/messageAdmin.jsp");
+		rd.forward(request, response);
 	}
 
 }

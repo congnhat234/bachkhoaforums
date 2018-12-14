@@ -21,12 +21,12 @@
 			</h2>
 		</div>
 		    <div class="mainContent">
-		    	<fieldset>
-				<!-- list tin nhắn -->
-					<dl class="ctrlUnit">
-						<dt> <label for="ctrl_location">Tin nhắn của:???</label></dt>
-					</dl>	
-				</fieldset>	
+		<fieldset>
+		<!-- list tin nhắn -->
+		<dl class="ctrlUnit">
+			<dt> <label for="ctrl_location"><a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMINREPLY%>">Tin nhắn 1</a></label></dt>
+		</dl>	
+		</fieldset>	
 		    </div>
 	</div>
 </div>

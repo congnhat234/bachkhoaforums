@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import model.bean.Message;
 import model.bean.User;
 import model.bo.MessageBO;
+import model.bo.PostBO;
+import model.bo.SubjectBO;
 import model.bo.UserBO;
 import utils.CryptoUtils;
 
@@ -37,8 +39,12 @@ public class SendMessageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		PostBO postBO = new PostBO();
+		SubjectBO subjectBO =new SubjectBO();
+		request.setAttribute("listsubject", subjectBO.getListSubject());
+		request.setAttribute("listoutstanding", postBO.getListOutStanding());
+		RequestDispatcher rd = request.getRequestDispatcher("/create_message.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -56,10 +62,10 @@ public class SendMessageController extends HttpServlet {
 		Message message = new Message(0, idUser, email, messageContent, "", dateCreate, 1, 1);
 		MessageBO messageBO = new MessageBO();
 		if(messageBO.addMessage(message)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"+"?msg=1");
+			RequestDispatcher rd = request.getRequestDispatcher("/message.jsp"+"?msg=1");
 			rd.forward(request, response);
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("/register.jsp"+"?msg=0");
+			RequestDispatcher rd = request.getRequestDispatcher("/create_message.jsp"+"?msg=0");
 			rd.forward(request, response);
 		}
 	}

@@ -34,8 +34,8 @@
 			<form method="post" id="#" enctype="#" action="#">
 				<fieldset>
 					<dl class="ctrlUnit">
-						<dt> <label for="ctrl_location">Nội dung tin nhắn</label></dt>
-						<dd> <textarea name="content" id="editor"></textarea> </dd>
+						<dt> <label for="ctrl_location">Nội dung tin nhắn trả lời</label></dt>
+						<dd> <textarea rows="15" cols="70" name="content" id="editor"></textarea> </dd>
 					</dl>
 				</fieldset>	
 				<div class="button-bot"><button class="b1"type="button"name="button">Trả lời</button></div>
