@@ -9,9 +9,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <%@include file="/templates/public/inc/header.jsp"%>
-<%
+	<%
 	ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
-%>
+	ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
+	%>
+    <aside class="sidebar-left">
+    
+        <div class="sidebar-links">
+        <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_NEW %>">Bài Mới</a>
+        <%for(int i=0;i<listsub.size();i++) {
+        String urlSubject = "/subject/" + ConvertString.createSlug(listsub.get(i).getName())+"-"+listsub.get(i).getId_subject();%>
+            <a class="link-red" href="<%=request.getContextPath() %><%=urlSubject %>">
+            <%=listsub.get(i).getName()%></a>
+            <%}%>
+        </div>
+    </aside>
 
     <aside class="sidebar-right">
 	<div class="latest-blog-posts">
@@ -50,11 +62,11 @@
 		<fieldset>
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">Email :</label>	</dt>
-			<dd> <input type="text" name="email" value="#" class="textCtrl OptOut"></dd>
+			<dd> <input type="text" name="email" value="" class="textCtrl OptOut"></dd>
 		</dl>	
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">Nội dung tin nhắn</label></dt>
-			<dd> <textarea name="content" id="editor"></textarea> </dd>
+			<dd> <textarea rows="15" cols="70" name="content" id="editor" ></textarea> </dd>
 		</dl>
 		</fieldset>	
 		<div class="button-bot"><button class="b1"type="button"name="button">Gửi</button></div>

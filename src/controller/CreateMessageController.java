@@ -31,6 +31,8 @@ public class CreateMessageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostBO postBO = new PostBO();
+		SubjectBO subjectBO =new SubjectBO();
+		request.setAttribute("listsubject", subjectBO.getListSubject());
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		RequestDispatcher rd = request.getRequestDispatcher("/create_message.jsp");
 		rd.forward(request, response);
