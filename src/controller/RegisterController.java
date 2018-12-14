@@ -59,7 +59,7 @@ public class RegisterController extends HttpServlet {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
 	    Date date = new Date(); 
 	    String date_join = formatter.format(date);
-		User user = new User(0,3,username,passwordCryp,token,fullname,address,city,gender,email,phone,birthday,date_join,"noimage.jpg",0,0);
+		User user = new User(0,3,username,passwordCryp,token,fullname,address,city,gender,email,phone,birthday,date_join,"noimage.jpg",0,1);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"+"?msg=1");
