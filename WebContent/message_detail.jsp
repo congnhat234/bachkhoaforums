@@ -10,22 +10,16 @@
 <html lang="en" dir="ltr">
 <%@include file="/templates/public/inc/header.jsp"%>
 <%
-	ArrayList<Post> listpost = (ArrayList<Post>) request.getAttribute("listpost");
-	Subject objSub = (Subject) request.getAttribute("objSub");
-	ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
+ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
+ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
 %>
     <aside class="sidebar-left">
     
         <div class="sidebar-links">
         <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_NEW %>">Bài Mới</a>
-        <%
-        ArrayList<Subject> listsub = (ArrayList<Subject>) request.getAttribute("listsubject");
-        %>
         <%for(int i=0;i<listsub.size();i++) {
         String urlSubject = "/subject/" + ConvertString.createSlug(listsub.get(i).getName())+"-"+listsub.get(i).getId_subject();%>
-        	 
-        	
-            <a  <%if(listsub.get(i).getId_subject()==objSub.getId_subject()) {%> class=" link-blue " <%}else {%>class="link-red" <%} %> href="<%=request.getContextPath() %><%=urlSubject %>">
+            <a class="link-red" href="<%=request.getContextPath() %><%=urlSubject %>">
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>

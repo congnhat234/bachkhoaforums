@@ -10,21 +10,16 @@
 <html lang="en" dir="ltr">
 <%@include file="/templates/public/inc/header.jsp"%>
 <%
-	Subject objSub = (Subject) request.getAttribute("objSub");
-	ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
+ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding");
+ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubject");
 %>
     <aside class="sidebar-left">
     
         <div class="sidebar-links">
         <a class="link-red" href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_NEW %>">Bài Mới</a>
-        <%
-        ArrayList<Subject> listsub = (ArrayList<Subject>) request.getAttribute("listsubject");
-        %>
         <%for(int i=0;i<listsub.size();i++) {
         String urlSubject = "/subject/" + ConvertString.createSlug(listsub.get(i).getName())+"-"+listsub.get(i).getId_subject();%>
-        	 
-        	
-            <a  <%if(listsub.get(i).getId_subject()==objSub.getId_subject()) {%> class=" link-blue " <%}else {%>class="link-red" <%} %> href="<%=request.getContextPath() %><%=urlSubject %>">
+            <a class="link-red" href="<%=request.getContextPath() %><%=urlSubject %>">
             <%=listsub.get(i).getName()%></a>
             <%}%>
         </div>
@@ -52,7 +47,7 @@
 			<li><a
 				href="<%=request.getContextPath()%><%=Constants.URL.HOME%>"><i
 					class="fas fa-home fa-2x"></i></a></li>
-			<li><a href="#">Tạo tin nhắn mới</a></li>
+			<li><a href="#">Danh sách tin nhắn</a></li>
 		</ul>
 	</nav>
     <div class="mainContent">
@@ -65,8 +60,7 @@
 		<fieldset>
 		<!-- list tin nhắn -->
 		<dl class="ctrlUnit">
-			<dt> <label for="ctrl_location">Tin nhắn:</label></dt>
-			<dd> <span>Tên người gửi</span></dd>
+			<dt> <label for="ctrl_location"><a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEDETAIL%>">Tin nhắn 1</a></label></dt>
 		</dl>	
 		</fieldset>	
     </div>

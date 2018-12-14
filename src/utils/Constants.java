@@ -54,7 +54,11 @@ public class Constants {
 		
 		String SEARCH_POST = "/search";
 		
-		String CREATEMESSAGE = "/user/createmessage";
+		String SENDMESSAGE = "/user/sendmessage";
+		String MESSAGE="/user/message";
+		String MESSAGEDETAIL="/user/message/messagedetail";
+		String MESSAGEADMIN="/admin/messageadmin";
+		String MESSAGEADMINREPLY="/admin/messagereply";
 		
 	}
 }

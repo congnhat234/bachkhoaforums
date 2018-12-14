@@ -16,8 +16,8 @@
 	<li class="dropdown"><a href="#" id="dropbutton2" class="dropbtn">Tin
 			nhắn</a>
 		<div class="dropdown_content">
-			<a href="#">Xem tin nhắn</a>
-			<a href="<%=request.getContextPath()%><%=Constants.URL.CREATEMESSAGE%>">Tạo tin nhắn mới</a>
+			<a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGE%>">Xem tin nhắn</a>
+			<a href="<%=request.getContextPath()%><%=Constants.URL.SENDMESSAGE%>">Tạo tin nhắn mới</a>
 		</div></li>
 	<li class="dropdown"><a href="#" id="dropbutton3" class="dropbtn">Cài
 			đặt</a>

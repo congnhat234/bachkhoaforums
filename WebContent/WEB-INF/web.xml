@@ -361,12 +361,44 @@
     <servlet-name>NotificationPageController</servlet-name>
     <url-pattern>/user/notificationpage</url-pattern>
   </servlet-mapping>
-    <servlet>
-    <servlet-name>CreateMessageController</servlet-name>
-    <servlet-class>controller.CreateMessageController</servlet-class>
+  <servlet>
+    <servlet-name>SendMessageController</servlet-name>
+    <servlet-class>controller.SendMessageController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CreateMessageController</servlet-name>
-    <url-pattern>/user/createmessage</url-pattern>
+    <servlet-name>SendMessageController</servlet-name>
+    <url-pattern>/user/sendmessage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MessageController</servlet-name>
+    <servlet-class>controller.MessageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageController</servlet-name>
+    <url-pattern>/user/message</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MessageDetailController</servlet-name>
+    <servlet-class>controller.MessageDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageDetailController</servlet-name>
+    <url-pattern>/user/message/messagedetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MessageAdminController</servlet-name>
+    <servlet-class>controller.MessageAdminController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageAdminController</servlet-name>
+    <url-pattern>/admin/messageadmin</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>MessageAdminReplyController</servlet-name>
+    <servlet-class>controller.MessageAdminReplyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageAdminReplyController</servlet-name>
+    <url-pattern>/admin/messagereply</url-pattern>
   </servlet-mapping>
 </web-app>
