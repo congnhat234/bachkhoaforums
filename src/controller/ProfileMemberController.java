@@ -36,6 +36,7 @@ public class ProfileMemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getParameter("idUC") != null) {
+			System.out.println("id " + request.getParameter("idUC"));
 			int idUserComment = Integer.parseInt(request.getParameter("idUC"));
 			UserBO userBO = new UserBO();
 			User user = userBO.findByIDUser(idUserComment);

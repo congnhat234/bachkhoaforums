@@ -70,7 +70,7 @@
 				tmpCount++;
 				if(tmpCount > 5) break;
 				String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
-				String urlAuth = "/user/" + listpost.get(i).getUsername()+"."+listpost.get(i).getId_user();%>
+				String urlAuth = "/user/" + listpost.get(i).getUsername()+"-"+listpost.get(i).getId_user();%>
 
         <div class="topic">
             <div class="writer">

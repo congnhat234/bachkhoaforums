@@ -27,7 +27,7 @@
 	</rule>
 	
 	<rule>
-		<from>^/user/(.*).([0-9]+)$</from>
+		<from>^/user/(.*)-([0-9]+)$</from>
 		<to>/user/profilemember?idUC=$2</to>
 	</rule>
 	

@@ -26,7 +26,7 @@ public class UserDAO {
 	public User findByToken(String token) {
 		connection = connectDBLibrary.getConnectMySQL();
 		User objUser = null;
-		String query = "SELECT * FROM user WHERE token = ?;";
+		String query = "SELECT * FROM user WHERE token = ? && enabled = 1;";
 		try {
 			pst = connection.prepareStatement(query);
 			pst.setString(1, token);
@@ -188,6 +188,35 @@ public class UserDAO {
 	}
 
 	public ArrayList<User> getListUsers() {
+		ArrayList<User> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from user;";
+		try {
+			st = connection.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()){
+				User obj = new User(rs.getInt("id_user"),rs.getInt("id_role"),rs.getString("username"),rs.getString("password"),rs.getString("token"),
+						rs.getString("fullname"),rs.getString("address"),rs.getString("city"),rs.getInt("gender"),rs.getString("email"),rs.getString("phone"),
+						rs.getString("birthday"),rs.getString("date_join"),rs.getString("avatar"),rs.getInt("rate"),rs.getInt("enabled"));
+				listItems.add(obj);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				st.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	
+	public ArrayList<User> getListUsersEnabled() {
 		ArrayList<User> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
 		String sql = "select * from user;";

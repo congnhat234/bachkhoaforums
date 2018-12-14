@@ -89,7 +89,7 @@
 	if (listpost.size() > 0) {
 		for (int i = 0; i < listpost.size(); i++) {
 			String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
-			String urlAuth = "/user/" + listpost.get(i).getUsername()+"."+listpost.get(i).getId_user();
+			String urlAuth = "/user/" + listpost.get(i).getUsername()+"-"+listpost.get(i).getId_user();
 	%>
 
 	<div class="topic">

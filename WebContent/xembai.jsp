@@ -56,7 +56,7 @@
 			<%
 			if(request.getAttribute("post") != null) {
 				Post post = (Post) request.getAttribute("post");
-				String urlAuth = "/user/" + post.getUsername()+"."+post.getId_user();
+				String urlAuth = "/user/" + post.getUsername()+"-"+post.getId_user();
 		%>
 			<div style="display: none;" class="hint" id="hintId"><%=post.getId_post() %></div>
 			<div class="head_title_post">
