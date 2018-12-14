@@ -19,7 +19,7 @@ public class MailUtil {
 		final String password = "Congnhat234"; // correct password for gmail id
 		final String toEmail = email; // can be any email id 
 		String subject = "Thay đổi mật khẩu cho tài khoản BachKhoa Forums của bạn";
-		String content = "Mật khẩu mới của bạn là " + uuid + ". Bạn cần thay đổi mật khẩu sau khi đăng nhập.";
+		String content = "Mật khẩu mới của bạn là: " + uuid + ". Bạn cần thay đổi mật khẩu sau khi đăng nhập.";
 		
 		System.out.println("SSLEmail Start");
 		Properties props = new Properties();

@@ -1,6 +1,7 @@
 package utils;
 
 import java.text.Normalizer;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 public class ConvertString {
@@ -23,4 +24,14 @@ public class ConvertString {
 		slug = slug.replaceAll("-+$", "");
 		return slug;
 		}
+	
+	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static Random rnd = new Random();
+
+    public static String randomString( int len ){
+       StringBuilder sb = new StringBuilder( len );
+       for( int i = 0; i < len; i++ ) 
+          sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+       return sb.toString();
+    }
 }

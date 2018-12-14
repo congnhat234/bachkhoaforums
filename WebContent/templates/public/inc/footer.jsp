@@ -19,11 +19,11 @@
         <div class="footer-left">
 
             <p class="footer-links">
-                <a href="#">Home</a>
+                <a href="#">Trang chủ</a>
                 ·
-                <a href="#">About</a>
+                <a href="#">Giới thiệu</a>
                 ·
-                <a href="#">Contact</a>
+                <a href="#">Liên hệ</a>
             </p>
 
             <p>BackKhoa Forum &copy; 2018</p>
@@ -31,94 +31,53 @@
 
     </footer>
 	
-    <div id="infomation" class="signup">
-        <div class="register">
-            <fieldset class="">
-                <legend>Account Details
-                </legend>
-                    <div class="avatar">
-                      <a href="#"><img src="<%=request.getContextPath() %>/templates/public/img/t3.jpg" alt="" style="left: -87px; top: 0px; "></a>
-                    </div>
-                    <h1>Akiii</h1>
-                    <div class="formUser">
-                      Nam
-                      <span>form:</span>
-                      <a href="#">Hà Nội</a>
-                    </div>
-                    <div class="userLink">
-                      <a href="#">Trang hồ sơ</a>
-                    </div>
-                    <hr>
-                    <div class="account">
-                      <dl>
-                          <dt>Ngày tham gia </dt>
-                          <dd>6/9/1969</dd>
-
-                            <dt>Bài viết: </dt>
-                            <dd>69 </dd>
-
-                            <dt>Được thích </dt>
-                            <dd>6</dd>
-
-                              <dt>Điểm thưởng </dt>
-                              <dd>9 </dd>
-                          </dl>
-                    </div>
-                    <hr>
-                    <dl class="lastSeen">
-                        <dt>Akiii lần cuối xem </dt>
-                        <dd>6m ago</dd>
-                      </dl>
-            </fieldset>
-        </div>
-    </div>
 	<%if(session.getAttribute("user") == null) { %>
     <div id="signin" class="signin">
-        <form action="<%=request.getContextPath() %>/login" class="form_login" id="form_login" method="post">
-            <h1>Login</h1>
-            <input placeholder="Username" name="username" type="text" >
-            <input placeholder="Password" name="password" type="password" >
-            <button>Submit</button>
+        <form action="<%=request.getContextPath() %><%=Constants.URL.LOGIN %>" class="form_login" id="form_login" method="post">
+            <h1>Đăng nhập</h1>
+            <input placeholder="Tên đăng nhập" name="username" type="text" >
+            <input placeholder="Mật khẩu" name="password" type="password" >
+            <button>Đăng nhập</button>
             <br><br>
             <div class="bottom-text ">
-                <p>No account yet?<a href="#singup">Signup</a></p>
-                <h4> <a href="<%=request.getContextPath()%><%=Constants.URL.FORGOT_PASSWORD%>">Forgot your password?</a></h4>
+                <p>Bạn chưa có tài khoản?<a href="<%=request.getContextPath() %><%=Constants.URL.REGISTER %>">Đăng kí</a></p>
+                <h4> <a href="<%=request.getContextPath()%><%=Constants.URL.FORGOT_PASSWORD%>">Quên mật khẩu?</a></h4>
             </div>
         </form>
     </div>
 
     <div id="signup" class="signup">
-        <form action="<%=request.getContextPath() %>/register" class="register"  id="register" method="post">
-            <h1>Registration</h1>
+        <form action="<%=request.getContextPath() %><%=Constants.URL.REGISTER %>" class="register"  id="register" method="post">
+            <h1>Đăng kí</h1>
             <fieldset class="row1">
-                <legend>Account Details
+                <legend>Thông tin tài khoản
                 </legend>
                 <p>
-                    <label>Username *
+                    <label>Tên đăng nhập *
                     </label>
                     <input type="text" name="username"  />
                 </p>
                 <p>
-                    <label>Password*
+                    <label>Mật khẩu *
                     </label>
                     <input type="password" name="password" id="password"  />
                 </p>
                 <p>
-                    <label>Repeat Password*
+                    <label>Nhập lại mật khẩu *
                     </label>
                     <input type="password" name="repassword"  />
                 </p>
             </fieldset>
             <fieldset class="row1">
-                <legend>Personal Details
+                <legend>Thông tin cá nhân
                 </legend>
                 <p>
-                    <label>Name *
+                    <label>Tên *
                     </label>
                     <input type="text" name="fullname" class="long" />
                 </p>
                 <p>
-                    <label>Phone *
+                    <label>SĐT *
                     </label>
                     <input type="text" name="phone"  />
                 </p>
@@ -129,36 +88,31 @@
                 </p>
                 <p>
 
-                    <label>Gender *</label>
+                    <label>Giới tính *</label>
                     <input type="radio" name="gender" value="1" />
-                    <label class="gender">Male</label>
+                    <label class="gender">Nam</label>
                     <input type="radio" name="gender" value="0" />
-                    <label class="gender">Female</label>
+                    <label class="gender">Nữ</label>
 
                 </p>
                 <p>
-                    <label>Birthdate *
+                    <label>Ngày sinh *
                     </label>
-                    <select name="day" class="day">
-                    </select>
-                    <select name="month" class="month">
-                    </select>
-                    <select name="year" class="year">
-                    </select>
+                    <input type="date" name="birthday"  />
                 </p>
                 <p>
-                    <label>Address *
+                    <label>Địa chỉ *
                     </label>
                     <input type="text" name="address" class="long" />
                 </p>
                 <p>
-                    <label>City *
+                    <label>Thành phố *
                     </label>
                     <input type="text" name="city" class="long" />
                 </p>
             </fieldset>
 
-            <div><button class="button">Register</button></div>
+            <div><button class="button">Đăng kí</button></div>
         </form>
     </div>
     <%} %>

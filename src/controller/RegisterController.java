@@ -52,10 +52,10 @@ public class RegisterController extends HttpServlet {
 		String phone = (String) request.getParameter("phone");
 		String email = (String) request.getParameter("email");
 		int gender = Integer.parseInt((String) request.getParameter("gender"));
-		String day = (String) request.getParameter("day");
-		String month = (String) request.getParameter("month");
-		String year = (String) request.getParameter("year");
-		String birthday = day + "/" + month + "/" + year;
+//		String day = (String) request.getParameter("day");
+//		String month = (String) request.getParameter("month");
+//		String year = (String) request.getParameter("year");
+		String birthday = (String) request.getParameter("birthday");
 		String address = new String(((String) request.getParameter("address")).getBytes("ISO-8859-1"), "UTF-8");
 		String city = new String(((String) request.getParameter("city")).getBytes("ISO-8859-1"), "UTF-8");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  

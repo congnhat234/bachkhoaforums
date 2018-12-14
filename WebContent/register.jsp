@@ -9,37 +9,37 @@
 			}
 			%>
 		 <div id="signup_page" class="sign_page">
-			<form action="<%=request.getContextPath() %>/register" class="register_page"  id="register_page" method="post">
-            <h1>Registration</h1>
+			<form action="<%=request.getContextPath() %>/register" class="register_page" method="post">
+            <h1>Đăng kí</h1>
             <fieldset class="row1">
-                <legend>Account Details
+                <legend>Thông tin tài khoản
                 </legend>
                 <p>
-                    <label>Username *
+                    <label>Tên đăng nhập *
                     </label>
                     <input type="text" name="username" value="<%=user.getUsername() %>" />
                 </p>
                 <p>
-                    <label>Password*
+                    <label>Mật khẩu *
                     </label>
                     <input type="password" name="password" id="password1"  />
                 </p>
                 <p>
-                    <label>Repeat Password*
+                    <label>Nhập lại mật khẩu *
                     </label>
                     <input type="password" name="repassword"  />
                 </p>
             </fieldset>
             <fieldset class="row1">
-                <legend>Personal Details
+                <legend>Thông tin cá nhân
                 </legend>
                 <p>
-                    <label>Name *
+                    <label>Tên *
                     </label>
                     <input type="text" name="fullname" class="long" value="<%=user.getFullname() %>" />
                 </p>
                 <p>
-                    <label>Phone *
+                    <label>SĐT *
                     </label>
                     <input type="text" name="phone"  value="<%=user.getPhone() %>"/>
                 </p>
@@ -50,35 +50,30 @@
                 </p>
                 <p>
 
-                    <label>Gender *</label>
+                    <label>Giới tính *</label>
                     <input type="radio" name="gender" value="1" />
-                    <label class="gender">Male</label>
+                    <label class="gender">Nam</label>
                     <input type="radio" name="gender" value="0" />
-                    <label class="gender">Female</label>
+                    <label class="gender">Nữ</label>
 
                 </p>
                 <p>
-                    <label>Birthdate *
+                    <label>Ngày sinh *
                     </label>
-                    <select name="day" class="day">
-                    </select>
-                    <select name="month" class="month">
-                    </select>
-                    <select name="year" class="year">
-                    </select>
+                    <input type="date" name="birthday" />
                 </p>
                 <p>
-                    <label>Address *
+                    <label>Địa chỉ *
                     </label>
                     <input type="text" name="address" class="long" value="<%=user.getAddress() %>"/>
                 </p>
                 <p>
-                    <label>City *
+                    <label>Thành phố *
                     </label>
                     <input type="text" name="city" class="long" value="<%=user.getCity() %>"/>
                 </p>
             </fieldset>
-			 <button class="button">Register</button>
+			 <button class="button">Đăng kí</button>
         </form>
 		</div>
 <%@include file="/templates/public/inc/footer.jsp"%>

@@ -5,18 +5,18 @@
 <%@include file="/templates/public/inc/header.jsp"%>
 	
 		<div class="signin_page">
-			<form action="<%=request.getContextPath() %><%=Constants.URL.LOGIN %>" class="form_login_page" id="form_login" method="post">
-				<h1>Login</h1>
-				<input placeholder="Username" type="text" name="username" > <input
-					placeholder="Password" type="password" name="password" >
-				<button>Submit</button>
+			<form action="<%=request.getContextPath() %><%=Constants.URL.LOGIN %>" class="form_login_page" method="post">
+				<h1>Đăng nhập</h1>
+				<input placeholder="Tên đăng nhập" type="text" name="username" > 
+				<input placeholder="Mật khẩu" type="password" name="password" >
+				<button>Đăng nhập</button>
 				<br> <br>
 				<div class="bottom-text ">
 					<p>
-						No account yet?<a href="#singup">Signup</a>
+						Bạn chưa có tài khoản?<a href="<%=request.getContextPath() %><%=Constants.URL.REGISTER%>">Đăng kí</a>
 					</p>
 					<h4>
-						<a href="#">Forgot your password?</a>
+						<a href="<%=request.getContextPath()%><%=Constants.URL.FORGOT_PASSWORD%>">Quên mật khẩu?</a>
 					</h4>
 				</div>
 			</form>

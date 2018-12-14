@@ -45,7 +45,7 @@
 			</h1>
 
 			<nav>
-				<a href="<%=request.getContextPath()%><%=Constants.URL.HOME%>">Home</a>
+				<a href="<%=request.getContextPath()%><%=Constants.URL.HOME%>">Trang chủ</a>
 			</nav>
 			<%
 				if (session.getAttribute("user") == null) {
@@ -66,13 +66,13 @@
 					</a > 
 				</li>
 				<li><a
-					href="<%=request.getContextPath()%><%=Constants.URL.LOGOUT%>">Logout</a></li>
+					href="<%=request.getContextPath()%><%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
 			</ul>
 			<%
 				}
 			%>
 			<form id="search" method="post" action="<%=request.getContextPath()%><%=Constants.URL.SEARCH_POST %>">
-				<input type="search" placeholder="Search!" name="search"> <i
+				<input type="search" placeholder="Tìm kiếm..." name="search"> <i
 					id="searchIcon" class="fas fa-search fa"></i>
 			</form>
 		</div>

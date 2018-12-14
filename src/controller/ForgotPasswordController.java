@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bo.UserBO;
 import utils.Constants;
+import utils.ConvertString;
 import utils.MailUtil;
 
 /**
@@ -44,11 +44,11 @@ public class ForgotPasswordController extends HttpServlet {
 		String email = (String) request.getParameter("email");
 		String username = (String) request.getParameter("username");
 		UserBO userBO = new UserBO();
-		String uuid = UUID.randomUUID().toString();
+		String uuid = ConvertString.randomString(16);
 	    System.out.println("uuid = " + uuid);
 		if(userBO.findByUserNameAndEmail(username, email) > 0) {
 			if(userBO.resetPassword(username, uuid)) MailUtil.sendMail(email, uuid);
-			
+			response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_LOGIN + "?msg=3");
 		} else {
 			response.sendRedirect(request.getContextPath() + Constants.URL.FORGOT_PASSWORD + "?msg=0");
 		}
