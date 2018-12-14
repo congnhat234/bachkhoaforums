@@ -192,7 +192,7 @@
                 <div class="element">
                     <ul>
                         <li><a href="#">Tin nhắn</a></li>
-                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo</a></li>
+                        <li ><a  href="<%=request.getContextPath() %><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo</a><span id ="notification"></span></li>
                         <li><a href="#">Nội dung của bạn</a></li>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
                     </ul>
@@ -300,3 +300,34 @@
 			} );
 			} );
 	</script>
+		<script>
+$(document).ready(function(){ 
+	var view='';
+	 function notify(view){
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION%>',
+			type: 'POST',
+			cache: false,
+			data: {
+				view: view,
+					},	
+			success: function(responseText){
+				if(responseText>0){
+					$('#notification').css("color","red");
+                     $('#notification').text('('+responseText+')');
+				}
+			},
+       		 error: function (){
+			$('#snackbar').attr("type", "error");
+			toast("Có lỗi trong quá trình xử lí");
+		}			
+		});	
+	}
+	 $(document).on('click', '.dropbtn1', function(){
+		 notify('yes');; 
+		 });
+	 setInterval(function(){ 
+		 notify();; 
+		 }, 5000);
+	});
+</script>

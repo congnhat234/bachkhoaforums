@@ -32,8 +32,8 @@ public class PostBO {
 	public ArrayList<Post> getListPostFolowUser(int idUser) {
 		return postDAO.getListPostFolowUser(idUser);
 	}
-	public ArrayList<Post> getListPostByUser(String username){
-		return postDAO.getListPostByUser(username);
+	public ArrayList<Post> getListPostByUser(String username,int offset, int row_count){
+		return postDAO.getListPostByUser(username,offset,row_count);
 	}
 	public ArrayList<Post> getListOutStanding(){
 		return postDAO.getListOutStanding();
@@ -135,6 +135,10 @@ public class PostBO {
 	}
 	public Object getListPostsBySearch(int offset, int row_count, String searchText) {
 		return postDAO.getListPostsBySearch(offset, row_count, searchText);
+	}
+	public int getCountPostUser(int idUser) {
+		
+		return postDAO.getCountPostUser(idUser);
 	}
 
 }

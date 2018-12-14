@@ -58,13 +58,6 @@
 				} else {
 					User user = (User) session.getAttribute("user");
 			%>
-				<div class="dropdown1">
-					  <button class="dropbtn1">
-					  <span style="background-color: #d9534f; border-radius: 5px; font-size: 17px; " id="unseen"></span>
-					 <i class="fas fa-bell"></i></button>
-					  <div class="dropdown-content1" id="dropdown-content1">
-					  </div>
-				</div>
 				<ul>
 				<li class="userProfile">
 	 				<a id="btnProfile" href="javascript:void(0)"> 
@@ -84,40 +77,3 @@
 			</form>
 		</div>
 	</header>
-	<script>
-
-$(document).ready(function(){ 
-	var view='';
-	 function notify(view){
-		$.ajax({
-			url: '<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION%>',
-			type: 'POST',
-			cache: false,
-			data: {
-				view: view,
-					},	
-			success:
-				function(responseJson){
-                var dis = $('#dropdown-content1');
-                dis.text("");
-                if(responseJson!=null){
-                $.each(responseJson, function(key, value){
-                	var a='<a href="<%=request.getContextPath()%><%=Constants.URL.VIEW_POST%>'+'?idp='+value["idPost"]+'" style="color:black"><strong>'+value["username"]+"</strong> đã trả lời vào chủ đề <strong>"+value["titlePost"]+'</strong>'+'</a>';
-                	if(value["countUnSeen"]>0)
-                	 $('#unseen').text(value["countUnSeen"]);
-                	dis.append(a);
-                });
-                }else{
-                	alert('null');
-                }
-        }
-		});	
-	}
-	 $(document).on('click', '.dropbtn1', function(){
-		 notify('yes');; 
-		 });
-	 setInterval(function(){ 
-		 notify();; 
-		 }, 5000);
-	});
-</script>

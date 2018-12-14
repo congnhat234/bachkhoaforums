@@ -36,12 +36,28 @@ public class ProfileMemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if (request.getParameter("idUC") != null) {
+			System.out.println(request.getParameter("idUC"));
 			int idUserComment = Integer.parseInt(request.getParameter("idUC"));
+			System.out.println("id commnet"+idUserComment);
 			UserBO userBO = new UserBO();
 			User user = userBO.findByIDUser(idUserComment);
 			request.setAttribute("member", user);
 			PostBO postBO = new PostBO();
-			request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
+			int idUser = user.getId_user();
+			int countNews = postBO.getCountPostUser(idUser);
+
+			int row_count = 5;
+			int sumPage = (int)Math.ceil((float)countNews/row_count);
+			request.setAttribute("sumPage", sumPage);
+			int page = 1;
+			if(request.getParameter("current_page")!=null){
+				page = Integer.parseInt(request.getParameter("current_page"));
+			}
+			request.setAttribute("page", page);
+			int offset = (page-1)*row_count;
+			
+			
+			request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername(),offset,row_count));
 			RequestDispatcher rd = request.getRequestDispatcher("/profilemember.jsp");
 			rd.forward(request, response);
 		} 

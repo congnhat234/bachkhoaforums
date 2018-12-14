@@ -37,5 +37,13 @@ public class CommentBO {
 	public boolean deleteLikeCommentByUser(int idUser) {
 		return commentDAO.deleteLikeCommentByUser(idUser);	
 	}
+	public boolean editNotifyComment(int idPost, int id_user) {
+		return commentDAO.editNotifyComment(idPost,id_user);
+		
+	}
+	public boolean seenNotitication(int id_comment) {
+		return commentDAO.seenNotitication(id_comment);
+		
+	}
 
 }

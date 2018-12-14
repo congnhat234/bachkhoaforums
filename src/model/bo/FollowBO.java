@@ -23,13 +23,9 @@ public class FollowBO {
 		
 		return followDAO.deleteFollowPostByUser(idPost,id_user);
 	}
-	public ArrayList<Notification> getListNotify(int idUser) {
+	public ArrayList<Notification> getListNotify(int idUser,int offset,int row_count) {
 		
-		return followDAO.getListNotify(idUser);
-	}
-	public boolean seenNotitication(int idUser) {
-		return followDAO.seenNotitication(idUser);
-		
+		return followDAO.getListNotify(idUser,offset,row_count);
 	}
 	public int getCountUnSeenNoti(int idUser) {
 		
@@ -39,5 +35,9 @@ public class FollowBO {
 		
 		return followDAO.editNotityFollow(idPost);
 		
+	}
+	public int getCountNoti(int idUser) {
+	
+		return followDAO.getCountNoti(idUser);
 	}
 }

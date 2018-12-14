@@ -33,9 +33,22 @@ public class UserPostController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		User user = (User)session.getAttribute("user");
-		System.out.println("acbcbc"+user.getUsername());
 		PostBO postBO = new PostBO();
-		request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername()));
+		int idUser = user.getId_user();
+		int countNews = postBO.getCountPostUser(idUser);
+
+		int row_count = 5;
+		int sumPage = (int)Math.ceil((float)countNews/row_count);
+		request.setAttribute("sumPage", sumPage);
+		int page = 1;
+		if(request.getParameter("current_page")!=null){
+			page = Integer.parseInt(request.getParameter("current_page"));
+		}
+		request.setAttribute("page", page);
+		int offset = (page-1)*row_count;
+		
+		
+		request.setAttribute("listpost", postBO.getListPostByUser(user.getUsername(),offset,row_count));
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());
 		RequestDispatcher rd = request.getRequestDispatcher("/userpost.jsp");
 		rd.forward(request, response);

@@ -38,7 +38,11 @@ public class NotifyUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		if(request.getParameter("id_comment")!=null) {
+			int id_comment=Integer.parseInt((String) request.getParameter("id_comment"));
+			CommentBO commentBO =new CommentBO();
+			commentBO.seenNotitication(id_comment);
+		}else System.out.println("id comment ko lay dc");
 		
 	}
 
@@ -49,18 +53,10 @@ public class NotifyUserController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		FollowBO flBO= new FollowBO();
+		CommentBO commentBO =new CommentBO();
 		int idUser = user.getId_user();
-		if("yes".equals((String) request.getParameter("view"))) {
-			flBO.seenNotitication(idUser);	
-		}
-		ArrayList<Notification> listNotify = flBO.getListNotify(idUser);
-		Gson gson = new Gson();
-        JsonElement element = gson.toJsonTree(listNotify, new TypeToken<List<Notification>>(){}.getType());
-        JsonArray jsonArray = element.getAsJsonArray();
-        response.setContentType("application/json");
+		response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().println(jsonArray);
-		}
-
-
+        response.getWriter().print(flBO.getCountUnSeenNoti(idUser));
+	}
 }

@@ -119,19 +119,21 @@ public class FollowDAO {
 		return false;
 	}
 
-	public ArrayList<Notification> getListNotify(int idUser) {
+	public ArrayList<Notification> getListNotify(int idUser,int offset,int row_count) {
 		FollowDAO flDao= new FollowDAO();
 		ArrayList<Notification> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
 		int count =flDao.getCountUnSeenNoti(idUser);
-		String sql = "SELECT follow.id_post,comment.id_user,post.title,user.username FROM forumdb.follow INNER JOIN forumdb.comment ON follow.id_post=comment.id_post INNER JOIN forumdb.post ON comment.id_post=post.id_post INNER JOIN forumdb.user ON comment.id_user=user.id_user WHERE follow.id_user=? AND comment.id_user!=? ORDER BY comment.id_comment DESC LIMIT 5";
+		String sql = "SELECT comment.id_comment,comment.id_user,user.username,comment.id_post,post.title,comment.notify,post.id_user,post.username FROM forumdb.comment INNER JOIN forumdb.post ON post.id_post=comment.id_post INNER JOIN forumdb.user ON comment.id_user=user.id_user WHERE post.id_user =? AND comment.id_user!=? ORDER BY comment.id_comment DESC LIMIT ?,?;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idUser);
 			pst.setInt(2, idUser);
+			pst.setInt(3, offset);
+			pst.setInt(4, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
-				Notification obj = new Notification(rs.getInt("id_post"),rs.getString("username"),rs.getString("title"),count);
+				Notification obj = new Notification(rs.getInt("comment.id_comment"),rs.getInt("comment.id_post"),rs.getString("user.username"),rs.getString("post.title"),count,rs.getInt("comment.notify"));
 				listItems.add(obj);
 			}
 		} catch (SQLException e) {
@@ -148,31 +150,10 @@ public class FollowDAO {
 		return listItems;
 	}
 
-	public boolean seenNotitication(int idUser) {
-		connection = connectDBLibrary.getConnectMySQL();
-		String query = "UPDATE follow SET notify =1 WHERE id_user = ?;";
-		try {		
-			pst = connection.prepareStatement(query);
-			pst.setInt(1,idUser);			
-			int r = pst.executeUpdate();
-			if (r>0) return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pst.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return false;
-	}
-
 	public int getCountUnSeenNoti(int idUser) {
 		int count = 0;
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT COUNT(*) AS rowcount FROM forumdb.follow INNER JOIN forumdb.comment ON follow.id_post=comment.id_post INNER JOIN forumdb.post ON comment.id_post=post.id_post INNER JOIN forumdb.user ON comment.id_user=user.id_user WHERE follow.id_user=? AND comment.id_user!=? AND follow.notify=0 ORDER BY comment.id_comment DESC LIMIT 5;";
+		String sql = "SELECT COUNT(*) AS rowcount  FROM forumdb.comment INNER JOIN forumdb.post ON post.id_post=comment.id_post WHERE post.id_user =? AND comment.id_user !=? AND comment.notify=1;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idUser);
@@ -197,7 +178,7 @@ public class FollowDAO {
 
 	public boolean editNotityFollow(int idPost) {
 		connection = connectDBLibrary.getConnectMySQL();
-		String query = "UPDATE follow SET notify = 0 WHERE id_post = ?;";
+		String query = "UPDATE follow SET notify = 1 WHERE id_post = ?;";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1,idPost);			
@@ -214,6 +195,33 @@ public class FollowDAO {
 			}
 		}
 		return false;
+	}
+
+	public int getCountNoti(int idUser) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount  FROM forumdb.comment INNER JOIN forumdb.post ON post.id_post=comment.id_post WHERE post.id_user =? AND comment.id_user !=?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			pst.setInt(2, idUser);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+
 	}
 	
 

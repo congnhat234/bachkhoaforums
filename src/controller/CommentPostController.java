@@ -68,6 +68,7 @@ public class CommentPostController extends HttpServlet {
 		CommentBO commentBO =new CommentBO();
 		FollowBO followBO =new FollowBO();
 		if(commentBO.addComment(comment)) {
+		commentBO.editNotifyComment(idPost,user.getId_user());
 		followBO.editNotityFollow(idPost);
 		ArrayList<Comment> listComment = commentBO.getListComment(idPost);
 		request.setAttribute("listComment", listComment);

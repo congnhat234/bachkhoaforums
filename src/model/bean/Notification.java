@@ -1,16 +1,20 @@
 package model.bean;
 
 public class Notification {
+	int id_comment;
 	 int idPost;
 	 String username;
 	 String titlePost;
 	 int countUnSeen;
-	public Notification(int idPost, String username, String titlePost,int countUnSeen) {
+	 int status;
+	public Notification(int id_comment,int idPost, String username, String titlePost,int countUnSeen,int status) {
 		super();
+		this.id_comment = id_comment;
 		this.idPost = idPost;
 		this.username = username;
 		this.titlePost = titlePost;
 		this.countUnSeen = countUnSeen;
+		this.status = status;
 	}
 	public Notification(String username, String titlePost) {
 		super();
@@ -40,6 +44,18 @@ public class Notification {
 	}
 	public void setIdPost(int idPost) {
 		this.idPost = idPost;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public int getId_comment() {
+		return id_comment;
+	}
+	public void setId_comment(int id_comment) {
+		this.id_comment = id_comment;
 	}
 	
 	
