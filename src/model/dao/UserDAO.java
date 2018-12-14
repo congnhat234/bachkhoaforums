@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import libraries.ConnectDBLibrary;
 import model.bean.Subject;
 import model.bean.User;
+import utils.CryptoUtils;
 import utils.SlugUtils;
 
 public class UserDAO {
@@ -455,6 +456,59 @@ public class UserDAO {
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, rate);
 			pst.setInt(2, idUser);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public int findByUserNameAndEmail(String username, String email) {
+		connection = connectDBLibrary.getConnectMySQL();
+		int count = 0;
+		String query = "SELECT COUNT(*) AS count FROM user WHERE username = ? && email = ?;";
+		try {
+			pst = connection.prepareStatement(query);
+			pst.setString(1, username);
+			pst.setString(2, email);
+			rs = pst.executeQuery();
+			while(rs.next()) {				
+				count = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public boolean resetPassword(String username, String uuid) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String passwordCryp = CryptoUtils.md5(uuid);
+		String token = CryptoUtils.md5(username + uuid);
+		String query = "UPDATE user SET password = ?, token = ? WHERE username = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setString(1, passwordCryp);
+			pst.setString(2, token);
+			pst.setString(3, username);
 			int r = pst.executeUpdate();
 			if (r>0) return true;
 		} catch (Exception e) {

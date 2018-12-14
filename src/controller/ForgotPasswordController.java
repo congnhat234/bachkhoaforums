@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.bo.UserBO;
+import utils.Constants;
+import utils.MailUtil;
 
 /**
  * Servlet implementation class ForgotPassWordController
@@ -36,8 +41,17 @@ public class ForgotPasswordController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String email = (String) request.getParameter("email");
+		String username = (String) request.getParameter("username");
+		UserBO userBO = new UserBO();
+		String uuid = UUID.randomUUID().toString();
+	    System.out.println("uuid = " + uuid);
+		if(userBO.findByUserNameAndEmail(username, email) > 0) {
+			if(userBO.resetPassword(username, uuid)) MailUtil.sendMail(email, uuid);
+			
+		} else {
+			response.sendRedirect(request.getContextPath() + Constants.URL.FORGOT_PASSWORD + "?msg=0");
+		}
 	}
 
 }

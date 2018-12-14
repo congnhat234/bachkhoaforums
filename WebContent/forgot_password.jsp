@@ -10,7 +10,7 @@
 			%>
 
 		 <div class="sign_page">
-		 <form action=""class="forgot_password">
+		 <form action="<%=request.getContextPath() %><%=Constants.URL.FORGOT_PASSWORD %>" class="forgot_password" method="post">
 		 <div class="row1">
 		     <p>
                <label>Nhập email của bạn
@@ -18,17 +18,12 @@
                <input type="email" name="email" value=""/>
                </p>
              <p>
-                <label>Mật khẩu mới
+                <label>Nhập username
                 </label>
-                <input type="password" name="password" id="password1"  />
-             </p>
-                <p>
-                 <label>Nhập lại mật khẩu
-                 </label>
-                 <input type="password" name="repassword"  />
-             </p>
+                <input type="text" name="username" />
+             </p>              
 		 </div>
-		 <button class="button">Gửi</button>
+		 <button class="button" type="submit">Gửi</button>
 		 </form>
 		 </div>
 

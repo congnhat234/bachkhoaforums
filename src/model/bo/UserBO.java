@@ -17,6 +17,9 @@ public class UserBO {
 	public User findByUserName(String username) {
 		return userDAO.findByUserName(username);
 	}
+	public int findByUserNameAndEmail(String username, String email) {
+		return userDAO.findByUserNameAndEmail(username, email);
+	}
 	public boolean add(User user) {
 		return userDAO.add(user);
 	}
@@ -51,5 +54,8 @@ public class UserBO {
 	}
 	public boolean setRate(int idUser, int rate) {
 		return userDAO.setRate(idUser, rate);
+	}
+	public boolean resetPassword(String username, String uuid) {
+		return userDAO.resetPassword(username, uuid);
 	}
 }
