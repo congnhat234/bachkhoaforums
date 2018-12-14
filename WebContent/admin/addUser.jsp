@@ -64,7 +64,7 @@
     	if(msg.equals("0")) {%>
     	<script>
 		$('#snackbar').attr("type", "error");
-		toast("Trùng tên danh mục!");
+		toast("Tên đã sử dụng!");
 		</script> 
     	<%}} %>
 <script>

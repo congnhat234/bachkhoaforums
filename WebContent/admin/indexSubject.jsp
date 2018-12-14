@@ -78,7 +78,7 @@
     	if(msg.equals("1")) {%>
     	<script>
 		$('#snackbar').attr("type", "success");
-		toast("Thành công!");
+		toast("Thêm thành công!");
 		</script> 
     	<%}else if(msg.equals("2")){%>
     		 <script>

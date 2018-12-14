@@ -50,4 +50,12 @@
 	</div>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>
+			 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("1")) {%>
+    	<script>
+		$('#snackbar').attr("type", "success");
+		toast("Gửi tin nhắn thành công!");
+		</script> 
+		<%}}%>
 </html>

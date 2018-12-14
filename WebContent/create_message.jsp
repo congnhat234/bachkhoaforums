@@ -75,5 +75,13 @@
     </div>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>
+		 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("0")) {%>
+    	<script>
+		$('#snackbar').attr("type", "error");
+		toast("Gửi tin nhắn không thành công!");
+		</script> 
+		<%}}%>
 
 </html>
