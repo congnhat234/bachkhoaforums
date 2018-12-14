@@ -54,5 +54,7 @@ public class Constants {
 		
 		String SEARCH_POST = "/search";
 		
+		String CREATEMESSAGE = "/user/createmessage";
+		
 	}
 }

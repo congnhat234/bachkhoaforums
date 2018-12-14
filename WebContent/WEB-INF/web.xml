@@ -345,7 +345,7 @@
     <servlet-name>ShowPostsBySearchController</servlet-name>
     <url-pattern>/search</url-pattern>
   </servlet-mapping>
-  <servlet>  
+  <servlet>
     <servlet-name>NotifyUserController</servlet-name>
     <servlet-class>controller.NotifyUserController</servlet-class>
   </servlet>
@@ -353,12 +353,20 @@
     <servlet-name>NotifyUserController</servlet-name>
     <url-pattern>/user/notification</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>NotificationPageController</servlet-name>
     <servlet-class>controller.NotificationPageController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>NotificationPageController</servlet-name>
     <url-pattern>/user/notificationpage</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>CreateMessageController</servlet-name>
+    <servlet-class>controller.CreateMessageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateMessageController</servlet-name>
+    <url-pattern>/user/createmessage</url-pattern>
   </servlet-mapping>
 </web-app>
