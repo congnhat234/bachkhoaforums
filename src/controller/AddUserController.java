@@ -33,6 +33,9 @@ public class AddUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserBO userBO = new UserBO();
+		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+		request.setAttribute("countUserDisabled", usersDisabled);
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/addUser.jsp");
 		rd.forward(request, response);
 	}

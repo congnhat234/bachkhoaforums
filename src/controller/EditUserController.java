@@ -46,6 +46,9 @@ public class EditUserController extends HttpServlet {
 			System.out.println(idUser);
 			UserBO user= new UserBO();
 			request.setAttribute("user",user.findByIDUser(idUser));
+			UserBO userBO = new UserBO();
+			int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+			request.setAttribute("countUserDisabled", usersDisabled);
 			RequestDispatcher dr =request.getRequestDispatcher("/admin/editUser.jsp");
 			dr.forward(request, response);
 	}

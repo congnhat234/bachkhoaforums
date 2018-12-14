@@ -356,6 +356,30 @@ public class UserDAO {
 		}
 		return count;
 	}
+	
+	public int countItemsEnabled() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM user WHERE enabled = 1;";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
 
 	public int getStatus(int idUser) {
 		connection = connectDBLibrary.getConnectMySQL();

@@ -4,28 +4,7 @@
 <%@include file="/templates/public/inc/header.jsp" %>
 <!-- Form elements -->    
 <div class="container">
-<div id="subnav">
-	<div class="container_12">
-		<div class="grid_12">
-			<ul>
-				<li><a
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài
-						viết</a></li>
-				<li><a
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh
-						mục</a></li>
-				<li><a
-					href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người
-						dùng</a></li>
-				<li><a href="#">Tin nhắn</a></li>
-			</ul>
-
-		</div>
-		<!-- End. .grid_12-->
-	</div>
-	<!-- End. .container_12 -->
-	<div style="clear: both;"></div>
-</div>
+<%@include file="/templates/admin/inc/menu.jsp" %>
 <div class="grid_12">
 	<div class="module">
 		 <h2><span>Sửa danh mục</span></h2>

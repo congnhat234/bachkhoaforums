@@ -27,11 +27,13 @@ public class UserBO {
 		return userDAO.delete(idUser);
 	}
 	public ArrayList<User> getListUsers() {
-
 		return userDAO.getListUsers();
 	}
 	public int countItems() {
 		return userDAO.countItems();
+	}
+	public int countItemsEnabled() {
+		return userDAO.countItemsEnabled();
 	}
 	public ArrayList<User> getListUserOffset(int offset, int row_count) {
 		return userDAO.getListUserOffset(offset, row_count);

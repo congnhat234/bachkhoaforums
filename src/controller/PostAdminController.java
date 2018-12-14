@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bo.PostBO;
 import model.bo.SubjectBO;
+import model.bo.UserBO;
 
 /**
  * Servlet implementation class IndexNewsAdminController
@@ -55,7 +56,9 @@ public class PostAdminController extends HttpServlet {
 		SubjectBO subBO= new SubjectBO();
 		request.setAttribute("listPost", postBO.getListPostOffset(offset,row_count));
 		request.setAttribute("listSub", subBO.getListSubject());
-		
+		UserBO userBO = new UserBO();
+		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+		request.setAttribute("countUserDisabled", usersDisabled);
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexPost.jsp");
 		rd.forward(request, response);
 	}

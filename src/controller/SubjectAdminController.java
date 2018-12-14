@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Post;
 import model.bo.SubjectBO;
+import model.bo.UserBO;
 
 /**
  * Servlet implementation class IndexCatAdminController
@@ -56,7 +57,9 @@ public class SubjectAdminController extends HttpServlet {
 		int offset = (page-1)*row_count;
 		
 		request.setAttribute("listSub", subjectBO.getListSubjectOffset(offset, row_count));
-		
+		UserBO userBO = new UserBO();
+		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+		request.setAttribute("countUserDisabled", usersDisabled);
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexSubject.jsp");
 		rd.forward(request, response);
 	}

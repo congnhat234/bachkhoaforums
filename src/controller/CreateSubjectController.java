@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Subject;
 import model.bo.SubjectBO;
+import model.bo.UserBO;
 import utils.Constants;
 
 /**
@@ -32,6 +33,9 @@ public class CreateSubjectController extends HttpServlet {
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			UserBO userBO = new UserBO();
+			int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+			request.setAttribute("countUserDisabled", usersDisabled);
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/addSub.jsp");
 			rd.forward(request, response);
 	}

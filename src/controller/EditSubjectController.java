@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Subject;
 import model.bo.SubjectBO;
+import model.bo.UserBO;
 import utils.Constants;
 
 /**
@@ -33,7 +34,10 @@ public class EditSubjectController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			int idSub= Integer.parseInt(request.getParameter("cid")) ;	
 			SubjectBO subBO= new SubjectBO();
-			request.setAttribute("nameSub", subBO.getSubject(idSub));				
+			request.setAttribute("nameSub", subBO.getSubject(idSub));
+			UserBO userBO = new UserBO();
+			int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+			request.setAttribute("countUserDisabled", usersDisabled);
 			RequestDispatcher rd = request.getRequestDispatcher("/admin/editSub.jsp");
 			rd.forward(request, response);
 	}

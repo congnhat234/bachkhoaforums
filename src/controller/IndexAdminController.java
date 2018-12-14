@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bo.UserBO;
+
 /**
  * Servlet implementation class IndexAdminController
  */
@@ -36,7 +38,9 @@ public class IndexAdminController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		UserBO userBO = new UserBO();
+		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+		request.setAttribute("countUserDisabled", usersDisabled);
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/index.jsp");
 		rd.forward(request, response);
 		

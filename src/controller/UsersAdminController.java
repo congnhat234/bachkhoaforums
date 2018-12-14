@@ -54,7 +54,8 @@ public class UsersAdminController extends HttpServlet {
 		int offset = (page-1)*row_count;
 		
 		request.setAttribute("listUsers", userBO.getListUserOffset(offset, row_count));
-		
+		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+		request.setAttribute("countUserDisabled", usersDisabled);
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUsers.jsp");
 		rd.forward(request, response);
 	}
