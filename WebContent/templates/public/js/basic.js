@@ -16,9 +16,6 @@ $("#btnProfile").on("click", function () {
 $("#author").on("click", function () {
     $("#infomation").css("display", "block");
 });
-$("#btn_drop").on("click", function () {
-    $("#dropdown").css("display", "block");
-});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -37,9 +34,6 @@ window.onclick = function (event) {
     if (event.target == document.getElementById("modal")) {
     	 $("#myModal").css("display", "none");
 	  }
-    if (event.target == document.getElementById("dropdown")) {
-        $("#dropdown").css("display", "none");
-    }
 }
 
 $(function () {

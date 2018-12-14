@@ -258,4 +258,48 @@ public class CommentDAO {
 		}
 		return false;
 	}
+
+
+	public boolean editNotifyComment(int idPost, int id_user) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE comment SET notify=1 WHERE id_post=? AND id_user=?;";
+		try {		
+			pst = connection.prepareStatement(query);	
+			pst.setInt(1, idPost);
+			pst.setInt(2, id_user);
+			
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	public boolean seenNotitication(int id_comment) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE comment SET notify =0 WHERE id_comment = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1,id_comment);			
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }

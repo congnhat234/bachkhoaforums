@@ -45,9 +45,33 @@
 		<a href="#" class=""><i style="font-size: 40px;"class="fab fa-facebook-square "></i></a> 
 		<a href="#" class=""><i style="font-size: 40px;" class="fab fa-twitter-square "></i></a>
 	</div> -->
+
 	
 	<%@include file="/templates/public/inc/menu.jsp"%>
 	
+	<div class=parse>           
+			<div class="parse-content">
+				
+				<%
+					if(request.getAttribute("sumPage")!=null){
+						int sumPage = (Integer) request.getAttribute("sumPage");
+						int current_page = (Integer) request.getAttribute("page");%>
+						<span>Trang <%=current_page %>/<%=sumPage %> </span> 
+						<%String active = ""; %>
+				<%
+						for(int i=1; i<=sumPage; i++){
+							if(current_page == i){
+								active = "style='border: none; background: #616161; box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);color: #f0f0f0;text-shadow: 0px 0px 3px rgba(0,0,0, .5)'";
+							} else {
+								active = "";
+							}
+				%>
+				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_BY_USER%>?current_page=<%=i%>"><%=i %></a> 
+				
+				<%}}  %>
+			</div> 
+			<div style="clear: both;"></div> 
+		 </div>
 	<%
 		if (listpost != null) {
 	%>

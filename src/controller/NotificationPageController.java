@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.Notification;
 import model.bean.User;
 import model.bo.FollowBO;
+import model.bo.PostBO;
 
 /**
  * Servlet implementation class NotificationPageController
@@ -34,10 +35,23 @@ public class NotificationPageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		FollowBO flBO= new FollowBO();
+		
 		int idUser = user.getId_user();
-		flBO.seenNotitication(idUser);	
-		ArrayList<Notification> listNotify = flBO.getListNotify(idUser);
+		FollowBO flBO= new FollowBO();
+		int countNews = flBO.getCountNoti(idUser);
+
+		int row_count = 5;
+		int sumPage = (int)Math.ceil((float)countNews/row_count);
+		request.setAttribute("sumPage", sumPage);
+		int page = 1;
+		if(request.getParameter("current_page")!=null){
+			page = Integer.parseInt(request.getParameter("current_page"));
+		}
+		request.setAttribute("page", page);
+		int offset = (page-1)*row_count;
+	
+		
+		ArrayList<Notification> listNotify = flBO.getListNotify(idUser,offset,row_count);
 		request.setAttribute("listnotify",listNotify );
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/notify.jsp");

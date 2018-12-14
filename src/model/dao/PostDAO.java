@@ -313,16 +313,18 @@ public class PostDAO {
 		return idUser;
 	}
 
-	public ArrayList<Post> getListPostByUser(String username) {
+	public ArrayList<Post> getListPostByUser(String username,int offset,int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where username = ? && enabled = 1;";
+		String sql = "select * from post where username = ? && enabled = 1 LIMIT ?,?;";
 		pst=null;
 		rs=null;
 
 		try {
 			pst=connection.prepareStatement(sql);
 			pst.setString(1, username);
+			pst.setInt(2, offset);
+			pst.setInt(3, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
 			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
@@ -1064,5 +1066,30 @@ public class PostDAO {
 			}
 		}
 		return listItems;
+	}
+
+	public int getCountPostUser(int idUser) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM post where id_user = ? && enabled = 1;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
 	} 
 }

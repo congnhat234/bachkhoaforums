@@ -43,7 +43,10 @@
 			<h2>
 				<span>Danh sách người dùng</span>
 			</h2>
-
+			<form id="search" method="post" action="<%=request.getContextPath()%><%=Constants.URL.SEARCH_POST %>">
+				<input type="search" placeholder="Search!" name="search"> <i
+					id="searchIcon" class="fas fa-search fa"></i>
+			</form>
 			<div class="module-table-body">
 				<form action="">
 

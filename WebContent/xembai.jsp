@@ -73,11 +73,11 @@
 				<% if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
 				if((int)request.getAttribute("followedByUser") == 0){%>
 				<h3>
-					<button id="btnFollow" type="button">Theo dõi</button>
+					<button id="btnFollow" type="button" class="b1">Theo dõi</button>
 				</h3>
 				<%} else {%>
 				<h3>
-					<button id="btnFollow" type="button">Đã theo dõi</button>
+					<button id="btnFollow" type="button" class="b1">Đã theo dõi</button>
 				</h3>
 				<% }%>
 			</div>
