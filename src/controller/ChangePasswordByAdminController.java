@@ -65,7 +65,7 @@ public class ChangePasswordByAdminController extends HttpServlet {
 				request.setAttribute("user", userEdited);
 				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=1");
 			} else {
-				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=0"+"");
+				response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_USER +"?uid="+idUser + "&msg=0");
 			}
 	}
 }

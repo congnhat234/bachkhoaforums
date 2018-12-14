@@ -145,7 +145,7 @@
 %>
 <script>
 	$('#snackbar').attr("type", "success");
-	toast("Đã lưu thay đổi!");
+	toast("Đã lưu thay đổi");
 </script>
 <%
 	} else if (msg.equals("0")) {

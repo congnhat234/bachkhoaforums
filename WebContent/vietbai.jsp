@@ -76,6 +76,15 @@
     </div>
 
     <%@include file="/templates/public/inc/footer.jsp" %>
+    <%if(request.getParameter("msg")!=null){
+    	String msg= request.getParameter("msg");
+    	if(msg.equals("0")){%>
+    	<script>
+    	$('#snackbar').attr("type", "error");
+    	toast("Tạo bài viết không thành công!")
+    	</script>	
+    <%}
+    } %>
     <script type="text/javascript">
 	    var editor = CKEDITOR.replace('editor', {
 			filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
