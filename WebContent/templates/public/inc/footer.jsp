@@ -200,20 +200,7 @@
             </div>
         </div>
     </div>
-    <% } %>
-    
-    <script type="text/javascript">
-    function add_chatinline(){
-    	var hccid=63957916;
-    	var nt=document.createElement("script");
-    	nt.async=true;
-    	nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;
-    	var ct=document.getElementsByTagName("script")[0];
-    	ct.parentNode.insertBefore(nt,ct);
-    	}
-		add_chatinline(); 
-	</script>
-    
+    <% } %>    
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
     <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
 	

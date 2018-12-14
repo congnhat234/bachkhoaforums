@@ -18,6 +18,7 @@
                     <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài viết</a></li>
                     <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh mục</a></li>
                     <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người dùng</a></li>
+                    <li><a href="#">Tin nhắn</a></li>
                 </ul>
                 
             </div><!-- End. .grid_12-->
