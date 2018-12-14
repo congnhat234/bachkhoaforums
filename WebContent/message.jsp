@@ -68,7 +68,12 @@ ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubje
 		%>
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">
+			<%if(message.getNotify_user() == 1) {%>
+			<span style="color:red;">*</span> <a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEDETAIL%>?idM=<%=message.getId_message()%>">Tin nhắn #<%=message.getId_message() %></a>
+			<%} else { %>
 			<a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEDETAIL%>?idM=<%=message.getId_message()%>">Tin nhắn #<%=message.getId_message() %></a>
+			<%} %>
+			
 			</label>
 			<span style="font-size:10px;color:#888;font-style:italic;"><%=message.getDate_create() %></span>
 			</dt>
