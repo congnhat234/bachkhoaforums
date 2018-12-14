@@ -82,7 +82,7 @@
             <br><br>
             <div class="bottom-text ">
                 <p>No account yet?<a href="#singup">Signup</a></p>
-                <h4> <a href="#">Forgot your password?</a></h4>
+                <h4> <a href="<%=request.getContextPath()%><%=Constants.URL.FORGOT_PASSWORD%>">Forgot your password?</a></h4>
             </div>
         </form>
     </div>

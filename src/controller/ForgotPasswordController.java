@@ -8,23 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import model.bo.MessageBO;
-import model.bo.PostBO;
-import model.bo.UserBO;
 
 /**
- * Servlet implementation class IndexAdminController
+ * Servlet implementation class ForgotPassWordController
  */
-
-public class IndexAdminController extends HttpServlet {
+@WebServlet("/ForgotPassWordController")
+public class ForgotPasswordController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexAdminController() {
+    public ForgotPasswordController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,23 +28,16 @@ public class IndexAdminController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("forgot_password.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserBO userBO = new UserBO();
-		PostBO postBO = new PostBO();
-		request.setAttribute("listPost", postBO.getListPostAll());
-		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
-		request.setAttribute("countUserDisabled", usersDisabled);
-		MessageBO messageBO = new MessageBO();
-		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
-		RequestDispatcher rd = request.getRequestDispatcher("/admin/index.jsp");
-		rd.forward(request, response);
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
