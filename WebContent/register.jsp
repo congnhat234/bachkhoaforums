@@ -8,7 +8,7 @@
 				user= (User)request.getAttribute("member");
 			}
 			%>
-		 <div id="signup_page" class="signup_page">
+		 <div id="signup_page" class="sign_page">
 			<form action="<%=request.getContextPath() %>/register" class="register_page"  id="register_page" method="post">
             <h1>Registration</h1>
             <fieldset class="row1">
@@ -78,8 +78,7 @@
                     <input type="text" name="city" class="long" value="<%=user.getCity() %>"/>
                 </p>
             </fieldset>
-
-            <div><button class="button">Register</button></div>
+			 <button class="button">Register</button>
         </form>
 		</div>
 <%@include file="/templates/public/inc/footer.jsp"%>

@@ -6,6 +6,7 @@
     <div class="container_12">
         <div class="grid_12">
             <ul>
+            	<li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_HOME%>">Home</a></li>
                 <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài viết</a></li>
                 <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh mục</a></li>
                 <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người dùng </a>
