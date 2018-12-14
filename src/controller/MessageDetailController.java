@@ -36,10 +36,10 @@ public class MessageDetailController extends HttpServlet {
 		PostBO postBO = new PostBO();
 		SubjectBO subjectBO =new SubjectBO();
 		MessageBO messageBO = new MessageBO();
+		messageBO.setSeenMess(idMessage);
 		request.setAttribute("objMessage", messageBO.getMessage(idMessage));
 		request.setAttribute("listsubject", subjectBO.getListSubject());
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/message_detail.jsp");
 		rd.forward(request, response);
 	}

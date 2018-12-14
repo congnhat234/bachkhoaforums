@@ -191,7 +191,7 @@
                 </div>
                 <div class="element">
                     <ul>
-                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.MESSAGE%>">Tin nhắn</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.MESSAGE%>">Tin nhắn</a><span id ="mess"></span></li>
                         <li ><a  href="<%=request.getContextPath() %><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo</a><span id ="notification"></span></li>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_USER%>">Nội dung của bạn</a></li>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
@@ -317,10 +317,16 @@ $(document).ready(function(){
 				view: view,
 					},	
 			success: function(responseText){
-				if(responseText>0){
-					$('#notification').css("color","red");
-                     $('#notification').text('('+responseText+')');
-				}
+					var noti=responseText.split(',');
+					if(noti[0]>0){
+						$('#notification').css("color","red");
+						$('#notification').text('('+noti[0]+')');
+					}
+					if(noti[1]>0){
+					$('#mess').css("color","red");
+                     
+                     $('#mess').text('('+noti[1]+')');
+					}
 			},
        		 error: function (){
 			$('#snackbar').attr("type", "error");

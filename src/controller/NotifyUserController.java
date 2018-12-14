@@ -20,6 +20,7 @@ import model.bean.Notification;
 import model.bean.User;
 import model.bo.CommentBO;
 import model.bo.FollowBO;
+import model.bo.MessageBO;
 
 /**
  * Servlet implementation class NotifyUserController
@@ -54,9 +55,10 @@ public class NotifyUserController extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		FollowBO flBO= new FollowBO();
 		CommentBO commentBO =new CommentBO();
+		MessageBO mesBO= new MessageBO();
 		int idUser = user.getId_user();
 		response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-        response.getWriter().print(flBO.getCountUnSeenNoti(idUser));
+        response.getWriter().print(flBO.getCountUnSeenNoti(idUser)+","+mesBO.getCountUnSeenMess(idUser));
 	}
 }
