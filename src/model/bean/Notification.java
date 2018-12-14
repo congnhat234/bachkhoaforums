@@ -1,14 +1,16 @@
 package model.bean;
 
 public class Notification {
+	String avatar;
 	int id_comment;
 	 int idPost;
 	 String username;
 	 String titlePost;
 	 int countUnSeen;
 	 int status;
-	public Notification(int id_comment,int idPost, String username, String titlePost,int countUnSeen,int status) {
+	public Notification(String avatar,int id_comment,int idPost, String username, String titlePost,int countUnSeen,int status) {
 		super();
+		this.avatar = avatar;
 		this.id_comment = id_comment;
 		this.idPost = idPost;
 		this.username = username;
@@ -56,6 +58,12 @@ public class Notification {
 	}
 	public void setId_comment(int id_comment) {
 		this.id_comment = id_comment;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 	

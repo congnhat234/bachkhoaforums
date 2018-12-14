@@ -39,21 +39,8 @@ public class UsersAdminController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int page = 1;
 		UserBO userBO = new UserBO();
-		
-		int countUser = userBO.countItems();
-		int row_count = 5;
-		int sumPage = (int)Math.ceil((float)countUser/row_count);
-		request.setAttribute("sumPage", sumPage);
-		if(request.getParameter("current_page")!=null){
-			page = Integer.parseInt(request.getParameter("current_page"));
-		}
-		request.setAttribute("page", page);
-
-		int offset = (page-1)*row_count;
-		
-		request.setAttribute("listUsers", userBO.getListUserOffset(offset, row_count));
+		request.setAttribute("listUsers", userBO.getListUsers());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUsers.jsp");
 		rd.forward(request, response);

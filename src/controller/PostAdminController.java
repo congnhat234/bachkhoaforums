@@ -40,20 +40,8 @@ public class PostAdminController extends HttpServlet {
 		
 		
 		PostBO postBO = new PostBO();
-		int countNews = postBO.countItems();
-
-		int row_count = 5;
-		int sumPage = (int)Math.ceil((float)countNews/row_count);
-		request.setAttribute("sumPage", sumPage);
-		int page = 1;
-		if(request.getParameter("current_page")!=null){
-			page = Integer.parseInt(request.getParameter("current_page"));
-		}
-		request.setAttribute("page", page);
-		int offset = (page-1)*row_count;
-
 		SubjectBO subBO= new SubjectBO();
-		request.setAttribute("listPost", postBO.getListPostOffset(offset,row_count));
+		request.setAttribute("listPost", postBO.getListPostAll());
 		request.setAttribute("listSub", subBO.getListSubject());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexPost.jsp");

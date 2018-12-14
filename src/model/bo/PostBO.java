@@ -13,6 +13,9 @@ public class PostBO {
 	public ArrayList<Post> getListPost(){
 		return postDAO.getAllPostEnabled();
 	}
+	public ArrayList<Post> getListPostAll(){
+		return postDAO.getListPost();
+	}
 	public Post getPost(int idPost){
 		return postDAO.get(idPost);
 	}
@@ -37,12 +40,6 @@ public class PostBO {
 	}
 	public ArrayList<Post> getListOutStanding(){
 		return postDAO.getListOutStanding();
-	}
-	public int countItems() {
-		return postDAO.countItems();
-	}
-	public ArrayList<Post> getListPostOffset(int offset, int row_count) {
-		return postDAO.getListPostOffset(offset,row_count);
 	}
 	public int countLike(int idPost) {
 		return postDAO.countLike(idPost);

@@ -375,39 +375,47 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-#myTable td{vertical-align: middle;}
-#myTable .hoa{width:100px; height: 60px;border-radius:4px;}
-#myTable tr:nth-child(even) td{background: #F6F6F6}
-#myTable tr:hover td{background: #EEEEEE}
-.grid_12 .module form {
+#dynamic-table td{vertical-align: middle;}
+#dynamic-table .hoa{width:100px; height: 60px;border-radius:4px;}
+#dynamic-table tr:nth-child(even) td{background: #F6F6F6}
+#dynamic-table tr:hover td{background: #EEEEEE}
+
+.pagination {
 	float:right;
-	position: relative;
-	right: 30px;
-	margin-left: 40px;
-	border-radius: 3px;
-	background-color:  #3a3c3e;
-	width: 44px;
-	height: 39px;
-	cursor: pointer;
-	-ms-user-select: none;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
+  display: inline-block;
+  list-style-type: none;
 }
 
-/* The search box */
-
-.grid_12 .module form input {
-	display: none;
-	position: absolute;
-	right: 42px;
-	padding: 11px 12px 9px;
-	border: none;
-	width: 210px;
-	border-radius: 2px 0 0 2px;
-	height: 39px;
-	box-sizing: border-box;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+.paginate_button{
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.dataTables_info{
+	float:right;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+.dataTables_filter{
+	margin:5px;
+}
+.dataTables_length{
+	margin:5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.form-control{
+  width: 200px;
+  padding: 5px;
+  height: 25px;
+  outline: none;
+  color: #9DBFAF;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.row{
+	float:right;
+	display: flex;
+    flex-flow: row;
 }

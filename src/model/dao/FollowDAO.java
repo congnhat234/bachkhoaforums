@@ -124,7 +124,7 @@ public class FollowDAO {
 		ArrayList<Notification> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
 		int count =flDao.getCountUnSeenNoti(idUser);
-		String sql = "SELECT comment.id_comment,comment.id_user,user.username,comment.id_post,post.title,comment.notify,post.id_user,post.username FROM forumdb.comment INNER JOIN forumdb.post ON post.id_post=comment.id_post INNER JOIN forumdb.user ON comment.id_user=user.id_user WHERE post.id_user =? AND comment.id_user!=? ORDER BY comment.id_comment DESC LIMIT ?,?;";
+		String sql = "SELECT user.avatar,comment.id_comment,comment.id_user,user.username,comment.id_post,post.title,comment.notify,post.id_user,post.username FROM forumdb.comment INNER JOIN forumdb.post ON post.id_post=comment.id_post INNER JOIN forumdb.user ON comment.id_user=user.id_user WHERE post.id_user =? AND comment.id_user!=? ORDER BY comment.id_comment DESC LIMIT ?,?;";
 		try {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, idUser);
@@ -133,7 +133,7 @@ public class FollowDAO {
 			pst.setInt(4, row_count);
 			rs = pst.executeQuery();
 			while(rs.next()){
-				Notification obj = new Notification(rs.getInt("comment.id_comment"),rs.getInt("comment.id_post"),rs.getString("user.username"),rs.getString("post.title"),count,rs.getInt("comment.notify"));
+				Notification obj = new Notification(rs.getString("user.avatar"),rs.getInt("comment.id_comment"),rs.getInt("comment.id_post"),rs.getString("user.username"),rs.getString("post.title"),count,rs.getInt("comment.notify"));
 				listItems.add(obj);
 			}
 		} catch (SQLException e) {

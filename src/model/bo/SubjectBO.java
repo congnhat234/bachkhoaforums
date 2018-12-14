@@ -23,9 +23,6 @@ public class SubjectBO {
 	public boolean deleteSubject(int idSub) {
 		return subjectDAO.delete(idSub);
 	}
-	public int countItems() {
-		return subjectDAO.countItems();
-	}
 	public ArrayList<Subject> getListSubjectOffset(int offset, int row_count) {
 		return subjectDAO.getListSubjectOffset(offset, row_count);
 	}

@@ -40,22 +40,8 @@ public class SubjectAdminController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		int page = 1;
 		SubjectBO subjectBO = new SubjectBO();
-		int countSub = subjectBO.countItems();
-		int row_count = 5;
-		int sumPage = (int)Math.ceil((float)countSub/row_count);
-		request.setAttribute("sumPage", sumPage);
-
-		if(request.getParameter("current_page")!=null){
-			page = Integer.parseInt(request.getParameter("current_page"));
-		}
-		request.setAttribute("page", page);
-
-		int offset = (page-1)*row_count;
-		
-		request.setAttribute("listSub", subjectBO.getListSubjectOffset(offset, row_count));
+		request.setAttribute("listSub", subjectBO.getListSubject());
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexSubject.jsp");
 		rd.forward(request, response);

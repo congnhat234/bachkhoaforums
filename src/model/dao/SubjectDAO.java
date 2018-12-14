@@ -160,32 +160,6 @@ public class SubjectDAO {
 		return false;
 	}
 
-
-	public int countItems() {
-		int count = 0;
-		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "SELECT COUNT(*) AS rowcount FROM subject";
-		try {
-			pst = connection.prepareStatement(sql);
-			rs=pst.executeQuery();
-			while(rs.next()){
-			   count = rs.getInt("rowcount") ;
-			}
-			  
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pst.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return count;
-	}
-
-
 	public ArrayList<Subject> getListSubjectOffset(int offset, int row_count) {
 		ArrayList<Subject> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();

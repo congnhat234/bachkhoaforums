@@ -282,5 +282,6 @@ body {
 }
 /* end edit menu */
 .alertText{
-	
+	  margin: 3px;
+	  font-style: italic;
 }

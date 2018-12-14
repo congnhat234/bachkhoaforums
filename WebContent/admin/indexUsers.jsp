@@ -43,14 +43,10 @@
 			<h2>
 				<span>Danh sách người dùng</span>
 			</h2>
-			<form id="search" method="post" action="<%=request.getContextPath()%><%=Constants.URL.SEARCH_POST %>">
-				<input type="search" placeholder="Search!" name="search"> <i
-					id="searchIcon" class="fas fa-search fa"></i>
-			</form>
 			<div class="module-table-body">
 				<form action="">
 
-					<table id="myTable" class="tablesorter">
+					<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
 								<th style="width: 5%; text-align: center;">ID</th>
@@ -215,5 +211,68 @@
 		}
 	});
 	</script>
+		<script type="text/javascript">
+			jQuery(function($) {
+				//initiate dataTables plugin
+				var myTable = 
+				$('#dynamic-table')
+				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+				.DataTable( {
+					bAutoWidth: false,
+					"aoColumns": [
+					  null,
+					  null, null,null, null,
+					  { "bSortable": false }
+					],
+					"aaSorting": [],
+			
+					"iDisplayLength": 10,
+			
+			
+					select: {
+						style: 'multi'
+					}
+			    } );
+			
+				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+				
+				myTable.buttons().container().appendTo( $('.tableTools-container') );
+				
+				//style the message box
+				var defaultCopyAction = myTable.button(1).action();
+				myTable.button(1).action(function (e, dt, button, config) {
+					defaultCopyAction(e, dt, button, config);
+					$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+				});
+				
+				var defaultColvisAction = myTable.button(0).action();
+				myTable.button(0).action(function (e, dt, button, config) {
+					
+					defaultColvisAction(e, dt, button, config);
+					
+					
+					if($('.dt-button-collection > .dropdown-menu').length == 0) {
+						$('.dt-button-collection')
+						.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+						.find('a').attr('href', '#').wrap("<li />")
+					}
+					$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+				});
+
+				$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
+					e.stopImmediatePropagation();
+					e.stopPropagation();
+					e.preventDefault();
+				});
+
+				$('.show-details-btn').on('click', function(e) {
+					e.preventDefault();
+					$(this).closest('tr').next().toggleClass('open');
+					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+				});
+
+			
+			})
+		</script>
 </body>
 </html>
