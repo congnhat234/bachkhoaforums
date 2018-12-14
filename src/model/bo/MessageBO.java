@@ -28,4 +28,12 @@ public class MessageBO {
 	public boolean setSeen(int idMessage) {
 		return messageDAO.setSeen(idMessage);
 	}
+	public boolean setSeenMess(int idMess) {
+		
+		return messageDAO.setSeenMess(idMess);
+	}
+	public int getCountUnSeenMess(int idUser) {
+
+		return messageDAO.getCountUnSeenMess(idUser);
+	}
 }

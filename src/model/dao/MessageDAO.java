@@ -132,7 +132,7 @@ public class MessageDAO {
 	
 	public boolean reply(int idMessage, String messageReply) {
 		connection = connectDBLibrary.getConnectMySQL();
-		String query = "UPDATE message SET reply = ? WHERE id_message = ?;";
+		String query = "UPDATE message SET reply = ?, notify_user=1 WHERE id_message = ?;";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setString(1, messageReply);
@@ -195,5 +195,51 @@ public class MessageDAO {
 			}
 		}
 		return false;
+	}
+
+	public boolean setSeenMess(int idMess) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE message SET notify_user = 0 WHERE id_message = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, idMess);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+	public int getCountUnSeenMess(int idUser) {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount  FROM forumdb.message WHERE notify_user=1 AND id_user=?";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1,idUser );
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
 	}
 }
