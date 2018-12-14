@@ -1,3 +1,4 @@
+<%@page import="model.bean.Message"%>
 <%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
@@ -23,9 +24,27 @@
 		    <div class="mainContent">
 		<fieldset>
 		<!-- list tin nhắn -->
+		<%if(request.getAttribute("listMessage") != null) {
+			ArrayList<Message> listMessage = (ArrayList<Message>) request.getAttribute("listMessage");
+			for(Message message : listMessage){
+		%>
 		<dl class="ctrlUnit">
-			<dt> <label for="ctrl_location"><a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMINREPLY%>">Tin nhắn 1</a></label></dt>
+			<dt> <label for="ctrl_location">
+			<a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMINREPLY%>?idM=<%=message.getId_message()%>">
+				<%if(message.getNotify_admin() == 1) {%>
+				<span style="color:red;">*</span> Tin nhắn #<%=message.getId_message() %>
+				<%} else { %>
+				Tin nhắn #<%=message.getId_message() %>
+				<%} %>
+			</a>
+			</label>
+			<span style="font-size:10px;color:#888;font-style:italic;"><%=message.getDate_create() %></span>
+			</dt>
+			<dd><%=message.getEmail() %></dd>
 		</dl>	
+		<%}} else { %>
+		<h5>Bạn không có tin nhắn nào cả.</h5>
+		<%} %>
 		</fieldset>	
 		    </div>
 	</div>

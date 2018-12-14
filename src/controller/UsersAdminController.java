@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bo.MessageBO;
 import model.bo.UserBO;
 
 /**
@@ -56,6 +57,8 @@ public class UsersAdminController extends HttpServlet {
 		request.setAttribute("listUsers", userBO.getListUserOffset(offset, row_count));
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
+		MessageBO messageBO = new MessageBO();
+		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUsers.jsp");
 		rd.forward(request, response);
 	}

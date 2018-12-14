@@ -1,3 +1,4 @@
+<%@page import="model.bean.Message"%>
 <%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
@@ -21,26 +22,31 @@
 			</h2>
 		</div>
 		    <div class="mainContent">
+		    <%
+				if (request.getAttribute("objMessage") != null) {
+					Message message = (Message) request.getAttribute("objMessage");
+			%>
 				<fieldset>
 					<dl class="ctrlUnit">
 						<dt> <label for="ctrl_location">From:</label></dt>
-						<dd> <span>Tên người gửi</span></dd>
+						<dd> <span><%=message.getEmail() %></span></dd>
 					</dl>
 					<dl class="ctrlUnit">
 						<dt> <label>Nội dung tin nhắn:</label></dt>
-						<dd> <span>Nội dung</span></dd>
+						<dd> <span><%=message.getMessage_content() %></span></dd>
 					</dl>	
 				</fieldset>	
-			<form method="post" id="#" enctype="#" action="#">
+			
+			<form method="post" id="#" enctype="#" action="<%=request.getContextPath() %><%=Constants.URL.MESSAGEADMINREPLY%>?idM=<%=message.getId_message()%>">
 				<fieldset>
 					<dl class="ctrlUnit">
 						<dt> <label for="ctrl_location">Nội dung tin nhắn trả lời</label></dt>
-						<dd> <textarea rows="15" cols="70" name="content" id="editor"></textarea> </dd>
+						<dd> <textarea rows="15" cols="70" name="content"><%=message.getReply() %></textarea> </dd>
 					</dl>
 				</fieldset>	
-				<div class="button-bot"><button class="b1"type="button"name="button">Trả lời</button></div>
+				<div class="button-bot"><button class="b1" type="submit" name="button">Trả lời</button></div>
 			</form>				
-
+			<%} %>
 		    </div>
 		</div>
 	</div>

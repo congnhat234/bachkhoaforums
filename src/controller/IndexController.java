@@ -44,8 +44,6 @@ public class IndexController extends HttpServlet {
 		PostBO postBO = new PostBO();
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());
-		//System.out.println(postBO.getListOutStanding().size());
-		//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);
 	}

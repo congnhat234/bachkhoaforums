@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bo.MessageBO;
 import model.bo.PostBO;
 import model.bo.SubjectBO;
 
@@ -30,10 +31,15 @@ public class MessageDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int idMessage = Integer.parseInt((String) request.getParameter("idM"));
+		
 		PostBO postBO = new PostBO();
 		SubjectBO subjectBO =new SubjectBO();
+		MessageBO messageBO = new MessageBO();
+		request.setAttribute("objMessage", messageBO.getMessage(idMessage));
 		request.setAttribute("listsubject", subjectBO.getListSubject());
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/message_detail.jsp");
 		rd.forward(request, response);
 	}

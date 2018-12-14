@@ -47,6 +47,34 @@ public class MessageDAO {
 		return listItems;
 	}
 	
+	public ArrayList<Message>getListMessageByUser(int idUser){
+		ArrayList<Message> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "select * from message where id_user = ?;";
+		try {
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, idUser);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				Message obj = new Message(rs.getInt("id_message"), rs.getInt("id_user"), 
+										rs.getString("email"), rs.getString("message_content"), rs.getString("reply"),
+										rs.getString("date_create"), rs.getInt("notify_user"), rs.getInt("notify_admin"));
+				listItems.add(obj);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
+	
 	public Message getMessage(int idMessage){
 		Message obj=null;
 		connection = connectDBLibrary.getConnectMySQL();
@@ -109,6 +137,51 @@ public class MessageDAO {
 			pst = connection.prepareStatement(query);
 			pst.setString(1, messageReply);
 			pst.setInt(2, idMessage);
+			int r = pst.executeUpdate();
+			if (r>0) return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	
+	public int countUnseenMessage() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM message WHERE notify_admin = 1;";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	public boolean setSeen(int idMessage) {
+		connection = connectDBLibrary.getConnectMySQL();
+		String query = "UPDATE message SET notify_admin = 0 WHERE id_message = ?;";
+		try {		
+			pst = connection.prepareStatement(query);
+			pst.setInt(1, idMessage);
 			int r = pst.executeUpdate();
 			if (r>0) return true;
 		} catch (Exception e) {

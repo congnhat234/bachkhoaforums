@@ -1,3 +1,4 @@
+<%@page import="model.bean.Message"%>
 <%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
@@ -50,23 +51,27 @@ ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubje
 			<li><a href="#">Chi tiết tin nhắn</a></li>
 		</ul>
 	</nav>
+	<%@include file="/templates/public/inc/menu.jsp"%>
     <div class="mainContent">
 		<%
-			User user = null;
-			if (session.getAttribute("user") != null) {
-				user = (User) session.getAttribute("user");
-			}
+			if (request.getAttribute("objMessage") != null) {
+				Message message = (Message) request.getAttribute("objMessage");
 		%>
 		<fieldset>
 		<dl class="ctrlUnit">
-			<dt> <label for="ctrl_location">From:</label></dt>
-			<dd> <span>Tên người gửi</span></dd>
+			<dt> <label for="ctrl_location"><strong>Tin nhắn từ:</strong></label></dt>
+			<dd> <span>Đội ngũ ADMIN</span></dd>
 		</dl>
 		<dl class="ctrlUnit">
-			<dt> <label>Nội dung tin nhắn:</label></dt>
-			<dd> <span>Nội dung</span></dd>
+			<dt> <label for="ctrl_location"><strong>Trả lời tin nhắn của bạn:</strong></label></dt>
+			<dd> <span><%=message.getMessage_content() %></span></dd>
+		</dl>
+		<dl class="ctrlUnit">
+			<dt> <label><strong>Nội dung phản hồi:</strong></label></dt>
+			<dd> <span><%=message.getReply() %></span></dd>
 		</dl>	
 		</fieldset>	
+		<%} %>
     </div>
 </div>
 	<%@include file="/templates/public/inc/footer.jsp"%>

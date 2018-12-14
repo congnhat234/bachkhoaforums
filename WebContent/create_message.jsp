@@ -51,6 +51,7 @@
 			<li><a href="#">Tạo tin nhắn mới</a></li>
 		</ul>
 	</nav>
+	<%@include file="/templates/public/inc/menu.jsp"%>
     <div class="mainContent">
 		<%
 			User user = null;
@@ -58,7 +59,7 @@
 				user = (User) session.getAttribute("user");
 			}
 		%>
-		<form method="post" id="#" enctype="#" action="#">
+		<form method="post" id="#" action="<%=request.getContextPath() %><%=Constants.URL.SENDMESSAGE%>">
 		<fieldset>
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">Email :</label>	</dt>
@@ -69,7 +70,7 @@
 			<dd> <textarea rows="15" cols="70" name="content" id="editor" ></textarea> </dd>
 		</dl>
 		</fieldset>	
-		<div class="button-bot"><button class="b1"type="button"name="button">Gửi</button></div>
+		<div class="button-bot"><button class="b1" type="submit"name="button">Gửi</button></div>
 		</form>	
     </div>
 </div>

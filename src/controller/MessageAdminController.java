@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.bo.MessageBO;
+import model.bo.UserBO;
+
 /**
  * Servlet implementation class MessageAdminController
  */
@@ -34,6 +37,12 @@ public class MessageAdminController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserBO userBO = new UserBO();
+		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
+		request.setAttribute("countUserDisabled", usersDisabled);
+		MessageBO messageBO = new MessageBO();
+		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
+		request.setAttribute("listMessage", messageBO.getListMessage());
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/messageAdmin.jsp");
 		rd.forward(request, response);
 	}

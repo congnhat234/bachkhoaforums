@@ -13,8 +13,8 @@ public class ConnectDBLibrary {
 	public ConnectDBLibrary() {
 		this.url = "jdbc:mysql://localhost:3306/forumdb?useUnicode=true&characterEncoding=UTF-8";
 		this.user =  "root";
-//		this.password = "Congnhat@234";
-		this.password = "Beo@1997";
+		this.password = "Congnhat@234";
+//		this.password = "Beo@1997";
 //		this.password = "1234";
 	}
 	

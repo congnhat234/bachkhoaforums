@@ -18,6 +18,7 @@ import model.bo.MessageBO;
 import model.bo.PostBO;
 import model.bo.SubjectBO;
 import model.bo.UserBO;
+import utils.Constants;
 import utils.CryptoUtils;
 
 /**
@@ -55,18 +56,16 @@ public class SendMessageController extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		int idUser = user.getId_user();
 		String email = (String) request.getParameter("email");
-		String messageContent = new String(((String) request.getParameter("message")).getBytes("ISO-8859-1"), "UTF-8");
+		String messageContent = new String(((String) request.getParameter("content")).getBytes("ISO-8859-1"), "UTF-8");
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");  
 	    Date date = new Date(); 
 	    String dateCreate = formatter.format(date);
-		Message message = new Message(0, idUser, email, messageContent, "", dateCreate, 1, 1);
+		Message message = new Message(0, idUser, email, messageContent, "", dateCreate, 0, 1);
 		MessageBO messageBO = new MessageBO();
 		if(messageBO.addMessage(message)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/message.jsp"+"?msg=1");
-			rd.forward(request, response);
+			response.sendRedirect(request.getContextPath() + Constants.URL.MESSAGE + "?msg=1");
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("/create_message.jsp"+"?msg=0");
-			rd.forward(request, response);
+			response.sendRedirect(request.getContextPath() + Constants.URL.SENDMESSAGE + "?msg=0");
 		}
 	}
 

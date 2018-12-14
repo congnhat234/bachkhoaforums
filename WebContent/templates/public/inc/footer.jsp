@@ -186,14 +186,14 @@
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.ADMIN_HOME%>">Trang quản trị</a></li>
                         <%} %>
                         <li><a href="#">Tùy chọn</a></li>
-                        <li><a href="#">Mật khẩu</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.CHANGE_PASS_USER%>">Mật khẩu</a></li>
                     </ul>
                 </div>
                 <div class="element">
                     <ul>
-                        <li><a href="#">Tin nhắn</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.MESSAGE%>">Tin nhắn</a></li>
                         <li ><a  href="<%=request.getContextPath() %><%=Constants.URL.NOTIFICATION_PAGE%>">Thông báo</a><span id ="notification"></span></li>
-                        <li><a href="#">Nội dung của bạn</a></li>
+                        <li><a href="<%=request.getContextPath() %><%=Constants.URL.SHOW_POST_BY_USER%>">Nội dung của bạn</a></li>
                         <li><a href="<%=request.getContextPath() %><%=Constants.URL.LOGOUT%>">Đăng xuất</a></li>
                     </ul>
                 </div>

@@ -11,7 +11,9 @@
                 <li><a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người dùng </a>
                 	<span style="color:red;">(<%=request.getAttribute("countUserDisabled") %>)</span>
                 </li>
-                <li><a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>">Tin nhắn</a></li>
+                <li><a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>">Tin nhắn</a>
+                	<span style="color:red;">(<%=request.getAttribute("countUnseenMessage") %>)</span>
+                </li>
             </ul>
             
         </div><!-- End. .grid_12-->

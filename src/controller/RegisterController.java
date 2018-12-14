@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.User;
 import model.bo.UserBO;
+import utils.Constants;
 import utils.CryptoUtils;
 
 /**
@@ -35,7 +36,8 @@ public class RegisterController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -62,12 +64,10 @@ public class RegisterController extends HttpServlet {
 		User user = new User(0,3,username,passwordCryp,token,fullname,address,city,gender,email,phone,birthday,date_join,"noimage.jpg",0,1);
 		UserBO userBO = new UserBO();
 		if(userBO.add(user)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp"+"?msg=1");
-			rd.forward(request, response);
+			response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_LOGIN + "?msg=1");
 		} else {
 			request.setAttribute("member",user);
-			RequestDispatcher rd = request.getRequestDispatcher("/register.jsp"+"?msg=0");
-			rd.forward(request, response);
+			response.sendRedirect(request.getContextPath() + Constants.URL.REGISTER + "?msg=0");
 		}
 	}
 

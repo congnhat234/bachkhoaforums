@@ -1,3 +1,4 @@
+<%@page import="model.bean.Message"%>
 <%@page import="utils.ConvertString"%>
 <%@page import="model.bean.Post"%>
 <%@page import="model.bean.Subject"%>
@@ -50,6 +51,7 @@ ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubje
 			<li><a href="#">Danh sách tin nhắn</a></li>
 		</ul>
 	</nav>
+	<%@include file="/templates/public/inc/menu.jsp"%>
     <div class="mainContent">
 		<%
 			User user = null;
@@ -59,9 +61,23 @@ ArrayList<Subject> listsub= (ArrayList<Subject>) request.getAttribute("listsubje
 		%>
 		<fieldset>
 		<!-- list tin nhắn -->
+		<%if(request.getAttribute("listMessage") != null) {
+			ArrayList<Message> listMessage = (ArrayList<Message>) request.getAttribute("listMessage");
+			if(listMessage.size() > 0) {
+			for(Message message : listMessage){
+		%>
 		<dl class="ctrlUnit">
-			<dt> <label for="ctrl_location"><a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEDETAIL%>">Tin nhắn 1</a></label></dt>
+			<dt> <label for="ctrl_location">
+			<a href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEDETAIL%>?idM=<%=message.getId_message()%>">Tin nhắn #<%=message.getId_message() %></a>
+			</label>
+			<span style="font-size:10px;color:#888;font-style:italic;"><%=message.getDate_create() %></span>
+			</dt>
+			<dd><%=message.getMessage_content() %></dd>
 		</dl>	
+		<%}
+			} else { %>
+			<h5>Bạn không có tin nhắn nào cả.</h5>
+			<%}} %>
 		</fieldset>	
     </div>
 </div>

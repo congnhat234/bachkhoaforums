@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Post;
+import model.bo.MessageBO;
 import model.bo.SubjectBO;
 import model.bo.UserBO;
 
@@ -60,6 +61,8 @@ public class SubjectAdminController extends HttpServlet {
 		UserBO userBO = new UserBO();
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
+		MessageBO messageBO = new MessageBO();
+		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexSubject.jsp");
 		rd.forward(request, response);
 	}
