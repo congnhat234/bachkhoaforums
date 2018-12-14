@@ -379,3 +379,8 @@ input:checked + .slider:before {
 #myTable .hoa{width:100px; height: 60px;border-radius:4px;}
 #myTable tr:nth-child(even) td{background: #F6F6F6}
 #myTable tr:hover td{background: #EEEEEE}
+<!--edit css admin index-->
+.content_index_admin{
+	margin: 20px;
+}
+<!--end edit-->

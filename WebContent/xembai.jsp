@@ -72,13 +72,13 @@
 					<%=post.getView() %></h3>
 				<% if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
 				if((int)request.getAttribute("followedByUser") == 0){%>
-				<h3>
+				<div class="button-bot">
 					<button id="btnFollow" type="button" class="b1">Theo dõi</button>
-				</h3>
+				</div>
 				<%} else {%>
-				<h3>
+				<div class="button-bot">
 					<button id="btnFollow" type="button" class="b1">Đã theo dõi</button>
-				</h3>
+				</div>
 				<% }%>
 			</div>
 			<span id="result"></span>

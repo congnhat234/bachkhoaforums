@@ -304,15 +304,22 @@ body {
 .register input:focus .register select:focus {
 	background-color: #efffe0;
 }
+.sign_page{
+	width: 100%;
+	height: auto;
+	
+}
 
 .register_page {
 	width: 550px;
-	height: auto;
+	height: 100%;
 	background-color: #fff;
 	padding: 5px;
 	box-sizing: border-box;
 	box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.5);
 	border-radius: 5px;
+	margin: 0 auto;
+	margin-top: 5%;
 /* 	animation-name: animatetop;
 	animation-duration: 0.4s;
 	top: 100px;
@@ -342,7 +349,6 @@ body {
 	padding: 5px;
 	float: left;
 	border-top: 1px solid #F5F5F5;
-	margin-bottom: 15px;
 }
 
 .register_page .row1 label {
