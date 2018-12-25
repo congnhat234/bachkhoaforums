@@ -15,7 +15,7 @@ public class ConnectDBLibrary {
 		this.user =  "root";
 		this.password = "Congnhat@234";
 //		this.password = "Beo@1997";
-//		this.password = "1234";
+		this.password = "1234";
 	}
 	
 	public Connection getConnectMySQL() {

@@ -40,6 +40,7 @@ public class MessageAdminController extends HttpServlet {
 		UserBO userBO = new UserBO();
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
+		request.setAttribute("title", "Message");
 		MessageBO messageBO = new MessageBO();
 		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
 		request.setAttribute("listMessage", messageBO.getListMessage());

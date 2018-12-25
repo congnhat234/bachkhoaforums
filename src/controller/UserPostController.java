@@ -31,6 +31,7 @@ public class UserPostController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "account");
 		HttpSession session = request.getSession(false);
 		User user = (User)session.getAttribute("user");
 		PostBO postBO = new PostBO();

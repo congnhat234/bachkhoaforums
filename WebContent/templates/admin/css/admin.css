@@ -387,9 +387,9 @@ input:checked + .slider:before {
 <!--end edit-->
 
 .pagination {
-	float:right;
+ float:right;
   display: inline-block;
-  list-style-type: none;
+ 
 }
 
 .paginate_button{
@@ -424,4 +424,7 @@ input:checked + .slider:before {
 	float:right;
 	display: flex;
     flex-flow: row;
+}
+.selected{
+	 border-bottom: red solid 5px;
 }

@@ -47,6 +47,7 @@ public class ProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "setting");
 		RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
 		rd.forward(request, response);
 	}

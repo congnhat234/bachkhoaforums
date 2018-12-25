@@ -11,14 +11,12 @@
 	}
 %>  
 <div class="container">         
-
 	<!-- Dashboard icons -->
 	<div class="content_index_admin">
 		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>" class="dashboard-module">
 			<img src="<%=request.getContextPath() %>/templates/admin/images/Crystal_Clear_write.gif" width="64" height="64" alt="edit" />
 			<span>Bài Viết</span>
 		</a>
-		
 		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>" class="dashboard-module">
 			<img src="<%=request.getContextPath() %>/templates/admin/images/Crystal_Clear_files.gif" width="64" height="64" alt="edit" />
 			<span>Danh mục</span>
@@ -33,7 +31,5 @@
 		</a>				
 		<div style="clear: both"></div>
 	</div> <!-- End .grid_7 -->
-	
-	
 </div>
 <%@include file="/templates/public/inc/footer.jsp" %>           
