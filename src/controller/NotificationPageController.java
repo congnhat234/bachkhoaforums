@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import model.bean.Notification;
 import model.bean.User;
 import model.bo.FollowBO;
-import model.bo.PostBO;
 
 /**
  * Servlet implementation class NotificationPageController

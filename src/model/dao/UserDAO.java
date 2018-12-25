@@ -133,7 +133,7 @@ public class UserDAO {
 	public boolean edit(User user) {
 		connection = connectDBLibrary.getConnectMySQL();
 		String query = "UPDATE user SET id_role = ?, fullname = ?,password=?,token=?, address = ?, city = ?, gender = ?, email = ?, phone = ?, birthday = ?,"
-				+ "avatar = ?, enabled = ? WHERE username = ?;";
+				+ "avatar = ? WHERE username = ?;";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setInt(1, user.getId_role());
@@ -147,8 +147,7 @@ public class UserDAO {
 			pst.setString(9, user.getPhone());
 			pst.setString(10, user.getBirthhday());
 			pst.setString(11, user.getAvatar());
-			pst.setInt(12, user.getEnabled());
-			pst.setString(13, user.getUsername());
+			pst.setString(12, user.getUsername());
 			
 			int r = pst.executeUpdate();
 			if (r>0) return true;

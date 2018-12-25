@@ -46,7 +46,7 @@
 										<%} %>
 						</select>
 						</td>
-						<td align="center"><img src="<%=request.getContextPath() %>/templates/public/files/post/<%=objPost.getPreview_image() %>" class="hoa" /></td>
+						<td align="center"><img src="/save/images/post/<%=objPost.getPreview_image() %>" class="hoa" /></td>
 						<td align="center">
 							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objPost.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
 						</td>

@@ -108,6 +108,7 @@
 		<span style="font-size: 10px; color: #6d6c6c; font-style: italic;">Lượt xem: <%=listpost.get(i).getView() %></span>
 		</p>
 	</div>
+	
 	<hr class="linetopic">
 	<%
 		}

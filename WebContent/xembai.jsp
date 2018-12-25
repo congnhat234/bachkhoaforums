@@ -85,7 +85,7 @@
 		</div>
 		<div>
 			<img
-				src="<%=request.getContextPath() %>/templates/public/files/post/<%=post.getPreview_image()%>"
+				src="/save/images/post/<%=post.getPreview_image()%>"
 				class="imgElement">
 		</div>
 		<br> <br>
@@ -115,8 +115,7 @@
 				Thích
 			</button>
 			<%} %>
-			<button id="sharePost" class="b1" type="button" name="button">Chia
-				sẻ</button>
+			<button id="sharePost" class="b1" type="button" name="button">Chia sẻ</button>
 		</div>
 		<hr>
 		<div class="comment-container">
@@ -129,7 +128,7 @@
 						idUser = user.getId_user();
 					}
 					for(int i=0;i<listComment.size();i++){
-						String urlMember = "/user/" + listComment.get(i).getUserName()+"."+listComment.get(i).getId_user();
+						String urlMember = "/user/" + listComment.get(i).getUserName()+"-"+listComment.get(i).getId_user();
 						int count = 0;
 						boolean checkLike = false;
 						for(int j = 0; j < listLikedComment.size(); j++) {
@@ -144,7 +143,7 @@
 			<div class="comment-content">
 				<div>
 					<img
-						src="<%=request.getContextPath() %>/templates/public/files/<%=listComment.get(i).getAvatar() %>"
+						src="/save/images/<%=listComment.get(i).getAvatar() %>"
 						width="50px" height="50px">
 				</div>
 				<div class="comment">
@@ -268,7 +267,7 @@
 					<%} %>
 						var div = '<div class="comment-content">'
 									+'<div>'
-										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
+										+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
 									+'</div>'
 									+'<div class="comment">'
 										+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
@@ -377,7 +376,7 @@
 						<%} %>
 						var div = '<div class="comment-content">'
 									+'<div>'
-										+'<img src="<%=request.getContextPath() %>/templates/public/files/' + value["avatar"] + '" width="50px" height="50px">'
+										+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
 									+'</div>'
 									+'<div class="comment">'
 										+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'

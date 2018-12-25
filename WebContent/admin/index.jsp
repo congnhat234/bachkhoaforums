@@ -37,9 +37,6 @@ ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
 		</a>				
 		<div style="clear: both"></div>
 	</div> <!-- End .grid_7 -->
-	<%if(listPost.size()>0) %>
-	<span><%=listPost.size()%></span>
-	
 	
 </div>
 <%@include file="/templates/public/inc/footer.jsp" %>           

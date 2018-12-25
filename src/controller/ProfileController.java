@@ -26,6 +26,7 @@ import libraries.FilenameLibrary;
 import model.bean.User;
 import model.bo.UserBO;
 import utils.Constants;
+import utils.ConvertString;
 import utils.CryptoUtils;
 
 /**
@@ -47,6 +48,8 @@ public class ProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
 		rd.forward(request, response);
 	}
@@ -63,10 +66,11 @@ public class ProfileController extends HttpServlet {
 		String email = (String) request.getParameter("email");
 		int gender = Integer.parseInt((String) request.getParameter("gender"));
 		String birthday = (String) request.getParameter("birthday");
-		String address = (String) request.getParameter("address");
-		String city = (String) request.getParameter("city");
+		String address = new String(request.getParameter("address").getBytes("ISO-8859-1"), "UTF-8");
+		String city = new String(request.getParameter("city").getBytes("ISO-8859-1"), "UTF-8");
 		String avatar = user.getAvatar();
 		
+		//Tomcat path
 		String rootPath = System.getProperty("catalina.home");
 		String relativePath = request.getServletContext().getInitParameter("userfile.dir");
 		File file = new File(rootPath + File.separator + relativePath);
@@ -85,26 +89,36 @@ public class ProfileController extends HttpServlet {
 			dirUrl.mkdir();
 		}
 		//==
+		
+		//save files folder path
+		String currentFolderPath = request.getServletContext().getRealPath("");
+		File fileCurent = new File(currentFolderPath);
+		File fileParent = new File(fileCurent.getParent());
+		String tmpPath = fileParent.getParent();
+		File saveImgFolder = new File(tmpPath + "/webapps/save/images/");
+		if(!saveImgFolder.exists()) saveImgFolder.mkdirs();
+		
 		final Part filePart = request.getPart("avatar");
 		String fileName = FilenameLibrary.getFileName(filePart);
 		if(!"".equals(fileName)){
 			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmmssSS");
+			SimpleDateFormat sdf = new SimpleDateFormat("HHmmssSS");
 			String time = sdf.format(date.getTime());
-			
+			String randomStr = ConvertString.randomString(8);
 			String extension = "";
-			int i = fileName.lastIndexOf('.');
+			int i =  fileName.lastIndexOf('.');
 			if (i > 0) {
 			    extension = fileName.substring(i+1); 
 			}
-			fileName = time + "." + extension;
+			fileName = randomStr + "_" + time + "." + extension;
 			OutputStream out = null;
 			InputStream filecontent = null;
 			avatar = fileName;
 			try {
 				System.out.println("Absolute Path at server= " + file.getAbsolutePath());
-				out = new FileOutputStream(new File(realPath + File.separator + fileName));
+//				out = new FileOutputStream(new File(realPath + File.separator + fileName));
 //				out = new FileOutputStream(new File(path + File.separator + fileName));
+				out = new FileOutputStream(new File(saveImgFolder + File.separator + fileName));
 				filecontent = filePart.getInputStream();
 				int read = 0;
 				final byte[] bytes = new byte[1024];

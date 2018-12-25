@@ -22,6 +22,7 @@ import model.bean.User;
 import model.bo.MessageBO;
 import model.bo.UserBO;
 import utils.Constants;
+import utils.ConvertString;
 import utils.CryptoUtils;
 
 /**
@@ -92,27 +93,34 @@ public class EditUserController extends HttpServlet {
 		if (!dirUrl.exists()){
 			dirUrl.mkdir();
 		}
-		
 		//==
+		
+		//save files folder path
+		String currentFolderPath = request.getServletContext().getRealPath("");
+		File fileCurent = new File(currentFolderPath);
+		File fileParent = new File(fileCurent.getParent());
+		String tmpPath = fileParent.getParent();
+		File saveImgFolder = new File(tmpPath + "/webapps/save/images");
+		if(!saveImgFolder.exists()) saveImgFolder.mkdirs();
+		
 		final Part filePart = request.getPart("avatar");
 		String fileName = FilenameLibrary.getFileName(filePart);
 		if(!"".equals(fileName)){
 			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmmssSS");
+			SimpleDateFormat sdf = new SimpleDateFormat("HHmmssSS");
 			String time = sdf.format(date.getTime());
-			
+			String randomStr = ConvertString.randomString(8);
 			String extension = "";
-			int i = fileName.lastIndexOf('.');
+			int i =  fileName.lastIndexOf('.');
 			if (i > 0) {
 			    extension = fileName.substring(i+1); 
 			}
-			fileName = time + "." + extension;
+			fileName = randomStr + "_" + time + "." + extension;
 			OutputStream out = null;
 			InputStream filecontent = null;
 			avatar = fileName;
 			try {
-				System.out.println("Absolute Path at server= " + file.getAbsolutePath());
-				out = new FileOutputStream(new File(realPath + File.separator + fileName));
+				out = new FileOutputStream(new File(saveImgFolder + File.separator + fileName));
 				filecontent = filePart.getInputStream();
 				int read = 0;
 				final byte[] bytes = new byte[1024];
@@ -130,9 +138,9 @@ public class EditUserController extends HttpServlet {
 				}
 			}
 		}
-			if("".equals(avatar)) {
-				avatar=user.getAvatar();
-			}
+		if("".equals(avatar)) {
+			avatar=user.getAvatar();
+		}
 		 User userid = new User(0,role,user.getUsername(),user.getPassword(),user.getToken(),fullname,address,city,gender,email,phone,birthday,user.getDate_join(),avatar,0,0);
 		if(userBO.edit(userid)){
 			String picture = user.getAvatar();

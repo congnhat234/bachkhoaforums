@@ -34,7 +34,7 @@
 					<dd>
 						<a href="#" class="avatar"> <img id="imgpreview"
 							style="width: 100px; height: 100px;"
-							src="<%=request.getContextPath()%>/templates/public/files/<%=user.getAvatar()%>">
+							src="/save/images/<%=user.getAvatar()%>">
 						</a> <br> <input id="imginput" type="file" name="avatar" value=""
 							id="" class="textCtrl OptOut">
 					</dd>
@@ -113,7 +113,7 @@
 					</dt>
 					<dd>
 						<input type="text" name="phone" value="<%=user.getPhone()%>"
-							class="textCtrl" maxlength="">
+							class="textCtrl">
 					</dd>
 				</dl>
 				<dl class="ctrlUnit">
@@ -122,7 +122,7 @@
 					</dt>
 					<dd>
 						<input type="text" name="email" value="<%=user.getEmail()%>"
-							class="textCtrl" maxlength="">
+							class="textCtrl">
 					</dd>
 				</dl>
 			</fieldset>

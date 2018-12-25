@@ -28,7 +28,7 @@
 				</dt>
 				<dd>
 					<img style="width: 100px; height: 100px;"
-						src="<%=request.getContextPath()%>/templates/public/files/<%=member.getAvatar()%>">
+						src="../../save/images/<%=member.getAvatar()%>">
 					<br>
 				</dd>
 			</dl>

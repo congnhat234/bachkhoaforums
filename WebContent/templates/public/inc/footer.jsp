@@ -125,7 +125,7 @@
         <div class="profile">
             <div class="profile_header">
                 <div class="image">
-                    <img src="<%=request.getContextPath() %>/templates/public/files/<%=userProfile.getAvatar()%>">
+                    <img src="/save/images/<%=userProfile.getAvatar()%>">
                 </div>
                 <div class="infor">
                     <p class="username"><%=userProfile.getUsername()%></p>

@@ -25,6 +25,7 @@ import model.bo.PostBO;
 import model.bo.SubjectBO;
 import model.bo.UserBO;
 import utils.Constants;
+import utils.ConvertString;
 
 /**
  * Servlet implementation class CreatePostController
@@ -100,25 +101,34 @@ public class CreatePostController extends HttpServlet {
 			}
 		}
 		// ==
+		
+		//save files folder path
+		String currentFolderPath = request.getServletContext().getRealPath("");
+		File fileCurent = new File(currentFolderPath);
+		File fileParent = new File(fileCurent.getParent());
+		String tmpPath = fileParent.getParent();
+		File saveImgFolder = new File(tmpPath + "/webapps/save/images/post");
+		if(!saveImgFolder.exists()) saveImgFolder.mkdirs();
+		
 		final Part filePart = request.getPart("preview_image");
 		String fileName = FilenameLibrary.getFileName(filePart);
 		if (!"".equals(fileName)) {
 			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy_HHmmssSS");
+			SimpleDateFormat sdf = new SimpleDateFormat("HHmmssSS");
 			String time = sdf.format(date.getTime());
-
+			String randomStr = ConvertString.randomString(8);
 			String extension = "";
-			int i = fileName.lastIndexOf('.');
+			int i =  fileName.lastIndexOf('.');
 			if (i > 0) {
-				extension = fileName.substring(i + 1);
+			    extension = fileName.substring(i+1); 
 			}
-			fileName = time + "." + extension;
+			fileName = randomStr + "_" + time + "." + extension;
 			OutputStream out = null;
 			InputStream filecontent = null;
 			preview_image = fileName;
 			try {
 				System.out.println("Absolute Path at server= " + file.getAbsolutePath());
-				out = new FileOutputStream(new File(realPath + File.separator + fileName));
+				out = new FileOutputStream(new File(saveImgFolder + File.separator + fileName));
 				filecontent = filePart.getInputStream();
 				int read = 0;
 				final byte[] bytes = new byte[1024];

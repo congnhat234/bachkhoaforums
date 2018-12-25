@@ -35,7 +35,7 @@
                             <dt><label>Hình đại diện:</label></dt>
                             <dd>                           
                                 <a href="#" class="avatar">
-                                    <img id="imgpreview" style="width:100px; height:100px;" src="<%=request.getContextPath() %>/templates/public/files/<%=user.getAvatar() %>">
+                                    <img id="imgpreview" style="width:100px; height:100px;" src="/save/images/<%=user.getAvatar() %>">
                                 </a> <br>
                                 <input id="imginput" type="file" name="avatar" value="" id="" class="textCtrl OptOut">
                             </dd>
@@ -48,9 +48,9 @@
                         </dl>
                         	<label>Quyền hạn</label>					
 				     <select  name="role" class="input-medium" >
-				     	<option  value="1" <%if(user.getId_role()==1){%> selected <%}%>>1.Admin </option>
-				     	<option  value="2" <%if(user.getId_role()==2){ %> selected<%} %>>2.Mod</option>
-				     	<option  value="3" <%if(user.getId_role()==3){ %> selected<%} %>>3.User </option>
+				     	<option  value="1" <%if(user.getId_role()==1){%> selected <%}%>>Admin </option>
+				     	<option  value="2" <%if(user.getId_role()==2){ %> selected<%} %>>Mod</option>
+				     	<option  value="3" <%if(user.getId_role()==3){ %> selected<%} %>>User </option>
 				     </select>
                         <dl class="ctrlUnit">
                             <dt><label>Giới tính:</label></dt>
@@ -69,7 +69,7 @@
 
                         <dl class="ctrlUnit OptOut">
                             <dt>Ngày sinh:</dt>
-                           <dd><input type="text" name="birthday" value="<%=user.getBirthhday() %>" class="textCtrl OptOut"></dd>
+                           <dd><input type="date" name="birthday" value="<%=user.getBirthhday() %>" class="textCtrl OptOut"></dd>
                         </dl>
                     </fieldset>
                     <fieldset>
@@ -243,5 +243,24 @@ window.onload = function(){
 	} );
 	} );
 </script>
+<script type="text/javascript">
+	function previewFile() {
+		var preview = document.getElementById('imgpreview');
+		var file = document.getElementById('imginput').files[0];
+		var reader = new FileReader();
 
+		reader.onloadend = function() {
+			preview.src = reader.result;
+		}
+
+		if (file) {
+			reader.readAsDataURL(file);
+		} else {
+			preview.src = "";
+		}
+	}
+	$("#imginput").change(function() {
+		previewFile();
+	});
+</script>
 </body>

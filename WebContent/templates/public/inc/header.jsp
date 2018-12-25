@@ -61,7 +61,7 @@
 				<ul>
 				<li class="userProfile">
 	 				<a id="btnProfile" href="javascript:void(0)"> 
-						<span class="avatar"><img src="<%=request.getContextPath()%>/templates/public/files/<%=user.getAvatar() %>" alt=""></span> 
+						<span class="avatar"><img src="/save/images/<%=user.getAvatar() %>" alt=""></span> 
 						<strong class="accountUsername"><%=user.getUsername()%></strong>
 					</a > 
 				</li>

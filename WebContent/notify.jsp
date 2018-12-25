@@ -53,15 +53,13 @@
 				String urlPost = "/threads/" + ConvertString.createSlug(obj.getTitlePost()) + "-" + obj.getIdPost();
 				String urlAuth = "/user/" + obj.getUsername()+"-"+obj.getIdUser();
 			%>
-		<div class="alert" id="<%=obj.getId_comment()%>"<%if(obj.getStatus()==1){%>style ="background-color:grey"<%} else%>  style ="background-color:white" >
-			<a href="" class=""><img
-				src="<%=request.getContextPath()%>/templates/public/files/<%=obj.getAvatar()%>"
-				width="40" height="40"></a>
+		<div class="alert" id="<%=obj.getId_comment()%>"<%if(obj.getStatus()==1){%>style ="background-color:#8681813b"<%} else%>  style ="background-color:white" >
+			<a href="" class="">
+			<img src="/save/images/<%=obj.getAvatar()%>" width="40" height="40" style="border-radius:50%;"></a>
 			<div class="alertText">
 				<h4>
 					<a href="<%=request.getContextPath()%><%=urlAuth%>" class="username subject"><%=obj.getUsername() %></a> đã trả lời vào chủ đề <a
-						href="<%=request.getContextPath()%><%=urlPost%>" class="PopupItemLink"><%=obj.getTitlePost() %></a>. Có thể còn có nhiều bài
-					nữa.
+						href="<%=request.getContextPath()%><%=urlPost%>" class="PopupItemLink"><%=obj.getTitlePost() %></a>
 				</h4>
 			</div>
 		</div>
