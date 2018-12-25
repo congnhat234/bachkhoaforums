@@ -45,6 +45,7 @@ public class PostAdminController extends HttpServlet {
 		SubjectBO subBO= new SubjectBO();
 		request.setAttribute("listPost", postBO.getListPostAll());
 		request.setAttribute("listSub", subBO.getListSubject());
+		request.setAttribute("title", "Post");
 		UserBO userBO = new UserBO();
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);

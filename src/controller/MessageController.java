@@ -35,6 +35,7 @@ public class MessageController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
+		request.setAttribute("title", "message");
 		PostBO postBO = new PostBO();
 		SubjectBO subjectBO =new SubjectBO();
 		MessageBO messageBO = new MessageBO();

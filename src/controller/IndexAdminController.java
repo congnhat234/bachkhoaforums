@@ -33,6 +33,7 @@ public class IndexAdminController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doPost(request, response);
 	}
 
@@ -45,11 +46,11 @@ public class IndexAdminController extends HttpServlet {
 		request.setAttribute("listPost", postBO.getListPostAll());
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
+		request.setAttribute("title", "Admin");
 		MessageBO messageBO = new MessageBO();
 		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/index.jsp");
 		rd.forward(request, response);
-		
 	}
 
 }

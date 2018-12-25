@@ -32,7 +32,6 @@ public class MessageDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idMessage = Integer.parseInt((String) request.getParameter("idM"));
-		
 		PostBO postBO = new PostBO();
 		SubjectBO subjectBO =new SubjectBO();
 		MessageBO messageBO = new MessageBO();

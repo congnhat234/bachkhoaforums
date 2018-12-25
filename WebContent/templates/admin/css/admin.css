@@ -384,7 +384,13 @@ input:checked + .slider:before {
 .content_index_admin{
 	margin: 20px;
 }
-/*end edit*/
+<!--end edit-->
+
+.pagination {
+ float:right;
+  display: inline-block;
+ 
+}
 
 .paginate_button{
   color: black;
@@ -419,4 +425,7 @@ input:checked + .slider:before {
 	float:right;
 	display: flex;
     flex-flow: row;
+}
+.selected{
+	 border-bottom: red solid 5px;
 }

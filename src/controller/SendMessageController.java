@@ -40,6 +40,7 @@ public class SendMessageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "message");
 		PostBO postBO = new PostBO();
 		SubjectBO subjectBO =new SubjectBO();
 		request.setAttribute("listsubject", subjectBO.getListSubject());

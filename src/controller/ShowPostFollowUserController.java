@@ -36,6 +36,7 @@ public class ShowPostFollowUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "account");
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int idUser= user.getId_user();

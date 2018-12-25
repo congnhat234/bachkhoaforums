@@ -39,11 +39,12 @@ public class NotifyUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		if(request.getParameter("id_comment")!=null) {
 			int id_comment=Integer.parseInt((String) request.getParameter("id_comment"));
 			CommentBO commentBO =new CommentBO();
 			commentBO.seenNotitication(id_comment);
-		}else System.out.println("id comment ko lay dc");
+		}
 		
 	}
 

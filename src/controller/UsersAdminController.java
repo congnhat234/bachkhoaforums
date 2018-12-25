@@ -44,6 +44,7 @@ public class UsersAdminController extends HttpServlet {
 		request.setAttribute("listUsers", userBO.getListUsers());
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
+		request.setAttribute("title", "User");
 		MessageBO messageBO = new MessageBO();
 		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());
 		RequestDispatcher rd = request.getRequestDispatcher("/admin/indexUsers.jsp");
