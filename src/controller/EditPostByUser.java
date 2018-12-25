@@ -28,44 +28,42 @@ import utils.Constants;
 import utils.ConvertString;
 
 /**
- * Servlet implementation class CreatePostController
+ * Servlet implementation class EditPostByUser
  */
 @MultipartConfig
-public class CreatePostController extends HttpServlet {
+public class EditPostByUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EditPostByUser() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public CreatePostController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SubjectBO subjectBO = new SubjectBO();
 		request.setAttribute("listSubject", subjectBO.getListSubject());
-		RequestDispatcher rd = request.getRequestDispatcher("/vietbai.jsp");
+		
+		int idPost = Integer.parseInt(request.getParameter("idp"));
+		PostBO postBO = new PostBO();	
+		request.setAttribute("post", postBO.getPost(idPost));	
+		RequestDispatcher rd = request.getRequestDispatcher("/editPostUser.jsp");
 		rd.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		
+		int idp = Integer.parseInt(request.getParameter("idp"));
 		UserBO userBO = new UserBO();
-		int rate = userBO.getRate(user.getId_user()) + 10;
-		userBO.setRate(user.getId_user(), rate);
 		User userEdited = userBO.findByToken(user.getToken());
 		session.setAttribute("user", userEdited);
 
@@ -146,13 +144,13 @@ public class CreatePostController extends HttpServlet {
 				}
 			}
 		}
-		Post post = new Post(0, idSubject, user.getId_user(), user.getUsername(), date_create, title, preview_image, previewContent,
+		Post post = new Post(idp, idSubject, user.getId_user(), user.getUsername(), date_create, title, preview_image, previewContent,
 				content, 0, 0);
 		PostBO postBO = new PostBO();
-		if (postBO.addPost(post)) {
-			response.sendRedirect(request.getContextPath() + Constants.URL.HOME+"?msg=1");
+		if (postBO.editPost(post)) {
+			response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_POST_BY_USER+ "?msg=2");
 		} else {
-			response.sendRedirect(request.getContextPath() + Constants.URL.CREATE_POST + "?msg=0");
+			response.sendRedirect(request.getContextPath() + Constants.URL.EDIT_POST_BY_USER + "?msg=0"+"&idp="+idp);
 		}
 	}
 

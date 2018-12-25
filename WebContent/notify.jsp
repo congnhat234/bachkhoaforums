@@ -27,6 +27,7 @@
 				<%
 					if(request.getAttribute("sumPage")!=null){
 						int sumPage = (Integer) request.getAttribute("sumPage");
+						if(sumPage!=0){
 						int current_page = (Integer) request.getAttribute("page");%>
 						<span>Trang <%=current_page %>/<%=sumPage %> </span> 
 						<%String active = ""; %>
@@ -41,7 +42,7 @@
 				%>
 				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=urlPage%>"><%=i %></a> 
 				
-				<%}}  %>
+				<%}}}  %>
 			</div> 
 			<div style="clear: both;"></div> 
 		 </div>
