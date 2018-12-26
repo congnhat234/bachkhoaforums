@@ -129,6 +129,14 @@
     <servlet-name>CreatePostController</servlet-name>
     <url-pattern>/user/create-post</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>EditPostByUser</servlet-name>
+    <servlet-class>controller.EditPostByUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditPostByUser</servlet-name>
+    <url-pattern>/user/editpost</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ShowPostBySubjectController</servlet-name>
     <servlet-class>controller.ShowPostBySubjectController</servlet-class>
@@ -401,7 +409,7 @@
     <servlet-name>MessageAdminReplyController</servlet-name>
     <url-pattern>/admin/messagereply</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>ForgotPasswordController</servlet-name>
     <servlet-class>controller.ForgotPasswordController</servlet-class>
   </servlet>

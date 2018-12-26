@@ -55,6 +55,7 @@
 				<%
 					if(request.getAttribute("sumPage")!=null){
 						int sumPage = (Integer) request.getAttribute("sumPage");
+						if(sumPage!=0){
 						int current_page = (Integer) request.getAttribute("page");%>
 						<span>Trang <%=current_page %>/<%=sumPage %> </span> 
 						<%String active = ""; %>
@@ -68,7 +69,7 @@
 				%>
 				<a <%=active %> class="page" href="<%=request.getContextPath()%><%=Constants.URL.SHOW_POST_BY_USER%>?current_page=<%=i%>"><%=i %></a> 
 				
-				<%}}  %>
+				<%}}}  %>
 			</div> 
 			<div style="clear: both;"></div> 
 		 </div>
@@ -90,7 +91,7 @@
 		<div class="writer"> 
 			<i class="fas fa-comments fa-sm"
 			style="font-size: 40px;"></i> <a
-			href="<%=request.getContextPath()%><%=urlPost%>%>"
+			href="<%=request.getContextPath()%><%=urlPost%>"
 			style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
 			<br>
 			<div class="amount">
@@ -107,6 +108,16 @@
 		<br>
 		<span style="font-size: 10px; color: #6d6c6c; font-style: italic;">Lượt xem: <%=listpost.get(i).getView() %></span>
 		</p>
+			<ul class="menu1">
+			<li  class="dropdown">
+			 <a href="#" class=""><i class="fas fa-ellipsis-v"></i></a>
+				<div class="dropdown_content">
+					<a href="<%=request.getContextPath()%><%=Constants.URL.EDIT_POST_BY_USER%>?idp=<%=listpost.get(i).getId_post()%>">Sửa bài viết</a> 
+					<a href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=listpost.get(i).getId_post()%>&user=1">Xóa bài viết</a> 
+				</div>
+			</li>
+			</ul>
+		 
 	</div>
 	
 	<hr class="linetopic">
@@ -117,6 +128,25 @@
 	<h6 style="margin-left: 25px;">Chưa có bài viết.</h6>
 	<%} %>
 </div>
-	<%@include file="/templates/public/inc/footer.jsp"%>
+<%@include file="/templates/public/inc/footer.jsp" %> 
+		 <%if(request.getParameter("msg") != null) { 
+    	String msg = request.getParameter("msg");
+    	if(msg.equals("0")) {%>
+    	<script>
+		$('#snackbar').attr("type", "error");
+		toast("Không thành công!");
+		</script> 
+    	<%}else if(msg.equals("1")) {%>
+    		<script>
+    		$('#snackbar').attr("type", "success");
+    		toast("Xóa thành công!");
+    		</script> 
+    		<%}else if(msg.equals("2")) {%>
+    		<script>
+    		$('#snackbar').attr("type", "success");
+    		toast("Sửa thành công!");
+    		</script> 
+    		 <%}}%>
 	</body>
+	
 </html>

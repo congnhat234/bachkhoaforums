@@ -35,7 +35,6 @@ public class DeletePostController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idPost=Integer.parseInt(request.getParameter("del"));
-		System.out.println("kkkkkkkkkkkkk"+idPost);
 		PostBO postBO= new PostBO();
 		FollowBO followBO= new FollowBO();
 		CommentBO cmtBO= new CommentBO();
@@ -52,7 +51,10 @@ public class DeletePostController extends HttpServlet {
 			//xoa comment by id_post
 			cmtBO.deleteCommentByPost(idPost);
 		if(postBO.deletePost(idPost)){
-			response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_POST+"?msg=1");	
+			if(Integer.parseInt(request.getParameter("user"))==1)
+				response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_POST_BY_USER+"?msg=1");	
+			else
+				response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_POST+"?msg=1");	
 		}
 	}
 

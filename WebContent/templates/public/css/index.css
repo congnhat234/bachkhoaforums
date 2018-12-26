@@ -1,4 +1,4 @@
-body {
+fa-ellipsis-vbody {
 	margin: 0;
 	min-width: 1000px;
 }
@@ -1115,7 +1115,9 @@ body {
 .fa-home {
 	color: hsl(0, 0%, 30%);
 }
-
+.fa-ellipsis-v{
+	color: hsl(0, 0%, 30%);
+}
 .breadcrumbs li a:after {
 	content: '';
 	width: 20px;
