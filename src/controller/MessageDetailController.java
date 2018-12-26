@@ -36,6 +36,7 @@ public class MessageDetailController extends HttpServlet {
 		SubjectBO subjectBO =new SubjectBO();
 		MessageBO messageBO = new MessageBO();
 		messageBO.setSeenMess(idMessage);
+		request.setAttribute("title","message");
 		request.setAttribute("objMessage", messageBO.getMessage(idMessage));
 		request.setAttribute("listsubject", subjectBO.getListSubject());
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());
