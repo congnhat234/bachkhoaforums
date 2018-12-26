@@ -62,13 +62,7 @@
                     <dd>
                         <input class="button" type="submit" value="Gửi bài">
                     </dd>
-                </dl>
-                <div class="checkbox1">
-                    <input type="checkbox" name="check1" value="TheoDoi">
-                    <label>Theo dõi chủ đề này.</label> <br><br>
-                    <input type="checkbox" name="check2" value="NhanThongBao">
-                    <label>Nhận thông báo qua email.</label><br><br>
-                </div>
+                </dl>             
             
         </form>
     </div>

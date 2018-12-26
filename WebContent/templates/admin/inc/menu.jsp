@@ -12,7 +12,7 @@
                 <li><a  <%if(request.getAttribute("title").equals("User")){ %> class="selected" <%}%> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người dùng </a>
                 	<span style="color:red;">(<%=request.getAttribute("countUserDisabled") %>)</span>
                 </li>
-                <li><a <%if(request.getAttribute("title").equals("Message")){ %> class="stopic selected" <%} else {%> class="topic"<%} %> href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>">Tin nhắn</a>
+                <li><a <%if(request.getAttribute("title").equals("Message")){ %> class="selected" <%} %> href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>">Tin nhắn</a>
                 	<span style="color:red;">(<%=request.getAttribute("countUnseenMessage") %>)</span>
                 </li>
             </ul>
