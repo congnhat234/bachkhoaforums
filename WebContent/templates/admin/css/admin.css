@@ -1,43 +1,50 @@
 /* Style the tab */
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+	background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+	background-color: #ccc;
 }
 
 /* Style the tab content */
 .tabcontent {
-  animation: fadeEffect 1s; /* Fading effect takes 1 second */
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+	animation: fadeEffect 1s;
+	/* Fading effect takes 1 second */
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
 }
+
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 
 #subnav {
@@ -63,7 +70,8 @@
 	margin-bottom: 0px !important
 }
 
-#subnav ul a, #subnav ul a:visited {
+#subnav ul a,
+#subnav ul a:visited {
 	display: block;
 	float: left;
 	color: #0063be;
@@ -72,7 +80,8 @@
 	text-decoration: none;
 }
 
-#subnav ul a:hover, #subnav ul a:active {
+#subnav ul a:hover,
+#subnav ul a:active {
 	text-decoration: underline;
 }
 
@@ -87,7 +96,8 @@
 }
 
 /* -------------------- Dashboard -------------------- */
-a.dashboard-module, a.dashboard-module:visited {
+a.dashboard-module,
+a.dashboard-module:visited {
 	width: 142px;
 	height: 142px;
 	display: block;
@@ -98,7 +108,8 @@ a.dashboard-module, a.dashboard-module:visited {
 	color: #444444;
 }
 
-a.dashboard-module:hover, a.dashboard-module:active {
+a.dashboard-module:hover,
+a.dashboard-module:active {
 	background-position: bottom left;
 	text-decoration: none;
 	color: #0063be;
@@ -116,59 +127,68 @@ a.dashboard-module span {
 /* -------------------- Box module -------------------- */
 
 div.module {
-  float: left;
-  margin-bottom: 10px;
-  width: 100%;
+	float: left;
+	margin-bottom: 10px;
+	width: 100%;
 }
 
-div.module div.module-body { 
-	background:#fff;
+div.module div.module-body {
+	background: #fff;
 	border: none;
-	padding:20px;
+	padding: 20px;
 }
 
 .container_12 {
-  height: 38px;
-  margin: 0 auto;
-  width: 100%;
+	height: 38px;
+	margin: 0 auto;
+	width: 100%;
 }
 
-.module-body p.p{margin-top:26px; margin-bottom:0px !important}
+.module-body p.p {
+	margin-top: 26px;
+	margin-bottom: 0px !important
+}
 
 /* edit */
-.content_addUser{
+.content_addUser {
 	margin-top: 30px;
 	padding: 10px;
 	width: 50%;
 }
-.row_addUser{
+
+.row_addUser {
 	padding: 10px;
 }
-.row_addUser .row_input{
+
+.row_addUser .row_input {
 	height: 30px;
 	margin-right: 40%;
 	border-radius: 3px;
 }
-.content_addPost{
+
+.content_addPost {
 	margin-top: 30px;
 	padding: 10px;
 	width: 50%;
 }
 
-.row_addPost{
+.row_addPost {
 	padding: 10px;
-	display:flex;
-	
+	display: flex;
+
 }
-.row_addPost .row_input{
+
+.row_addPost .row_input {
 	height: 30px;
 	margin-right: 0;
 	border-radius: 3px;
 }
-.module-body fieldset{
+
+.module-body fieldset {
 	border: none;
 }
-.submit-green{
+
+.submit-green {
 	border: none;
 	background: #151f2a;
 	cursor: pointer;
@@ -179,33 +199,39 @@ div.module div.module-body {
 	color: white;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
 }
-.submit-green:hover{
+
+.submit-green:hover {
 	transform: translateY(-3px);
 	box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
 }
-.float-left{
+
+.float-left {
 	margin-left: 3%;
 }
-.button_add{
+
+.button_add {
 	background-color: #151f2a;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    cursor: pointer;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	color: rgb(255, 255, 255);
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 4px 2px;
+	cursor: pointer;
 	padding: 10px;
 	border-radius: 5px;
 }
-a .button_add:focus{
+
+a .button_add:focus {
 	text-decoration: none;
 }
+
 a .button_add:hover {
 	text-decoration: none;
 }
-.button_add:hover{
+
+.button_add:hover {
 	/*opacity: 0.8;*/
 	background: #e02c26;
 	border: 1px solid rgba(0, 0, 0, 0.05);
@@ -221,72 +247,129 @@ a .button_add:hover {
 
 /* -------------------- Box module -------------------- */
 
-div.module div.module-body { 
-	background:#fff;
-	padding:20px;
+div.module div.module-body {
+	background: #fff;
+	padding: 20px;
 }
 
 /* Percentage padding in the module dependant on the cell width */
-.grid_1 div.module div.module-body  { padding: 20px 8% 20px 8%; float: left; width: 84%; }
-.grid_2 div.module div.module-body  { padding: 20px 7% 20px 7%; float: left; width: 86%; }
-.grid_3 div.module div.module-body  { padding: 20px 6% 20px 6%; float: left; width: 88%; }
-.grid_4 div.module div.module-body  { padding: 20px 5% 20px 5%; float: left; width: 90%; }
-.grid_5 div.module div.module-body  { padding: 20px 4% 20px 4%; float: left; width: 92%; }
-.grid_6 div.module div.module-body  { padding: 20px 3% 20px 3%; float: left; width: 94%; }
-.grid_7 div.module div.module-body  { padding: 20px 2.75% 20px  2.75%; float: left; width: 94.5%; }
-.grid_8 div.module div.module-body  { padding: 20px 2.5% 20px 2.5%; float: left; width: 95%; }
-.grid_9 div.module div.module-body  { padding: 20px 2.25% 20px 2.25%; float: left; width: 95.5%; }
-.grid_10 div.module div.module-body { padding: 20px 2% 20px 2%; float: left; width: 96%; }
-.grid_11 div.module div.module-body { padding: 20px 1.75% 20px 1.75%; float: left; width: 96.5%; }
+.grid_1 div.module div.module-body {
+	padding: 20px 8% 20px 8%;
+	float: left;
+	width: 84%;
+}
 
-	
-div.module div.module-table-body { 
-	padding: 0; 
-	float: left; 
-	width: 90%; 
+.grid_2 div.module div.module-body {
+	padding: 20px 7% 20px 7%;
+	float: left;
+	width: 86%;
+}
+
+.grid_3 div.module div.module-body {
+	padding: 20px 6% 20px 6%;
+	float: left;
+	width: 88%;
+}
+
+.grid_4 div.module div.module-body {
+	padding: 20px 5% 20px 5%;
+	float: left;
+	width: 90%;
+}
+
+.grid_5 div.module div.module-body {
+	padding: 20px 4% 20px 4%;
+	float: left;
+	width: 92%;
+}
+
+.grid_6 div.module div.module-body {
+	padding: 20px 3% 20px 3%;
+	float: left;
+	width: 94%;
+}
+
+.grid_7 div.module div.module-body {
+	padding: 20px 2.75% 20px 2.75%;
+	float: left;
+	width: 94.5%;
+}
+
+.grid_8 div.module div.module-body {
+	padding: 20px 2.5% 20px 2.5%;
+	float: left;
+	width: 95%;
+}
+
+.grid_9 div.module div.module-body {
+	padding: 20px 2.25% 20px 2.25%;
+	float: left;
+	width: 95.5%;
+}
+
+.grid_10 div.module div.module-body {
+	padding: 20px 2% 20px 2%;
+	float: left;
+	width: 96%;
+}
+
+.grid_11 div.module div.module-body {
+	padding: 20px 1.75% 20px 1.75%;
+	float: left;
+	width: 96.5%;
+}
+
+
+div.module div.module-table-body {
+	padding: 0;
+	float: left;
+	width: 90%;
 	margin: 28px;
-	}
+}
 
-div.module h2 { 
-    /* Sliding right image */
-    background: #cacaca; 
+div.module h2 {
+	/* Sliding right image */
+	background: #cacaca;
 	display: block;
 	float: left;
-	height: 32px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	height: 32px;
+	/* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
 	margin-right: 0px;
-	padding-right: 0px; /* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	padding-right: 0px;
+	/* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
 	/* FONT PROPERTIES */
 	text-decoration: none;
 	color: #444444;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size:12px;
-	font-weight:bold;
+	font-size: 12px;
+	font-weight: bold;
 	width: 100%;
 	margin-bottom: 0;
 	margin-top: 0;
 	letter-spacing: normal
-	}
+}
 
-div.module h2 span { 
-	/* Background left image */ 
+div.module h2 span {
+	/* Background left image */
 	display: block;
-	line-height: 20px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	line-height: 20px;
+	/* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
 	padding: 7px 0 5px 18px;
 
-	}
+}
 
 div.module table {
-	width: 100%; 
+	width: 100%;
 	margin: 0 0 10px 0;
 	border-left: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
-	}
+}
 
 div.module table.tr {
 	border-collapse: separate;
 	border-right: 1px solid #aaaaaa;
 	border-left: 1px solid #aaaaaa;
-	}
+}
 
 div.module table th {
 	background-color: #eeeeee;
@@ -294,138 +377,161 @@ div.module table th {
 	padding: 5px;
 	border-right: 1px solid #d9d9d9;
 	border-bottom: 1px solid #d9d9d9;
-	}
-	
+}
+
 div.module table td {
 	background-color: #ffffff;
-	padding: 5px;;
+	padding: 5px;
+	;
 	border-right: 1px solid #d9d9d9;
-	}
+}
 
-div.module table tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
+div.module table tr.odd td {
+	/* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
 	background-color: #f1f5fa;
-	}
-	
+}
+
 .table-apply {
-	width: 40%; float: right; text-align: right; margin-right: 10px;
-	}
-	
+	width: 40%;
+	float: right;
+	text-align: right;
+	margin-right: 10px;
+}
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	margin-bottom: 15px;
 }
- /*  Toggle button*/
+
+/*  Toggle button*/
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
 }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
+input:checked+.slider {
+	background-color: #2196F3;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+input:focus+.slider {
+	box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+input:checked+.slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+	border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+	border-radius: 50%;
 }
-#dynamic-table td{vertical-align: middle;}
-#dynamic-table .hoa{width:100px; height: 60px;border-radius:4px;}
-#dynamic-table tr:nth-child(even) td{background: #F6F6F6}
-#dynamic-table tr:hover td{background: #EEEEEE}
+
+#dynamic-table td {
+	vertical-align: middle;
+}
+
+#dynamic-table .hoa {
+	width: 100px;
+	height: 60px;
+	border-radius: 4px;
+}
+
+#dynamic-table tr:nth-child(even) td {
+	background: #F6F6F6
+}
+
+#dynamic-table tr:hover td {
+	background: #EEEEEE
+}
 
 /*edit css admin index*/
-.content_index_admin{
+.content_index_admin {
 	margin: 20px;
 }
-<!--end edit-->
-
+/* end edit */
 .pagination {
- float:right;
-  display: inline-block;
- 
+	display: inline-block;
 }
 
-.paginate_button{
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  list-style: none;
+.paginate_button {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	list-style: none;
 }
-.dataTables_info{
-	float:right;
+
+.dataTables_info {
+	float: right;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size:12px;
+	font-size: 12px;
 }
-.dataTables_filter{
-	margin:5px;
+
+.dataTables_filter {
+	margin: 5px;
 }
-.dataTables_length{
-	margin:5px;
+
+.dataTables_length {
+	margin: 5px;
 	font-family: Arial, Helvetica, sans-serif;
 }
-.form-control{
-  width: 200px;
-  padding: 5px;
-  height: 25px;
-  outline: none;
-  color: #9DBFAF;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+
+.form-control {
+	width: 200px;
+	padding: 5px;
+	height: 25px;
+	outline: none;
+	color: #9DBFAF;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
-.row{
-	float:right;
+
+.row {
+	float: right;
 	display: flex;
-    flex-flow: row;
+	flex-flow: row;
 }
-.selected{
-	 border-bottom: red solid 5px;
+
+.selected {
+	border-bottom: red solid 5px;
 }
