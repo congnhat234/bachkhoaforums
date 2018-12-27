@@ -63,9 +63,6 @@ public class EditPostByUser extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int idp = Integer.parseInt(request.getParameter("idp"));
-		UserBO userBO = new UserBO();
-		User userEdited = userBO.findByToken(user.getToken());
-		session.setAttribute("user", userEdited);
 
 		int idSubject = Integer.parseInt(request.getParameter("id_subject"));
 		String title = new String(request.getParameter("title").getBytes("ISO-8859-1"), "UTF-8");
@@ -125,7 +122,6 @@ public class EditPostByUser extends HttpServlet {
 			InputStream filecontent = null;
 			preview_image = fileName;
 			try {
-				System.out.println("Absolute Path at server= " + file.getAbsolutePath());
 				out = new FileOutputStream(new File(saveImgFolder + File.separator + fileName));
 				filecontent = filePart.getInputStream();
 				int read = 0;
@@ -143,6 +139,10 @@ public class EditPostByUser extends HttpServlet {
 					filecontent.close();
 				}
 			}
+		} else {
+			PostBO postBO = new PostBO();
+			Post post = postBO.getPost(idp);
+			preview_image = post.getPreview_image();
 		}
 		Post post = new Post(idp, idSubject, user.getId_user(), user.getUsername(), date_create, title, preview_image, previewContent,
 				content, 0, 0);

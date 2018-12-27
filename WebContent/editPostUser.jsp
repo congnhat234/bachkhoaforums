@@ -20,12 +20,12 @@
         <form class="vietbai" id="form_vietbai" action="<%=request.getContextPath()%><%=Constants.URL.EDIT_POST_BY_USER%>?idp=<%=post.getId_post()%>" method="POST" enctype="multipart/form-data">
                        
                 <div class="tieude">
-                    <label>Tiêu đề bài viết:</label>
-                    <input class="text1" type="text" name="title" value="<%=post.getTitle()%>">
+                    <label class="labelText">Tiêu đề bài viết:</label>
+                    <input class="text" type="text" name="title" value="<%=post.getTitle()%>">
                 </div>
                 <div class="tieude">
-                    <label>Xem trước</label>
-                    <input class="text2" type="text" name="preview_content" value="<%=post.getPreview_content()%>" >
+                    <label class="labelText">Xem trước</label>
+                    <input class="text" type="text" name="preview_content" value="<%=post.getPreview_content()%>" >
                 </div>
                 <div>
                     <dl class="pre_image">
@@ -39,8 +39,8 @@
                     </dl>
                 </div>
                 <div class="tieude">
-                    <label>Chủ đề:</label>
-                    <select class="select1" name="id_subject">
+                    <label class="labelText">Chủ đề:</label>
+                    <select class="select1 text" name="id_subject">
                     <%
                     	if(request.getAttribute("listSubject") != null) {
                     		ArrayList<Subject> listSubject = (ArrayList<Subject>) request.getAttribute("listSubject");
@@ -52,7 +52,7 @@
                     </select>
                 </div>
                 <div class="tieude">
-                    <label>Nội dung bài viết:</label>
+                    <label class="labelText">Nội dung bài viết:</label>
                 </div>
                 <div class="text-area">
                     <textarea name="content" id="editor">
@@ -64,13 +64,7 @@
                     <dd>
                         <input class="button" type="submit" value="Sửa bài viêt">
                     </dd>
-                </dl>
-                <div class="checkbox1">
-                    <input type="checkbox" name="check1" value="TheoDoi">
-                    <label>Theo dõi chủ đề này.</label> <br><br>
-                    <input type="checkbox" name="check2" value="NhanThongBao">
-                    <label>Nhận thông báo qua email.</label><br><br>
-                </div>
+                </dl>              
             
         </form>
     </div>

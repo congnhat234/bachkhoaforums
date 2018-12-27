@@ -1256,33 +1256,30 @@ fa-ellipsis-vbody {
 }
 
 .pre_image dd img {
-	margin-left: 11%;
+	margin-left: 12%;
 	border: 1px solid black;
 }
 
 .vietbai .pre_image .choose_file {
 	margin: 10px;
-	margin-left: 10%;
+	margin-left: 12%;
 }
 
-.text1 {
+.labelText {
+	display: block;
+    width: 150px;
+    float: left;
+}
+
+
+.text {
 	border: 1px solid black;
 	border-radius: 3px;
 	width: 350px;
 	height: 35px;
-	margin-left: 6%;
-	font-size: 20px;
+	font-size: 13px;
 	font-family: Arial;
-}
-
-.text2 {
-	border: 1px solid black;
-	border-radius: 3px;
-	width: 350px;
-	height: 35px;
-	margin-left: 10%;
-	font-size: 20px;
-	font-family: Arial;
+	margin-left: 3%;
 }
 
 .select1 {
@@ -1290,7 +1287,6 @@ fa-ellipsis-vbody {
 	border-radius: 3px;
 	width: 150px;
 	height: 35px;
-	margin-left: 104px;
 }
 
 .button {
