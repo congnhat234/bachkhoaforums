@@ -7,12 +7,12 @@
         <div class="grid_12">
             <ul>
             	<li><a  href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_HOME%>">Home</a></li>
-                <li><a <%if(request.getAttribute("title").equals("Post")){ %> class="selected" <%} %>href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài viết</a></li>
-                <li><a  <%if(request.getAttribute("title").equals("Subject")){ %> class="selected" <%} %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh mục</a></li>
-                <li><a  <%if(request.getAttribute("title").equals("User")){ %> class="selected" <%}%> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người dùng </a>
+                <li><a <%if(request.getAttribute("title").equals("Post") && request.getAttribute("title")!=null){ %> class="selected" <%} %>href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>">Bài viết</a></li>
+                <li><a  <%if(request.getAttribute("title").equals("Subject") && request.getAttribute("title")!=null){ %> class="selected" <%} %> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>">Danh mục</a></li>
+                <li><a  <%if(request.getAttribute("title").equals("User") && request.getAttribute("title")!=null){ %> class="selected" <%}%> href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_USER%>">Người dùng </a>
                 	<span style="color:red;">(<%=request.getAttribute("countUserDisabled") %>)</span>
                 </li>
-                <li><a <%if(request.getAttribute("title").equals("Message")){ %> class="selected" <%} %> href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>">Tin nhắn</a>
+                <li><a <%if(request.getAttribute("title").equals("Message") && request.getAttribute("title")!=null){ %> class="selected" <%} %> href="<%=request.getContextPath()%><%=Constants.URL.MESSAGEADMIN%>">Tin nhắn</a>
                 	<span style="color:red;">(<%=request.getAttribute("countUnseenMessage") %>)</span>
                 </li>
             </ul>

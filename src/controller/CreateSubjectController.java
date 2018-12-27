@@ -35,6 +35,7 @@ public class CreateSubjectController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			UserBO userBO = new UserBO();
+			request.setAttribute("title","Subject");
 			int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 			request.setAttribute("countUserDisabled", usersDisabled);
 			MessageBO messageBO = new MessageBO();

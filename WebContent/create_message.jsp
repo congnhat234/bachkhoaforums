@@ -59,7 +59,7 @@
 				user = (User) session.getAttribute("user");
 			}
 		%>
-		<form method="post" id="#" action="<%=request.getContextPath() %><%=Constants.URL.SENDMESSAGE%>">
+		<form  method="post" id="create_message" action="<%=request.getContextPath() %><%=Constants.URL.SENDMESSAGE%>">
 		<fieldset>
 		<dl class="ctrlUnit">
 			<dt> <label for="ctrl_location">Email :</label>	</dt>
@@ -83,5 +83,32 @@
 		toast("Gửi tin nhắn không thành công!");
 		</script> 
 		<%}}%>
-
+			<script type="text/javascript">
+		$( document ).ready( function () {
+	    	$( "#create_message" ).validate( {
+				rules: {
+					email: {
+						required: true,
+						minlength: 5,
+						email: true
+					},
+					content: {
+						required: true,
+						minlength: 3
+					}
+				},
+				messages: {
+					email: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 3 kí tự",
+						email: "Vui lòng điền đúng email",
+					},
+					content: {
+						required: "Vui lòng điền vào trường này",
+						minlength: "Ít nhất 3 kí tự"
+					}		
+				}
+			} );
+	    	} );
+		</script>
 </html>
