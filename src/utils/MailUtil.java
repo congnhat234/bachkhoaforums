@@ -15,8 +15,8 @@ public class MailUtil {
 	   Port for SSL: 465
 	 */
 	public static void sendMail(String email, String uuid) {
-		final String fromEmail = "nhattvcn@gmail.com"; //requires valid gmail id
-		final String password = "Congnhat234"; // correct password for gmail id
+		final String fromEmail = "bachkhoaforums@gmail.com"; //requires valid gmail id
+		final String password = "Abcd123@"; // correct password for gmail id
 		final String toEmail = email; // can be any email id 
 		String subject = "Thay đổi mật khẩu cho tài khoản BachKhoa Forums của bạn";
 		String content = "Mật khẩu mới của bạn là: " + uuid + ". Bạn cần thay đổi mật khẩu sau khi đăng nhập.";

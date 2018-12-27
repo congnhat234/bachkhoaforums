@@ -17,7 +17,10 @@ public class ConnectDBLibrary {
 		this.user =  "root";
 //		this.password = "Congnhat@234";
 //		this.password = "Beo@1997";
-		this.password = "1234";
+//		this.password = "1234";
+//		this.url = "jdbc:mysql://njdz4.dailyrazor.com:2083/bachkhoa_forumdb?useUnicode=true&characterEncoding=UTF-8";
+//		this.password = "Bachkhoa@12345";
+		
 	}
 	
 	public Connection getConnectMySQL() {

@@ -36,9 +36,9 @@ public class EmailUtil {
 	      msg.addHeader("format", "flowed");
 	      msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-	      msg.setFrom(new InternetAddress("no_reply@bachkhoaforums.net", "NoReply-BKF"));
+	      msg.setFrom(new InternetAddress("no_reply@bachkhoaforums.kilatiron.com", "NoReply-BachKhoaForums"));
 
-	      msg.setReplyTo(InternetAddress.parse("no_reply@bachkhoaforums.net", false));
+	      msg.setReplyTo(InternetAddress.parse("no_reply@bachkhoaforums.kilatiron.com", false));
 
 	      msg.setSubject(subject, "UTF-8");
 
@@ -50,7 +50,7 @@ public class EmailUtil {
 	      System.out.println("Message is ready");
     	  Transport.send(msg);  
 
-	      System.out.println("EMail Sent Successfully!!");
+	      System.out.println("Email Sent Successfully!!");
 	    }
 	    catch (Exception e) {
 	      e.printStackTrace();
