@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import utils.Constants;
 /**
  * Servlet implementation class DeletePostController
  */
+@MultipartConfig
 public class DeletePostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -51,7 +53,7 @@ public class DeletePostController extends HttpServlet {
 			//xoa comment by id_post
 			cmtBO.deleteCommentByPost(idPost);
 		if(postBO.deletePost(idPost)){
-			if(Integer.parseInt(request.getParameter("user"))==1)
+			if(request.getParameter("user")!=null )
 				response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_POST_BY_USER+"?msg=1");	
 			else
 				response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_POST+"?msg=1");	

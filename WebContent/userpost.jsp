@@ -87,7 +87,7 @@
 			String urlAuth = "/user/" + listpost.get(i).getUsername()+"-"+listpost.get(i).getId_user();
 	%>
 
-	<div class="topic">
+	<div class="topic" id="<%=listpost.get(i).getId_post()%>">
 		<div class="writer"> 
 			<i class="fas fa-comments fa-sm"
 			style="font-size: 40px;"></i> <a
@@ -113,7 +113,7 @@
 			 <a href="#" class=""><i class="fas fa-ellipsis-v"></i></a>
 				<div class="dropdown_content">
 					<a href="<%=request.getContextPath()%><%=Constants.URL.EDIT_POST_BY_USER%>?idp=<%=listpost.get(i).getId_post()%>">Sửa bài viết</a> 
-					<a href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=listpost.get(i).getId_post()%>&user=1">Xóa bài viết</a> 
+					<a class="delete_post" idpost=<%=listpost.get(i).getId_post()%> href="javascript:void(0)">Xóa bài viết</a> 
 				</div>
 			</li>
 			</ul>
@@ -147,6 +147,67 @@
     		toast("Sửa thành công!");
     		</script> 
     		 <%}}%>
+    		 
+    <script type="text/javascript">
+    function Confirm(title, msg, $true, $false, $thisDom) {
+        var $content =  "<div class='dialog-ovelay'>" +
+                        "<div class='dialog'><header>" +
+                         " <h3> " + title + " </h3> " +
+                         "<i class='fa fa-close'></i>" +
+                     "</header>" +
+                     "<div class='dialog-msg'>" +
+                         " <p> " + msg + " </p> " +
+                     "</div>" +
+                     "<footer>" +
+                         "<div class='controls'>" +
+                             " <button class='button-danger doAction'>" + $true + "</button> " +
+                             " <button class='button-default cancelAction'>" + $false + "</button> " +
+                         "</div>" +
+                     "</footer>" +
+                  "</div>" +
+                "</div>";
+      $('body').prepend($content);
+      $('.doAction').click(function () {
+        deletePost($thisDom); //function delete post
+        $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+          $(this).remove();
+        });
+      });
+	$('.cancelAction, .fa-close').click(function () {
+        $(this).parents('.dialog-ovelay').fadeOut(500, function () {
+          $(this).remove();
+        });
+      });
+      
+   }
+	jQuery('body').on('click', '.delete_post', function (){
+			Confirm('Xóa bình luận', 'Bạn có chắc muốn xóa?', 'Xóa', 'Hủy', $(this));		
+	});
+	
+    function deletePost($thisDom) {
+		var idPost = $(".delete_post").attr("idpost");
+		var user= 1;
+		$.ajax({
+			url: '<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>',
+			type: 'GET',
+			cache: false,
+			data: {
+					del: idPost,
+					user: user,
+					},
+			success: function(responseJson){
+				$("#"+idPost).css("display", "none");
+				$('#snackbar').attr("type", "success");
+				toast("Xóa thành công");
+			},
+			error: function (){
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+	}
+    </script>
 	</body>
 	
 </html>
