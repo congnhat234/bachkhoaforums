@@ -18,12 +18,12 @@
         <form class="vietbai" id="form_vietbai" action="<%=request.getContextPath()%><%=Constants.URL.CREATE_POST%>" method="POST" enctype="multipart/form-data">
                        
                 <div class="tieude">
-                    <label>Tiêu đề bài viết:</label>
-                    <input class="text1" type="text" name="title" required>
+                    <label class="labelText">Tiêu đề bài viết:</label>
+                    <input class="text" type="text" name="title" required>
                 </div>
                 <div class="tieude">
-                    <label>Xem trước</label>
-                    <input class="text2" type="text" name="preview_content" required>
+                    <label class="labelText">Xem trước</label>
+                    <input class="text" type="text" name="preview_content" required>
                 </div>
                 <div>
                     <dl class="pre_image">
@@ -37,8 +37,8 @@
                     </dl>
                 </div>
                 <div class="tieude">
-                    <label>Chủ đề:</label>
-                    <select class="select1" name="id_subject">
+                    <label class="labelText">Chủ đề:</label>
+                    <select class="select1 text" name="id_subject">
                     <%
                     	if(request.getAttribute("listSubject") != null) {
                     		ArrayList<Subject> listSubject = (ArrayList<Subject>) request.getAttribute("listSubject");
@@ -50,7 +50,7 @@
                     </select>
                 </div>
                 <div class="tieude">
-                    <label>Nội dung bài viết:</label>
+                    <label class="labelText">Nội dung bài viết:</label>
                 </div>
                 <div class="text-area">
                     <textarea name="content" id="editor">

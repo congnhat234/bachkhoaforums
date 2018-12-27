@@ -230,7 +230,7 @@
 <%} %>
 <script type="text/javascript">
 	$("#sendComment").on('click', function (){
-		var cmt = CKEDITOR.instances.editor.getData();; 
+		var cmt = CKEDITOR.instances.editor.getData();
 		var idPost = $(".title_post").attr("idpost");
 		$.ajax({
 			url: '<%=request.getContextPath()%><%=Constants.URL.COMMENT_POST%>',
