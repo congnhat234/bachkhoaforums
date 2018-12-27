@@ -56,6 +56,7 @@
                 </div>
                 <div class="text-area">
                     <textarea name="content" id="editor">
+                    <%=post.getContent()%>
             		</textarea>
                 </div>
                 <dl>

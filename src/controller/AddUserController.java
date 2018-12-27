@@ -34,6 +34,7 @@ public class AddUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "User");
 		UserBO userBO = new UserBO();
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
@@ -47,6 +48,7 @@ public class AddUserController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "User");
 		String username = (String) request.getParameter("username");
 		String fullname= new String( request.getParameter("fullname").getBytes("ISO-8859-1"), "UTF-8");
 		String password = (String) request.getParameter("password");

@@ -31,6 +31,7 @@ public class MessageAdminReplyController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "Message");
 		int idMessage = Integer.parseInt((String) request.getParameter("idM"));
 		UserBO userBO = new UserBO();
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
@@ -47,6 +48,7 @@ public class MessageAdminReplyController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "Message");
 		int idMessage = Integer.parseInt((String) request.getParameter("idM"));
 		String messageReply = new String(((String) request.getParameter("content")).getBytes("ISO-8859-1"), "UTF-8");
 		MessageBO messageBO = new MessageBO();

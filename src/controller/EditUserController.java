@@ -44,6 +44,7 @@ public class EditUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			request.setAttribute("title", "User");
 			int idUser= Integer.parseInt(request.getParameter("uid"));
 			System.out.println(idUser);
 			UserBO user= new UserBO();
@@ -61,6 +62,7 @@ public class EditUserController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("title", "User");
 		int idUser= Integer.parseInt(request.getParameter("uid"));
 		System.out.println(idUser);
 		UserBO userBO = new UserBO();
