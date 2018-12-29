@@ -26,7 +26,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPost() {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post;";
+		String sql = "select * from post order by id_post desc;";
 		try {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
@@ -57,7 +57,7 @@ public class PostDAO {
 	public ArrayList<Post> getAllPostEnabled() {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where enabled = 1;";
+		String sql = "select * from post where enabled = 1 order by id_post desc;";
 		try {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);
