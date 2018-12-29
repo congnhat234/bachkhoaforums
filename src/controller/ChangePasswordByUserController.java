@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import model.bean.User;
 import model.bo.UserBO;
 import utils.Constants;
+import utils.CookieUtils;
 import utils.CryptoUtils;
 
 /**
@@ -57,12 +58,10 @@ public class ChangePasswordByUserController extends HttpServlet {
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(user.getUsername() + password);	
 		 if(userBO.changePassWord(idUser,token,passwordCryp)){
-				User userEdited = userBO.findByToken(token);
-				request.setAttribute("user", userEdited);
-				Cookie cookie = new Cookie("token", token);
-				response.addCookie(cookie);
-				session.setAttribute("user", user);
-				response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=1");
+			 	CookieUtils.delete(request, response, "token");
+		    	session.removeAttribute("user");
+		    	session.invalidate();
+				response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_LOGIN  + "?msg=2");
 			} else {
 				response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=0");
 			}

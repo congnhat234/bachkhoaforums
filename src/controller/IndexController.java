@@ -40,7 +40,6 @@ public class IndexController extends HttpServlet {
 		// TODO Auto-generated method stub
 		SubjectBO subjectBO =new SubjectBO();
 		request.setAttribute("listsubject", subjectBO.getListSubject());
-		System.out.println(subjectBO.getListSubject().size());
 		PostBO postBO = new PostBO();
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("listoutstanding", postBO.getListOutStanding());

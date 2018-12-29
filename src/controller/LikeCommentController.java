@@ -45,13 +45,13 @@ public class LikeCommentController extends HttpServlet {
 			if(postBO.deleteLikedCommentByUser(idComment, user.getId_user())) {
 				response.setContentType("text/html");
 		        response.setCharacterEncoding("UTF-8");
-		        response.getWriter().print(postBO.countLikeComment(idComment) + " Thích");
+		        response.getWriter().print(postBO.countLikeComment(idComment) + " ThÃ­ch");
 			}
 		} else
 		if(postBO.likeComment(idComment, user.getId_user())) {
 			response.setContentType("text/html");
 	        response.setCharacterEncoding("UTF-8");
-	        response.getWriter().print(postBO.countLikeComment(idComment) + " Thích");
+	        response.getWriter().print(postBO.countLikeComment(idComment) + " ThÃ­ch");
 		}
 	}
 
