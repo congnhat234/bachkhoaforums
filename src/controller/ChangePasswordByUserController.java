@@ -49,7 +49,6 @@ public class ChangePasswordByUserController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int idUser= user.getId_user();
-		System.out.println(idUser);
 		UserBO userBO = new UserBO();
 		String oldpassword = (String) request.getParameter("oldpassword");
 		if(request.getParameter("oldpassword")!= null ){

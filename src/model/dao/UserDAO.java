@@ -401,7 +401,7 @@ public class UserDAO {
 
 	public boolean changePassWord(int userid, String token,String password) {
 		connection = connectDBLibrary.getConnectMySQL();
-		String query = "UPDATE user SET token = ?,password=? WHERE id_user = ?;";
+		String query = "UPDATE user SET token = ?, password=? WHERE id_user = ?;";
 		try {		
 			pst = connection.prepareStatement(query);
 			pst.setString(1,token );

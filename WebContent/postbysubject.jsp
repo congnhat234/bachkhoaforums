@@ -53,7 +53,11 @@
 		<ul class="breadcrumbs">
 			<li><a
 				href="<%=request.getContextPath()%><%=Constants.URL.HOME%>"><i
-					class="fas fa-home fa-2x"></i></a></li>
+					class="fas fa-home fa-2x"></i></a>
+					</li>
+					<li><a
+				href="<%=request.getContextPath()%>"><%=objSub.getName()%></a>
+					</li>
 
 		</ul>
 	</nav>

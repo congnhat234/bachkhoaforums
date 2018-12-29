@@ -17,7 +17,7 @@
 <aside class="sidebar-left">
 	<div class="sidebar-links">
 		<a class="link-blue"
-			href="<%=request.getContextPath() %><%=Constants.URL.HOME %>">BàiMới</a>
+			href="<%=request.getContextPath() %><%=Constants.URL.HOME %>">Bài Mới</a>
 		<%for(int i=0;i<listsub.size();i++) {
         String urlSubject = "/subject/" + ConvertString.createSlug(listsub.get(i).getName())+"-"+listsub.get(i).getId_subject();%>
 		<a class="link-red"
@@ -70,8 +70,12 @@
 				<h3>
 					Lượt xem
 					<%=post.getView() %></h3>
-				<% if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
-				if((int)request.getAttribute("followedByUser") == 0){%>
+				<% 
+				User user =(User) session.getAttribute("user");
+				if(user.getId_user()!=post.getId_user()){
+				if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
+				if((int)request.getAttribute("followedByUser") == 0){
+					%>
 				<div class="button-bot">
 					<button id="btnFollow" type="button" class="b1">Theo dõi</button>
 				</div>
@@ -79,7 +83,7 @@
 				<div class="button-bot">
 					<button id="btnFollow" type="button" class="b1">Đã theo dõi</button>
 				</div>
-				<% }%>
+				<% }}%>
 			</div>
 			<span id="result"></span>
 		</div>

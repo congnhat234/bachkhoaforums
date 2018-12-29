@@ -10,7 +10,7 @@
 			<li><a
 				href="<%=request.getContextPath()%><%=Constants.URL.HOME%>"><i
 					class="fas fa-home fa-2x"></i></a></li>
-			<li><a href="#">Trang cá nhân</a></li>
+			<li><a href="#">Đổi mật khẩu</a></li>
 		</ul>
 	</nav>
 	
@@ -29,7 +29,7 @@
 						%>
 
 		<form id="changepassword" method="POST"
-			action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_USER%>?uid=<%=user.getId_user()%>">
+			action="<%=request.getContextPath()%><%=Constants.URL.CHANGE_PASS_USER%>">
 			<fieldset>
 				<dl class="ctrlUnit">
 					<dt><label for="ctrl_location">Mật khẩu cũ:</label></dt>
