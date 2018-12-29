@@ -54,6 +54,8 @@
 			<li><a
 				href="<%=request.getContextPath()%><%=Constants.URL.HOME%>"><i
 					class="fas fa-home fa-2x"></i></a></li>
+					<li><a
+				href="">Bài viết mới</a></li>
 
 		</ul>
 	</nav>

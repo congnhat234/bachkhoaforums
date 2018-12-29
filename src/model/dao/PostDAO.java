@@ -283,7 +283,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostByUser(String username,int offset,int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where username = ? && enabled = 1 LIMIT ?,?;";
+		String sql = "select * from post where username = ? && enabled = 1 ORDER BY post.id_post DESC LIMIT ?,? ;";
 		pst=null;
 		rs=null;
 

@@ -14,7 +14,7 @@
 			<li><a
 				href="<%=request.getContextPath()%><%=Constants.URL.HOME%>"><i
 					class="fas fa-home fa-2x"></i></a></li>
-			<li><a href="#">Trang cá nhân</a></li>
+			<li><a href="#">Thông báo</a></li>
 		</ul>
 	</nav>
 	<%@include file="/templates/public/inc/menu.jsp"%>

@@ -117,11 +117,11 @@
 				<fieldset>
 					<dl class="ctrlUnit">
 						<dt><label for="ctrl_location">Mật khẩu mới:</label></dt>
-						<dd><input class="row_input" type="password"  name="password" id="password" value="" required /></dd>
+						<dd><input class="row_input" type="password"  name="password" id="password" value=""  /></dd>
 					</dl>
 					<dl class="ctrlUnit">
 						<dt><label for="ctrl_location">Nhập lại mật khẩu mới:</label></dt>
-						<dd><input class="row_input" type="password"  name="repassword" value="" required /></dd>
+						<dd><input class="row_input" type="password"  name="repassword" value=""  /></dd>
 					</dl>	
 					<dl>
 					<input class="submit-green" type="submit" value="Thêm" /> 

@@ -48,7 +48,6 @@ public class ChangePasswordByUserController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int idUser= user.getId_user();
-		System.out.println(idUser);
 		UserBO userBO = new UserBO();
 		String oldpassword = (String) request.getParameter("oldpassword");
 		if(request.getParameter("oldpassword")!= null ){
@@ -57,11 +56,9 @@ public class ChangePasswordByUserController extends HttpServlet {
 		String passwordCryp = CryptoUtils.md5(password);
 		String token = CryptoUtils.md5(user.getUsername() + password);	
 		 if(userBO.changePassWord(idUser,token,passwordCryp)){
-				User userEdited = userBO.findByToken(token);
-				request.setAttribute("user", userEdited);
 				Cookie cookie = new Cookie("token", token);
 				response.addCookie(cookie);
-				session.setAttribute("user", user);
+				session.setAttribute("user",user);
 				response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=1");
 			} else {
 				response.sendRedirect(request.getContextPath() + Constants.URL.PROFILE  + "?msg=0");
