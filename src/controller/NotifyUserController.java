@@ -55,7 +55,6 @@ public class NotifyUserController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		FollowBO flBO= new FollowBO();
-		CommentBO commentBO =new CommentBO();
 		MessageBO mesBO= new MessageBO();
 		int idUser = user.getId_user();
 		response.setContentType("text/plain");

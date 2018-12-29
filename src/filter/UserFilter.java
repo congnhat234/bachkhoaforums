@@ -29,7 +29,7 @@ public class UserFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest) request).getSession();
-		String token = CookieUtils.getValue(request, "token");
+		String token = CookieUtils.getValue((HttpServletRequest) request, "token");
 		if (session.getAttribute("user") != null) {
 			UserBO userBO = new UserBO();
 			User user = userBO.findByToken(token);

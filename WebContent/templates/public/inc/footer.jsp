@@ -154,6 +154,9 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+		loadNotification();
+	</script>
     <% } %>    
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
     <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
@@ -260,7 +263,7 @@
 			} );
 	</script>
 		<script>
-$(document).ready(function(){ 
+function loadNotification(){ 
 	var view='';
 	 function notify(view){
 		$.ajax({
@@ -294,5 +297,5 @@ $(document).ready(function(){
 	 setInterval(function(){ 
 		 notify();; 
 		 }, 5000);
-	});
+	}
 </script>

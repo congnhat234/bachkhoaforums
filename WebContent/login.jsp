@@ -38,7 +38,14 @@
 		$('#snackbar').attr("type", "error");
 		toast("Sai username hoặc mật khẩu!");
 	</script>
-	<%}}%>
+	<%} else if (msg.equals("2")) {
+		%>
+	<script>
+		$('#snackbar').attr("type", "success");
+		toast("Đã đổi mật khẩu!");
+	</script>
+		<%}
+	}%>
 	<script>
 	$( document ).ready( function () {
 	$( "#form_login" ).validate( {
