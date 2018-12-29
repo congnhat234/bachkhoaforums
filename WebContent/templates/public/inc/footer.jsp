@@ -154,9 +154,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-		loadNotification();
-	</script>
     <% } %>    
     <script src="<%=request.getContextPath() %>/templates/public/js/basic.js"></script>
     <script src="<%=request.getContextPath() %>/templates/admin/js/admin.js"></script>
@@ -164,8 +161,50 @@
 	<script src="<%=request.getContextPath() %>/templates/admin/js/js/jquery.dataTables.bootstrap.min.js"></script>
 	<script src="<%=request.getContextPath() %>/templates/admin/js/js/dataTables.buttons.min.js"></script>
 	<script src="<%=request.getContextPath() %>/templates/admin/js/js/dataTables.select.min.js"></script>
-		
 	
+	<script>
+		function loadNotification(){ 
+		var view='';
+		 function notify(view){
+			$.ajax({
+				url: '<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION%>',
+				type: 'POST',
+				cache: false,
+				data: {
+					view: view,
+						},	
+				success: function(responseText){
+						var noti=responseText.split(',');
+						if(noti[0]>0){
+							$('#notification').css("color","red");
+							$('#notification').text('('+noti[0]+')');
+						}
+						if(noti[1]>0){
+						$('#mess').css("color","red");
+	                     
+	                     $('#mess').text('('+noti[1]+')');
+						}
+				},
+	       		 error: function (){
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
+			}			
+			});	
+		}
+		 $(document).on('click', '.dropbtn1', function(){
+			 notify('yes');; 
+			 });
+		 setInterval(function(){ 
+			 notify(); 
+			 }, 5000);
+		}
+	</script>
+		
+	<%if(session.getAttribute("user") != null) { %>
+	<script type="text/javascript">
+    	loadNotification();
+	</script>
+	<%} %>
 	<script>
 	$( document ).ready( function () {
 			$( "#register" ).validate( {
@@ -262,40 +301,3 @@
 			} );
 			} );
 	</script>
-		<script>
-function loadNotification(){ 
-	var view='';
-	 function notify(view){
-		$.ajax({
-			url: '<%=request.getContextPath()%><%=Constants.URL.NOTIFICATION%>',
-			type: 'POST',
-			cache: false,
-			data: {
-				view: view,
-					},	
-			success: function(responseText){
-					var noti=responseText.split(',');
-					if(noti[0]>0){
-						$('#notification').css("color","red");
-						$('#notification').text('('+noti[0]+')');
-					}
-					if(noti[1]>0){
-					$('#mess').css("color","red");
-                     
-                     $('#mess').text('('+noti[1]+')');
-					}
-			},
-       		 error: function (){
-			$('#snackbar').attr("type", "error");
-			toast("Có lỗi trong quá trình xử lí");
-		}			
-		});	
-	}
-	 $(document).on('click', '.dropbtn1', function(){
-		 notify('yes');; 
-		 });
-	 setInterval(function(){ 
-		 notify();; 
-		 }, 5000);
-	}
-</script>

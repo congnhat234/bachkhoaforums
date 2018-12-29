@@ -72,8 +72,9 @@
 					<%=post.getView() %></h3>
 				<% 
 				User user =(User) session.getAttribute("user");
+				if(session.getAttribute("user") != null) {
 				if(user.getId_user()!=post.getId_user()){
-				if (session.getAttribute("user") != null && request.getAttribute("followedByUser")!=null ) 
+				if (request.getAttribute("followedByUser")!=null ) 
 				if((int)request.getAttribute("followedByUser") == 0){
 					%>
 				<div class="button-bot">
@@ -83,7 +84,7 @@
 				<div class="button-bot">
 					<button id="btnFollow" type="button" class="b1">Đã theo dõi</button>
 				</div>
-				<% }}%>
+				<% }}}%>
 			</div>
 			<span id="result"></span>
 		</div>
