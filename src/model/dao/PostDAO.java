@@ -1035,5 +1035,38 @@ public class PostDAO {
 		}
 		return count;
 	}
+	
+	public ArrayList<Post> getListPostsByFilter() {
+		ArrayList<Post> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT *, MATCH (title,preview_content,content) AGAINST ('fuck cc dm cl') as score "
+						+ "FROM post WHERE MATCH (title,preview_content,content) AGAINST ('fuck cc dm cl') > 0 "
+							+ "ORDER BY score DESC;";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+			Post post= new Post(rs.getInt("id_post"),rs.getInt("id_subject"),rs.getInt("id_user"),
+					rs.getString("username"),rs.getString("date_create"),
+					rs.getString("title"),rs.getString("preview_image"),
+					rs.getString("preview_content"),rs.getString("content"),
+					rs.getInt("view"),rs.getInt("enabled"));
+			listItems.add(post);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return listItems;
+	}
 
 }

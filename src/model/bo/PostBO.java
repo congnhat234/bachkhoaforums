@@ -137,5 +137,7 @@ public class PostBO {
 		
 		return postDAO.getCountPostUser(idUser);
 	}
-
+	public ArrayList<Post> getListPostByFilter(){
+		return postDAO.getListPostsByFilter();
+	}
 }

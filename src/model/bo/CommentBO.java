@@ -45,5 +45,7 @@ public class CommentBO {
 		return commentDAO.seenNotitication(id_comment);
 		
 	}
-
+	public ArrayList<Comment> getListCommentByFilter(){
+		return commentDAO.getListCommentByFilter();
+	}
 }
