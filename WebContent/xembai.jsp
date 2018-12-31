@@ -128,8 +128,9 @@
 					ArrayList<LikeComment> listLikedComment= (ArrayList<LikeComment>) request.getAttribute("listLikedComment");
 					String auth = "";
 					int idUser = 0;
+					User user = new User();
 					if (session.getAttribute("user") != null) {
-						User user = (User) session.getAttribute("user");
+						user = (User) session.getAttribute("user");
 						idUser = user.getId_user();
 					}
 					for(int i=0;i<listComment.size();i++){
@@ -146,6 +147,7 @@
 						}%>
 
 			<div class="comment-content">
+				<div class="comment-flex">
 				<div>
 					<img
 						src="/save/images/<%=listComment.get(i).getAvatar() %>"
@@ -167,7 +169,7 @@
 							Thích</a>
 						<%} %>
 						<% if (session.getAttribute("user") != null) {
-								User user = (User) session.getAttribute("user");
+								user = (User) session.getAttribute("user");
 								if (user.getId_role() == 1 || user.getId_role() == 2 || user.getId_user() == listComment.get(i).getId_user()) {
 									auth = "true";
 								} else {
@@ -181,13 +183,14 @@
 					</div>
 
 				</div>
+				</div>
 			</div>
 
 			<%} %>
 		</div>
-		<%if(listComment.size()!=0) {%>
-		<div class="xem-comment">
-			<a href="#">Xem tất cả các câu trả lời</a>
+		<%if(listComment.size()>3) {%>
+		<div id="loadMore" class="xem-comment">
+			<a href="#">Xem thêm các câu trả lời</a>
 		</div>
 		<%} %>
 		<br> <br> <br>
@@ -234,6 +237,24 @@
 </script>
 <%} %>
 <script type="text/javascript">
+$(function () {
+    $(".comment-content").slice(0, 5).show("flex");
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".comment-content:hidden").slice(0, 5).slideDown();
+        if ($(".comment-content:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+            $("#loadMore a").text("Bạn đã xem tất cả câu trả lời.");
+            $("#loadMore a").css("cursor", "not-allowed");
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
+</script>
+
+<script type="text/javascript">
 	$("#sendComment").on('click', function (){
 		var cmt = CKEDITOR.instances.editor.getData();
 		var idPost = $(".title_post").attr("idpost");
@@ -270,25 +291,46 @@
 					<%} else {%>
 					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
 					<%} %>
+					if(value["id_role"] == 1 || value["id_role"] == 2 || value["id_user"] == <%=user.getId_user()%>) {
 						var div = '<div class="comment-content">'
-									+'<div>'
-										+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
-									+'</div>'
-									+'<div class="comment">'
-										+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
-										+'<div>'+ value["content"] +'</div>'
-										+'<div class="a-comment">'
-											+ str 
-											+'<a auth=<%=auth %> idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
-										+'</div>'
-									+'</div>'
-								+'</div>';
+							+ '<div class="comment-flex">'
+							+'<div>'
+								+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
+							+'</div>'
+							+'<div class="comment">'
+								+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
+								+'<div>'+ value["content"] +'</div>'
+								+'<div class="a-comment">'
+									+ str 
+									+'<a auth=true idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
+								+'</div>'
+							+'</div>'
+							+'</div>'
+						+'</div>';
+					} else {
+						var div = '<div class="comment-content">'
+							+ '<div class="comment-flex">'
+							+'<div>'
+								+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
+							+'</div>'
+							+'<div class="comment">'
+								+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
+								+'<div>'+ value["content"] +'</div>'
+								+'<div class="a-comment">'
+									+ str 
+									+'<a auth=false idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
+								+'</div>'
+							+'</div>'
+							+'</div>'
+						+'</div>';
+					}
+					
 						commentDiv.append(div);
 					})
 				}
 				CKEDITOR.instances.editor.setData("");
 				$('img').on('load', function(e){
-				    
+				$(".comment-content").slice(0, 3).show("flex");				
 				}).on('error', function(e) {
 				    $(this).attr('src', '/forumproject/files/noimage.jpg');
 				});
@@ -379,24 +421,45 @@
 						<%} else {%>
 						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
 						<%} %>
-						var div = '<div class="comment-content">'
-									+'<div>'
-										+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
+						if(value["id_role"] == 1 || value["id_role"] == 2 || value["id_user"] == <%=user.getId_user()%>) {
+							var div = '<div class="comment-content">'
+								+ '<div class="comment-flex">'
+								+'<div>'
+									+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
+								+'</div>'
+								+'<div class="comment">'
+									+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
+									+'<div>'+ value["content"] +'</div>'
+									+'<div class="a-comment">'
+										+ str
+										+'<a auth=true idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
 									+'</div>'
-									+'<div class="comment">'
-										+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
-										+'<div>'+ value["content"] +'</div>'
-										+'<div class="a-comment">'
-											+ str
-											+'<a auth=<%=auth %> idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
-										+'</div>'
+								+'</div>'
+								+'</div>'
+							+'</div>';			
+						} else {
+							var div = '<div class="comment-content">'
+								+ '<div class="comment-flex">'
+								+'<div>'
+									+'<img src="/save/images/' + value["avatar"] + '" width="50px" height="50px">'
+								+'</div>'
+								+'<div class="comment">'
+									+'<a href="<%=request.getContextPath() %>'+ urlMember +'">'+ value["username"] +'</a><span>' + value["date_create"] + '</span>'
+									+'<div>'+ value["content"] +'</div>'
+									+'<div class="a-comment">'
+										+ str
+										+'<a auth=false idcomment=' + value["id_comment"] + ' class="deleteComment" href="javascript:void(0)">Xóa</a>'
 									+'</div>'
-								+'</div>';						
+								+'</div>'
+								+'</div>'
+							+'</div>';	
+						}
+									
 						commentDiv.append(div);
 						
 					});
 					$('img').on('load', function(e){
-					    
+					$(".comment-content").slice(0, 3).show("flex");    
 					}).on('error', function(e) {
 					    $(this).attr('src', '/forumproject/files/noimage.jpg');
 					});

@@ -106,7 +106,7 @@ public class CommentDAO {
 	public ArrayList<Comment> getListComment(int idPost) {		
 		ArrayList<Comment> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from comment inner join user on comment.id_user = user.id_user where comment.id_post = ?;";
+		String sql = "select * from comment inner join user on comment.id_user = user.id_user where comment.id_post = ? order by id_comment desc;";
 		
 		try {
 			pst = connection.prepareStatement(sql);
