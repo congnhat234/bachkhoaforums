@@ -135,11 +135,9 @@
 					}
 					for(int i=0;i<listComment.size();i++){
 						String urlMember = "/user/" + listComment.get(i).getUserName()+"-"+listComment.get(i).getId_user();
-						int count = 0;
 						boolean checkLike = false;
 						for(int j = 0; j < listLikedComment.size(); j++) {
 							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
-								count++;
 								if(idUser != 0) {
 									if(idUser == listLikedComment.get(j).getId_user()) checkLike = true;
 								}
@@ -161,11 +159,11 @@
 					<div class="a-comment">
 						<%if(checkLike == true) { %>
 						<a idcomment=<%=listComment.get(i).getId_comment()%>
-							class="likeComment active" href="javascript:void(0)"><%=count %>
+							class="likeComment active" href="javascript:void(0)"><%=listComment.get(i).getLike() %>
 							Thích</a>
 						<%} else {%>
 						<a idcomment=<%=listComment.get(i).getId_comment()%>
-							class="likeComment" href="javascript:void(0)"><%=count %>
+							class="likeComment" href="javascript:void(0)"><%=listComment.get(i).getLike() %>
 							Thích</a>
 						<%} %>
 						<% if (session.getAttribute("user") != null) {
@@ -267,30 +265,35 @@ $(function () {
 					aid: idPost,
 					},
 			success: function(responseJson){
+				<%
+					if(request.getAttribute("listComment")!=null && request.getAttribute("listLikedComment")!=null) {
+					listComment = (ArrayList<Comment>) request.getAttribute("listComment");
+					listLikedComment = (ArrayList<LikeComment>) request.getAttribute("listLikedComment");
+				} %>
 				if(responseJson!=null){
 					var commentDiv = $(".comment-container");
 					commentDiv.text("");
-					<%int i = 0;%>
+					
 					$.each(responseJson, function(key, value){
 						var urlMember = "/user/" + value["username"]+ "." + value["id_user"];
+						var arCommentId = ["init"];
 					<%
-						int count = 0;
 						boolean checkLike = false;
 						for(int j = 0; j < listLikedComment.size(); j++) {
-							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
-								count++;
-								if(idUser != 0) {
-									if(idUser == listLikedComment.get(j).getId_user()) checkLike = true;
-								}
+							if(idUser != 0) {
+									if(idUser == listLikedComment.get(j).getId_user()) {
+					%>
+						arCommentId.push(<%=listLikedComment.get(j).getId_comment()%>);
+					<%
+								}							
 							}
 						}
-						if(i<listComment.size()-1) i++;
 					%>	
-					<%if(checkLike == true) { %>
-					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
-					<%} else {%>
-					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
-					<%} %>
+					if(arCommentId.indexOf(value["id_comment"]) != -1) {
+					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + value["like"] + ' Thích</a>'; 
+					} else {
+					var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + value["like"] + ' Thích</a>'; 
+					} 
 					if(value["id_role"] == 1 || value["id_role"] == 2 || value["id_user"] == <%=user.getId_user()%>) {
 						var div = '<div class="comment-content">'
 							+ '<div class="comment-flex">'
@@ -330,7 +333,7 @@ $(function () {
 				}
 				CKEDITOR.instances.editor.setData("");
 				$('img').on('load', function(e){
-				$(".comment-content").slice(0, 3).show("flex");				
+				$(".comment-content").slice(0, 5).show("flex");				
 				}).on('error', function(e) {
 				    $(this).attr('src', '/forumproject/files/noimage.jpg');
 				});
@@ -397,30 +400,34 @@ $(function () {
 					aidComment: idComment,
 					},
 			success: function(responseJson){
+				<%
+					if(request.getAttribute("listComment")!=null) {
+					listComment = (ArrayList<Comment>) request.getAttribute("listComment");
+					listLikedComment = (ArrayList<LikeComment>) request.getAttribute("listLikedComment");
+				} %>
 				if(typeof responseJson !== 'string'){
 					var commentDiv = $(".comment-container");
 					commentDiv.text("");
-					<%i = 0;%>
 					$.each(responseJson, function(key, value){
 						var urlMember = "/user/" + value["username"]+ "." + value["id_user"];
+						var arCommentId = ["init"];
 						<%
-						count = 0;
-						checkLike = false;
-						for(int j = 0; j < listLikedComment.size(); j++) {
-							if(listLikedComment.get(j).getId_comment() == listComment.get(i).getId_comment()) {
-								count++;
+							checkLike = false;
+							for(int j = 0; j < listLikedComment.size(); j++) {
 								if(idUser != 0) {
-									if(idUser == listLikedComment.get(j).getId_user()) checkLike = true;
+										if(idUser == listLikedComment.get(j).getId_user()) {
+						%>
+							arCommentId.push(<%=listLikedComment.get(j).getId_comment()%>);
+						<%
+									}
 								}
 							}
-						}
-						if(i<listComment.size()-1) i++;
 						%>	
-						<%if(checkLike == true) { %>
-						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
-						<%} else {%>
-						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + <%=count %> + ' Thích</a>'; 
-						<%} %>
+						if(arCommentId.indexOf(value["id_comment"]) != -1) {
+						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment active" href="javascript:void(0)">' + value["like"] + ' Thích</a>'; 
+						} else {
+						var str = '<a idcomment=' + value["id_comment"] + ' class="likeComment" href="javascript:void(0)">' + value["like"] + ' Thích</a>'; 
+						} 
 						if(value["id_role"] == 1 || value["id_role"] == 2 || value["id_user"] == <%=user.getId_user()%>) {
 							var div = '<div class="comment-content">'
 								+ '<div class="comment-flex">'
@@ -459,7 +466,7 @@ $(function () {
 						
 					});
 					$('img').on('load', function(e){
-					$(".comment-content").slice(0, 3).show("flex");    
+					$(".comment-content").slice(0, 5).show("flex");    
 					}).on('error', function(e) {
 					    $(this).attr('src', '/forumproject/files/noimage.jpg');
 					});
@@ -518,29 +525,28 @@ $(function () {
 		});
 		return false;
 	});
-	
-	$(".likeComment").on('click', function (){	
+	jQuery('body').on('click', '.likeComment', function (){
 		<%if (session.getAttribute("user") != null) {%>
 		var self = $(this);
 		var idComment = $(self).attr("idcomment");
 		$.ajax({
 			url: '<%=request.getContextPath()%><%=Constants.URL.LIKE_COMMENT_POST%>',
-									type : 'POST',
-									cache : false,
-									data : {
-										aidcomment : idComment,
-									},
-									success : function(data) {
-										console.log(data);
-										$(self).html(data);
-									},
-									error : function() {
-										$('#snackbar').attr("type", "error");
-										toast("Có lỗi trong quá trình xử lí");
-									}
-								});
-						return false;
-<%}%>
+			type : 'POST',
+			cache : false,
+			data : {
+				aidcomment : idComment,
+			},
+			success : function(data) {
+				$(self).html(data);
+				$(self).toggleClass("active");
+			},
+			error : function() {
+				$('#snackbar').attr("type", "error");
+				toast("Có lỗi trong quá trình xử lí");
+			}
+		});
+		return false;
+	<%}%>
 	});
 
 	// Get the modal

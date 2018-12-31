@@ -22,6 +22,7 @@ import model.bean.User;
 import model.bo.CommentBO;
 import model.bo.UserBO;
 import model.bo.FollowBO;
+import model.bo.PostBO;
 
 /**
  * Servlet implementation class CommentPostController
@@ -65,13 +66,18 @@ public class CommentPostController extends HttpServlet {
 		
 		Comment comment = new Comment(0,idPost,user.getId_user(),date_create,commentContent,user.getUsername(),1);
 		
-		CommentBO commentBO =new CommentBO();
-		FollowBO followBO =new FollowBO();
+		CommentBO commentBO = new CommentBO();
+		FollowBO followBO = new FollowBO();
+		PostBO postBO = new PostBO();
 		if(commentBO.addComment(comment)) {
 		commentBO.editNotifyComment(idPost,user.getId_user());
 		followBO.editNotityFollow(idPost);
 		ArrayList<Comment> listComment = commentBO.getListComment(idPost);
+		for(Comment objComment : listComment) {
+			objComment.setLike(postBO.countLikeComment(objComment.getId_comment()));
+		}
 		request.setAttribute("listComment", listComment);
+		request.setAttribute("listLikedComment", postBO.getListLikedComment(idPost));
 		Gson gson = new Gson();
         JsonElement element = gson.toJsonTree(listComment, new TypeToken<List<Comment>>(){}.getType());
         JsonArray jsonArray = element.getAsJsonArray();

@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import model.bean.Comment;
 import model.bean.User;
 import model.bo.CommentBO;
+import model.bo.PostBO;
 
 /**
  * Servlet implementation class DeleteCommentPostController
@@ -49,12 +50,17 @@ public class DeleteCommentPostController extends HttpServlet {
 		int idComment = Integer.parseInt(request.getParameter("aidComment"));
 		int idPost = Integer.parseInt(request.getParameter("aidPost"));
 		CommentBO commentBO = new CommentBO();
+		PostBO postBO = new PostBO();
 		Comment comment = commentBO.getComment(idComment);
 		if(user.getId_role() == 1 || user.getId_role() == 2 || comment.getId_user() == user.getId_user()) {
 			
 			if(commentBO.deleteComment(idComment)) {
 				ArrayList<Comment> listComment = commentBO.getListComment(idPost);
+				for(Comment objComment : listComment) {
+					objComment.setLike(postBO.countLikeComment(objComment.getId_comment()));
+				}
 				request.setAttribute("listComment", listComment);
+				request.setAttribute("listLikedComment", postBO.getListLikedComment(idPost));
 				Gson gson = new Gson();
 		        JsonElement element = gson.toJsonTree(listComment, new TypeToken<List<Comment>>(){}.getType());
 		        JsonArray jsonArray = element.getAsJsonArray();

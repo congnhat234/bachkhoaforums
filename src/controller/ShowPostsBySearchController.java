@@ -59,8 +59,8 @@ public class ShowPostsBySearchController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
-		session.removeAttribute("searchText");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("searchText") != null) session.removeAttribute("searchText");
 		String searchText = new String( request.getParameter("search").getBytes("ISO-8859-1"), "UTF-8");
 		int page = 1;
 		SubjectBO subBO= new SubjectBO();
