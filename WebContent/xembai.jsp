@@ -577,7 +577,7 @@ $(function () {
 		});
 		
 	});
-	
+	$(".fb-share-button").attr("data-href", window.location.href);
 	(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
@@ -585,7 +585,6 @@ $(function () {
 		  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=1830343053873535&autoLogAppEvents=1';
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-	$(".fb-share-button").attr("data-href", window.location.href);
 </script>
 </body>
 
