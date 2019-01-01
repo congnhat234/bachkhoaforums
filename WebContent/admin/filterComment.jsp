@@ -8,7 +8,9 @@
 <%@include file="/templates/public/inc/header.jsp" %>
 <div class="container">
 	<%@include file="/templates/admin/inc/menu.jsp" %>
-	
+<%if(request.getAttribute("listComment")!=null) {
+	ArrayList<Comment> listComment = (ArrayList<Comment>) request.getAttribute("listComment");
+	if(listComment.size()>0){%>
 <div class="bottom-spacing">
 	<!-- Button -->
 	<div class="float-left">
@@ -21,6 +23,7 @@
 	</div>
 	<div class="clear"></div>
 </div>	
+<%}} %>
 <div class="grid_12">
 	<!-- Example table -->
 	<div class="module">

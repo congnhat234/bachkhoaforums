@@ -216,15 +216,14 @@
 	<div class="modal-content">
 		<h5>Chia sẻ bài viết</h5>
 		<p id="shareinput"></p>
-		<button class="btnfb" id="shareBtnFb" >
-			<i class="fab fa-facebook-square"></i>
-		</button>
 		<button class="btn" data-clipboard-target="#shareinput">
 			<i class="far fa-copy"></i>
 		</button>
+		<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large" data-mobile-iframe="true"></div>
 	</div>
 </div>
 <!-- End Modal copy  -->
+<div id="fb-root"></div>
 
 <%@include file="/templates/public/inc/footer.jsp"%>
 
@@ -576,14 +575,17 @@ $(function () {
 			$('#snackbar').attr("type", "error");
 			toast("Lỗi!");
 		});
+		
 	});
-	document.getElementById('shareBtnFb').onclick = function() {
-		  FB.ui({
-		    method: 'share',
-		    display: 'popup',
-		    href: 'https://developers.facebook.com/docs/',
-		  }, function(response){});
-		}
+	
+	(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=1830343053873535&autoLogAppEvents=1';
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	$(".fb-share-button").attr("data-href", window.location.href);
 </script>
 </body>
 

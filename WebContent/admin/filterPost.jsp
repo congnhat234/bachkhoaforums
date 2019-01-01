@@ -8,7 +8,9 @@
 <%@include file="/templates/public/inc/header.jsp" %>
 <div class="container">
 	<%@include file="/templates/admin/inc/menu.jsp" %>
-	
+<%if(request.getAttribute("listPost")!=null) {
+	ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
+	if(listPost.size()>0){%>
 <div class="bottom-spacing">
 	<!-- Button -->
 	<div class="float-left">
@@ -20,7 +22,8 @@
 		</a>
 	</div>
 	<div class="clear"></div>
-</div>	
+</div>
+<%}} %>
 <div class="grid_12">
 	<!-- Example table -->
 	<div class="module">
