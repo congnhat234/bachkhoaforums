@@ -19,7 +19,7 @@ ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
 	<div class="content_index_admin">
 		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_POST%>" class="dashboard-module">
 			<img src="<%=request.getContextPath() %>/templates/admin/images/Crystal_Clear_write.gif" width="64" height="64" alt="edit" />
-			<span>Bài Viết</span>
+			<span>Bài Viết</span><span style="color:red;">(<%=request.getAttribute("countPostDisabled") %>)</span>
 		</a>
 		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_SUBJECT%>" class="dashboard-module">
 			<img src="<%=request.getContextPath() %>/templates/admin/images/Crystal_Clear_files.gif" width="64" height="64" alt="edit" />

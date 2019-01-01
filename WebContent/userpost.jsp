@@ -76,11 +76,6 @@
 	<%
 		if (listpost != null) {
 	%>
-<!--<div class="labeltopic">
-	 <a href=""><%=user.getUsername() %></a><br>
-		<p>Khu vực thảo luận về thông tin và các sự kiện về công nghệ</p>
-	</div>
--->
 	<%
 		for (int i = 0; i < listpost.size(); i++) {
 			String urlPost = "/threads/" + ConvertString.createSlug(listpost.get(i).getTitle())+"-"+listpost.get(i).getId_post();
@@ -92,7 +87,7 @@
 			<i class="fas fa-comments fa-sm"
 			style="font-size: 40px;"></i> <a
 			href="<%=request.getContextPath()%><%=urlPost%>"
-			style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%></a>
+			style="color: #103667; font-weight: bold;"> <%=listpost.get(i).getTitle()%> <%if(listpost.get(i).getEnable()==0){%> <span style="color:red;">(đang duyệt)</span> <%}%></a>
 			<br>
 			<div class="amount">
 				<dl>
@@ -146,7 +141,12 @@
     		$('#snackbar').attr("type", "success");
     		toast("Sửa thành công!");
     		</script> 
-    		 <%}}%>
+    		 <%}else if(msg.equals("3")) {%>
+     		<script>
+     		$('#snackbar').attr("type", "success");
+     		toast("Viết bài thành công!");
+     		</script> 
+    	<%}}%>
     		 
     <script type="text/javascript">
     function Confirm(title, msg, $true, $false, $thisDom) {

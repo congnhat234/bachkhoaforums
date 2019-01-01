@@ -8,7 +8,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <%@include file="/templates/public/inc/header.jsp"%>
 
 <%ArrayList<Post> listoutstanding = (ArrayList<Post>) request.getAttribute("listoutstanding"); 
@@ -217,6 +216,9 @@
 	<div class="modal-content">
 		<h5>Chia sẻ bài viết</h5>
 		<p id="shareinput"></p>
+		<button class="btnfb" id="shareBtnFb" >
+			<i class="fab fa-facebook-square"></i>
+		</button>
 		<button class="btn" data-clipboard-target="#shareinput">
 			<i class="far fa-copy"></i>
 		</button>
@@ -575,6 +577,13 @@ $(function () {
 			toast("Lỗi!");
 		});
 	});
+	document.getElementById('shareBtnFb').onclick = function() {
+		  FB.ui({
+		    method: 'share',
+		    display: 'popup',
+		    href: 'https://developers.facebook.com/docs/',
+		  }, function(response){});
+		}
 </script>
 </body>
 

@@ -140,4 +140,8 @@ public class PostBO {
 	public ArrayList<Post> getListPostByFilter(){
 		return postDAO.getListPostsByFilter();
 	}
+	public int countItemsPostDisable() {
+		
+		return postDAO.countItemsPostDisable();
+	}
 }

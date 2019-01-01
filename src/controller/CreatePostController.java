@@ -150,7 +150,7 @@ public class CreatePostController extends HttpServlet {
 				content, 0, 0);
 		PostBO postBO = new PostBO();
 		if (postBO.addPost(post)) {
-			response.sendRedirect(request.getContextPath() + Constants.URL.HOME+"?msg=1");
+			response.sendRedirect(request.getContextPath() + Constants.URL.SHOW_POST_BY_USER+"?msg=3");
 		} else {
 			response.sendRedirect(request.getContextPath() + Constants.URL.CREATE_POST + "?msg=0");
 		}

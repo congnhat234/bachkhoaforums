@@ -283,7 +283,7 @@ public class PostDAO {
 	public ArrayList<Post> getListPostByUser(String username,int offset,int row_count) {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where username = ? && enabled = 1 ORDER BY post.id_post DESC LIMIT ?,? ;";
+		String sql = "select * from post where username = ? ORDER BY post.id_post DESC LIMIT ?,? ;";
 		pst=null;
 		rs=null;
 
@@ -1067,6 +1067,30 @@ public class PostDAO {
 			}
 		}
 		return listItems;
+	}
+
+	public int countItemsPostDisable() {
+		int count = 0;
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT COUNT(*) AS rowcount FROM post WHERE enabled = 0";
+		try {
+			pst = connection.prepareStatement(sql);
+			rs=pst.executeQuery();
+			while(rs.next()){
+			   count = rs.getInt("rowcount") ;
+			}
+			  
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pst.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
 	}
 
 }

@@ -46,6 +46,8 @@ public class IndexAdminController extends HttpServlet {
 		request.setAttribute("listPost", postBO.getListPostAll());
 		int usersDisabled = userBO.countItems() - userBO.countItemsEnabled();
 		request.setAttribute("countUserDisabled", usersDisabled);
+		int postsDisabled =postBO.countItemsPostDisable();
+		request.setAttribute("countPostDisabled", postsDisabled);
 		request.setAttribute("title", "Admin");
 		MessageBO messageBO = new MessageBO();
 		request.setAttribute("countUnseenMessage", messageBO.countUnseenMessage());

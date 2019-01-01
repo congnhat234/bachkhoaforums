@@ -31,6 +31,7 @@
 		src="<%=request.getContextPath()%>/ckfinder/ckfinder.js"></script>
 	<script	src="<%=request.getContextPath() %>/templates/public/js/jquery.validate.js"></script>
 	<script	src="<%=request.getContextPath() %>/templates/public/js/clipboard.min.js"></script>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
 
 	
 </head>
