@@ -79,33 +79,6 @@ public class CommentDAO {
 		return false;
 	}
 
-//	public boolean edit(Comment comment) {
-//		connection = connectDBLibrary.getConnectMySQL();
-//		String query = "UPDATE comment SET id_post=?, id_user=?, content=?, notify = ? WHERE id_comment = ?;";
-//		try {		
-//			pst = connection.prepareStatement(query);
-//			
-//			pst.setInt(1, comment.getId_post());
-//			pst.setInt(2, comment.getId_user());
-//			pst.setString(4, comment.getContent());
-//			pst.setInt(5, comment.getNotify());
-//			pst.setInt(6, comment.getId_comment());
-//			
-//			int r = pst.executeUpdate();
-//			if (r>0) return true;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				pst.close();
-//				connection.close();
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return false;
-//	}
-
 	public boolean delete(int idComment) {
 		int result = 0;
 		connection = connectDBLibrary.getConnectMySQL();
@@ -133,7 +106,7 @@ public class CommentDAO {
 	public ArrayList<Comment> getListComment(int idPost) {		
 		ArrayList<Comment> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from comment inner join user on comment.id_user = user.id_user where comment.id_post = ?;";
+		String sql = "select * from comment inner join user on comment.id_user = user.id_user where comment.id_post = ? order by id_comment desc;";
 		
 		try {
 			pst = connection.prepareStatement(sql);
@@ -301,5 +274,35 @@ public class CommentDAO {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<Comment> getListCommentByFilter() {		
+		ArrayList<Comment> listItems = new ArrayList<>();
+		connection = connectDBLibrary.getConnectMySQL();
+		String sql = "SELECT *, MATCH (content) AGAINST ('fuck cc dm cl') as score "
+				+ "FROM comment inner join user on comment.id_user = user.id_user WHERE MATCH (content) AGAINST ('fuck cc dm cl') > 0 "
+				+ "ORDER BY score DESC;";
+		
+		try {
+			pst = connection.prepareStatement(sql);
+			rs = pst.executeQuery();
+			while(rs.next()){
+				Comment comment= new Comment(rs.getInt("id_comment"),rs.getInt("id_post"),
+					rs.getInt("comment.id_user"),rs.getString("date_create"),
+					rs.getString("content"),rs.getString("user.username"),rs.getInt("notify"),rs.getString("user.avatar"));
+			listItems.add(comment);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pst.close();
+				connection.close();
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listItems;
 	}
 }

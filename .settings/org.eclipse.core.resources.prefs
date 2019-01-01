@@ -1,6 +1,9 @@
 eclipse.preferences.version=1
 encoding//src/controller/AddFollowController.java=UTF-8
 encoding//src/controller/AddUserController.java=UTF-8
+encoding//src/controller/AdminDisabledIllegalUserController.java=UTF-8
+encoding//src/controller/AdminFilterCommentController.java=UTF-8
+encoding//src/controller/AdminFilterPostController.java=UTF-8
 encoding//src/controller/ChangeSubjectPost.java=UTF-8
 encoding//src/controller/EnablePostAdminController.java=UTF-8
 encoding//src/controller/EnableUserAdminController.java=UTF-8

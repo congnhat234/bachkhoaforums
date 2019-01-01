@@ -18,18 +18,18 @@ import com.google.gson.reflect.TypeToken;
 import model.bean.Comment;
 import model.bean.User;
 import model.bo.CommentBO;
-import model.bo.PostBO;
+import utils.Constants;
 
 /**
  * Servlet implementation class DeleteCommentPostController
  */
-public class DeleteCommentPostController extends HttpServlet {
+public class AdminDeleteCommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteCommentPostController() {
+    public AdminDeleteCommentController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,33 +47,15 @@ public class DeleteCommentPostController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		int idComment = Integer.parseInt(request.getParameter("aidComment"));
-		int idPost = Integer.parseInt(request.getParameter("aidPost"));
+		int idComment = Integer.parseInt(request.getParameter("del"));
 		CommentBO commentBO = new CommentBO();
-		PostBO postBO = new PostBO();
-		Comment comment = commentBO.getComment(idComment);
-		if(user.getId_role() == 1 || user.getId_role() == 2 || comment.getId_user() == user.getId_user()) {
-			
+		if(user.getId_role() == 1 || user.getId_role() == 2) {
 			if(commentBO.deleteComment(idComment)) {
-				ArrayList<Comment> listComment = commentBO.getListComment(idPost);
-				for(Comment objComment : listComment) {
-					objComment.setLike(postBO.countLikeComment(objComment.getId_comment()));
-				}
-				request.setAttribute("listComment", listComment);
-				request.setAttribute("listLikedComment", postBO.getListLikedComment(idPost));
-				Gson gson = new Gson();
-		        JsonElement element = gson.toJsonTree(listComment, new TypeToken<List<Comment>>(){}.getType());
-		        JsonArray jsonArray = element.getAsJsonArray();
-		        response.setContentType("application/json");
-		        response.setCharacterEncoding("UTF-8");
-		        response.getWriter().println(jsonArray);
+				response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_FILTER_COMMENT+"?msg=1");
+			} else {
+				response.sendRedirect(request.getContextPath() + Constants.URL.ADMIN_FILTER_COMMENT+"?msg=0");
 			}
-		} else {
-//			JsonArray jsonArray = null;
-//			response.setContentType("application/json");
-//	        response.setCharacterEncoding("UTF-8");
-//	        response.getWriter().println(jsonArray);
-		}
+		} 
 	}
 
 }

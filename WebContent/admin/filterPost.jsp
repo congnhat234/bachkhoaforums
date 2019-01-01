@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bean.Post"%>
@@ -11,11 +12,11 @@
 <div class="bottom-spacing">
 	<!-- Button -->
 	<div class="float-left">
-		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_FILTER_POST%>"
-			class="button_add"> <span>Lọc bài viết vi phạm </span>
+		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_DELETE_ILLEGAL_POST%>"
+			class="button_add"> <span>Xóa tất cả bài viết vi phạm</span>
 		</a>
-		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_FILTER_COMMENT%>"
-			class="button_add"> <span>Lọc bình luận vi phạm </span>
+		<a href="<%=request.getContextPath()%><%=Constants.URL.DISABLED_USER%>?type=post"
+			class="button_add"> <span>Khóa tất cả tài khoản vi phạm</span>
 		</a>
 	</div>
 	<div class="clear"></div>
@@ -31,6 +32,7 @@
 					<tr>
 						<th style="width:4%; text-align: center;">ID</th>
 						<th style="width:30%">Tên tin tức</th>
+						<th style="width:10%">Người viết</th>
 						<th style="width:10%">Danh Mục</th>
 						<th style="width:10%; text-align: center;">Hình ảnh</th>
 						<th style="width:5%; text-align: center;">Chức năng</th>
@@ -44,10 +46,13 @@
 					ArrayList<Subject> listSub = (ArrayList<Subject>) request.getAttribute("listSub");
 					if(listPost.size()>0){
 					for(Post objPost : listPost){
+						String urlPost = "/threads/" + ConvertString.createSlug(objPost.getTitle())+"-"+objPost.getId_post();
+						String urlAuth = "/user/" + objPost.getUsername()+"-"+ objPost.getId_user();
 				%>
 					<tr>
 						<td class="idPost" class="align-center"><%=objPost.getId_post() %></td>
-						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objPost.getId_post()%>"><%=objPost.getTitle() %></a></td>
+						<td><a href="<%=request.getContextPath() %><%=urlPost%>"><%=objPost.getTitle() %></a></td>
+						<td><a href="<%=request.getContextPath() %><%=urlAuth%>"><%=objPost.getUsername() %></a></td>
 						<td>
 						
 						<select  idPost1="<%=objPost.getId_post()%>" class="changeSub"  >							
@@ -176,7 +181,7 @@ if(request.getParameter("msg")!=null){
 					bAutoWidth: false,
 					"aoColumns": [
 					  null,
-					  null, null,null, null,
+					  null, null,null, null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bean.Comment;
 import model.bean.User;
 import model.bo.CommentBO;
 import model.bo.PostBO;
@@ -41,8 +43,12 @@ public class ViewPostController extends HttpServlet {
 		System.out.println("view"+view);
 		postBO.setViewPost(idPost, view);
 		SubjectBO subjectBO =new SubjectBO();
+		ArrayList<Comment> listComment = commentBO.getListComment(idPost);
+		for(Comment objComment : listComment) {
+			objComment.setLike(postBO.countLikeComment(objComment.getId_comment()));
+		}
 		request.setAttribute("listsubject", subjectBO.getListSubject());
-		request.setAttribute("listComment", commentBO.getListComment(idPost));
+		request.setAttribute("listComment", listComment);
 		request.setAttribute("listpost",postBO.getListPost());
 		request.setAttribute("post", postBO.getPost(idPost));
 		request.setAttribute("countLikePost", postBO.countLike(idPost));

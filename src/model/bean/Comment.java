@@ -9,6 +9,7 @@ public class Comment {
 	String username;
 	int notify;
 	String avatar;
+	int like;
 	
 	public Comment() {
 		super();
@@ -25,10 +26,6 @@ public class Comment {
 		this.notify = notify;
 	}
 
-
-
-
-
 	public Comment(int id_comment, int id_post, int id_user, String date_create, String content, String username,
 			int notify, String avatar) {
 		super();
@@ -42,12 +39,18 @@ public class Comment {
 		this.avatar = avatar;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
+	public Comment(int id_comment, int id_post, int id_user, String date_create, String content, String username,
+			int notify, String avatar, int like) {
+		super();
+		this.id_comment = id_comment;
+		this.id_post = id_post;
+		this.id_user = id_user;
+		this.date_create = date_create;
+		this.content = content;
 		this.username = username;
+		this.notify = notify;
+		this.avatar = avatar;
+		this.like = like;
 	}
 
 	public String getAvatar() {
@@ -87,33 +90,17 @@ public class Comment {
 		this.id_user = id_user;
 	}
 
-
-
-
-
 	public String getDate_create() {
 		return date_create;
 	}
-
-
-
-
 
 	public void setDate_create(String date_create) {
 		this.date_create = date_create;
 	}
 
-
-
-
-
 	public String getContent() {
 		return content;
 	}
-
-
-
-
 
 	public void setContent(String content) {
 		this.content = content;
@@ -123,27 +110,32 @@ public class Comment {
 		return username;
 	}
 
-
 	public void setUserName(String username) {
 		this.username = username;
 	}
-
-
 	public int getNotify() {
 		return notify;
 	}
-
-
-
-
 
 	public void setNotify(int notify) {
 		this.notify = notify;
 	}
 
-	
+	public String getUsername() {
+		return username;
+	}
 
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
+	public int getLike() {
+		return like;
+	}
+
+	public void setLike(int like) {
+		this.like = like;
+	}
 
 }
 	

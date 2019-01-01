@@ -41,10 +41,11 @@
 								if (listUsers.size() > 0) {
 
 									for (User objUser : listUsers) {
+										String urlUser = "/user/" + objUser.getUsername() +"-"+ objUser.getId_user();
 							%>
 							<tr>
 								<td align="center"><%=objUser.getId_user()%></td>
-								<td align="center"><a href=""><%=objUser.getUsername()%></a></td>
+								<td align="center"><a href="<%=request.getContextPath()%><%=urlUser%>"><%=objUser.getUsername()%></a></td>
 								<td align="center"><%=objUser.getFullname()%></td>
 								<td align="center">
 									<%

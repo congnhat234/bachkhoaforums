@@ -2,11 +2,6 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>Forum Project</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
     <welcome-file>home</welcome-file>
   </welcome-file-list>
   <error-page>
@@ -416,5 +411,53 @@
   <servlet-mapping>
     <servlet-name>ForgotPasswordController</servlet-name>
     <url-pattern>/forgot-password</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminFilterPostController</servlet-name>
+    <servlet-class>controller.AdminFilterPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminFilterPostController</servlet-name>
+    <url-pattern>/admin/filter-post</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminFilterCommentController</servlet-name>
+    <servlet-class>controller.AdminFilterCommentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminFilterCommentController</servlet-name>
+    <url-pattern>/admin/filter-comment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteIllegalPostController</servlet-name>
+    <servlet-class>controller.DeleteIllegalPostController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteIllegalPostController</servlet-name>
+    <url-pattern>/admin/delete-illegal-post</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteIllegalCommentController</servlet-name>
+    <servlet-class>controller.DeleteIllegalCommentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteIllegalCommentController</servlet-name>
+    <url-pattern>/admin/delete-illegal-comment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDeleteCommentController</servlet-name>
+    <servlet-class>controller.AdminDeleteCommentController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDeleteCommentController</servlet-name>
+    <url-pattern>/admin/delete-comment</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AdminDisabledIllegalUserController</servlet-name>
+    <servlet-class>controller.AdminDisabledIllegalUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDisabledIllegalUserController</servlet-name>
+    <url-pattern>/admin/disabled-user</url-pattern>
   </servlet-mapping>
 </web-app>

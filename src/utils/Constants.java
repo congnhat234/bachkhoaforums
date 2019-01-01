@@ -61,6 +61,11 @@ public class Constants {
 		String MESSAGEADMIN="/admin/messageadmin";
 		String MESSAGEADMINREPLY="/admin/messagereply";
 		
-		
+		String ADMIN_FILTER_POST="/admin/filter-post";
+		String ADMIN_FILTER_COMMENT="/admin/filter-comment";
+		String ADMIN_DELETE_ILLEGAL_POST="/admin/delete-illegal-post";
+		String ADMIN_DELETE_ILLEGAL_COMMENT="/admin/delete-illegal-comment";
+		String ADMIN_DELETE_COMMENT="/admin/delete-comment";
+		String DISABLED_USER="/admin/disabled-user";
 	}
 }

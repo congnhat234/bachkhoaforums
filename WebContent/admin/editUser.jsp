@@ -46,12 +46,16 @@
                             <dt><label for="ctrl_location">Tên:</label></dt>
                             <dd><input type="text" name="fullname" value="<%=user.getFullname() %>" class="textCtrl OptOut"></dd>
                         </dl>
-                        	<label>Quyền hạn</label>					
-				     <select  name="role" class="input-medium" >
-				     	<option  value="1" <%if(user.getId_role()==1){%> selected <%}%>>Admin </option>
-				     	<option  value="2" <%if(user.getId_role()==2){ %> selected<%} %>>Mod</option>
-				     	<option  value="3" <%if(user.getId_role()==3){ %> selected<%} %>>User </option>
-				     </select>
+                        <dl class="ctrlUnit">
+                            <dt><label for="ctrl_location">Quyền hạn:</label></dt>
+                            <dd>
+                            	<select  name="role" class="input-medium" >
+							     	<option  value="1" <%if(user.getId_role()==1){%> selected <%}%>>Admin </option>
+							     	<option  value="2" <%if(user.getId_role()==2){ %> selected<%} %>>Mod</option>
+							     	<option  value="3" <%if(user.getId_role()==3){ %> selected<%} %>>User </option>
+							     </select>
+                            </dd>
+                        </dl>
                         <dl class="ctrlUnit">
                             <dt><label>Giới tính:</label></dt>
                             <dd>

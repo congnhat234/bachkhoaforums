@@ -1,3 +1,4 @@
+<%@page import="utils.ConvertString"%>
 <%@page import="com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException"%>
 <%@page import="model.bean.Subject"%>
 <%@page import="model.bean.Post"%>
@@ -11,11 +12,11 @@
 <div class="bottom-spacing">
 	<!-- Button -->
 	<div class="float-left">
-		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_FILTER_POST%>"
-			class="button_add"> <span>Lọc bài viết vi phạm </span>
+		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_DELETE_ILLEGAL_COMMENT%>"
+			class="button_add"> <span>Xóa tất cả bình luận vi phạm</span>
 		</a>
-		<a href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_FILTER_COMMENT%>"
-			class="button_add"> <span>Lọc bình luận vi phạm </span>
+		<a href="<%=request.getContextPath()%><%=Constants.URL.DISABLED_USER%>?type=comment"
+			class="button_add"> <span>Khóa tất cả tài khoản vi phạm</span>
 		</a>
 	</div>
 	<div class="clear"></div>
@@ -30,46 +31,27 @@
 				<thead>
 					<tr>
 						<th style="width:4%; text-align: center;">ID</th>
-						<th style="width:30%">Tên tin tức</th>
-						<th style="width:10%">Danh Mục</th>
-						<th style="width:10%; text-align: center;">Hình ảnh</th>
+						<th style="width:10%">Người dùng</th>
+						<th style="width:10%">Ngày tạo</th>
+						<th style="width:30%">Nội dung</th>
 						<th style="width:5%; text-align: center;">Chức năng</th>
-						<th style="width:10%; text-align: center;">Trạng thái</th>
 					</tr>
 				</thead>
 				<tbody>
 				<%
-					if(request.getAttribute("listSub")!=null && request.getAttribute("listPost")!=null ){
-					ArrayList<Post> listPost = (ArrayList<Post>) request.getAttribute("listPost");
-					ArrayList<Subject> listSub = (ArrayList<Subject>) request.getAttribute("listSub");
-					if(listPost.size()>0){
-					for(Post objPost : listPost){
+					if(request.getAttribute("listComment")!=null ){
+					ArrayList<Comment> listComment = (ArrayList<Comment>) request.getAttribute("listComment");
+					if(listComment.size()>0){
+					for(Comment objComment : listComment){
+						String urlAuth = "/user/" + objComment.getUserName()+"-"+ objComment.getId_user();
 				%>
 					<tr>
-						<td class="idPost" class="align-center"><%=objPost.getId_post() %></td>
-						<td><a href="<%=request.getContextPath() %><%=Constants.URL.VIEW_POST %>?idp=<%=objPost.getId_post()%>"><%=objPost.getTitle() %></a></td>
-						<td>
-						
-						<select  idPost1="<%=objPost.getId_post()%>" class="changeSub"  >							
-							<% 	for(Subject objSub : listSub){%>
-										
-										  <option value="<%=objSub.getId_subject() %>"<% if(objPost.getId_subject()==objSub.getId_subject()) {%> selected <%  } %>><%=objSub.getName() %>  </option>
-										
-										<%} %>
-						</select>
-						</td>
-						<td align="center"><img src="/save/images/post/<%=objPost.getPreview_image() %>" class="hoa" /></td>
+						<td class="idPost" class="align-center"><%=objComment.getId_comment() %></td>
+						<td><a href="<%=request.getContextPath() %><%=urlAuth%>"><%=objComment.getUserName() %></a></td>
+						<td><%=objComment.getDate_create() %></td>
+						<td><%=objComment.getContent() %></td>
 						<td align="center">
-							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.DELETE_POST%>?del=<%=objPost.getId_post()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
-						</td>
-						<td align="center">
-							<label class="switch">
-							<%
-							String checked = "";
-							if(objPost.getEnable() == 1) checked = "checked"; %>
-								  <input idPost="<%=objPost.getId_post() %>" class="status" type="checkbox" <%=checked %>>
-								  <span class="slider round"></span>
-							</label>
+							<a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<%=request.getContextPath()%><%=Constants.URL.ADMIN_DELETE_COMMENT%>?del=<%=objComment.getId_comment()%>">Xóa <img src="<%=request.getContextPath() %>/templates/admin/images/bin.gif" width="16" height="16" alt="delete" /></a>
 						</td>
 					</tr>
 				  <%}}} %> 
@@ -176,7 +158,7 @@ if(request.getParameter("msg")!=null){
 					bAutoWidth: false,
 					"aoColumns": [
 					  null,
-					  null, null,null, null,
+					  null, null,null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],
