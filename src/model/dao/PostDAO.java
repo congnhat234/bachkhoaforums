@@ -816,7 +816,7 @@ public class PostDAO {
 	public ArrayList<Post> getListOutStanding() {
 		ArrayList<Post> listItems = new ArrayList<>();
 		connection = connectDBLibrary.getConnectMySQL();
-		String sql = "select * from post where enabled = 1 order by view DESC limit 0,3;";
+		String sql = "select * from post where enabled = 1 order by view DESC limit 0,5;";
 		try {
 			st=connection.createStatement();
 			rs=st.executeQuery(sql);

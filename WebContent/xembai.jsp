@@ -185,7 +185,7 @@
 
 			<%} %>
 		</div>
-		<%if(listComment.size()>3) {%>
+		<%if(listComment.size()>5) {%>
 		<div id="loadMore" class="xem-comment">
 			<a href="#">Xem thêm các câu trả lời</a>
 		</div>

@@ -26,7 +26,7 @@
                 <a href="#">Liên hệ</a>
             </p>
 
-            <p>BackKhoa Forum &copy; 2018</p>
+            <p>BachKhoa Forum &copy; 2018</p>
         </div>
 
     </footer>
